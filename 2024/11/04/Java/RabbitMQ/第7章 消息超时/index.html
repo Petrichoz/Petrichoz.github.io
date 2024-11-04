@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163052001.png">
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163534385.png">
 <meta property="article:published_time" content="2024-11-04T03:24:02.685Z">
-<meta property="article:modified_time" content="2024-11-04T07:00:48.876Z">
+<meta property="article:modified_time" content="2024-11-04T12:15:41.246Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20240806094631068.png">
@@ -284,22 +284,22 @@
                 <h1 id="消息超时"><a href="#消息超时" class="headerlink" title="消息超时"></a>消息超时</h1><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><p>TTL 全称 Time To Live（存活时间&#x2F;过期时间）。</p>
 <p>当消息到达存活时间后，还没有被消费，会被自动清除。</p>
 <p>RabbitMQ可以对消息设置过期时间，也可以对整个队列（Queue）设置过期时间。</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20240806094631068.png" srcset="/img/loading.gif" lazyload alt="image-20240806094631068"></p>
-<h1 id="2-具体实现"><a href="#2-具体实现" class="headerlink" title="2 具体实现"></a>2 具体实现</h1><h2 id="一、队列层面设置"><a href="#一、队列层面设置" class="headerlink" title="一、队列层面设置"></a>一、队列层面设置</h2><h3 id="1、设置"><a href="#1、设置" class="headerlink" title="1、设置"></a>1、设置</h3><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162548129.png" srcset="/img/loading.gif" lazyload alt="image-20231107162548129"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20240806094631068.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="2-具体实现"><a href="#2-具体实现" class="headerlink" title="2 具体实现"></a>2 具体实现</h1><h2 id="一、队列层面设置"><a href="#一、队列层面设置" class="headerlink" title="一、队列层面设置"></a>一、队列层面设置</h2><h3 id="1、设置"><a href="#1、设置" class="headerlink" title="1、设置"></a>1、设置</h3><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162548129.png" srcset="/img/loading.gif" lazyload></p>
 <p>别忘了设置绑定关系：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162705883.png" srcset="/img/loading.gif" lazyload alt="image-20231107162705883"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162705883.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="2、测试"><a href="#2、测试" class="headerlink" title="2、测试"></a>2、测试</h3><ul>
 <li>不启动消费端程序</li>
 <li>向设置了过期时间的队列中发送100条消息</li>
 <li>等10秒后，看是否全部被过期删除</li>
 </ul>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163052001.png" srcset="/img/loading.gif" lazyload alt="image-20231107163052001"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163052001.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="二、消息层面设置"><a href="#二、消息层面设置" class="headerlink" title="二、消息层面设置"></a>二、消息层面设置</h2><h3 id="1、设置-1"><a href="#1、设置-1" class="headerlink" title="1、设置"></a>1、设置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.MessagePostProcessor;<br><br><span class="hljs-meta">@Test</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSendMessageTTL</span><span class="hljs-params">()</span> &#123;  <br>  <br>    <span class="hljs-comment">// 1、创建消息后置处理器对象  </span><br>    <span class="hljs-type">MessagePostProcessor</span> <span class="hljs-variable">messagePostProcessor</span> <span class="hljs-operator">=</span> (Message message) -&gt; &#123;  <br>  <br>        <span class="hljs-comment">// 设定 TTL 时间，以毫秒为单位</span><br>        message.getMessageProperties().setExpiration(<span class="hljs-string">&quot;5000&quot;</span>);  <br>  <br>        <span class="hljs-keyword">return</span> message;<br>    &#125;;<br>  <br>    <span class="hljs-comment">// 2、发送消息  </span><br>    rabbitTemplate.convertAndSend(    <br>            EXCHANGE_DIRECT,     <br>            ROUTING_KEY,     <br>            <span class="hljs-string">&quot;Hello atguigu&quot;</span>, messagePostProcessor);    <br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
 <h3 id="2、查看效果"><a href="#2、查看效果" class="headerlink" title="2、查看效果"></a>2、查看效果</h3><p>这次我们是发送到普通队列上：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163534385.png" srcset="/img/loading.gif" lazyload alt="image-20231107163534385"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163534385.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>

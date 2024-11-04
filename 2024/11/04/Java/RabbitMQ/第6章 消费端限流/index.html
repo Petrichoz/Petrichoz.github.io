@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160936216.png">
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160951639.png">
 <meta property="article:published_time" content="2024-11-04T03:24:02.683Z">
-<meta property="article:modified_time" content="2024-11-04T07:00:42.798Z">
+<meta property="article:modified_time" content="2024-11-04T12:15:21.732Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20240806094300945.png">
@@ -283,7 +283,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="消费端限流"><a href="#消费端限流" class="headerlink" title="消费端限流"></a>消费端限流</h1><h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20240806094300945.png" srcset="/img/loading.gif" lazyload alt="image-20240806094300945"></p>
+                <h1 id="消费端限流"><a href="#消费端限流" class="headerlink" title="消费端限流"></a>消费端限流</h1><h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20240806094300945.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>生产者发送10000个消息</li>
 <li>消费端并发能力上限：同时处理1000个请求</li>
@@ -303,7 +303,7 @@
 <li>运行生产者端程序发送100条消息</li>
 <li>查看队列中消息的情况：</li>
 </ul>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107155915253.png" srcset="/img/loading.gif" lazyload alt="image-20231107155915253"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107155915253.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li><p>说明：</p>
 <ul>
@@ -315,7 +315,7 @@
 <li><p>接下来启动消费端程序，再查看队列情况：</p>
 </li>
 </ul>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160233539.png" srcset="/img/loading.gif" lazyload alt="image-20231107160233539"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160233539.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>能看到消息全部被消费端取走了，正在逐个处理、确认，说明有多少消息消费端就并发处理多少</li>
 </ul>
@@ -328,13 +328,13 @@
 <li>运行生产者端程序发送100条消息</li>
 <li>查看队列中消息的情况：</li>
 </ul>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160820062.png" srcset="/img/loading.gif" lazyload alt="image-20231107160820062"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160820062.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>接下来启动消费端程序，持续观察队列情况：</li>
 </ul>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160922632.png" srcset="/img/loading.gif" lazyload alt="image-20231107160922632"></p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160936216.png" srcset="/img/loading.gif" lazyload alt="image-20231107160936216"></p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160951639.png" srcset="/img/loading.gif" lazyload alt="image-20231107160951639"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160922632.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160936216.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160951639.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>能看到消息不是一次性全部取回的，而是有个过程</li>
 </ul>

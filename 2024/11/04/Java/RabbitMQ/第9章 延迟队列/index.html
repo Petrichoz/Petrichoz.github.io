@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115605608.png">
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115646548.png">
 <meta property="article:published_time" content="2024-11-04T03:24:02.687Z">
-<meta property="article:modified_time" content="2024-11-04T07:04:06.268Z">
+<meta property="article:modified_time" content="2024-11-04T12:16:42.418Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806095835083.png">
@@ -303,12 +303,12 @@
 <li>实现：</li>
 </ul>
 <p>使用延迟队列实现</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806095835083.png" srcset="/img/loading.gif" lazyload alt="image-20240806095835083"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806095835083.png" srcset="/img/loading.gif" lazyload></p>
 <p>很可惜，在RabbitMQ中并未提供延迟队列功能</p>
 <p>我们可以采用以下方案实现：</p>
 <p>方案1：借助消息超时时间+死信队列</p>
 <p>方案2：给RabbitMQ安装插件</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806100015448.png" srcset="/img/loading.gif" lazyload alt="image-20240806100015448"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806100015448.png" srcset="/img/loading.gif" lazyload></p>
 <p>注：使用消息超时时间+死信队列，前面已经演示过了</p>
 <h1 id="2-延迟插件"><a href="#2-延迟插件" class="headerlink" title="2 延迟插件"></a>2 延迟插件</h1><h2 id="一、插件简介"><a href="#一、插件简介" class="headerlink" title="一、插件简介"></a>一、插件简介</h2><ul>
 <li>官网地址：<a target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange">https://github.com/rabbitmq/rabbitmq-delayed-message-exchange</a></li>
@@ -323,7 +323,7 @@
 
 <p>和容器内&#x2F;plugins目录对应的宿主机目录是：&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;rabbitmq-plugin&#x2F;_data</p>
 <h3 id="2、下载延迟插件"><a href="#2、下载延迟插件" class="headerlink" title="2、下载延迟插件"></a>2、下载延迟插件</h3><p>官方文档说明页地址：<a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">https://www.rabbitmq.com/community-plugins.html</a></p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107180045135.png" srcset="/img/loading.gif" lazyload alt="image-20231107180045135"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107180045135.png" srcset="/img/loading.gif" lazyload></p>
 <p>下载插件安装文件：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.13.0/rabbitmq_delayed_message_exchange-3.13.0.ez<br>mv rabbitmq_delayed_message_exchange-3.13.0.ez /var/lib/docker/volumes/rabbitmq-plugin/_data<br></code></pre></td></tr></table></figure>
 
@@ -334,11 +334,11 @@
 
 
 <h3 id="4、确认"><a href="#4、确认" class="headerlink" title="4、确认"></a>4、确认</h3><p>确认点1：查看当前节点已启用插件的列表：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115348525.png" srcset="/img/loading.gif" lazyload alt="image-20240321115348525"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115348525.png" srcset="/img/loading.gif" lazyload></p>
 <p>确认点2：如果创建新交换机时可以在type中看到x-delayed-message选项，那就说明插件安装好了</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107181914265.png" srcset="/img/loading.gif" lazyload alt="image-20231107181914265"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107181914265.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="三、创建交换机"><a href="#三、创建交换机" class="headerlink" title="三、创建交换机"></a>三、创建交换机</h2><p>rabbitmq_delayed_message_exchange插件在工作时要求交换机是<span style="color:blue;font-weight:bolder;">x-delayed-message</span>类型才可以，创建方式如下：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319163915574.png" srcset="/img/loading.gif" lazyload alt="image-20240319163915574"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319163915574.png" srcset="/img/loading.gif" lazyload></p>
 <p>关于<span style="color:blue;font-weight:bolder;">x-delayed-type</span>参数的理解：</p>
 <blockquote>
 <p>原本指定交换机类型的地方使用了x-delayed-message这个值，那么这个交换机除了支持延迟消息之外，到底是direct、fanout、topic这些类型中的哪一个呢？</p>
@@ -354,10 +354,10 @@
 
 
 
-<h3 id="3、执行效果"><a href="#3、执行效果" class="headerlink" title="3、执行效果"></a>3、执行效果</h3><h4 id="①交换机类型"><a href="#①交换机类型" class="headerlink" title="①交换机类型"></a>①交换机类型</h4><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319171359652.png" srcset="/img/loading.gif" lazyload alt="image-20240319171359652"></p>
+<h3 id="3、执行效果"><a href="#3、执行效果" class="headerlink" title="3、执行效果"></a>3、执行效果</h3><h4 id="①交换机类型"><a href="#①交换机类型" class="headerlink" title="①交换机类型"></a>①交换机类型</h4><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319171359652.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="②生产者端效果"><a href="#②生产者端效果" class="headerlink" title="②生产者端效果"></a>②生产者端效果</h4><p><span style="color:blue;font-weight:bolder;">注意</span>：使用rabbitmq_delayed_message_exchange插件后，即使消息成功发送到队列上，也会导致returnedMessage()方法执行</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115605608.png" srcset="/img/loading.gif" lazyload alt="image-20240321115605608"></p>
-<h4 id="③消费者端效果"><a href="#③消费者端效果" class="headerlink" title="③消费者端效果"></a>③消费者端效果</h4><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115646548.png" srcset="/img/loading.gif" lazyload alt="image-20240321115646548"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115605608.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="③消费者端效果"><a href="#③消费者端效果" class="headerlink" title="③消费者端效果"></a>③消费者端效果</h4><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115646548.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>

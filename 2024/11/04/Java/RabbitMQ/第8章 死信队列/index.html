@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172234849.png">
 <meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172042460.png">
 <meta property="article:published_time" content="2024-11-04T03:24:02.686Z">
-<meta property="article:modified_time" content="2024-11-04T11:26:30.836Z">
+<meta property="article:modified_time" content="2024-11-04T12:16:07.749Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20240806095014641.png">
@@ -286,7 +286,7 @@
               <div class="markdown-body">
                 
                 <h1 id="死信队列"><a href="#死信队列" class="headerlink" title="死信队列"></a>死信队列</h1><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><h2 id="1-1-什么是死信队列"><a href="#1-1-什么是死信队列" class="headerlink" title="1.1 什么是死信队列"></a>1.1 什么是死信队列</h2><p>死信队列，英文缩写：DLX 。DeadLetter Exchange（死信交换机），当消息成为Dead message后，可以被重新发送到另一个交换机，这个交换机就是DLX。</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20240806095014641.png" srcset="/img/loading.gif" lazyload alt="image-20240806095014641"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20240806095014641.png" srcset="/img/loading.gif" lazyload></p>
 <p>先从概念解释上搞清楚这个定义，死信，顾名思义就是无法被消费的消息，字面意思可以这样理解，一般来说，producer将消息投递到broker或者直接到queue里了，consumer从queue取出消息进行消费，但某些时候由于特定的原因导致queue中的某些消息无法被消费，这样的消息如果没有后续的处理，就变成了死信，有死信，自然就有了死信队列；</p>
 <h2 id="1-2-消息成为死信的三种情况"><a href="#1-2-消息成为死信的三种情况" class="headerlink" title="1.2 消息成为死信的三种情况"></a>1.2 <strong>消息成为死信的三种情况</strong></h2><ul>
 <li><strong>拒绝：</strong>消费者拒接消息，basicNack()&#x2F;basicReject()，并且不把消息重新放入原目标队列，requeue&#x3D;false</li>
@@ -305,14 +305,14 @@
 <li>死信路由键：routing.key.dead.letter.video</li>
 </ul>
 <h3 id="2、创建正常交换机和正常队列"><a href="#2、创建正常交换机和正常队列" class="headerlink" title="2、创建正常交换机和正常队列"></a>2、创建正常交换机和正常队列</h3><p><span style="color:blue;font-weight:bolder;">注意</span>：一定要注意正常队列有诸多限定和设置，这样才能让无法处理的消息进入死信交换机</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20240318165821774.png" srcset="/img/loading.gif" lazyload alt="image-20240318165821774"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20240318165821774.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>正常交换机：exchange.normal.video</li>
 <li>正常队列：queue.normal.video</li>
 <li>正常路由键：routing.key.normal.video</li>
 </ul>
 <p>全部设置完成后参照如下细节：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20240318165927279.png" srcset="/img/loading.gif" lazyload alt="image-20240318165927279"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20240318165927279.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="3、Java代码中的相关常量声明"><a href="#3、Java代码中的相关常量声明" class="headerlink" title="3、Java代码中的相关常量声明"></a>3、Java代码中的相关常量声明</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">EXCHANGE_NORMAL</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;exchange.normal.video&quot;</span>;  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">EXCHANGE_DEAD_LETTER</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;exchange.dead.letter.video&quot;</span>;  <br>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">ROUTING_KEY_NORMAL</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;routing.key.normal.video&quot;</span>;  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">ROUTING_KEY_DEAD_LETTER</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;routing.key.dead.letter.video&quot;</span>;  <br>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">QUEUE_NORMAL</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;queue.normal.video&quot;</span>;  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">QUEUE_DEAD_LETTER</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;queue.dead.letter.video&quot;</span>;<br></code></pre></td></tr></table></figure>
 
 
@@ -327,7 +327,7 @@
 
 
 
-<h3 id="3、执行结果"><a href="#3、执行结果" class="headerlink" title="3、执行结果"></a>3、执行结果</h3><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107170523503.png" srcset="/img/loading.gif" lazyload alt="image-20231107170523503"></p>
+<h3 id="3、执行结果"><a href="#3、执行结果" class="headerlink" title="3、执行结果"></a>3、执行结果</h3><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107170523503.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="三、消息数量超过队列容纳极限"><a href="#三、消息数量超过队列容纳极限" class="headerlink" title="三、消息数量超过队列容纳极限"></a>三、消息数量超过队列容纳极限</h2><h3 id="1、发送消息的代码-1"><a href="#1、发送消息的代码-1" class="headerlink" title="1、发送消息的代码"></a>1、发送消息的代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSendMultiMessage</span><span class="hljs-params">()</span> &#123;  <br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">20</span>; i++) &#123;  <br>        rabbitTemplate.convertAndSend(  <br>                EXCHANGE_NORMAL,  <br>                ROUTING_KEY_NORMAL,  <br>                <span class="hljs-string">&quot;测试死信情况2：消息数量超过队列的最大容量&quot;</span> + i);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
 
 
@@ -337,20 +337,20 @@
 
 <p>重启微服务使代码修改生效。</p>
 <h3 id="3、执行效果"><a href="#3、执行效果" class="headerlink" title="3、执行效果"></a>3、执行效果</h3><p>正常队列的参数如下图所示：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107171231765.png" srcset="/img/loading.gif" lazyload alt="image-20231107171231765"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107171231765.png" srcset="/img/loading.gif" lazyload></p>
 <p>生产者发送20条消息之后，消费端死信队列接收到前10条消息：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/img87.png" srcset="/img/loading.gif" lazyload alt="images"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/img87.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="四、消息超时未消费"><a href="#四、消息超时未消费" class="headerlink" title="四、消息超时未消费"></a>四、消息超时未消费</h2><h3 id="1、发送消息的代码-2"><a href="#1、发送消息的代码-2" class="headerlink" title="1、发送消息的代码"></a>1、发送消息的代码</h3><p>正常发送一条消息即可，所以使用第一个例子的代码。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSendMessageTimeout</span><span class="hljs-params">()</span> &#123;<br>    rabbitTemplate<br>            .convertAndSend(<br>                    EXCHANGE_NORMAL,<br>                    ROUTING_KEY_NORMAL,<br>                    <span class="hljs-string">&quot;测试死信情况3：消息超时&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
 <h3 id="2、执行效果"><a href="#2、执行效果" class="headerlink" title="2、执行效果"></a>2、执行效果</h3><p>队列参数生效：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172002297.png" srcset="/img/loading.gif" lazyload alt="image-20231107172002297"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172002297.png" srcset="/img/loading.gif" lazyload></p>
 <p>因为没有消费端监听程序，所以消息未超时前滞留在队列中：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172234849.png" srcset="/img/loading.gif" lazyload alt="image-4849"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172234849.png" srcset="/img/loading.gif" lazyload></p>
 <p>消息超时后，进入死信队列：</p>
-<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172042460.png" srcset="/img/loading.gif" lazyload alt="image-2460"></p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/image-20231107172042460.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
