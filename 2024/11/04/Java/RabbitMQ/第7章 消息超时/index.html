@@ -19,29 +19,27 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="消费端限流一、概述  生产者发送10000个消息 消费端并发能力上限：同时处理1000个请求 设定：  ​		每次最多从队列取回1000个请求 二、生产者端代码123456789@Test  public void testSendMessage() &#123;    for (int i &#x3D; 0; i &lt; 100; i++) &#123;        rabbitTemplate.co">
+    <meta name="description" content="消息超时1 概述TTL 全称 Time To Live（存活时间&#x2F;过期时间）。 当消息到达存活时间后，还没有被消费，会被自动清除。 RabbitMQ可以对消息设置过期时间，也可以对整个队列（Queue）设置过期时间。  2 具体实现一、队列层面设置1、设置 别忘了设置绑定关系：  2、测试 不启动消费端程序 向设置了过期时间的队列中发送100条消息 等10秒后，看是否全部被过期删除">
 <meta property="og:type" content="article">
-<meta property="og:title" content="6、消费端限流">
-<meta property="og:url" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/index.html">
+<meta property="og:title" content="7、消息超时">
+<meta property="og:url" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="消费端限流一、概述  生产者发送10000个消息 消费端并发能力上限：同时处理1000个请求 设定：  ​		每次最多从队列取回1000个请求 二、生产者端代码123456789@Test  public void testSendMessage() &#123;    for (int i &#x3D; 0; i &lt; 100; i++) &#123;        rabbitTemplate.co">
+<meta property="og:description" content="消息超时1 概述TTL 全称 Time To Live（存活时间&#x2F;过期时间）。 当消息到达存活时间后，还没有被消费，会被自动清除。 RabbitMQ可以对消息设置过期时间，也可以对整个队列（Queue）设置过期时间。  2 具体实现一、队列层面设置1、设置 别忘了设置绑定关系：  2、测试 不启动消费端程序 向设置了过期时间的队列中发送100条消息 等10秒后，看是否全部被过期删除">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20240806094300945.png">
-<meta property="og:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107155915253.png">
-<meta property="og:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160233539.png">
-<meta property="og:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160820062.png">
-<meta property="og:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160922632.png">
-<meta property="og:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160936216.png">
-<meta property="og:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160951639.png">
-<meta property="article:published_time" content="2024-11-04T03:24:02.683Z">
-<meta property="article:modified_time" content="2024-11-04T03:32:27.046Z">
+<meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20240806094631068.png">
+<meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162548129.png">
+<meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162705883.png">
+<meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163052001.png">
+<meta property="og:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163534385.png">
+<meta property="article:published_time" content="2024-11-04T03:24:02.685Z">
+<meta property="article:modified_time" content="2024-11-04T03:32:32.152Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20240806094300945.png">
+<meta name="twitter:image" content="http://example.com/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20240806094631068.png">
   
   
   
-  <title>6、消费端限流 - Hexo</title>
+  <title>7、消息超时 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="6、消费端限流"></span>
+            <span id="subtitle" data-typed-text="7、消息超时"></span>
           
         </div>
 
@@ -230,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          408 字
+          222 字
         
       </span>
     
@@ -241,7 +239,7 @@
         
         
         
-          4 分钟
+          2 分钟
         
       </span>
     
@@ -278,66 +276,30 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">6、消费端限流</h1>
+            <h1 id="seo-header">7、消息超时</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="消费端限流"><a href="#消费端限流" class="headerlink" title="消费端限流"></a>消费端限流</h1><h1 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h1><p><img src="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20240806094300945.png" srcset="/img/loading.gif" lazyload alt="image-20240806094300945"></p>
-<ul>
-<li>生产者发送10000个消息</li>
-<li>消费端并发能力上限：同时处理1000个请求</li>
-<li>设定：</li>
+                <h1 id="消息超时"><a href="#消息超时" class="headerlink" title="消息超时"></a>消息超时</h1><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><p>TTL 全称 Time To Live（存活时间&#x2F;过期时间）。</p>
+<p>当消息到达存活时间后，还没有被消费，会被自动清除。</p>
+<p>RabbitMQ可以对消息设置过期时间，也可以对整个队列（Queue）设置过期时间。</p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20240806094631068.png" srcset="/img/loading.gif" lazyload alt="image-20240806094631068"></p>
+<h1 id="2-具体实现"><a href="#2-具体实现" class="headerlink" title="2 具体实现"></a>2 具体实现</h1><h2 id="一、队列层面设置"><a href="#一、队列层面设置" class="headerlink" title="一、队列层面设置"></a>一、队列层面设置</h2><h3 id="1、设置"><a href="#1、设置" class="headerlink" title="1、设置"></a>1、设置</h3><p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162548129.png" srcset="/img/loading.gif" lazyload alt="image-20231107162548129"></p>
+<p>别忘了设置绑定关系：</p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107162705883.png" srcset="/img/loading.gif" lazyload alt="image-20231107162705883"></p>
+<h3 id="2、测试"><a href="#2、测试" class="headerlink" title="2、测试"></a>2、测试</h3><ul>
+<li>不启动消费端程序</li>
+<li>向设置了过期时间的队列中发送100条消息</li>
+<li>等10秒后，看是否全部被过期删除</li>
 </ul>
-<p>​		每次最多从队列取回1000个请求</p>
-<h1 id="二、生产者端代码"><a href="#二、生产者端代码" class="headerlink" title="二、生产者端代码"></a>二、生产者端代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSendMessage</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) &#123;<br>        rabbitTemplate.convertAndSend(<br>                EXCHANGE_DIRECT,<br>                ROUTING_KEY,<br>                <span class="hljs-string">&quot;Hello atguigu&quot;</span> + i);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163052001.png" srcset="/img/loading.gif" lazyload alt="image-20231107163052001"></p>
+<h2 id="二、消息层面设置"><a href="#二、消息层面设置" class="headerlink" title="二、消息层面设置"></a>二、消息层面设置</h2><h3 id="1、设置-1"><a href="#1、设置-1" class="headerlink" title="1、设置"></a>1、设置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.MessagePostProcessor;<br><br><span class="hljs-meta">@Test</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSendMessageTTL</span><span class="hljs-params">()</span> &#123;  <br>  <br>    <span class="hljs-comment">// 1、创建消息后置处理器对象  </span><br>    <span class="hljs-type">MessagePostProcessor</span> <span class="hljs-variable">messagePostProcessor</span> <span class="hljs-operator">=</span> (Message message) -&gt; &#123;  <br>  <br>        <span class="hljs-comment">// 设定 TTL 时间，以毫秒为单位</span><br>        message.getMessageProperties().setExpiration(<span class="hljs-string">&quot;5000&quot;</span>);  <br>  <br>        <span class="hljs-keyword">return</span> message;<br>    &#125;;<br>  <br>    <span class="hljs-comment">// 2、发送消息  </span><br>    rabbitTemplate.convertAndSend(    <br>            EXCHANGE_DIRECT,     <br>            ROUTING_KEY,     <br>            <span class="hljs-string">&quot;Hello atguigu&quot;</span>, messagePostProcessor);    <br>&#125;<br></code></pre></td></tr></table></figure>
 
 
 
-<h1 id="三、消费者端代码"><a href="#三、消费者端代码" class="headerlink" title="三、消费者端代码"></a>三、消费者端代码</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 2、正常业务操作</span><br>log.info(<span class="hljs-string">&quot;消费端接收到消息内容：&quot;</span> + dataString);<br><br><span class="hljs-comment">// System.out.println(10 / 0);</span><br>TimeUnit.SECONDS.sleep(<span class="hljs-number">1</span>);<br><br><span class="hljs-comment">// 3、给 RabbitMQ 服务器返回 ACK 确认信息</span><br>channel.basicAck(deliveryTag, <span class="hljs-literal">false</span>);<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="四、测试"><a href="#四、测试" class="headerlink" title="四、测试"></a>四、测试</h1><h2 id="1、未使用prefetch"><a href="#1、未使用prefetch" class="headerlink" title="1、未使用prefetch"></a>1、未使用prefetch</h2><ul>
-<li>不要启动消费端程序，如果正在运行就把它停了</li>
-<li>运行生产者端程序发送100条消息</li>
-<li>查看队列中消息的情况：</li>
-</ul>
-<p><img src="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107155915253.png" srcset="/img/loading.gif" lazyload alt="image-20231107155915253"></p>
-<ul>
-<li><p>说明：</p>
-<ul>
-<li>Ready表示已经发送到队列的消息数量</li>
-<li>Unacked表示已经发送到消费端但是消费端尚未返回ACK信息的消息数量</li>
-<li>Total未被删除的消息总数</li>
-</ul>
-</li>
-<li><p>接下来启动消费端程序，再查看队列情况：</p>
-</li>
-</ul>
-<p><img src="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160233539.png" srcset="/img/loading.gif" lazyload alt="image-20231107160233539"></p>
-<ul>
-<li>能看到消息全部被消费端取走了，正在逐个处理、确认，说明有多少消息消费端就并发处理多少</li>
-</ul>
-<h2 id="2、设定prefetch"><a href="#2、设定prefetch" class="headerlink" title="2、设定prefetch"></a>2、设定prefetch</h2><h3 id="①YAML配置"><a href="#①YAML配置" class="headerlink" title="①YAML配置"></a>①YAML配置</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">rabbitmq:</span><br>    <span class="hljs-attr">host:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.200</span><span class="hljs-number">.100</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">5672</span><br>    <span class="hljs-attr">username:</span> <span class="hljs-string">guest</span><br>    <span class="hljs-attr">password:</span> <span class="hljs-number">123456</span><br>    <span class="hljs-attr">virtual-host:</span> <span class="hljs-string">/</span><br>    <span class="hljs-attr">listener:</span><br>      <span class="hljs-attr">simple:</span><br>        <span class="hljs-attr">acknowledge-mode:</span> <span class="hljs-string">manual</span><br>        <span class="hljs-attr">prefetch:</span> <span class="hljs-number">1</span> <span class="hljs-comment"># 设置每次最多从消息队列服务器取回多少消息</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="②测试流程"><a href="#②测试流程" class="headerlink" title="②测试流程"></a>②测试流程</h3><ul>
-<li>停止消费端程序</li>
-<li>运行生产者端程序发送100条消息</li>
-<li>查看队列中消息的情况：</li>
-</ul>
-<p><img src="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160820062.png" srcset="/img/loading.gif" lazyload alt="image-20231107160820062"></p>
-<ul>
-<li>接下来启动消费端程序，持续观察队列情况：</li>
-</ul>
-<p><img src="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160922632.png" srcset="/img/loading.gif" lazyload alt="image-20231107160922632"></p>
-<p><img src="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160936216.png" srcset="/img/loading.gif" lazyload alt="image-20231107160936216"></p>
-<p><img src="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/image-20231107160951639.png" srcset="/img/loading.gif" lazyload alt="image-20231107160951639"></p>
-<ul>
-<li>能看到消息不是一次性全部取回的，而是有个过程</li>
-</ul>
+<h3 id="2、查看效果"><a href="#2、查看效果" class="headerlink" title="2、查看效果"></a>2、查看效果</h3><p>这次我们是发送到普通队列上：</p>
+<p><img src="/2024/11/04/Java/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/image-20231107163534385.png" srcset="/img/loading.gif" lazyload alt="image-20231107163534385"></p>
 
                 
               </div>
@@ -376,8 +338,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>6、消费端限流</div>
-      <div>http://example.com/2024/11/04/RabbitMQ/第6章 消费端限流/</div>
+      <div>7、消息超时</div>
+      <div>http://example.com/2024/11/04/Java/RabbitMQ/第7章 消息超时/</div>
     </div>
     <div class="license-meta">
       
@@ -421,9 +383,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/11/04/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" title="7、消息超时">
+                      <a href="/2024/11/04/Java/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/" title="8、死信队列">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">7、消息超时</span>
+                        <span class="hidden-mobile">8、死信队列</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -431,8 +393,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/11/04/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" title="5、消息百分百成功投递">
-                        <span class="hidden-mobile">5、消息百分百成功投递</span>
+                      <a href="/2024/11/04/Java/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" title="6、消费端限流">
+                        <span class="hidden-mobile">6、消费端限流</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
