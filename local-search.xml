@@ -4,7 +4,7 @@
   
   
   <entry>
-    <title>延迟队列</title>
+    <title>9、延迟队列</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/</url>
     
@@ -23,7 +23,7 @@
   
   
   <entry>
-    <title>死信队列</title>
+    <title>8、死信队列</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/</url>
     
@@ -42,7 +42,7 @@
   
   
   <entry>
-    <title>消息超时</title>
+    <title>7、消息超时</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/</url>
     
@@ -61,7 +61,7 @@
   
   
   <entry>
-    <title>消费端限流</title>
+    <title>6、消费端限流</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/</url>
     
@@ -80,7 +80,7 @@
   
   
   <entry>
-    <title>消息百分百成功投递</title>
+    <title>5、消息百分百成功投递</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/</url>
     
@@ -99,7 +99,7 @@
   
   
   <entry>
-    <title>消息的可靠性投递</title>
+    <title>4、消息的可靠性投递</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/</url>
     
@@ -118,7 +118,7 @@
   
   
   <entry>
-    <title>RabbitMQ工作模式</title>
+    <title>3、RabbitMQ工作模式</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC3%E7%AB%A0%20RabbitMQ%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC3%E7%AB%A0%20RabbitMQ%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/</url>
     
@@ -137,7 +137,7 @@
   
   
   <entry>
-    <title>RabbitMQ入门案例</title>
+    <title>2、RabbitMQ入门案例</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/</url>
     
@@ -156,7 +156,7 @@
   
   
   <entry>
-    <title>RabbitMQ概述和安装</title>
+    <title>1、RabbitMQ概述和安装</title>
     <link href="/2024/11/04/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/"/>
     <url>/2024/11/04/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/</url>
     
