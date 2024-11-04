@@ -1,0 +1,701 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="延迟队列1 概述 延迟队列存储的对象肯定是对应的延时消息，所谓”延时消息”是指当消息被发送以后，并不想让消费者立即拿到消息，而是等待指定时间后，消费者才拿到这个消息进行消费。  场景：在订单系统中，一个用户下单之后通常有30分钟的时间进行支付，如果30分钟之内没有支付成功，那么这个订单将进行取消处理。这时就可以使用延时队列将订单信息发送到延时队列。  需求：    下单后，30分钟未支付，取消订单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="延迟队列1 概述 延迟队列存储的对象肯定是对应的延时消息，所谓”延时消息”是指当消息被发送以后，并不想让消费者立即拿到消息，而是等待指定时间后，消费者才拿到这个消息进行消费。  场景：在订单系统中，一个用户下单之后通常有30分钟的时间进行支付，如果30分钟之内没有支付成功，那么这个订单将进行取消处理。这时就可以使用延时队列将订单信息发送到延时队列。  需求：    下单后，30分钟未支付，取消订单">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806095835083.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806100015448.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107180045135.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115348525.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107181914265.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319163915574.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319171359652.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115605608.png">
+<meta property="og:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115646548.png">
+<meta property="article:published_time" content="2024-11-04T02:20:13.990Z">
+<meta property="article:modified_time" content="2024-11-01T18:04:39.000Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806095835083.png">
+  
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-04 10:20" pubdate>
+          2024年11月4日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="延迟队列"><a href="#延迟队列" class="headerlink" title="延迟队列"></a>延迟队列</h1><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1 概述"></a>1 概述</h1><ul>
+<li><p>延迟队列存储的对象肯定是对应的延时消息，所谓”延时消息”是指当消息被发送以后，并不想让消费者立即拿到消息，而是等待指定时间后，消费者才拿到这个消息进行消费。</p>
+</li>
+<li><p>场景：在订单系统中，一个用户下单之后通常有30分钟的时间进行支付，如果30分钟之内没有支付成功，那么这个订单将进行取消处理。这时就可以使用延时队列将订单信息发送到延时队列。</p>
+</li>
+<li><p>需求：</p>
+</li>
+</ul>
+<ol>
+<li><p>下单后，30分钟未支付，取消订单，回滚库存。</p>
+</li>
+<li><p>新用户注册成功30分钟后，发送短信问候。</p>
+</li>
+</ol>
+<ul>
+<li>实现：</li>
+</ul>
+<p>使用延迟队列实现</p>
+<p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806095835083.png" srcset="/img/loading.gif" lazyload alt="image-20240806095835083"></p>
+<p>很可惜，在RabbitMQ中并未提供延迟队列功能</p>
+<p>我们可以采用以下方案实现：</p>
+<p>方案1：借助消息超时时间+死信队列</p>
+<p>方案2：给RabbitMQ安装插件</p>
+<p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240806100015448.png" srcset="/img/loading.gif" lazyload alt="image-20240806100015448"></p>
+<p>注：使用消息超时时间+死信队列，前面已经演示过了</p>
+<h1 id="2-延迟插件"><a href="#2-延迟插件" class="headerlink" title="2 延迟插件"></a>2 延迟插件</h1><h2 id="一、插件简介"><a href="#一、插件简介" class="headerlink" title="一、插件简介"></a>一、插件简介</h2><ul>
+<li>官网地址：<a target="_blank" rel="noopener" href="https://github.com/rabbitmq/rabbitmq-delayed-message-exchange">https://github.com/rabbitmq/rabbitmq-delayed-message-exchange</a></li>
+<li>延迟极限：最多两天</li>
+</ul>
+<h2 id="二、插件安装"><a href="#二、插件安装" class="headerlink" title="二、插件安装"></a>二、插件安装</h2><h3 id="1、确定卷映射目录"><a href="#1、确定卷映射目录" class="headerlink" title="1、确定卷映射目录"></a>1、确定卷映射目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker inspect rabbitmq<br></code></pre></td></tr></table></figure>
+
+
+
+<p>运行结果：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;Mounts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;Type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;volume&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;rabbitmq-plugin&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Source&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/var/lib/docker/volumes/rabbitmq-plugin/_data&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Destination&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/plugins&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Driver&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;local&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;z&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;RW&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Propagation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;Type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;volume&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;cca7bc3012f5b76bd6c47a49ca6911184f9076f5f6263b41f4b9434a7f269b11&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Source&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/var/lib/docker/volumes/cca7bc3012f5b76bd6c47a49ca6911184f9076f5f6263b41f4b9434a7f269b11/_data&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Destination&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/var/lib/rabbitmq&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Driver&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;local&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Mode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;RW&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;Propagation&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+
+<p>和容器内&#x2F;plugins目录对应的宿主机目录是：&#x2F;var&#x2F;lib&#x2F;docker&#x2F;volumes&#x2F;rabbitmq-plugin&#x2F;_data</p>
+<h3 id="2、下载延迟插件"><a href="#2、下载延迟插件" class="headerlink" title="2、下载延迟插件"></a>2、下载延迟插件</h3><p>官方文档说明页地址：<a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">https://www.rabbitmq.com/community-plugins.html</a></p>
+<p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107180045135.png" srcset="/img/loading.gif" lazyload alt="image-20231107180045135"></p>
+<p>下载插件安装文件：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">wget https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v3.13.0/rabbitmq_delayed_message_exchange-3.13.0.ez<br>mv rabbitmq_delayed_message_exchange-3.13.0.ez /var/lib/docker/volumes/rabbitmq-plugin/_data<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、启用插件"><a href="#3、启用插件" class="headerlink" title="3、启用插件"></a>3、启用插件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">登录进入容器内部</span><br>docker exec -it rabbitmq /bin/bash<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">rabbitmq-plugins命令所在目录已经配置到<span class="hljs-variable">$PATH</span>环境变量中了，可以直接调用</span><br>rabbitmq-plugins enable rabbitmq_delayed_message_exchange<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">退出Docker容器</span><br>exit<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">重启Docker容器</span><br>docker restart rabbitmq<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、确认"><a href="#4、确认" class="headerlink" title="4、确认"></a>4、确认</h3><p>确认点1：查看当前节点已启用插件的列表：</p>
+<p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115348525.png" srcset="/img/loading.gif" lazyload alt="image-20240321115348525"></p>
+<p>确认点2：如果创建新交换机时可以在type中看到x-delayed-message选项，那就说明插件安装好了</p>
+<p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20231107181914265.png" srcset="/img/loading.gif" lazyload alt="image-20231107181914265"></p>
+<h2 id="三、创建交换机"><a href="#三、创建交换机" class="headerlink" title="三、创建交换机"></a>三、创建交换机</h2><p>rabbitmq_delayed_message_exchange插件在工作时要求交换机是<span style="color:blue;font-weight:bolder;">x-delayed-message</span>类型才可以，创建方式如下：</p>
+<p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319163915574.png" srcset="/img/loading.gif" lazyload alt="image-20240319163915574"></p>
+<p>关于<span style="color:blue;font-weight:bolder;">x-delayed-type</span>参数的理解：</p>
+<blockquote>
+<p>原本指定交换机类型的地方使用了x-delayed-message这个值，那么这个交换机除了支持延迟消息之外，到底是direct、fanout、topic这些类型中的哪一个呢？</p>
+<p>这里就额外使用x-delayed-type来指定交换机本身的类型</p>
+</blockquote>
+<h2 id="四、代码测试"><a href="#四、代码测试" class="headerlink" title="四、代码测试"></a>四、代码测试</h2><h3 id="1、生产者端代码"><a href="#1、生产者端代码" class="headerlink" title="1、生产者端代码"></a>1、生产者端代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testSendDelayMessage</span><span class="hljs-params">()</span> &#123;<br>    rabbitTemplate.convertAndSend(<br>            EXCHANGE_DELAY,<br>            ROUTING_KEY_DELAY,<br>            <span class="hljs-string">&quot;测试基于插件的延迟消息 [&quot;</span> + <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;hh:mm:ss&quot;</span>).format(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()) + <span class="hljs-string">&quot;]&quot;</span>,<br>            messageProcessor -&gt; &#123;<br><br>                <span class="hljs-comment">// 设置延迟时间：以毫秒为单位</span><br>                messageProcessor.getMessageProperties().setHeader(<span class="hljs-string">&quot;x-delay&quot;</span>, <span class="hljs-string">&quot;10000&quot;</span>);<br><br>                <span class="hljs-keyword">return</span> messageProcessor;<br>            &#125;);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、消费者端代码"><a href="#2、消费者端代码" class="headerlink" title="2、消费者端代码"></a>2、消费者端代码</h3><h4 id="①情况A：资源已创建"><a href="#①情况A：资源已创建" class="headerlink" title="①情况A：资源已创建"></a>①情况A：资源已创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.mq.listener;<br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> lombok.extern.slf4j.Slf4j;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;<br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.RabbitListener;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><br><span class="hljs-keyword">import</span> java.io.IOException;<br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;<br><span class="hljs-keyword">import</span> java.util.Date;  <br>  <br><span class="hljs-meta">@Component</span>  <br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDelayMessageListener</span> &#123;<br>    <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">QUEUE_DELAY</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;queue.delay.video&quot;</span>;<br>    <br>    <span class="hljs-meta">@RabbitListener(queues = &#123;QUEUE_DELAY&#125;)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">process</span><span class="hljs-params">(String dataString, Message message, Channel channel)</span> <span class="hljs-keyword">throws</span> IOException &#123;  <br>        log.info(<span class="hljs-string">&quot;[生产者]&quot;</span> + dataString);<br>        log.info(<span class="hljs-string">&quot;[消费者]&quot;</span> + <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;hh:mm:ss&quot;</span>).format(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()));<br>        channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="hljs-literal">false</span>);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="②情况B：资源未创建"><a href="#②情况B：资源未创建" class="headerlink" title="②情况B：资源未创建"></a>②情况B：资源未创建</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.mq.listener;  <br><br><span class="hljs-keyword">import</span> com.rabbitmq.client.Channel;<br><span class="hljs-keyword">import</span> lombok.extern.slf4j.Slf4j;<br><span class="hljs-keyword">import</span> org.springframework.amqp.core.Message;  <br><span class="hljs-keyword">import</span> org.springframework.amqp.rabbit.annotation.*;  <br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;  <br><br><span class="hljs-keyword">import</span> java.io.IOException;  <br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;  <br><span class="hljs-keyword">import</span> java.util.Date;  <br>  <br><span class="hljs-meta">@Component</span>  <br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyDelayMessageListener</span> &#123;  <br>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">EXCHANGE_DELAY</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;exchange.delay.video&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">ROUTING_KEY_DELAY</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;routing.key.delay.video&quot;</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">QUEUE_DELAY</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;queue.delay.video&quot;</span>;<br>  <br>    <span class="hljs-meta">@RabbitListener(bindings = @QueueBinding(  </span><br><span class="hljs-meta">        value = @Queue(value = QUEUE_DELAY, durable = &quot;true&quot;, autoDelete = &quot;false&quot;),  </span><br><span class="hljs-meta">        exchange = @Exchange(  </span><br><span class="hljs-meta">                value = EXCHANGE_DELAY,   </span><br><span class="hljs-meta">                durable = &quot;true&quot;,   </span><br><span class="hljs-meta">                autoDelete = &quot;false&quot;,   </span><br><span class="hljs-meta">                type = &quot;x-delayed-message&quot;,   </span><br><span class="hljs-meta">                arguments = @Argument(name = &quot;x-delayed-type&quot;, value = &quot;direct&quot;)),  </span><br><span class="hljs-meta">        key = &#123;ROUTING_KEY_DELAY&#125;  </span><br><span class="hljs-meta">    ))</span>  <br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">process</span><span class="hljs-params">(String dataString, Message message, Channel channel)</span> <span class="hljs-keyword">throws</span> IOException &#123;  <br>        log.info(<span class="hljs-string">&quot;[生产者]&quot;</span> + dataString);  <br>        log.info(<span class="hljs-string">&quot;[消费者]&quot;</span> + <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;hh:mm:ss&quot;</span>).format(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>()));  <br>        channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="hljs-literal">false</span>);  <br>    &#125;  <br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、执行效果"><a href="#3、执行效果" class="headerlink" title="3、执行效果"></a>3、执行效果</h3><h4 id="①交换机类型"><a href="#①交换机类型" class="headerlink" title="①交换机类型"></a>①交换机类型</h4><p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240319171359652.png" srcset="/img/loading.gif" lazyload alt="image-20240319171359652"></p>
+<h4 id="②生产者端效果"><a href="#②生产者端效果" class="headerlink" title="②生产者端效果"></a>②生产者端效果</h4><p><span style="color:blue;font-weight:bolder;">注意</span>：使用rabbitmq_delayed_message_exchange插件后，即使消息成功发送到队列上，也会导致returnedMessage()方法执行</p>
+<p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115605608.png" srcset="/img/loading.gif" lazyload alt="image-20240321115605608"></p>
+<h4 id="③消费者端效果"><a href="#③消费者端效果" class="headerlink" title="③消费者端效果"></a>③消费者端效果</h4><p><img src="/2024/11/04/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/image-20240321115646548.png" srcset="/img/loading.gif" lazyload alt="image-20240321115646548"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2024/11/04/第9章 延迟队列/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/04/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/04/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
