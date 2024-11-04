@@ -13,10 +13,18 @@
     
     <categories>
       
+      <category>Java</category>
+      
       <category>RabbitMQ</category>
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>小兔子</tag>
+      
+    </tags>
     
   </entry>
   
@@ -31,6 +39,8 @@
     
     
     <categories>
+      
+      <category>Java</category>
       
       <category>RabbitMQ</category>
       
@@ -51,6 +61,8 @@
     
     <categories>
       
+      <category>Java</category>
+      
       <category>RabbitMQ</category>
       
     </categories>
@@ -69,6 +81,8 @@
     
     
     <categories>
+      
+      <category>Java</category>
       
       <category>RabbitMQ</category>
       
@@ -89,6 +103,8 @@
     
     <categories>
       
+      <category>Java</category>
+      
       <category>RabbitMQ</category>
       
     </categories>
@@ -107,6 +123,8 @@
     
     
     <categories>
+      
+      <category>Java</category>
       
       <category>RabbitMQ</category>
       
@@ -127,6 +145,8 @@
     
     <categories>
       
+      <category>Java</category>
+      
       <category>RabbitMQ</category>
       
     </categories>
@@ -145,6 +165,8 @@
     
     
     <categories>
+      
+      <category>Java</category>
       
       <category>RabbitMQ</category>
       
