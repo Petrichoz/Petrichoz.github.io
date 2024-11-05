@@ -1,0 +1,1320 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第1章 尚品甄选项目搭建1.1 项目简介尚品甄选是基于若依微服务版本框架开发的一个电商系统，项目包含平台管理端与手机H5端。有一套完善的电商业务流程：商品管理、商品详情、购物车、单点登录、订单、支付、库存管理等，其中覆盖了分布式文件系统、高速缓存、消息队列等多种业务场景和技术实现。 1.1.1 为什么我们要讲电商？因为就互联网平台来说，电商网站有很多典型的特征：  访问量大 数据量大 有一定的业务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PZ">
+<meta property="og:url" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="第1章 尚品甄选项目搭建1.1 项目简介尚品甄选是基于若依微服务版本框架开发的一个电商系统，项目包含平台管理端与手机H5端。有一套完善的电商业务流程：商品管理、商品详情、购物车、单点登录、订单、支付、库存管理等，其中覆盖了分布式文件系统、高速缓存、消息队列等多种业务场景和技术实现。 1.1.1 为什么我们要讲电商？因为就互联网平台来说，电商网站有很多典型的特征：  访问量大 数据量大 有一定的业务">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/fe8a5f53_1915710.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708329697454.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708329877689.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708330112547.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708330563136.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709186383216.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709187073010.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709187274932.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709192362693.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709192763831.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709252394421.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/59c605682ca0437d9bc62a392e73a34a.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/cf1ea32c22424d769deb356246e031f5.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/066f308ddde54ab3b03e30509542e516.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708478479379.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/2701366-20220126215341038-1195230476.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103330960.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726100450588-17219594939428.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103420674.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726101727253.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726101802666.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103452574.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726101954204.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103509551.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726102104506.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103528064.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726102935701.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726102558088.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103243276.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729104745252.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729104824522.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729104903667.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729105010959.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257136041.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257242191.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257399703.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257590932.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257844638.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257927073.png">
+<meta property="article:published_time" content="2024-11-05T12:44:41.062Z">
+<meta property="article:modified_time" content="2024-11-05T12:51:37.682Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/fe8a5f53_1915710.png">
+  
+  
+  
+  <title>PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-05 20:44" pubdate>
+          2024年11月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          60 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第1章-尚品甄选项目搭建"><a href="#第1章-尚品甄选项目搭建" class="headerlink" title="第1章 尚品甄选项目搭建"></a>第1章 尚品甄选项目搭建</h1><h2 id="1-1-项目简介"><a href="#1-1-项目简介" class="headerlink" title="1.1 项目简介"></a>1.1 项目简介</h2><p><code>尚品甄选</code>是基于<code>若依</code>微服务版本框架开发的一个电商系统，项目包含平台管理端与手机H5端。有一套完善的电商业务流程：商品管理、商品详情、购物车、单点登录、订单、支付、库存管理等，其中覆盖了分布式文件系统、高速缓存、消息队列等多种业务场景和技术实现。</p>
+<h3 id="1-1-1-为什么我们要讲电商？"><a href="#1-1-1-为什么我们要讲电商？" class="headerlink" title="1.1.1 为什么我们要讲电商？"></a>1.1.1 为什么我们要讲电商？</h3><p>因为就互联网平台来说，电商网站有很多典型的特征：</p>
+<ul>
+<li>访问量大</li>
+<li>数据量大</li>
+<li>有一定的业务复杂性</li>
+<li>涉及支付考虑一定安全性{幂等性}</li>
+</ul>
+<h3 id="1-1-2-电商的主要模式"><a href="#1-1-2-电商的主要模式" class="headerlink" title="1.1.2 电商的主要模式"></a>1.1.2 电商的主要模式</h3><p><strong>1、B2B（Business to Business）</strong></p>
+<p>  B2B （ Business to Business）是指进行电子商务交易的供需双方都是商家（或企业、公司），她（他）们使用了互联网的技术或各种商务网络平台，完成商务交易的过程。电子商务是现代 B2B marketing的一种具体主要的表现形式。</p>
+<p>  案例：阿里巴巴1688</p>
+<p><strong>2、C2C（Consumer to Customer）</strong></p>
+<p>  C2C即 Customer（Consumer） to Customer（Consumer），意思就是消费者个人间的电子商务行为。比如一个消费者有一台电脑，通过网络进行交易，把它出售给另外一个消费者，此种交易类型就称为C2C电子商务。</p>
+<p>案例：淘宝、易趣、瓜子二手车、闲鱼</p>
+<p><strong>3、B2C（Business-to-Customer）</strong></p>
+<p>  B2C是Business-to-Customer的缩写，而其中文简称为“商对客”。“商对客”是电子商务的一种模式，也就是通常说的直接面向消费者销售产品和服务商业零售模式。这种形式的电子商务一般以网络零售业为主，主要借助于互联网开展在线销售活动。B2C即企业通过互联网为消费者提供一个新型的购物环境——网上商店，消费者通过网络在网上购物、网上支付等消费行为。</p>
+<p>  案例：唯品会、乐蜂网</p>
+<p> <strong>4、B2B2C（Business to Business to Consumer）</strong>  </p>
+<p>  B2B2C是一种电子商务类型的网络购物商业模式，B是BUSINESS的简称，C是CUSTOMER的简称，第一个B指的是商品或服务的供应商，第二个B指的是从事电子商务的企业，C则是表示消费者。</p>
+<p>案例：京东商城、天猫商城</p>
+<p><strong>5、C2B（Consumer to Business）</strong></p>
+<p>  C2B（Consumer to Business，即消费者到企业），是互联网经济时代新的商业模式。这一模式改变了原有生产者（企业和机构）和消费者的关系，是一种消费者贡献价值（Create Value）， 企业和机构消费价值（Consume Value）。</p>
+<p>  C2B模式和我们熟知的供需模式（DSM, Demand SupplyModel）恰恰相反，<strong>真正的C2B 应该先有消费者需求产生而后有企业生产，即先有消费者提出需求，后有生产企业按需求组织生产</strong>。通常情况为消费者根据自身需求定制产品和价格，或主动参与产品设计、生产和定价，产品、价格等彰显消费者的个性化需求，生产企业进行定制化生产。</p>
+<p>案例：猪八戒   </p>
+<p><strong>6、O2O（Online To Offline）</strong></p>
+<p>  O2O即Online To Offline（在线离线&#x2F;线上到线下），是指将线下的商务机会与互联网结合，让互联网成为线下交易的平台，这个概念最早来源于美国。O2O的概念非常广泛，既可涉及到线上，又可涉及到线下,可以通称为O2O。主流商业管理课程均对O2O这种新型的商业模式有所介绍及关注。</p>
+<p>  案例：美团、饿了么</p>
+<h3 id="1-1-3-我们能从这个项目中学到什么？"><a href="#1-1-3-我们能从这个项目中学到什么？" class="headerlink" title="1.1.3 我们能从这个项目中学到什么？"></a>1.1.3 我们能从这个项目中学到什么？</h3><h4 id="1、温故知新"><a href="#1、温故知新" class="headerlink" title="1、温故知新"></a>1、温故知新</h4><p>尚品甄选作为一个前后端分离的项目，可以巩固以前的前端+后端知识，同时加入了新的技术点与技术点应用场景，<strong>掌握电商业务流程</strong></p>
+<p>尚品甄选分为后台系统和前台系统。</p>
+<p><strong>后台系统功能</strong>:(用户登录、系统管理员列表、角色管理、权限规则管理、商品管理、商品分类、商品规格、…)</p>
+<p><strong>前台系统功能</strong>: (首页商品分类查询、分类模块：分类查询、根据分类查询商品数据、登录功能、用户收货地址管理、购物车模块、订单模块…)</p>
+<h4 id="2、核心技术"><a href="#2、核心技术" class="headerlink" title="2、核心技术"></a>2、核心技术</h4><ul>
+<li><strong>SpringBoot</strong>：简化新Spring应用的初始搭建以及开发过程；</li>
+<li><strong>SpringCloud</strong>：基于Spring Boot实现的云原生应用开发工具，SpringCloud使用的技术：（Spring Cloud Gateway、Spring Cloud Alibaba Nacos、Spring Cloud Alibaba Sentinel、Spring Cloud Task和Spring Cloud Feign等）</li>
+<li><strong>SpringBoot+SpringCloudAlibaba(Nacos，Sentinel)+Cloud OpenFeign</strong></li>
+<li>MyBatis-Plus：持久层框架，也依赖mybatis</li>
+<li>Redis：内存做缓存  </li>
+<li>Redisson：基于redis的Java驻内存数据网格 - 框架；操作redis的框架</li>
+<li>RabbitMQ：消息中间件；大型分布式项目是标配；分布式事务最终一致性</li>
+<li>ThreadPoolExecutor：线程池来实现异步操作，提高效率</li>
+<li>Knife4J：接口文档工具</li>
+<li>MinIO（私有化对象存储集群）：分布式文件存储 类似于OSS（公有）</li>
+<li>支付宝支付：alipay.com</li>
+<li>MySQL：关系型数据库</li>
+<li>Lombok: 实体类的中get&#x2F;set 生成的jar包</li>
+<li>Ngrok&#x2F;natapp：内网穿透</li>
+<li>Docker：容器化技术;  生产环境Redis（运维人员）；快速搭建环境Docker run</li>
+</ul>
+<p>前端技术栈</p>
+<ul>
+<li>Vue 3： Vue.js 的最新版本</li>
+<li>Element Plus：一个基于 Vue.js 3.0 的组件库，它是 Element UI 的升级版本</li>
+<li>Vite：一种新型前端构建工具</li>
+<li>Node.js： JavaScript 运行环境</li>
+</ul>
+<h4 id="3、需要掌握的解决方案"><a href="#3、需要掌握的解决方案" class="headerlink" title="3、需要掌握的解决方案"></a>3、需要掌握的解决方案</h4><p>微服务架构、缓存解决方案、分布式事务、后台管理、文件管理系统等</p>
+<p>课前说明：</p>
+<ul>
+<li><p>建议内存16个G以上</p>
+</li>
+<li><p>培养自己独立阅读代码的能力</p>
+</li>
+<li><p>帮助大家分析 解构业务需求</p>
+</li>
+<li><p>新的知识点，难点敲</p>
+</li>
+<li><p>重复的功能 自己开发</p>
+</li>
+</ul>
+<h2 id="1-2-若依框架简介"><a href="#1-2-若依框架简介" class="headerlink" title="1.2 若依框架简介"></a>1.2 若依框架简介</h2><p>官网：<a target="_blank" rel="noopener" href="https://doc.ruoyi.vip/">https://doc.ruoyi.vip/</a></p>
+<p>微服务版本文档：<a target="_blank" rel="noopener" href="https://doc.ruoyi.vip/ruoyi-cloud/">https://doc.ruoyi.vip/ruoyi-cloud/</a></p>
+<h3 id="1-2-1-介绍"><a href="#1-2-1-介绍" class="headerlink" title="1.2.1 介绍"></a>1.2.1 介绍</h3><p><strong>RuoYi-Cloud</strong> 是一个 Java EE 分布式微服务架构平台，基于经典技术组合（Spring Boot、Spring Cloud &amp; Alibaba、Vue、Element），内置模块如：部门管理、角色用户、菜单及按钮授权、数据权限、系统参数、日志管理、代码生成等。在线定时任务配置；支持集群，支持多数据源。</p>
+<h3 id="1-2-2-架构图"><a href="#1-2-2-架构图" class="headerlink" title="1.2.2 架构图"></a>1.2.2 架构图</h3><p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/fe8a5f53_1915710.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-2-3-在线体验"><a href="#1-2-3-在线体验" class="headerlink" title="1.2.3 在线体验"></a>1.2.3 在线体验</h3><ul>
+<li><p>若依官网：<a target="_blank" rel="noopener" href="http://ruoyi.vip/">http://ruoyi.vip(opens new window)</a></p>
+</li>
+<li><p>演示地址：<a target="_blank" rel="noopener" href="http://cloud.ruoyi.vip/">http://cloud.ruoyi.vip(opens new window)</a></p>
+</li>
+<li><p>代码下载：<a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi-Cloud">https://gitee.com/y_project/RuoYi-Cloud</a></p>
+</li>
+</ul>
+<h2 id="1-3-准备软件环境"><a href="#1-3-准备软件环境" class="headerlink" title="1.3 准备软件环境"></a>1.3 准备软件环境</h2><p>请参考《尚硅谷_尚品甄选项目_附录1_准备软件环境.md》</p>
+<h2 id="1-4-搭建项目环境"><a href="#1-4-搭建项目环境" class="headerlink" title="1.4 搭建项目环境"></a>1.4 搭建项目环境</h2><h3 id="1-4-1-服务端"><a href="#1-4-1-服务端" class="headerlink" title="1.4.1 服务端"></a>1.4.1 服务端</h3><h4 id="1、下载若依源码"><a href="#1、下载若依源码" class="headerlink" title="1、下载若依源码"></a>1、下载若依源码</h4><p>下载”RuoYi-Cloud 微服务版“</p>
+<p><a target="_blank" rel="noopener" href="https://ruoyi.vip/">https://ruoyi.vip/</a></p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708329697454.png" srcset="/img/loading.gif" lazyload alt style="zoom:67%;">
+
+<p>当前RuoYi-Cloud 微服务版本：3.6.3</p>
+<p>查看项目版本如图：</p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708329877689.png" srcset="/img/loading.gif" lazyload></p>
+<p>项目版本jdk为：1.8，spring-boot为：2.7.18，不是我们预期的版本，因此我们给改项目做了升级，升级后的项目模板在：资料&#x2F;项目模板&#x2F;spzx-parent.zip</p>
+<p>升级后的项目版本如图：</p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708330112547.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="2、导入项目"><a href="#2、导入项目" class="headerlink" title="2、导入项目"></a>2、导入项目</h4><p>第一步：解压课件资料</p>
+<p>解压课件资料&#x2F;项目模板下的<code>spzx-parent.rar</code>到工作空间</p>
+<p>第二步：修改maven配置</p>
+<p>修改maven配置为自己安装的</p>
+<p>第三步：导入项目源码</p>
+<p>导入项目源码到idea，如图：</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708330563136.png" srcset="/img/loading.gif" lazyload alt style="zoom:67%;">
+
+<p>项目模块介绍：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java">com.spzx     <br>├── spzx-gateway         <span class="hljs-comment">// 网关模块 [8080]</span><br>├── spzx-auth            <span class="hljs-comment">// 认证中心 [9200]</span><br>├── spzx-api             <span class="hljs-comment">// 接口模块</span><br>│       └── spzx-api-system                        <span class="hljs-comment">// 系统接口</span><br>├── spzx-common          <span class="hljs-comment">// 通用模块</span><br>│       └── spzx-common-core                         <span class="hljs-comment">// 核心模块</span><br>│       └── spzx-common-datascope                    <span class="hljs-comment">// 权限范围</span><br>│       └── spzx-common-datasource                   <span class="hljs-comment">// 多数据源</span><br>│       └── spzx-common-log                          <span class="hljs-comment">// 日志记录</span><br>│       └── spzx-common-redis                        <span class="hljs-comment">// 缓存服务</span><br>│       └── spzx-common-security                     <span class="hljs-comment">// 安全模块</span><br>├── spzx-modules         <span class="hljs-comment">// 业务模块</span><br>│       └── spzx-system                              <span class="hljs-comment">// 系统模块 [9201]</span><br>│       └── spzx-gen                                 <span class="hljs-comment">// 代码生成 [9202]</span><br>│       └── spzx-job                                 <span class="hljs-comment">// 定时任务 [9203]</span><br>│       └── spzx-file                                <span class="hljs-comment">// 文件服务 [9300]</span><br>├── spzx-ui              <span class="hljs-comment">// 前端框架 [80]</span><br>├── spzx-visual          <span class="hljs-comment">// 图形化管理模块</span><br>│       └── spzx-monitor                             <span class="hljs-comment">// 监控中心 [9100]</span><br>├──pom.xml                <span class="hljs-comment">// 公共依赖</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3、导入数据库表"><a href="#3、导入数据库表" class="headerlink" title="3、导入数据库表"></a>3、导入数据库表</h4><p>导入数据库脚本：资料&#x2F;sql&#x2F;spzx-system.sql【系统管理相关数据库表】</p>
+<p>导入数据库脚本：资料&#x2F;sql&#x2F;spzx.sql【尚品甑选业务相关数据库表】</p>
+<h4 id="4、启动项目"><a href="#4、启动项目" class="headerlink" title="4、启动项目"></a>4、启动项目</h4><p>第一步：导入nacos配置文件</p>
+<ul>
+<li><p>启动nacos，访问nacos控制台：http:&#x2F;&#x2F;虚拟机IP:8848&#x2F;nacos&#x2F;</p>
+</li>
+<li><p>在nacos控制台：配置管理 -&gt;  配置列表 导入配置文件</p>
+</li>
+<li><p>配置文件资源：资料&#x2F;nacos配置&#x2F;DEFAULT_GROUP.zip</p>
+</li>
+</ul>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709186383216.png" srcset="/img/loading.gif" lazyload alt style="zoom:80%;">
+
+<ul>
+<li>导入成功后，如图：</li>
+</ul>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709187073010.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<p>第二步：修改nacos配置</p>
+<p>说明：</p>
+<p>​    涉及数据源的地方都要修改，mysql、redis、minio等等，地址需要修改为自己虚拟机的地址</p>
+<p><strong>例如：</strong> spzx-system-dev.yml   </p>
+<p>​		使用了redis和mysql，需要修改连接地址</p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709187274932.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>参考上面 检查并修改其他配置文件中的连接地址</strong></p>
+<p>第三步：运行项目模块</p>
+<p>修改各个模块nacos配置中心、注册中心地址、sentinel地址</p>
+<p>启动没有先后顺序</p>
+<p>SpzxGatewayApplication （网关模块 必须）</p>
+<p>SpzxAuthApplication （认证模块 必须）</p>
+<p>SpzxSystemApplication （系统模块 必须）<br>…【其他模块】</p>
+<p><strong>注意：</strong>定时任务模块不要启动，未导入表，未使用</p>
+<h3 id="1-4-2-前端"><a href="#1-4-2-前端" class="headerlink" title="1.4.2 前端"></a>1.4.2 前端</h3><h4 id="1、前端项目部署"><a href="#1、前端项目部署" class="headerlink" title="1、前端项目部署"></a>1、前端项目部署</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">node版本 node-v20.11.1-x64</span><br>node -v<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">安装yarn</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">安装yarn出现问题，可以忽略校验</span><br>npm config set strict-ssl false<br>npm install -g yarn<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">进入项目目录</span><br>cd spzx-ui<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装依赖</span><br>yarn --registry=https://registry.npmmirror.com<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动服务</span><br>yarn dev<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">构建测试环境 yarn build:stage</span><br><span class="hljs-meta prompt_"># </span><span class="language-bash">构建生产环境 yarn build:prod</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2、前端项目修改"><a href="#2、前端项目修改" class="headerlink" title="2、前端项目修改"></a>2、前端项目修改</h4><p>第一步：修改图表</p>
+<ul>
+<li><p>拷贝课件 <code> 资料\图标\favicon.ico</code> 到spzx-ui项目 <code>public</code>目录下替换默认图标</p>
+</li>
+<li><p>修改spzx-ui项目 <code>index.html</code>中的标题图标默认使用上面的图标</p>
+</li>
+<li><p>修改spzx-ui项目<code>src\layout\components\Sidebar\Logo.vue</code>中使用的菜单栏图标</p>
+<p><strong>注意：</strong>一共两处</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;logo&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;/favicon.ico&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;sidebar-logo&quot;</span> /&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>效果图：</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709192362693.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;"></li>
+</ul>
+<p>第二步：修改项目标题</p>
+<ul>
+<li><p>修改登录页<code>src\views\login.vue</code>页面中的标题</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;title&quot;</span>&gt;</span>尚品甄选后台管理系统<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>修改标签和菜单栏标题:</p>
+<p>修改<code>.env.development</code>和 <code>.env.production</code>文件中的标题</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">VITE_APP_TITLE</span> = <span class="hljs-string">尚品甄选管理系统</span><br></code></pre></td></tr></table></figure>
+
+<p>效果图：</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709192763831.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;"></li>
+</ul>
+<h2 id="1-5-若依-源码分析"><a href="#1-5-若依-源码分析" class="headerlink" title="1.5 若依-源码分析"></a>1.5 若依-源码分析</h2><p>参考<code>系统管理-&gt; 角色管理</code> </p>
+<h3 id="1-5-1-前端请求"><a href="#1-5-1-前端请求" class="headerlink" title="1.5.1  前端请求"></a>1.5.1  前端请求</h3><p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709252394421.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>返回的分页数据：</strong></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;total&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;rows&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;createBy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;createTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2024-02-29 04:42:28&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;updateBy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;updateTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;remark&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;超级管理员&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;delFlag&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;超级管理员&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleKey&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;admin&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleSort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;dataScope&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;menuCheckStrictly&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;deptCheckStrictly&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;flag&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;menuIds&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;deptIds&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;permissions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;admin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;createBy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;createTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2024-02-29 04:42:28&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;updateBy&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;updateTime&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;remark&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;普通角色&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;delFlag&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;普通角色&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleKey&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;common&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;roleSort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;dataScope&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;2&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;menuCheckStrictly&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;deptCheckStrictly&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;flag&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;menuIds&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;deptIds&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;permissions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;admin&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;查询成功&quot;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-5-2-后端分析"><a href="#1-5-2-后端分析" class="headerlink" title="1.5.2 后端分析"></a>1.5.2 后端分析</h3><p><code>spzx-modules下的spzx-system模块</code>处理系统管理相关请求，包括角色的CRUD</p>
+<h4 id="1、SysRoleController"><a href="#1、SysRoleController" class="headerlink" title="1、SysRoleController"></a>1、SysRoleController</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/role&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SysRoleController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseController</span> <span class="hljs-comment">//BaseController提供了一些通用方法</span><br>&#123;<br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> ISysRoleService roleService;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> ISysUserService userService;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> ISysDeptService deptService;<br>	<br>    <span class="hljs-meta">@RequiresPermissions(&quot;system:role:list&quot;)</span><br>    <span class="hljs-meta">@GetMapping(&quot;/list&quot;)</span> <span class="hljs-comment">//查询角色的分页数据</span><br>    <span class="hljs-keyword">public</span> TableDataInfo <span class="hljs-title function_">list</span><span class="hljs-params">(SysRole role)</span><span class="hljs-comment">//role用来pojo入参获取查询参数</span><br>    &#123;<br>        startPage(); <span class="hljs-comment">//调用BaseController中的分页方法</span><br>        List&lt;SysRole&gt; list = roleService.selectRoleList(role); <span class="hljs-comment">//执行分页查询</span><br>        <span class="hljs-keyword">return</span> getDataTable(list);<span class="hljs-comment">//调用BaseController中的方法封装分页数据</span><br>    &#125;<br>    <span class="hljs-comment">//.....省略</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、BaseController"><a href="#2、BaseController" class="headerlink" title="2、BaseController"></a>2、BaseController</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BaseController</span><br>&#123;<br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">final</span> <span class="hljs-type">Logger</span> <span class="hljs-variable">logger</span> <span class="hljs-operator">=</span> LoggerFactory.getLogger(<span class="hljs-built_in">this</span>.getClass());<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 将前台传递过来的日期格式的字符串，自动转化为Date类型</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@InitBinder</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">initBinder</span><span class="hljs-params">(WebDataBinder binder)</span><br>    &#123;<br>        <span class="hljs-comment">// Date 类型转换</span><br>        binder.registerCustomEditor(Date.class, <span class="hljs-keyword">new</span> <span class="hljs-title class_">PropertyEditorSupport</span>()<br>                                    &#123;<br>                                        <span class="hljs-meta">@Override</span><br>                                        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setAsText</span><span class="hljs-params">(String text)</span><br>                                        &#123;<br>                                            setValue(DateUtils.parseDate(text));<br>                                        &#125;<br>                                    &#125;);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置请求分页数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">startPage</span><span class="hljs-params">()</span><br>    &#123;<br>        PageUtils.startPage();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 清理分页的线程变量</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">clearPage</span><span class="hljs-params">()</span><br>    &#123;<br>        PageUtils.clearPage();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 响应请求分页数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@SuppressWarnings(&#123; &quot;rawtypes&quot;, &quot;unchecked&quot; &#125;)</span><br>    <span class="hljs-keyword">protected</span> TableDataInfo <span class="hljs-title function_">getDataTable</span><span class="hljs-params">(List&lt;?&gt; list)</span><br>    &#123;<br>        <span class="hljs-type">TableDataInfo</span> <span class="hljs-variable">rspData</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TableDataInfo</span>();<br>        rspData.setCode(HttpStatus.SUCCESS);<br>        rspData.setRows(list);<br>        rspData.setMsg(<span class="hljs-string">&quot;查询成功&quot;</span>);<br>        rspData.setTotal(<span class="hljs-keyword">new</span> <span class="hljs-title class_">PageInfo</span>(list).getTotal());<br>        <span class="hljs-keyword">return</span> rspData;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回成功</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">success</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.success();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回成功消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">success</span><span class="hljs-params">(String message)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.success(message);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回成功消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">success</span><span class="hljs-params">(Object data)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.success(data);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回失败消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">error</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.error();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回失败消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">error</span><span class="hljs-params">(String message)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.error(message);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回警告消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">warn</span><span class="hljs-params">(String message)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.warn(message);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 响应返回结果</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> rows 影响行数</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 操作结果</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> AjaxResult <span class="hljs-title function_">toAjax</span><span class="hljs-params">(<span class="hljs-type">int</span> rows)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> rows &gt; <span class="hljs-number">0</span> ? AjaxResult.success() : AjaxResult.error();<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 响应返回结果</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> result 结果</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 操作结果</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">protected</span> AjaxResult <span class="hljs-title function_">toAjax</span><span class="hljs-params">(<span class="hljs-type">boolean</span> result)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> result ? success() : error();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>PageUtils</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PageUtils</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">PageHelper</span><br>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 设置请求分页数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">startPage</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-type">PageDomain</span> <span class="hljs-variable">pageDomain</span> <span class="hljs-operator">=</span> TableSupport.buildPageRequest();<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">pageNum</span> <span class="hljs-operator">=</span> pageDomain.getPageNum();<br>        <span class="hljs-type">Integer</span> <span class="hljs-variable">pageSize</span> <span class="hljs-operator">=</span> pageDomain.getPageSize();<br>        <span class="hljs-type">String</span> <span class="hljs-variable">orderBy</span> <span class="hljs-operator">=</span> SqlUtil.escapeOrderBySql(pageDomain.getOrderBy());<br>        <span class="hljs-type">Boolean</span> <span class="hljs-variable">reasonable</span> <span class="hljs-operator">=</span> pageDomain.getReasonable();<br>        PageHelper.startPage(pageNum, pageSize, orderBy).setReasonable(reasonable);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 清理分页的线程变量</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">clearPage</span><span class="hljs-params">()</span><br>    &#123;<br>        PageHelper.clearPage();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、AjaxResult"><a href="#3、AjaxResult" class="headerlink" title="3、AjaxResult"></a>3、AjaxResult</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AjaxResult</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">HashMap</span>&lt;String, Object&gt;<br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> <span class="hljs-number">1L</span>;<br><br>    <span class="hljs-comment">/** 状态码 */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">CODE_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;code&quot;</span>;<br><br>    <span class="hljs-comment">/** 返回内容 */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">MSG_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;msg&quot;</span>;<br><br>    <span class="hljs-comment">/** 数据对象 */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">DATA_TAG</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;data&quot;</span>;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化一个新创建的 AjaxResult 对象，使其表示一个空消息。</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">AjaxResult</span><span class="hljs-params">()</span><br>    &#123;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化一个新创建的 AjaxResult 对象</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> code 状态码</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">AjaxResult</span><span class="hljs-params">(<span class="hljs-type">int</span> code, String msg)</span><br>    &#123;<br>        <span class="hljs-built_in">super</span>.put(CODE_TAG, code);<br>        <span class="hljs-built_in">super</span>.put(MSG_TAG, msg);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 初始化一个新创建的 AjaxResult 对象</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> code 状态码</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> data 数据对象</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">AjaxResult</span><span class="hljs-params">(<span class="hljs-type">int</span> code, String msg, Object data)</span><br>    &#123;<br>        <span class="hljs-built_in">super</span>.put(CODE_TAG, code);<br>        <span class="hljs-built_in">super</span>.put(MSG_TAG, msg);<br>        <span class="hljs-keyword">if</span> (StringUtils.isNotNull(data))<br>        &#123;<br>            <span class="hljs-built_in">super</span>.put(DATA_TAG, data);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回成功消息</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 成功消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">success</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.success(<span class="hljs-string">&quot;操作成功&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回成功数据</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 成功消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">success</span><span class="hljs-params">(Object data)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.success(<span class="hljs-string">&quot;操作成功&quot;</span>, data);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回成功消息</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 成功消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">success</span><span class="hljs-params">(String msg)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.success(msg, <span class="hljs-literal">null</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回成功消息</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> data 数据对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 成功消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">success</span><span class="hljs-params">(String msg, Object data)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AjaxResult</span>(HttpStatus.SUCCESS, msg, data);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回警告消息</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 警告消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">warn</span><span class="hljs-params">(String msg)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.warn(msg, <span class="hljs-literal">null</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回警告消息</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> data 数据对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 警告消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">warn</span><span class="hljs-params">(String msg, Object data)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AjaxResult</span>(HttpStatus.WARN, msg, data);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回错误消息</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 错误消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">error</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.error(<span class="hljs-string">&quot;操作失败&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回错误消息</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 错误消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">error</span><span class="hljs-params">(String msg)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> AjaxResult.error(msg, <span class="hljs-literal">null</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回错误消息</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> data 数据对象</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 错误消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">error</span><span class="hljs-params">(String msg, Object data)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AjaxResult</span>(HttpStatus.ERROR, msg, data);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 返回错误消息</span><br><span class="hljs-comment">     * </span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> code 状态码</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> msg 返回内容</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 错误消息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> AjaxResult <span class="hljs-title function_">error</span><span class="hljs-params">(<span class="hljs-type">int</span> code, String msg)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">AjaxResult</span>(code, msg, <span class="hljs-literal">null</span>);<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 是否为成功消息</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 结果</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isSuccess</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> Objects.equals(HttpStatus.SUCCESS, <span class="hljs-built_in">this</span>.get(CODE_TAG));<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 是否为警告消息</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 结果</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isWarn</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> Objects.equals(HttpStatus.WARN, <span class="hljs-built_in">this</span>.get(CODE_TAG));<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 是否为错误消息</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 结果</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">isError</span><span class="hljs-params">()</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> Objects.equals(HttpStatus.ERROR, <span class="hljs-built_in">this</span>.get(CODE_TAG));<br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 方便链式调用</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> key</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> value</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">put</span><span class="hljs-params">(String key, Object value)</span><br>    &#123;<br>        <span class="hljs-built_in">super</span>.put(key, value);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4、SysRoleServiceImpl"><a href="#4、SysRoleServiceImpl" class="headerlink" title="4、SysRoleServiceImpl"></a>4、SysRoleServiceImpl</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SysRoleServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ISysRoleService</span>&#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> SysRoleMapper roleMapper;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据条件分页查询角色数据</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> role 角色信息</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 角色数据集合信息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-meta">@DataScope(deptAlias = &quot;d&quot;)</span><br>    <span class="hljs-keyword">public</span> List&lt;SysRole&gt; <span class="hljs-title function_">selectRoleList</span><span class="hljs-params">(SysRole role)</span><br>    &#123;<br>        <span class="hljs-keyword">return</span> roleMapper.selectRoleList(role);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、SysRoleMapper"><a href="#5、SysRoleMapper" class="headerlink" title="5、SysRoleMapper"></a>5、SysRoleMapper</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">SysRoleMapper</span><br>&#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据条件分页查询角色数据</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> role 角色信息</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span> 角色数据集合信息</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-keyword">public</span> List&lt;SysRole&gt; <span class="hljs-title function_">selectRoleList</span><span class="hljs-params">(SysRole role)</span>;<br>    <span class="hljs-comment">//..........省略</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="6、SysRoleMapper-xml"><a href="#6、SysRoleMapper-xml" class="headerlink" title="6、SysRoleMapper.xml"></a>6、SysRoleMapper.xml</h4><p>省略</p>
+<h2 id="1-6-若依-权限控制"><a href="#1-6-若依-权限控制" class="headerlink" title="1.6 若依-权限控制"></a>1.6 若依-权限控制</h2><h3 id="1-6-1-介绍"><a href="#1-6-1-介绍" class="headerlink" title="1.6.1 介绍"></a>1.6.1 介绍</h3><p> <code>权限控制</code>主要目的是保护系统的安全性和完整性,防止未经授权的用户获取敏感信息、执行非法操作或对系统进行恶意操作 。</p>
+<p>常见的权限控制框架有SpringSecurity和Shiro。</p>
+<p>若依的权限管理是通过<code>RBAC</code>（Role-based Access Control 基于角色的访问控制）模型自己设计的。</p>
+<p>RBAC模型将权限控制分为角色管理和权限管理两个部分。在若依中，角色是指对系统的一类用户或操作者的定义，而权限是指对系统中某个资源或操作的访问控制。通过为每个角色分配相应的权限，可以实现对系统的全面管理和控制。</p>
+<p>具体来说，若依的权限管理包括以下几个方面：</p>
+<ol>
+<li><code>菜单管理</code>：通过对系统菜单进行管理，可以控制用户在系统中能够访问的页面和功能。</li>
+<li><code>按钮权限</code>：在系统中，某些操作需要特定的权限才能进行，例如删除、修改等操作。通过对按钮权限的控制，可以限制用户对系统的访问和操作。</li>
+<li><code>数据权限</code>：在某些情况下，需要根据用户的角色或部门来限制其对数据的访问。通过数据权限的设置，可以实现对数据的细粒度控制。</li>
+<li><code>API接口权限</code>：在若依中，API也可以通过权限的方式进行控制。通过对API的权限进行管理，可以限制用户对API的访问和使用。</li>
+</ol>
+<h3 id="1-6-2-数据库表结构设计"><a href="#1-6-2-数据库表结构设计" class="headerlink" title="1.6.2 数据库表结构设计"></a>1.6.2 数据库表结构设计</h3><p>在数据库表结构方面，若依采用了RBAC模型的设计。其中，主要包括以下表：</p>
+<ul>
+<li><code>sys_menu</code>：存储系统菜单信息，包括菜单ID、菜单名称、访问路径、菜单类型等字段。</li>
+<li><code>sys_role</code>：存储系统角色信息，包括角色ID、角色名称、角色标识、角色描述等字段。</li>
+<li><code>sys_user</code>：存储系统用户信息，包括用户ID、用户名、密码、昵称、邮箱、电话等字段。</li>
+<li><code>sys_role_menu</code>：存储角色和菜单之间的关联关系，包括角色ID和菜单ID两个字段。</li>
+<li><code>sys_user_role</code>：存储用户和角色之间的关联关系，包括用户ID和角色ID两个字段。</li>
+</ul>
+<p>通过这些表的设计，可以实现对系统中菜单、角色和用户的管理。同时，通过角色和菜单之间的关联关系，可以实现对菜单访问权限的控制。通过用户和角色之间的关联关系，可以实现对用户访问权限的控制。</p>
+<h3 id="1-6-3-菜单管理"><a href="#1-6-3-菜单管理" class="headerlink" title="1.6.3 菜单管理"></a>1.6.3 菜单管理</h3><p><strong>目录、菜单和按钮的区别</strong></p>
+<p>在若依（RuoYi）中，菜单和目录是两个不同的概念，它们之间的区别如下：</p>
+<p><strong>1.目录（Directory）：</strong></p>
+<p>目录是用来组织和分类菜单的容器。目录本身没有功能，它只是一个容器，可以包含若干个菜单。目录通常是一个抽象的概念，用于将一组相关的菜单组织在一起。</p>
+<p>在若依中，目录是以“系统管理”、“运营管理”等大模块的方式组织菜单的，用于区分不同的功能模块。目录通常以左侧的菜单树的形式展现，用户可以通过点击不同的目录来展开或收缩对应的菜单列表。</p>
+<p><strong>2.菜单（Menu）：</strong></p>
+<p>菜单是具有一定功能的操作项，通常是一组具有相同功能的页面或功能点的集合。每个菜单通常对应一个页面或者一个功能模块。</p>
+<p>在若依中，菜单通常是以左侧的树形菜单的形式展现，用户可以通过点击不同的菜单来跳转到对应的页面或功能模块。每个菜单都有一个唯一的标识符，通常以URL的形式表示。</p>
+<p><strong>3.按钮（Button）：</strong></p>
+<p>按钮是指菜单中的操作按钮，用于触发一些具体的操作。在若依中，按钮通常是与表格或表单等组件配合使用的，用于进行数据的增删改查等操作。按钮通常会与权限控制结合起来，只有拥有相应权限的用户才能看到并使用该按钮。</p>
+<p>总的来说，目录、菜单、按钮是若依系统中的三种不同的概念。目录是为了方便管理菜单和模块，菜单是系统的核心功能模块，按钮是菜单中的具体操作按钮。在实际应用中，它们通常会结合起来，形成一个完整的用户界面和操作流程。</p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/59c605682ca0437d9bc62a392e73a34a.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/cf1ea32c22424d769deb356246e031f5.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-6-4-菜单权限"><a href="#1-6-4-菜单权限" class="headerlink" title="1.6.4 菜单权限"></a>1.6.4 菜单权限</h3><p>在若依中，实现不同用户看到不同的菜单可以通过以下步骤实现：</p>
+<ol>
+<li>在数据库中维护菜单的权限信息，可以为每个菜单设置一个权限标识。</li>
+<li>在用户登录系统时，将该用户所拥有的菜单权限信息从数据库中获取出来。</li>
+<li>根据用户的菜单权限信息动态生成菜单，使用户只能看到其拥有权限的菜单。</li>
+</ol>
+<p>用户登录之后会请求后端的SysMenuController#getRouters接口获取登录用户可访问的菜单数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">distinct</span> m.menu_id, m.parent_id, m.menu_name, m.path, m.component, m.`query`, m.visible, m.status, ifnull(m.perms,<span class="hljs-string">&#x27;&#x27;</span>) <span class="hljs-keyword">as</span> perms, m.is_frame, m.is_cache, m.menu_type, m.icon, m.order_num, m.create_time<br><span class="hljs-keyword">from</span> sys_menu m<br>    <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> sys_role_menu rm <span class="hljs-keyword">on</span> m.menu_id <span class="hljs-operator">=</span> rm.menu_id<br>    <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> sys_user_role ur <span class="hljs-keyword">on</span> rm.role_id <span class="hljs-operator">=</span> ur.role_id<br>    <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> sys_role ro <span class="hljs-keyword">on</span> ur.role_id <span class="hljs-operator">=</span> ro.role_id<br>    <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> sys_user u <span class="hljs-keyword">on</span> ur.user_id <span class="hljs-operator">=</span> u.user_id<br><span class="hljs-keyword">where</span> u.user_id <span class="hljs-operator">=</span> #&#123;userId&#125; <span class="hljs-keyword">and</span> m.menu_type <span class="hljs-keyword">in</span> (<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-string">&#x27;C&#x27;</span>) <span class="hljs-keyword">and</span> m.status <span class="hljs-operator">=</span> <span class="hljs-number">0</span>  <span class="hljs-keyword">AND</span> ro.status <span class="hljs-operator">=</span> <span class="hljs-number">0</span><br><span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> m.parent_id, m.order_num<br></code></pre></td></tr></table></figure>
+
+<p>菜单类型（M目录 C菜单 F按钮）；菜单状态（0显示 1隐藏）</p>
+<p>前端会根据该接口返回的数据渲染出不同的菜单。</p>
+<h3 id="1-6-5-api接口权限"><a href="#1-6-5-api接口权限" class="headerlink" title="1.6.5 api接口权限"></a>1.6.5 api接口权限</h3><p><strong>配置方法</strong></p>
+<p>每一个按钮基本上都会对应着一个后端的接口，前端会根据权限标志显示或者隐藏按钮，但是如果用户不点击按钮，直接通过http请求工具请求后端咋办？所以接口权限也是要有的，该权限和按钮上权限完全一致。</p>
+<p>若依系统实现了这部分功能，实现模块：spzx-common-security，比如，用户管理页面中的修改用户按钮对应的后端接口长这个样子。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresPermissions(&quot;system:user:edit&quot;)</span><br><span class="hljs-meta">@PutMapping</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">edit</span><span class="hljs-params">(<span class="hljs-meta">@Validated</span> <span class="hljs-meta">@RequestBody</span> SysUser user)</span> &#123;<br>    ...<br>    <span class="hljs-keyword">return</span> toAjax();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>和其对应的前端按钮权限标志一样</p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/066f308ddde54ab3b03e30509542e516.png" srcset="/img/loading.gif" lazyload></p>
+<p>前端控制</p>
+<p>v-hasPermi&#x3D;”[‘system:user:edit’]”</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;el-button link type=&quot;primary&quot; icon=&quot;Edit&quot; @click=&quot;handleUpdate(scope.row)&quot; <br>           v-hasPermi=&quot;[&#x27;system:user:edit&#x27;]&quot;&gt;&lt;/el-button&gt;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1、后台权限注解"><a href="#1、后台权限注解" class="headerlink" title="1、后台权限注解"></a>1、后台权限注解</h4><p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1708478479379.png" srcset="/img/loading.gif" lazyload></p>
+<h5 id="RequiresLogin"><a href="#RequiresLogin" class="headerlink" title="@RequiresLogin"></a>@RequiresLogin</h5><p><code>@RequiresLogin</code>注解用于配置接口要求用户必须登录才可访问，它没有参数</p>
+<p>示例1: 以下代码表示必须拥有<code>admin</code>角色才可访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresLogin(&quot;admin&quot;)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">getInfo</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> AjaxResult.success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="RequiresPermissions"><a href="#RequiresPermissions" class="headerlink" title="@RequiresPermissions"></a>@RequiresPermissions</h5><p><code>@RequiresPermissions</code>注解用于配置接口要求用户拥有某（些）权限才可访问，它拥有两个参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>String[]</td>
+<td>权限列表</td>
+</tr>
+<tr>
+<td>logical</td>
+<td>Logical</td>
+<td>权限之间的判断关系，默认为Logical.AND</td>
+</tr>
+</tbody></table>
+<p>示例1: 以下代码表示必须拥有<code>system:user:add</code>权限才可访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresPermissions(&quot;system:user:add&quot;)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">save</span><span class="hljs-params">(...)</span> <br>&#123;<br>    <span class="hljs-keyword">return</span> AjaxResult.success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>示例2: 以下代码表示必须拥有<code>system:user:add</code>和<code>system:user:edit</code>权限才可访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresPermissions(&#123;&quot;system:user:add&quot;, &quot;system:user:edit&quot;&#125;)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">save</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> AjaxResult.success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>示例3: 以下代码表示需要拥有<code>system:user:add</code>或<code>system:user:edit</code>权限才可访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresPermissions(value = &#123;&quot;system:user:add&quot;, &quot;system:user:edit&quot;&#125;, logical = Logical.OR)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">save</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> AjaxResult.success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h5 id="RequiresRoles"><a href="#RequiresRoles" class="headerlink" title="@RequiresRoles"></a>@RequiresRoles</h5><p><code>@RequiresRoles</code>注解用于配置接口要求用户拥有某（些）角色才可访问，它拥有两个参数</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>String[]</td>
+<td>角色列表</td>
+</tr>
+<tr>
+<td>logical</td>
+<td>Logical</td>
+<td>角色之间的判断关系，默认为Logical.AND</td>
+</tr>
+</tbody></table>
+<p>示例1: 以下代码表示必须拥有<code>admin</code>角色才可访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresRoles(&quot;admin&quot;)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">save</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> AjaxResult.success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>示例2: 以下代码表示必须拥有<code>admin</code>和<code>common</code>角色才可访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresRoles(&#123;&quot;admin&quot;, &quot;common&quot;&#125;)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">save</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> AjaxResult.success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>示例3: 以下代码表示需要拥有<code>admin</code>或<code>common</code>角色才可访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RequiresRoles(value = &#123;&quot;admin&quot;, &quot;common&quot;&#125;, logical = Logical.OR)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">save</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> AjaxResult.success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、实现原理"><a href="#2、实现原理" class="headerlink" title="2、实现原理"></a>2、实现原理</h4><p>实现原理：一个拦截器【HeaderInterceptor】 + 一个AOP【PreAuthorizeAspect】</p>
+<p>springboot 拦截器与AOP执行顺序：</p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/2701366-20220126215341038-1195230476.png" srcset="/img/loading.gif" lazyload></p>
+<p>拦截器HeaderInterceptor负责解析用户token信息，并将解析出的用户信息存入<strong>ThreadLocal</strong>中，然后PreAuthorizeAspect负责解析权限注解，判断当前用户是否拥有注解权限。</p>
+<h2 id="1-7-若依-系统日志"><a href="#1-7-若依-系统日志" class="headerlink" title="1.7 若依-系统日志"></a>1.7 若依-系统日志</h2><p>实现模块：spzx-common-log</p>
+<p>在实际开发中，对于某些关键业务，我们通常需要记录该操作的内容，一个操作调一次记录方法，每次还得去收集参数等等，会造成大量代码重复。 我们希望代码中只有业务相关的操作，在项目中使用注解来完成此项功能。</p>
+<p>在需要被记录日志的<code>controller</code>方法上添加<code>@Log</code>注解，使用方法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Log(title = &quot;用户管理&quot;, businessType = BusinessType.INSERT)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">addSave</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-7-1-注解参数说明"><a href="#1-7-1-注解参数说明" class="headerlink" title="1.7.1 注解参数说明"></a>1.7.1 注解参数说明</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>title</td>
+<td>String</td>
+<td>空</td>
+<td>操作模块</td>
+</tr>
+<tr>
+<td>businessType</td>
+<td>BusinessType</td>
+<td>OTHER</td>
+<td>操作功能（<code>OTHER</code>其他、<code>INSERT</code>新增、<code>UPDATE</code>修改、<code>DELETE</code>删除、<code>GRANT</code>授权、<code>EXPORT</code>导出、<code>IMPORT</code>导入、<code>FORCE</code>强退、<code>GENCODE</code>生成代码、<code>CLEAN</code>清空数据）</td>
+</tr>
+<tr>
+<td>operatorType</td>
+<td>OperatorType</td>
+<td>MANAGE</td>
+<td>操作人类别（<code>OTHER</code>其他、<code>MANAGE</code>后台用户、<code>MOBILE</code>手机端用户）</td>
+</tr>
+<tr>
+<td>isSaveRequestData</td>
+<td>boolean</td>
+<td>true</td>
+<td>是否保存请求的参数</td>
+</tr>
+<tr>
+<td>isSaveResponseData</td>
+<td>boolean</td>
+<td>true</td>
+<td>是否保存响应的参数</td>
+</tr>
+<tr>
+<td>excludeParamNames</td>
+<td>String[]</td>
+<td>{}</td>
+<td>排除指定的请求参数</td>
+</tr>
+</tbody></table>
+<h3 id="1-7-2-自定义操作功能"><a href="#1-7-2-自定义操作功能" class="headerlink" title="1.7.2 自定义操作功能"></a>1.7.2 自定义操作功能</h3><p>1、在<code>BusinessType</code>中新增业务操作类型如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试</span><br><span class="hljs-comment"> */</span><br>TEST,<br></code></pre></td></tr></table></figure>
+
+<p>2、在<code>sys_dict_data</code>字典数据表中初始化操作业务类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">insert into sys_dict_data <span class="hljs-title function_">values</span><span class="hljs-params">(<span class="hljs-number">25</span>, <span class="hljs-number">10</span>, <span class="hljs-string">&#x27;测试&#x27;</span>,     <span class="hljs-string">&#x27;10&#x27;</span>, <span class="hljs-string">&#x27;sys_oper_type&#x27;</span>,       <span class="hljs-string">&#x27;&#x27;</span>,   <span class="hljs-string">&#x27;primary&#x27;</span>, <span class="hljs-string">&#x27;N&#x27;</span>, <span class="hljs-string">&#x27;0&#x27;</span>, <span class="hljs-string">&#x27;admin&#x27;</span>, <span class="hljs-string">&#x27;2018-03-16 11-33-00&#x27;</span>, <span class="hljs-string">&#x27;ry&#x27;</span>, <span class="hljs-string">&#x27;2018-03-16 11-33-00&#x27;</span>, <span class="hljs-string">&#x27;测试操作&#x27;</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>3、在<code>Controller</code>中使用注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Log(title = &quot;测试标题&quot;, businessType = BusinessType.TEST)</span><br><span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">test</span><span class="hljs-params">(...)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> success(...);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>操作日志记录逻辑实现代码[LogAspect.java]<br>登录系统（系统管理-操作日志）可以查询操作日志列表和详细信息。</p>
+<h2 id="1-8-项目数据模型"><a href="#1-8-项目数据模型" class="headerlink" title="1.8 项目数据模型"></a>1.8 项目数据模型</h2><h3 id="1-8-1-用户"><a href="#1-8-1-用户" class="headerlink" title="1.8.1 用户"></a>1.8.1 用户</h3><p><strong>spzx-user</strong></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103330960.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726100450588-17219594939428.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-8-2-商品"><a href="#1-8-2-商品" class="headerlink" title="1.8.2 商品"></a>1.8.2 商品</h3><h4 id="1、核心概念"><a href="#1、核心概念" class="headerlink" title="1、核心概念"></a>1、核心概念</h4><p><strong>（1）商品规格介绍</strong></p>
+<p>在电商项目中，商品规格指的是商品属性、型号、尺寸、颜色等具体描述商品特点和属性的标准化信息。</p>
+<p>以手机为例子，它的规格可能包括以下几个方面：</p>
+<ul>
+<li><p>操作系统：Android、iOS、HarmonyOS 等。</p>
+</li>
+<li><p>屏幕尺寸：5.5 吋、6.7 吋等。</p>
+</li>
+<li><p>分辨率：1920x1080、2960x1440、2532x1170 等。</p>
+</li>
+<li><p>运行内存：6GB、8GB、12GB 等。</p>
+</li>
+<li><p>存储容量：64GB、128GB、256GB 等。</p>
+</li>
+<li><p>摄像头：单摄、双摄、四摄等。</p>
+</li>
+<li><p>电池容量：3500mAh、4500mAh、5000mAh 等。</p>
+</li>
+</ul>
+<p>以T恤衫举例子，它的规格可能包括以下几个方面：</p>
+<ul>
+<li><p>颜色：白色</p>
+</li>
+<li><p>尺码：S、M、L、XL等</p>
+</li>
+<li><p>款式：圆领、V领、印花等</p>
+</li>
+</ul>
+<p><strong>（2）SPU和SKU</strong></p>
+<ul>
+<li><strong>SPU</strong></li>
+</ul>
+<p>SPU &#x3D; Standard Product Unit （标准化产品单元）, SPU是商品信息聚合的最小单位，是一组可复用、易检索的标准化信息的<strong>集合</strong>，该<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E9%9B%86%E5%90%88&spm=1001.2101.3001.7020">集合</a>描述了一个产品的特性。通俗点讲就是泛指一类商品，这种商品具有相同的属性。</p>
+<ul>
+<li><strong>SKU</strong></li>
+</ul>
+<p>SKU &#x3D; stock keeping unit(库存量单位) SKU即库存进出计量的单位（买家购买、商家进货、供应商备货、工厂生产都是依据SKU进行的）。是和具体的属性值有直接的关联关系。SKU是<strong>物理上不可分割的最小存货单元。</strong>也就是说一款商品，可以<strong>根据SKU来确定具体的货物存量。</strong></p>
+<p>以手机为例，假设有一款名为 “XPhone” 的手机品牌，它推出了一款型号为 “X10” 的手机。这款手机一共有以下几种属性：</p>
+<ul>
+<li><p>颜色：黑色、白色、金色</p>
+</li>
+<li><p>存储容量：64GB、128GB</p>
+</li>
+<li><p>内存大小：4GB、6GB</p>
+</li>
+</ul>
+<p>那么，<strong>“X10” 这款手机就是商品的 SPU，它包含的属性。根据不同的属性组合，可以形成多个不同的 SKU。</strong>如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">SPU</th>
+<th align="center">SKU</th>
+<th align="center">颜色</th>
+<th align="center">存储容量</th>
+<th align="center">内存大小</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">X10</td>
+<td align="center">SKU1</td>
+<td align="center">黑色</td>
+<td align="center">64GB</td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU2</td>
+<td align="center">白色</td>
+<td align="center">64GB</td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU3</td>
+<td align="center">金色</td>
+<td align="center">64GB</td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU4</td>
+<td align="center">黑色</td>
+<td align="center">128GB</td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU5</td>
+<td align="center">白色</td>
+<td align="center">128GB</td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU6</td>
+<td align="center">金色</td>
+<td align="center">128GB</td>
+<td align="center">4GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU7</td>
+<td align="center">黑色</td>
+<td align="center">64GB</td>
+<td align="center">6GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU8</td>
+<td align="center">白色</td>
+<td align="center">64GB</td>
+<td align="center">6GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU9</td>
+<td align="center">金色</td>
+<td align="center">64GB</td>
+<td align="center">6GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU10</td>
+<td align="center">黑色</td>
+<td align="center">128GB</td>
+<td align="center">6GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU11</td>
+<td align="center">白色</td>
+<td align="center">128GB</td>
+<td align="center">6GB</td>
+</tr>
+<tr>
+<td align="center">X10</td>
+<td align="center">SKU12</td>
+<td align="center">金色</td>
+<td align="center">128GB</td>
+<td align="center">6GB</td>
+</tr>
+</tbody></table>
+<p>再以衣服为例，假设有一家服装网店推出了一款名为 “A衬衫” 的衣服。这款衣服一共有以下几种属性：</p>
+<ul>
+<li><p>尺寸：S、M、L、XL</p>
+</li>
+<li><p>颜色：白色、黑色、灰色、蓝色</p>
+</li>
+</ul>
+<p>那么，“A衬衫” 这款衣服就是这个商品的 SPU，它包含所有属性。而根据不同的属性组合，可以形成多个不同的 SKU。如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="center">SPU</th>
+<th align="center">SKU</th>
+<th align="center">尺寸</th>
+<th align="center">颜色</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU1</td>
+<td align="center">S</td>
+<td align="center">白色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU2</td>
+<td align="center">M</td>
+<td align="center">白色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU3</td>
+<td align="center">L</td>
+<td align="center">白色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU4</td>
+<td align="center">XL</td>
+<td align="center">白色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU5</td>
+<td align="center">S</td>
+<td align="center">黑色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU6</td>
+<td align="center">M</td>
+<td align="center">黑色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU7</td>
+<td align="center">L</td>
+<td align="center">黑色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU8</td>
+<td align="center">XL</td>
+<td align="center">黑色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU9</td>
+<td align="center">S</td>
+<td align="center">灰色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU10</td>
+<td align="center">M</td>
+<td align="center">灰色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU11</td>
+<td align="center">L</td>
+<td align="center">灰色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU12</td>
+<td align="center">XL</td>
+<td align="center">灰色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU13</td>
+<td align="center">S</td>
+<td align="center">蓝色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU14</td>
+<td align="center">M</td>
+<td align="center">蓝色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU15</td>
+<td align="center">L</td>
+<td align="center">蓝色</td>
+</tr>
+<tr>
+<td align="center">A衬衫</td>
+<td align="center">SKU16</td>
+<td align="center">XL</td>
+<td align="center">蓝色</td>
+</tr>
+</tbody></table>
+<h4 id="2、表结构"><a href="#2、表结构" class="headerlink" title="2、表结构"></a>2、表结构</h4><p><strong>spzx-product</strong></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103420674.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726101727253.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726101802666.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-8-3-订单"><a href="#1-8-3-订单" class="headerlink" title="1.8.3 订单"></a>1.8.3 订单</h3><p><strong>spzx-order</strong></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103452574.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726101954204.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-8-4-支付"><a href="#1-8-4-支付" class="headerlink" title="1.8.4 支付"></a>1.8.4 支付</h3><p><strong>spzx-payment</strong></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103509551.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726102104506.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-8-5-其他"><a href="#1-8-5-其他" class="headerlink" title="1.8.5 其他"></a>1.8.5 其他</h3><p><strong>spzx-system</strong></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103528064.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726102935701.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726102558088.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240726103243276.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-9-后台功能演示"><a href="#1-9-后台功能演示" class="headerlink" title="1.9 后台功能演示"></a>1.9 后台功能演示</h2><h3 id="1-9-1-品牌管理"><a href="#1-9-1-品牌管理" class="headerlink" title="1.9.1 品牌管理"></a>1.9.1 品牌管理</h3><p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729104745252.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-9-2-分类管理"><a href="#1-9-2-分类管理" class="headerlink" title="1.9.2 分类管理"></a>1.9.2 分类管理</h3><p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729104824522.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-9-3-商品管理"><a href="#1-9-3-商品管理" class="headerlink" title="1.9.3 商品管理"></a>1.9.3 商品管理</h3><p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729104903667.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/image-20240729105010959.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="1-10-代码推送到远程仓库"><a href="#1-10-代码推送到远程仓库" class="headerlink" title="1.10 代码推送到远程仓库"></a>1.10 代码推送到远程仓库</h2><h3 id="1-10-1-新建远程仓库"><a href="#1-10-1-新建远程仓库" class="headerlink" title="1.10.1 新建远程仓库"></a>1.10.1 新建远程仓库</h3><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257136041.png" srcset="/img/loading.gif" lazyload alt style="zoom: 50%;">
+
+
+
+<h3 id="1-10-2-提交代码推送到远程仓库"><a href="#1-10-2-提交代码推送到远程仓库" class="headerlink" title="1.10.2 提交代码推送到远程仓库"></a>1.10.2 提交代码推送到远程仓库</h3><h4 id="1、查看gitee远程仓库地址"><a href="#1、查看gitee远程仓库地址" class="headerlink" title="1、查看gitee远程仓库地址"></a>1、查看gitee远程仓库地址</h4><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257242191.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<h4 id="2、参考上图推送代码到远程仓库"><a href="#2、参考上图推送代码到远程仓库" class="headerlink" title="2、参考上图推送代码到远程仓库"></a>2、参考上图推送代码到远程仓库</h4><p><strong>初始化本地仓库：</strong></p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257399703.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<p><strong>提交到本地仓库：</strong></p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257590932.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<p><strong>推送到远程仓库：</strong></p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257844638.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/1709257927073.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2024/11/05/项目/小型电商模拟/第1章_项目搭建/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" title="9、延迟队列">
+                        <span class="hidden-mobile">9、延迟队列</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

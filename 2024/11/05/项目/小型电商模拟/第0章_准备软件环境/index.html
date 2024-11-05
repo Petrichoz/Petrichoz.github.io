@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="准备相关软件环境1、安装docker环境安装：  yum -y install gcc-c++  第一步：安装必要的一些系统工具  yum install -y yum-utils device-mapper-persistent-data lvm2  第二步：添加软件源信息  yum-config-manager –add-repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docke">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PZ">
+<meta property="og:url" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC0%E7%AB%A0_%E5%87%86%E5%A4%87%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="准备相关软件环境1、安装docker环境安装：  yum -y install gcc-c++  第一步：安装必要的一些系统工具  yum install -y yum-utils device-mapper-persistent-data lvm2  第二步：添加软件源信息  yum-config-manager –add-repo http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;docke">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-11-05T12:44:41.071Z">
+<meta property="article:modified_time" content="2024-10-21T09:29:36.000Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-05 20:44" pubdate>
+          2024年11月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="准备相关软件环境"><a href="#准备相关软件环境" class="headerlink" title="准备相关软件环境"></a>准备相关软件环境</h2><h3 id="1、安装docker"><a href="#1、安装docker" class="headerlink" title="1、安装docker"></a>1、安装docker</h3><p>环境安装：</p>
+<blockquote>
+<p>yum -y install gcc-c++</p>
+</blockquote>
+<p>第一步：安装必要的一些系统工具</p>
+<blockquote>
+<p>yum install -y yum-utils device-mapper-persistent-data lvm2</p>
+</blockquote>
+<p>第二步：添加软件源信息</p>
+<blockquote>
+<p>yum-config-manager –add-repo <a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo" title="http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</a></p>
+</blockquote>
+<p>第三步：更新并安装Docker-CE</p>
+<blockquote>
+<p>yum makecache fast<br>yum -y install docker-ce</p>
+</blockquote>
+<p>第四步：开启Docker服务</p>
+<blockquote>
+<p>service docker start<br>systemctl enable docker</p>
+</blockquote>
+<p>第五步：测试是否安装成功</p>
+<blockquote>
+<p>docker -v</p>
+</blockquote>
+<p><strong>第六步：配置镜像加速器</strong></p>
+<p>您可以通过修改daemon配置文件&#x2F;etc&#x2F;docker&#x2F;daemon.json来使用加速器</p>
+<blockquote>
+<p>sudo mkdir -p &#x2F;etc&#x2F;docker</p>
+</blockquote>
+<p>新建daemon.json文件内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">&#123;<br>  <span class="hljs-string">&quot;registry-mirrors&quot;</span>: [<span class="hljs-string">&quot;https://registry.dockermirror.com&quot;</span>]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>sudo systemctl daemon-reload<br>sudo systemctl daemon-reload<br>sudo systemctl restart docker</p>
+</blockquote>
+<h3 id="2、安装mysql"><a href="#2、安装mysql" class="headerlink" title="2、安装mysql"></a>2、安装mysql</h3><p><strong>已安装的忽略</strong></p>
+<p>第一步：拉取镜像</p>
+<blockquote>
+<p>docker pull mysql:8.0.29</p>
+</blockquote>
+<p>第二步：启动</p>
+<blockquote>
+<p>docker run –name spzx_mysql –restart&#x3D;always -v mysql-data:&#x2F;var&#x2F;lib&#x2F;mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD&#x3D;root -d mysql:8.0.29</p>
+</blockquote>
+<p>第三步：测试mysql</p>
+<p>进入容器：</p>
+<blockquote>
+<p>docker exec -it spzx_mysql  &#x2F;bin&#x2F;bash</p>
+</blockquote>
+<p>登录mysql：</p>
+<blockquote>
+<p>mysql -u root -p</p>
+<p>输入密码：root</p>
+</blockquote>
+<p>如果顺利进入，安装成功</p>
+<blockquote>
+<p>#修改默认密码校验方式<br>ALTER USER ‘root‘@’%’ IDENTIFIED WITH mysql_native_password BY ‘root’;</p>
+</blockquote>
+<h3 id="3、按照Redis"><a href="#3、按照Redis" class="headerlink" title="3、按照Redis"></a>3、按照Redis</h3><p>已安装或能访问忽略</p>
+<p>第一步：拉取镜像</p>
+<blockquote>
+<p>docker pull redis:7.0.10</p>
+</blockquote>
+<p>第二步：启动</p>
+<blockquote>
+<p>docker run –name&#x3D;spzx_redis -d -p 6379:6379  –restart&#x3D;always redis:7.0.10</p>
+</blockquote>
+<h3 id="4、安装nacos"><a href="#4、安装nacos" class="headerlink" title="4、安装nacos"></a>4、安装nacos</h3><p>已安装或能访问忽略</p>
+<p>第一步：拉取镜像</p>
+<blockquote>
+<p>docker pull nacos&#x2F;nacos-server:v2.1.1</p>
+</blockquote>
+<p>第二步：启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d \<br>-e MODE=standalone \<br>-p 8848:8848 \<br>-p 9848:9848 \<br>-p 9849:9849 \<br>--name spzx_nacos2.1.1 \<br>--restart=always \<br>nacos/nacos-server:v2.1.1<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="5、安装minio"><a href="#5、安装minio" class="headerlink" title="5、安装minio"></a>5、安装minio</h3><h4 id="5-1-Minio介绍"><a href="#5-1-Minio介绍" class="headerlink" title="5.1 Minio介绍"></a>5.1 Minio介绍</h4><p>官网：<a target="_blank" rel="noopener" href="https://www.minio.org.cn/">https://www.minio.org.cn/</a></p>
+<p>MinIO是一个开源的分布式对象存储服务器，支持S3协议并且可以在多节点上实现数据的高可用和容错。它采用Go语言开发，拥有轻量级、高性能、</p>
+<p>易部署等特点，并且可以自由选择底层存储介质。</p>
+<p>MinIO的主要特点包括：</p>
+<p>1、高性能：MinIO基于GO语言编写，具有高速、轻量级、高并发等性能特点，还支持多线程和缓存等机制进行优化，可以快速地处理大规模数据。</p>
+<p>2、可扩展性：MinIO采用分布式存储模式，支持水平扩展，通过增加节点数量来扩展存储容量和性能，支持自动数据迁移和负载均衡。</p>
+<p>3、安全性：MinIO提供了多种安全策略，如访问控制列表（ACL）、服务端加密（SSE）、传输层安全性（TLS）等，可以保障数据安全和隐私。</p>
+<p>4、兼容性：MinIO兼容AWS S3 API，还支持其他云服务提供商的API，比如GCP、Azure等，可以通过简单的配置实现互操作性。</p>
+<p>5、简单易用：MinIO的部署和管理非常简单，只需要运行一个二进制包即可启动服务，同时提供了Web界面和命令行工具等方便的管理工具。</p>
+<p><strong>S3协议</strong>是Amazon Web Services (AWS) 提供的对象存储服务（Simple Storage Service）的API协议。它是一种 RESTful风格的Web服务接口，使</p>
+<p>用HTTP&#x2F;HTTPS协议进行通信，支持多种编程语言和操作系统，并实现了数据的可靠存储、高扩展性以及良好的可用性。</p>
+<p>已安装或能访问忽略</p>
+<h4 id="5-2-Minio安装"><a href="#5-2-Minio安装" class="headerlink" title="5.2 Minio安装"></a>5.2 Minio安装</h4><p>第一步：拉取镜像</p>
+<blockquote>
+<p>docker pull minio&#x2F;minio</p>
+</blockquote>
+<p>第二步：启动</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run \<br>-p 9000:9000 \<br>-p 9001:9001 \<br>--name=spzx_minio \<br>-d --restart=always \<br>-e &quot;MINIO_ROOT_USER=admin&quot; \<br>-e &quot;MINIO_ROOT_PASSWORD=admin123456&quot; \<br>-v spzx_minio-data:/data \<br>-v spzx_minio-config:/root/.minio \<br>minio/minio server /data --console-address &quot;:9001&quot;<br></code></pre></td></tr></table></figure>
+
+<p>浏览器访问：<a target="_blank" rel="noopener" href="http://ip:9001/minio/login%EF%BC%8C%E7%99%BB%E5%BD%95%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E8%B4%A6%E6%88%B7%E5%AF%86%E7%A0%81admin/admin123456%E7%99%BB%E5%BD%95" title="http://IP:9001/minio/login，登录使用自定义账户密码admin/admin123456登录">http://IP:9001/minio/login，登录使用自定义账户密码admin/admin123456登录</a></p>
+<p><strong>注意</strong>：文件上传时，需要调整一下linux 服务器的时间与windows 时间一致！</p>
+<blockquote>
+<p>第一步：安装ntp服务<br>yum -y install ntp<br>第二步：开启开机启动服务<br>systemctl enable ntpd<br>第三步：启动服务<br>systemctl start ntpd<br>第四步：更改时区<br>timedatectl set-timezone Asia&#x2F;Shanghai<br>第五步：启用ntp同步<br>timedatectl set-ntp yes<br>第六步：同步时间<br>ntpq -p</p>
+</blockquote>
+<h3 id="6、安装rabbitmq"><a href="#6、安装rabbitmq" class="headerlink" title="6、安装rabbitmq"></a>6、安装rabbitmq</h3><p>第一步：拉取镜像</p>
+<blockquote>
+<p>docker pull rabbitmq:3.12.0-management</p>
+</blockquote>
+<p>第二步：启动</p>
+<blockquote>
+<p>docker run -d –name&#x3D;spzx_rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.12.0-management</p>
+</blockquote>
+<p>第三步：安装延迟队列插件 </p>
+<ol>
+<li><p>首先下载rabbitmq_delayed_message_exchange-3.12.0.ez文件上传到RabbitMQ所在服务器，下载地址：<a target="_blank" rel="noopener" href="https://www.rabbitmq.com/community-plugins.html">https://www.rabbitmq.com/community-plugins.html</a>         </p>
+<p><strong>注意：也可以使用课件资料&#x2F;rabbitmq插件目录中下载好的</strong></p>
+</li>
+<li><p>切换到插件所在目录，执行<code>docker cp rabbitmq_delayed_message_exchange-3.12.0.ez spzx_rabbitmq:/plugins</code>命令，将刚插件拷贝到容器内plugins目录下</p>
+</li>
+<li><p>执行<code>docker exec -it spzx_rabbitmq /bin/bash</code>命令进入到容器内部</p>
+</li>
+<li><p>执行<code>cd plugins</code>进入plugins目录,然后执行<code>ls -l|grep delay </code>命令查看插件是否copy成功</p>
+</li>
+<li><p>在容器内plugins目录下，执行<code>rabbitmq-plugins enable rabbitmq_delayed_message_exchange </code>命令启用插件</p>
+</li>
+<li><p>exit命令退出RabbitMQ容器内部，然后执行<code> docker restart spzx_rabbitmq</code>命令重启RabbitMQ容器</p>
+</li>
+</ol>
+<h3 id="7、环境测试"><a href="#7、环境测试" class="headerlink" title="7、环境测试"></a>7、环境测试</h3><p>使用mysql&#x2F;redis客户端工具远程连接mysql&#x2F;redis测试</p>
+<p>nacos控制台访问测试:  <code>http://虚拟机IP:8848/nacos      </code>   账号密码：nacos&#x2F;nacos</p>
+<p>rabbitmq控制台访问测试：<code>http://虚拟机IP:15672 </code> 账号密码：guest&#x2F;guest</p>
+<p>minio控制台访问测试：<code>http://虚拟机IP:9001</code>  账号密码：admin&#x2F;admin123456</p>
+<p><strong>注意：如果访问失败</strong></p>
+<p>1、检查容器是否创建启动成功，可能是端口号占用导致，需要先关闭占用端口号的进程或修改当前容器的端口号</p>
+<p>2、检查防火墙是否关闭，如果未关闭，可以执行<code>systemctl  stop firewalld.service </code>, <code>systemctl disable firewalld.service</code> 关闭</p>
+<p>3、配置虚拟机允许IPv4地址跳转</p>
+<figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nsis"><span class="hljs-comment"># 修改配置文件：</span><br>vim /usr/lib/sysctl.d/<span class="hljs-number">00</span>-<span class="hljs-params">system</span>.conf<br><span class="hljs-comment"># 添加</span><br>net.ipv4.ip_forward=<span class="hljs-number">1</span><br><br><span class="hljs-comment"># 保存退出 重启网络</span><br><span class="hljs-params">system</span>ctl restart network<br><span class="hljs-comment"># 重启docker</span><br><span class="hljs-params">system</span>ctl restart docker<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2024/11/05/项目/小型电商模拟/第0章_准备软件环境/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC5%E7%AB%A0_%E6%94%AF%E4%BB%98/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

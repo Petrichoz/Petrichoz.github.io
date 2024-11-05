@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第2章 尚品甄选-商品详情2.1 商品详情2.1.1 需求分析需求说明：当点击某一个商品的时候，此时就需要在商品详情页面展示出商品的详情数据，商品详情页所需数据： 1、商品的基本信息 2、当前商品sku的基本信息 3、商品sku最新价格信息 4、商品详情（详细为图片列表） 5、商品规格信息 6、商品库存信息   2.1.2 接口文档商品详情数据接口以及示例数据： 12345678910111213">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PZ">
+<meta property="og:url" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="第2章 尚品甄选-商品详情2.1 商品详情2.1.1 需求分析需求说明：当点击某一个商品的时候，此时就需要在商品详情页面展示出商品的详情数据，商品详情页所需数据： 1、商品的基本信息 2、当前商品sku的基本信息 3、商品sku最新价格信息 4、商品详情（详细为图片列表） 5、商品规格信息 6、商品库存信息   2.1.2 接口文档商品详情数据接口以及示例数据： 12345678910111213">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/item.gif">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps2.jpg">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/image-20240714195729578.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528122174.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528275403.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528467470.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528694339.png">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps10.jpg">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps13-17271638201541.jpg">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps15.jpg">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps17.jpg">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps18.jpg">
+<meta property="og:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps19.jpg">
+<meta property="article:published_time" content="2024-11-05T12:44:41.065Z">
+<meta property="article:modified_time" content="2024-11-05T12:54:13.710Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/item.gif">
+  
+  
+  
+  <title>PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-05 20:44" pubdate>
+          2024年11月5日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          62 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第2章-尚品甄选-商品详情"><a href="#第2章-尚品甄选-商品详情" class="headerlink" title="第2章 尚品甄选-商品详情"></a>第2章 尚品甄选-商品详情</h1><h2 id="2-1-商品详情"><a href="#2-1-商品详情" class="headerlink" title="2.1 商品详情"></a>2.1 商品详情</h2><h3 id="2-1-1-需求分析"><a href="#2-1-1-需求分析" class="headerlink" title="2.1.1 需求分析"></a>2.1.1 需求分析</h3><p>需求说明：当点击某一个商品的时候，此时就需要在商品详情页面展示出商品的详情数据，商品详情页所需数据：</p>
+<p>1、商品的基本信息</p>
+<p>2、当前商品sku的基本信息</p>
+<p>3、商品sku最新价格信息</p>
+<p>4、商品详情（详细为图片列表）</p>
+<p>5、商品规格信息</p>
+<p>6、商品库存信息</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/item.gif" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<h3 id="2-1-2-接口文档"><a href="#2-1-2-接口文档" class="headerlink" title="2.1.2 接口文档"></a>2.1.2 接口文档</h3><p>商品详情数据接口以及示例数据：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><code class="hljs json">get  /channel/item/<span class="hljs-punctuation">&#123;</span>skuId<span class="hljs-punctuation">&#125;</span><br>返回结果：<br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;操作成功&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;data&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;productSku&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;skuCode&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1_4&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;skuName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;小米 红米Note10 5G手机 黑色 + 8G&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;productId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;thumbImg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;http://139.198.127.41:9000/spzx/20230525/665832167-1_u_1.jpg&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;salePrice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1999.00</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;marketPrice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2019.00</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;costPrice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1599.00</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;skuSpec&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;黑色 + 8G&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;weight&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1.00</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;volume&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1.00</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;stockNum&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;saleNum&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;product&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;小米 红米Note10 5G手机&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;brandId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">6</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;category1Id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;category2Id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;category3Id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;unitName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;个&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;sliderUrls&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;specValue&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;auditStatus&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;auditMessage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;审批通过&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;brandName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;category1Name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;category2Name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;category3Name&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;productSkuList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;detailsimagesUrlList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;skuPrice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;skuId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">null</span></span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;salePrice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1999.00</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;marketPrice&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2019.00</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;sliderUrlList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>            <span class="hljs-string">&quot;http://139.198.127.41:9000/spzx/20230525/665832167-5_u_1.jpg&quot;</span><span class="hljs-punctuation">,</span><br>            ...<br>        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;detailsimagesUrlList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>            <span class="hljs-string">&quot;http://139.198.127.41:9000/spzx/20230525/665832167-5_u_1.jpg&quot;</span><span class="hljs-punctuation">,</span><br>            ...<br>        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;specValueList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>            <span class="hljs-punctuation">&#123;</span><br>                <span class="hljs-attr">&quot;valueList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>                    <span class="hljs-string">&quot;白色&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-string">&quot;红色&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-string">&quot;黑色&quot;</span><br>                <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;颜色&quot;</span><br>            <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-punctuation">&#123;</span><br>                <span class="hljs-attr">&quot;valueList&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>                    <span class="hljs-string">&quot;8G&quot;</span><span class="hljs-punctuation">,</span><br>                    <span class="hljs-string">&quot;18G&quot;</span><br>                <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>                <span class="hljs-attr">&quot;key&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;内存&quot;</span><br>            <span class="hljs-punctuation">&#125;</span><br>        <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;skuStockVo&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;skuId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;availableNum&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">98</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;saleNum&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;skuSpecValueMap&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;黑色 + 18G&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">6</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;红色 + 18G&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">4</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;白色 + 8G&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">1</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;白色 + 18G&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">2</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;黑色 + 8G&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">5</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;红色 + 8G&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">3</span><br>        <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-1-3-获取商品相关信息"><a href="#2-1-3-获取商品相关信息" class="headerlink" title="2.1.3 获取商品相关信息"></a>2.1.3 获取商品相关信息</h3><h4 id="1、远程调用接口开发"><a href="#1、远程调用接口开发" class="headerlink" title="1、远程调用接口开发"></a>1、远程调用接口开发</h4><p>（1）SkuPrice</p>
+<p>操作模块：spzx-api-product</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.product.api.domain;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SkuPrice</span> &#123;<br><br>    <span class="hljs-meta">@Schema(description = &quot;skuId&quot;)</span><br>    <span class="hljs-keyword">private</span> Long skuId;<br><br>    <span class="hljs-meta">@Schema(description = &quot;售价&quot;)</span><br>    <span class="hljs-keyword">private</span> BigDecimal salePrice;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 市场价</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Schema(description = &quot;市场价&quot;)</span><br>    <span class="hljs-keyword">private</span> BigDecimal marketPrice;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>（2）SkuStockVo</p>
+<p>操作模块：spzx-api-product</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.product.api.domain;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SkuStockVo</span><br>&#123;<br>    <span class="hljs-comment">/** 商品ID */</span><br>    <span class="hljs-keyword">private</span> Long skuId;<br><br>    <span class="hljs-comment">/** 可用库存数 */</span><br>    <span class="hljs-keyword">private</span> Integer availableNum;<br><br>    <span class="hljs-comment">/** 销量 */</span><br>    <span class="hljs-keyword">private</span> Integer saleNum;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>（3）ProductController</p>
+<p>操作模块：spzx-product</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Operation(summary = &quot;获取商品sku信息&quot;)</span><br><span class="hljs-meta">@InnerAuth</span><br><span class="hljs-meta">@GetMapping(value = &quot;/getProductSku/&#123;skuId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;ProductSku&gt; <span class="hljs-title function_">getProductSku</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;skuId&quot;)</span> Long skuId)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> R.ok(productService.getProductSku(skuId));<br>&#125;<br><br><span class="hljs-meta">@Operation(summary = &quot;获取商品信息&quot;)</span><br><span class="hljs-meta">@InnerAuth</span><br><span class="hljs-meta">@GetMapping(value = &quot;/getProduct/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;Product&gt; <span class="hljs-title function_">getProduct</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> R.ok(productService.getProduct(id));<br>&#125;<br><br><span class="hljs-meta">@Operation(summary = &quot;获取商品sku最新价格信息&quot;)</span><br><span class="hljs-meta">@InnerAuth</span><br><span class="hljs-meta">@GetMapping(value = &quot;/getSkuPrice/&#123;skuId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;SkuPrice&gt; <span class="hljs-title function_">getSkuPrice</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;skuId&quot;)</span> Long skuId)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> R.ok(productService.getSkuPrice(skuId));<br>&#125;<br><br><span class="hljs-meta">@Operation(summary = &quot;获取商品详细信息&quot;)</span><br><span class="hljs-meta">@InnerAuth</span><br><span class="hljs-meta">@GetMapping(value = &quot;/getProductDetails/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;ProductDetails&gt; <span class="hljs-title function_">getProductDetails</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> R.ok(productService.getProductDetails(id));<br>&#125;<br><br><span class="hljs-meta">@Operation(summary = &quot;获取商品sku规则详细信息&quot;)</span><br><span class="hljs-meta">@InnerAuth</span><br><span class="hljs-meta">@GetMapping(value = &quot;/getSkuSpecValue/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;Map&lt;String, Long&gt;&gt; <span class="hljs-title function_">getSkuSpecValue</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> R.ok(productService.getSkuSpecValue(id));<br>&#125;<br><br><span class="hljs-meta">@Operation(summary = &quot;获取商品sku库存信息&quot;)</span><br><span class="hljs-meta">@InnerAuth</span><br><span class="hljs-meta">@GetMapping(value = &quot;/getSkuStock/&#123;skuId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;SkuStockVo&gt; <span class="hljs-title function_">getSkuStock</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;skuId&quot;)</span> Long skuId)</span><br>&#123;<br>    <span class="hljs-keyword">return</span> R.ok(productService.getSkuStock(skuId));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>（4）IProductService</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">ProductSku <span class="hljs-title function_">getProductSku</span><span class="hljs-params">(Long skuId)</span>;<br><br>Product <span class="hljs-title function_">getProduct</span><span class="hljs-params">(Long id)</span>;<br><br>SkuPrice <span class="hljs-title function_">getSkuPrice</span><span class="hljs-params">(Long skuId)</span>;<br><br>ProductDetails <span class="hljs-title function_">getProductDetails</span><span class="hljs-params">(Long id)</span>;<br><br>Map&lt;String, Long&gt; <span class="hljs-title function_">getSkuSpecValue</span><span class="hljs-params">(Long id)</span>;<br><br>SkuStockVo <span class="hljs-title function_">getSkuStock</span><span class="hljs-params">(Long skuId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>（5）ProductServiceImpl</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> ProductSku <span class="hljs-title function_">getProductSku</span><span class="hljs-params">(Long skuId)</span> &#123;<br>    <span class="hljs-keyword">return</span> productSkuMapper.selectById(skuId);<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Product <span class="hljs-title function_">getProduct</span><span class="hljs-params">(Long id)</span> &#123;<br>    <span class="hljs-keyword">return</span> productMapper.selectById(id);<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> SkuPrice <span class="hljs-title function_">getSkuPrice</span><span class="hljs-params">(Long skuId)</span> &#123;<br>    <span class="hljs-type">ProductSku</span> <span class="hljs-variable">productSku</span> <span class="hljs-operator">=</span> productSkuMapper.selectOne(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;ProductSku&gt;().eq(ProductSku::getId, skuId).select(ProductSku::getSalePrice, ProductSku::getMarketPrice));<br>    <span class="hljs-type">SkuPrice</span> <span class="hljs-variable">skuPrice</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SkuPrice</span>();<br>    BeanUtils.copyProperties(productSku, skuPrice);<br>    <span class="hljs-keyword">return</span> skuPrice;<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> ProductDetails <span class="hljs-title function_">getProductDetails</span><span class="hljs-params">(Long id)</span> &#123;<br>    <span class="hljs-keyword">return</span> productDetailsMapper.selectOne(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;ProductDetails&gt;().eq(ProductDetails::getProductId, id));<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Map&lt;String, Long&gt; <span class="hljs-title function_">getSkuSpecValue</span><span class="hljs-params">(Long id)</span> &#123;<br>    List&lt;ProductSku&gt; productSkuList = productSkuMapper.selectList(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;ProductSku&gt;().eq(ProductSku::getProductId, id).select(ProductSku::getId, ProductSku::getSkuSpec));<br>    <br>    Map&lt;String,Long&gt; skuSpecValueMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    productSkuList.forEach(item -&gt; &#123;<br>        skuSpecValueMap.put(item.getSkuSpec(), item.getId());<br>    &#125;);<br>    <span class="hljs-keyword">return</span> skuSpecValueMap;<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> SkuStockVo <span class="hljs-title function_">getSkuStock</span><span class="hljs-params">(Long skuId)</span> &#123;<br>    <span class="hljs-type">SkuStock</span> <span class="hljs-variable">skuStock</span> <span class="hljs-operator">=</span> skuStockMapper.selectOne(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;SkuStock&gt;().eq(SkuStock::getSkuId, skuId));<br>    <span class="hljs-type">SkuStockVo</span> <span class="hljs-variable">skuStockVo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SkuStockVo</span>();<br>    BeanUtils.copyProperties(skuStock, skuStockVo);<br>    <span class="hljs-keyword">return</span> skuStockVo;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、openFeign接口定义"><a href="#2、openFeign接口定义" class="headerlink" title="2、openFeign接口定义"></a>2、openFeign接口定义</h4><p>操作模块：spzx-api-product</p>
+<p>（1）RemoteProductService</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@GetMapping(&quot;/product/getProductSku/&#123;skuId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;ProductSku&gt; <span class="hljs-title function_">getProductSku</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;skuId&quot;)</span> Long skuId, <span class="hljs-meta">@RequestHeader(SecurityConstants.FROM_SOURCE)</span> String source)</span>;<br><br><span class="hljs-meta">@GetMapping(value = &quot;/product/getProduct/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;Product&gt; <span class="hljs-title function_">getProduct</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id, <span class="hljs-meta">@RequestHeader(SecurityConstants.FROM_SOURCE)</span> String source)</span>;<br><br><span class="hljs-meta">@GetMapping(value = &quot;/product/getSkuPrice/&#123;skuId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;SkuPrice&gt; <span class="hljs-title function_">getSkuPrice</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;skuId&quot;)</span> Long skuId, <span class="hljs-meta">@RequestHeader(SecurityConstants.FROM_SOURCE)</span> String source)</span>;<br><br><span class="hljs-meta">@GetMapping(value = &quot;/product/getProductDetails/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;ProductDetails&gt; <span class="hljs-title function_">getProductDetails</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id, <span class="hljs-meta">@RequestHeader(SecurityConstants.FROM_SOURCE)</span> String source)</span>;<br><br><span class="hljs-meta">@GetMapping(value = &quot;/product/getSkuSpecValue/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;Map&lt;String, Long&gt;&gt; <span class="hljs-title function_">getSkuSpecValue</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;id&quot;)</span> Long id, <span class="hljs-meta">@RequestHeader(SecurityConstants.FROM_SOURCE)</span> String source)</span>;<br><br><span class="hljs-meta">@GetMapping(value = &quot;/product/getSkuStock/&#123;skuId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> R&lt;SkuStockVo&gt; <span class="hljs-title function_">getSkuStock</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;skuId&quot;)</span> Long skuId, <span class="hljs-meta">@RequestHeader(SecurityConstants.FROM_SOURCE)</span> String source)</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>说明：将spzx-product模块Product、ProductDetails实体类移取到spzx-api-product模块</strong></p>
+<p>（2）RemoteProductFallbackFactory</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> R&lt;ProductSku&gt; <span class="hljs-title function_">getProductSku</span><span class="hljs-params">(Long skuId, String source)</span> &#123;<br>    <span class="hljs-keyword">return</span> R.fail(<span class="hljs-string">&quot;获取商品sku失败:&quot;</span> + throwable.getMessage());<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> R&lt;Product&gt; <span class="hljs-title function_">getProduct</span><span class="hljs-params">(Long id, String source)</span> &#123;<br>    <span class="hljs-keyword">return</span> R.fail(<span class="hljs-string">&quot;获取商品信息失败:&quot;</span> + throwable.getMessage());<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> R&lt;SkuPrice&gt; <span class="hljs-title function_">getSkuPrice</span><span class="hljs-params">(Long skuId, String source)</span> &#123;<br>    <span class="hljs-keyword">return</span> R.fail(<span class="hljs-string">&quot;获取商品sku价格失败:&quot;</span> + throwable.getMessage());<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> R&lt;ProductDetails&gt; <span class="hljs-title function_">getProductDetails</span><span class="hljs-params">(Long id, String source)</span> &#123;<br>    <span class="hljs-keyword">return</span> R.fail(<span class="hljs-string">&quot;获取商品详情失败:&quot;</span> + throwable.getMessage());<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> R&lt;Map&lt;String, Long&gt;&gt; <span class="hljs-title function_">getSkuSpecValue</span><span class="hljs-params">(Long id, String source)</span> &#123;<br>    <span class="hljs-keyword">return</span> R.fail(<span class="hljs-string">&quot;获取商品sku规格失败:&quot;</span> + throwable.getMessage());<br>&#125;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> R&lt;SkuStockVo&gt; <span class="hljs-title function_">getSkuStock</span><span class="hljs-params">(Long skuId, String source)</span> &#123;<br>    <span class="hljs-keyword">return</span> R.fail(<span class="hljs-string">&quot;获取商品sku库存失败:&quot;</span> + throwable.getMessage());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-1-4-业务接口开发"><a href="#2-1-4-业务接口开发" class="headerlink" title="2.1.4 业务接口开发"></a>2.1.4 业务接口开发</h3><h4 id="1、ItemController"><a href="#1、ItemController" class="headerlink" title="1、ItemController"></a>1、ItemController</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.channel.controller;<br><br><span class="hljs-meta">@Tag(name = &quot;商品详情接口&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/item&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ItemController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseController</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> IItemService itemService;<br><br>    <span class="hljs-meta">@Operation(summary = &quot;商品详情&quot;)</span><br>    <span class="hljs-meta">@GetMapping(&quot;/&#123;skuId&#125;&quot;)</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">item</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long skuId)</span> &#123;<br>        <span class="hljs-keyword">return</span> success(itemService.item(skuId));<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、ItemVo"><a href="#2、ItemVo" class="headerlink" title="2、ItemVo"></a>2、ItemVo</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.channel.domain;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Schema(description = &quot;商品详情对象&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ItemVo</span> &#123;<br><br>   <span class="hljs-meta">@Schema(description = &quot;商品sku信息&quot;)</span><br>   <span class="hljs-keyword">private</span> ProductSku productSku;<br><br>   <span class="hljs-meta">@Schema(description = &quot;商品信息&quot;)</span><br>   <span class="hljs-keyword">private</span> Product product;<br><br>   <span class="hljs-meta">@Schema(description = &quot;最新价格信息&quot;)</span><br>   <span class="hljs-keyword">private</span> SkuPrice skuPrice;<br><br>   <span class="hljs-meta">@Schema(description = &quot;商品轮播图列表&quot;)</span><br>   <span class="hljs-keyword">private</span> List&lt;String&gt; sliderUrlList;<br><br>   <span class="hljs-meta">@Schema(description = &quot;商品详情图片列表&quot;)</span><br>   <span class="hljs-keyword">private</span> List&lt;String&gt; detailsimagesUrlList;<br><br>   <span class="hljs-meta">@Schema(description = &quot;商品规格信息&quot;)</span><br>   <span class="hljs-keyword">private</span> JSONArray specValueList;<br><br>   <span class="hljs-meta">@Schema(description = &quot;商品库存信息&quot;)</span><br>   <span class="hljs-keyword">private</span> SkuStockVo skuStockVo;<br><br>   <span class="hljs-meta">@Schema(description = &quot;商品规格对应商品skuId信息&quot;)</span><br>   <span class="hljs-keyword">private</span> Map&lt;String,Long&gt; skuSpecValueMap;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、IItemService"><a href="#3、IItemService" class="headerlink" title="3、IItemService"></a>3、IItemService</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.channel.service;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">IItemService</span> &#123;<br>    ItemVo <span class="hljs-title function_">item</span><span class="hljs-params">(Long skuId)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4、ItemServiceImpl"><a href="#4、ItemServiceImpl" class="headerlink" title="4、ItemServiceImpl"></a>4、ItemServiceImpl</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.channel.service.impl;<br><br><span class="hljs-meta">@Service</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ItemServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">IItemService</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RemoteProductService remoteProductService;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> ItemVo <span class="hljs-title function_">item</span><span class="hljs-params">(Long skuId)</span> &#123;<br>        <span class="hljs-type">ItemVo</span> <span class="hljs-variable">itemVo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ItemVo</span>();<br><br>        <span class="hljs-comment">//获取sku信息</span><br>        R&lt;ProductSku&gt; productSkuResult = remoteProductService.getProductSku(skuId, SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == productSkuResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(productSkuResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">ProductSku</span> <span class="hljs-variable">productSku</span> <span class="hljs-operator">=</span> productSkuResult.getData();<br>        itemVo.setProductSku(productSku);<br><br>        <span class="hljs-comment">//获取商品信息</span><br>        R&lt;Product&gt; productResult = remoteProductService.getProduct(productSku.getProductId(), SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == productResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(productResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> productResult.getData();<br>        itemVo.setProduct(product);<br>        itemVo.setSliderUrlList(Arrays.asList(product.getSliderUrls().split(<span class="hljs-string">&quot;,&quot;</span>)));<br>        itemVo.setSpecValueList(JSON.parseArray(product.getSpecValue()));<br><br>        <span class="hljs-comment">//获取商品最新价格</span><br>        R&lt;SkuPrice&gt; skuPriceResult = remoteProductService.getSkuPrice(skuId, SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == skuPriceResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(skuPriceResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">SkuPrice</span> <span class="hljs-variable">skuPrice</span> <span class="hljs-operator">=</span> skuPriceResult.getData();<br>        itemVo.setSkuPrice(skuPrice);<br><br>        <span class="hljs-comment">//获取商品详情</span><br>        R&lt;ProductDetails&gt; productDetailsResult = remoteProductService.getProductDetails(productSku.getProductId(), SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == productDetailsResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(productDetailsResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">ProductDetails</span> <span class="hljs-variable">productDetails</span> <span class="hljs-operator">=</span> productDetailsResult.getData();<br>        itemVo.setDetailsimagesUrlList(Arrays.asList(productDetails.getimagesUrls().split(<span class="hljs-string">&quot;,&quot;</span>)));<br><br>        <span class="hljs-comment">//获取商品规格对应商品skuId信息</span><br>        R&lt;Map&lt;String, Long&gt;&gt; skuSpecValueResult = remoteProductService.getSkuSpecValue(productSku.getProductId(), SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == skuSpecValueResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(skuSpecValueResult.getMsg());<br>        &#125;<br>        Map&lt;String, Long&gt; skuSpecValueMap = skuSpecValueResult.getData();<br>        itemVo.setSkuSpecValueMap(skuSpecValueMap);<br><br>        <span class="hljs-comment">//获取商品库存信息</span><br>        R&lt;SkuStockVo&gt; skuStockResult = remoteProductService.getSkuStock(skuId, SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == skuStockResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(skuStockResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">SkuStockVo</span> <span class="hljs-variable">skuStockVo</span> <span class="hljs-operator">=</span> skuStockResult.getData();<br>        itemVo.setSkuStockVo(skuStockVo);<br><br>        <span class="hljs-keyword">return</span> itemVo;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、接口测试"><a href="#5、接口测试" class="headerlink" title="5、接口测试"></a>5、接口测试</h4><p>测试方向：</p>
+<p>1、后端接口单独测试</p>
+<p>2、配合前端项目测试</p>
+<h2 id="2-2-商品详情页面优化"><a href="#2-2-商品详情页面优化" class="headerlink" title="2.2 商品详情页面优化"></a>2.2 商品详情页面优化</h2><h3 id="2-2-1-思路"><a href="#2-2-1-思路" class="headerlink" title="2.2.1 思路"></a>2.2.1 思路</h3><p>虽然咱们实现了页面需要的功能，但是考虑到该页面是被用户高频访问的，所以性能需要优化。一般一个系统最大的性能瓶颈，就是数据库的io操作。从数据库入手也是调优性价比最高的切入点。</p>
+<p>一般分为两个层面：</p>
+<ul>
+<li>一是提高数据库sql本身的性能</li>
+<li>二是尽量避免直接查询数据库。</li>
+</ul>
+<p>重点要讲的是另外一个层面：尽量避免直接查询数据库。</p>
+<p>解决办法就是：<strong>缓存</strong></p>
+<h3 id="2-2-2-缓存常见问题"><a href="#2-2-2-缓存常见问题" class="headerlink" title="2.2.2 缓存常见问题"></a>2.2.2 缓存常见问题</h3><p>缓存最常见的4个问题： 面试</p>
+<ol>
+<li>缓存穿透</li>
+<li>缓存雪崩</li>
+<li>缓存击穿</li>
+<li>数据一致性</li>
+</ol>
+<p><strong>缓存穿透</strong>: 是指查询一个不存在的数据，由于缓存无法命中，将去查询数据库，但是数据库也无此记录，并且出于容错考虑，我们没有将这次查询的null写入缓存，这将导致这个不存在的数据每次请求都要到存储层去查询，失去了缓存的意义。在流量大时，可能DB就挂掉了，要是有人利用不存在的key频繁攻击我们的应用，这就是漏洞。</p>
+<ul>
+<li><p>解决1 ：空结果也进行缓存，但它的过期时间会很短，最长不超过五分钟，但是不能防止随机穿透。</p>
+</li>
+<li><p>解决2 ：使用布隆过滤器或者Redis的Bitmap来解决随机穿透问题</p>
+</li>
+</ul>
+<p><strong>缓存雪崩</strong>:是指在我们设置缓存时采用了相同的过期时间，导致缓存在某一时刻同时失效，请求全部转发到DB，DB瞬时压力过重雪崩。</p>
+<ul>
+<li><p>解决1：原有的失效时间基础上增加一个随机值，比如1-5分钟随机，这样每一个缓存的过期时间的重复率就会降低，就很难引发集体失效的事件。</p>
+</li>
+<li><p>解决2：如果单节点宕机，可以采用集群部署方式防止雪崩</p>
+</li>
+</ul>
+<p><strong>缓存击穿</strong>: 是指对于一些设置了过期时间的key，如果这些key可能会在某些时间点被超高并发地访问，是一种非常“热点”的数据。这个时候，需要考虑一个问题：如果这个key在大量请求同时进来之前正好失效，那么所有对这个key的数据查询都落到db，我们称为缓存击穿。</p>
+<p>与缓存雪崩的区别：</p>
+<ol>
+<li>击穿是一个热点key失效</li>
+<li>雪崩是很多key集体失效</li>
+</ol>
+<ul>
+<li>解决：锁</li>
+</ul>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps2.jpg" srcset="/img/loading.gif" lazyload alt style="zoom: 50%;"> 
+
+ 
+
+<p><strong>数据一致性</strong>：在当前环境下，通常我们会首选redis缓存来减轻我们数据库访问压力。但是也会遇到以下这种情况：大量用户来访问我们系统，首先会去查询缓存， 如果缓存中没有数据，则去查询数据库，然后更新数据到缓存中，并且如果数据库中的数据发生了改变则需要同步到redis中，同步过程中需要保证 MySQL与redis数据一致性问题</p>
+<ul>
+<li>解决1：使用延时双删策略</li>
+</ul>
+<p>延时双删策略是一种常见的保证MySQL和Redis数据一致性的方法。其主要流程包括：先删除缓存，然后更新数据库。这个过程完成后，大约在数据库从库更新后再次删除缓存。具体的步骤如下：</p>
+<p>第一步，先执行redis.del(key)操作删除缓存；</p>
+<p>第二步，然后执行写数据库的操作；</p>
+<p>第三步，休眠一段时间（例如500毫秒），根据具体的业务时间来定；</p>
+<p>第四步，再次执行redis.del(key)操作删除缓存。</p>
+<p>延时双删策略通过这种方式尝试达到最终的数据一致性，但是这并不是强一致性，因为MySQL和Redis主从节点数据的同步并不是实时的，所以需要等待一段时间以增强它们的数据一致性。同时，由于读写是并发的，可能出现缓存和数据库数据不一致的问题</p>
+<ul>
+<li>解决2：使用canal解决</li>
+</ul>
+<h2 id="2-3-数据一致性-延时双删策略"><a href="#2-3-数据一致性-延时双删策略" class="headerlink" title="2.3 数据一致性-延时双删策略"></a>2.3 数据一致性-延时双删策略</h2><h3 id="2-3-1-问题分析"><a href="#2-3-1-问题分析" class="headerlink" title="2.3.1 问题分析"></a>2.3.1 问题分析</h3><p>在查询商品详情数据时，为避免频繁io，提高查询效率，在详情数据获取的同时，利用缓存机制，将详情数据存储到redis实现的缓存机制中，但带来效率提升的同时也带来了问题，就是如果在商品修改之后，因为业务数据更新等原因，对于mysql中商品原数据进行了修改，将导致redis中缓存数据和mysql中原始数据不一致的问题，这里可以使用<strong>延迟双删</strong>来保证缓存与数据库数据一致性！</p>
+<h3 id="2-3-2-代码实现"><a href="#2-3-2-代码实现" class="headerlink" title="2.3.2 代码实现"></a>2.3.2 代码实现</h3><p>在ProductServiceImpl类的修改商品方法添加代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//修改</span><br><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">updateProduct</span><span class="hljs-params">(Product product)</span> &#123;<br>    <span class="hljs-comment">//1 删除缓存</span><br>    List&lt;Long&gt; skuIdList =  product.getProductSkuList().stream()<br>        .map(ProductSku::getId).collect(Collectors.toList());<br>    skuIdList.forEach(skuId -&gt; &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">dataKey</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;product:sku:&quot;</span> + skuId;<br>        <span class="hljs-built_in">this</span>.redisTemplate.delete(dataKey);<br>    &#125;);<br><br>    <span class="hljs-comment">//2 之前的业务代码，执行更新商品操作.....</span><br><br><br>    <span class="hljs-comment">//3 休眠一段时间</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        Thread.sleep(<span class="hljs-number">100</span>);<br>    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>    &#125;<br>    <br>    <span class="hljs-comment">//4 再次执行操作删除缓存</span><br>    skuIdList.forEach(skuId -&gt; &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">dataKey</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;product:sku:&quot;</span> + skuId;<br>        <span class="hljs-built_in">this</span>.redisTemplate.delete(dataKey);<br>    &#125;);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-4-分布式锁"><a href="#2-4-分布式锁" class="headerlink" title="2.4 分布式锁"></a>2.4 分布式锁</h2><h3 id="2-4-1-本地锁的局限性"><a href="#2-4-1-本地锁的局限性" class="headerlink" title="2.4.1 本地锁的局限性"></a>2.4.1 本地锁的局限性</h3><p>之前，我们学习过synchronized 及lock锁，这些锁都是本地锁。接下来写一个案例，演示本地锁的问题</p>
+<h4 id="1、编写测试代码"><a href="#1、编写测试代码" class="headerlink" title="1、编写测试代码"></a>1、编写测试代码</h4><p>在<code>spzx-product</code>中新建TestController中添加测试方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.product.controller;<br><br><span class="hljs-meta">@Tag(name = &quot;测试接口&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/test&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestController</span> &#123;<br>    <br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> TestService testService;<br><br>    <span class="hljs-meta">@GetMapping(&quot;testLock&quot;)</span><br>    <span class="hljs-keyword">public</span> AjaxResult <span class="hljs-title function_">testLock</span><span class="hljs-params">()</span> &#123;<br>        testService.testLock();<br>        <span class="hljs-keyword">return</span> AjaxResult.success();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> 业务接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.product.service;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TestService</span> &#123;<br>   <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLock</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>业务实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.product.service.impl;<br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TestServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">TestService</span> &#123;<br><br>   <span class="hljs-meta">@Autowired</span><br>   <span class="hljs-keyword">private</span> StringRedisTemplate stringRedisTemplate;<br>    <br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLock</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// 查询Redis中的num值</span><br>      <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> (String)<span class="hljs-built_in">this</span>.stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;num&quot;</span>);<br>      <span class="hljs-comment">// 没有该值return</span><br>      <span class="hljs-keyword">if</span> (StringUtils.isBlank(value))&#123;<br>         <span class="hljs-keyword">return</span> ;<br>      &#125;<br>      <span class="hljs-comment">// 有值就转成成int</span><br>      <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(value);<br>      <span class="hljs-comment">// 把Redis中的num值+1</span><br>      <span class="hljs-built_in">this</span>.stringRedisTemplate.opsForValue().set(<span class="hljs-string">&quot;num&quot;</span>, String.valueOf(++num));<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>说明</strong>：通过reids客户端设置num&#x3D;0</p>
+<p>重启<code>spzx-product</code>服务</p>
+<h4 id="2、使用工具测试"><a href="#2、使用工具测试" class="headerlink" title="2、使用工具测试"></a>2、使用工具测试</h4><p>第一步：安装jmeter工具</p>
+<p>第二步：配置网关并重启网关</p>
+<p>配置本地锁测试接口为白名单</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 不校验白名单</span><br><span class="hljs-attr">ignore:</span><br>  <span class="hljs-attr">whites:</span><br>   <span class="hljs-string">...省略</span><br>    <span class="hljs-bullet">-</span> <span class="hljs-string">/product/test/**</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>重启网关</strong></p>
+<p>第三步：测试</p>
+<p><strong>注意：将Windows防火墙关闭！！！！！！！！！！</strong></p>
+<ul>
+<li>使用jmeter工具压力测试：并发100</li>
+</ul>
+<p>查看Redis中的结果：</p>
+<p><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/image-20240714195729578.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="3、使用本地锁"><a href="#3、使用本地锁" class="headerlink" title="3、使用本地锁"></a>3、使用本地锁</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">synchronized</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLock</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-comment">// 查询Redis中的num值</span><br>   <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> (String)<span class="hljs-built_in">this</span>.stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;num&quot;</span>);<br>   <span class="hljs-comment">// 没有该值return</span><br>   <span class="hljs-keyword">if</span> (StringUtils.isBlank(value))&#123;<br>      <span class="hljs-keyword">return</span> ;<br>   &#125;<br>   <span class="hljs-comment">// 有值就转成成int</span><br>   <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(value);<br>   <span class="hljs-comment">// 把Redis中的num值+1</span><br>   <span class="hljs-built_in">this</span>.stringRedisTemplate.opsForValue().set(<span class="hljs-string">&quot;num&quot;</span>, String.valueOf(++num));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>使用jmeter工具压力测试：并发100</li>
+</ul>
+<h4 id="4、本地锁问题演示"><a href="#4、本地锁问题演示" class="headerlink" title="4、本地锁问题演示"></a>4、本地锁问题演示</h4><p>接下来<code>spzx-product</code>启动9205 9215 9225三个运行实例：</p>
+<p>第一步：拷贝配置</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528122174.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<p>第二步：修改端口</p>
+<p><strong>选择vm options</strong></p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528275403.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<p><strong>添加命令行参数:</strong> </p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm">-<span class="hljs-type">Dserver</span>.<span class="hljs-keyword">port</span>=9215<br></code></pre></td></tr></table></figure>
+
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528467470.png" srcset="/img/loading.gif" lazyload alt style="zoom:50%;">
+
+<p><strong>同样的，再复制并配置一个实例，端口为9525</strong></p>
+<p>第三步：启动spzx-product的三个实例</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/1709528694339.png" srcset="/img/loading.gif" lazyload alt style="zoom:67%;">
+
+
+
+<p>第四步：通过网关压力测试本地锁</p>
+<p>以上测试，可以发现：</p>
+<p>本地锁只能锁住同一工程内的资源，在分布式系统里面都存在局限性。</p>
+<p>此时需要分布式锁。</p>
+<h3 id="2-4-2-分布式锁实现的解决方案"><a href="#2-4-2-分布式锁实现的解决方案" class="headerlink" title="2.4.2 分布式锁实现的解决方案"></a>2.4.2 分布式锁实现的解决方案</h3><p>随着业务发展的需要，原单体单机部署的系统被演化成分布式集群系统后，由于分布式系统多线程、多进程并且分布在不同机器上，这将使原单机部署情况下的并发控制锁策略失效，单纯的Java API并不能提供分布式锁的能力。为了解决这个问题就需要一种跨JVM的互斥机制来控制共享资源的访问，这就是分布式锁要解决的问题！</p>
+<p>分布式锁主流的实现方案：</p>
+<ol>
+<li>基于数据库实现分布式锁</li>
+<li>基于缓存（ Redis等）</li>
+<li>基于Zookeeper</li>
+</ol>
+<p>每一种分布式锁解决方案都有各自的优缺点：</p>
+<ol>
+<li>高性能：Redis最高</li>
+<li>可靠性：zookeeper最高</li>
+</ol>
+<p>因为Redis具备高性能、高可用、高并发的特性，这里，我们就基于Redis实现分布式锁。</p>
+<p> 分布式锁的关键是**多进程共享的内存标记(锁)**，因此只要我们在Redis中放置一个这样的标记(数据)就可以了。不过在实现过程中，不要忘了我们需要实现下列目标：</p>
+<ul>
+<li><strong>多进程可见</strong>：多进程可见，否则就无法实现分布式效果</li>
+<li><strong>避免死锁</strong>：死锁的情况有很多，我们要思考各种异常导致死锁的情况，保证锁可以被释放</li>
+<li><strong>排它</strong>：同一时刻，只能有一个进程获得锁</li>
+<li><strong>高可用</strong>：避免锁服务宕机或处理好宕机的补救措施(redis集群架构：1.主从复制 2.哨兵 3.cluster集群)</li>
+</ul>
+<p>分布式锁使用的逻辑如下：</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs actionscript">尝试获取锁<br>	成功：执行业务代码    <br>		执行业务  <br>			<span class="hljs-keyword">try</span>&#123;<br>				获取锁<br>				业务代码-宕机<br>			&#125; <span class="hljs-keyword">catch</span>()&#123;<br>			<br>			&#125;<span class="hljs-keyword">finally</span>&#123; <br>				释放锁<br>			&#125;<br> 	失败：等待；<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-4-3-使用Redis实现分布式锁"><a href="#2-4-3-使用Redis实现分布式锁" class="headerlink" title="2.4.3 使用Redis实现分布式锁"></a>2.4.3 使用Redis实现分布式锁</h3><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps10.jpg" srcset="/img/loading.gif" lazyload alt style="zoom:67%;">
+
+<ol>
+<li>多个客户端同时获取锁（setnx）</li>
+<li>获取成功，执行业务逻辑：从db获取数据，放入缓存，执行完成释放锁（del）</li>
+<li>其他客户端等待重试</li>
+</ol>
+<h4 id="1、分布式锁初版"><a href="#1、分布式锁初版" class="headerlink" title="1、分布式锁初版"></a>1、分布式锁初版</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 采用SpringDataRedis实现分布式锁</span><br><span class="hljs-comment"> * 原理：执行业务方法前先尝试获取锁（setnx存入key val），如果获取锁成功再执行业务代码，业务执行完毕后将锁释放(del key)</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLock</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-comment">//0.先尝试获取锁 setnx key val</span><br>    <span class="hljs-type">Boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> stringRedisTemplate.opsForValue().setIfAbsent(<span class="hljs-string">&quot;lock&quot;</span>, <span class="hljs-string">&quot;lock&quot;</span>);<br>    <span class="hljs-keyword">if</span>(flag)&#123;<br>        <span class="hljs-comment">//获取锁成功，执行业务代码</span><br>        <span class="hljs-comment">//1.先从redis中通过key num获取值  key提前手动设置 num 初始值：0</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;num&quot;</span>);<br>        <span class="hljs-comment">//2.如果值为空则非法直接返回即可</span><br>        <span class="hljs-keyword">if</span> (StringUtils.isBlank(value)) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//3.对num值进行自增加一</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(value);<br>        stringRedisTemplate.opsForValue().set(<span class="hljs-string">&quot;num&quot;</span>, String.valueOf(++num));<br><br>        <span class="hljs-comment">//4.将锁释放</span><br>        stringRedisTemplate.delete(<span class="hljs-string">&quot;lock&quot;</span>);<br><br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            Thread.sleep(<span class="hljs-number">100</span>);<br>            <span class="hljs-built_in">this</span>.testLock();<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>重启，服务集群，通过网关压力测试：</p>
+<p>基本实现。</p>
+<p><strong>问题：</strong>setnx刚好获取到锁，业务逻辑出现异常，导致锁无法释放</p>
+<p>解决：设置过期时间，自动释放锁。</p>
+<h4 id="2、优化之设置锁的过期时间"><a href="#2、优化之设置锁的过期时间" class="headerlink" title="2、优化之设置锁的过期时间"></a>2、优化之设置锁的过期时间</h4><p>设置过期时间有两种方式：</p>
+<ol>
+<li>首先想到通过expire设置过期时间（缺乏原子性：如果在setnx和expire之间出现异常，锁也无法释放）</li>
+<li>在set时指定过期时间（推荐）</li>
+</ol>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps13-17271638201541.jpg" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
+
+<p>设置过期时间：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//0.先尝试获取锁 setnx key val</span><br><span class="hljs-type">Boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().setIfAbsent(<span class="hljs-string">&quot;lock&quot;</span>, <span class="hljs-string">&quot;lock&quot;</span>, <span class="hljs-number">3</span>, TimeUnit.SECONDS); <br></code></pre></td></tr></table></figure>
+
+<p>压力测试肯定也没有问题。自行测试</p>
+<p>问题：可能会释放其他服务器的锁。</p>
+<p>场景：如果业务逻辑的执行时间是7s。执行流程如下</p>
+<ol>
+<li><p>index1业务逻辑没执行完，3秒后锁被自动释放。</p>
+</li>
+<li><p>index2获取到锁，执行业务逻辑，3秒后锁被自动释放。</p>
+</li>
+<li><p>index3获取到锁，执行业务逻辑</p>
+<p>. index1业务逻辑执行完成，开始调用del释放锁，这时释放的是index3的锁，	导致index3的业务只执行1s就被别人释放。</p>
+</li>
+</ol>
+<p>最终等于没锁的情况。</p>
+<p>解决：setnx获取锁时，设置一个指定的唯一值（例如：uuid）；释放前获取这个值，判断是否自己的锁</p>
+<h4 id="3、优化之UUID防误删"><a href="#3、优化之UUID防误删" class="headerlink" title="3、优化之UUID防误删"></a>3、优化之UUID防误删</h4><img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps15.jpg" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLock</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//0.先尝试获取锁 setnx key val</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">uuid</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString();<br>    <span class="hljs-type">Boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> stringRedisTemplate.opsForValue().setIfAbsent(<span class="hljs-string">&quot;lock&quot;</span>, uuid, <span class="hljs-number">3</span>, TimeUnit.SECONDS);<br>    <span class="hljs-keyword">if</span>(flag)&#123;<br>        <span class="hljs-comment">//获取锁成功，执行业务代码</span><br>        <span class="hljs-comment">//1.先从redis中通过key num获取值  key提前手动设置 num 初始值：0</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;num&quot;</span>);<br>        <span class="hljs-comment">//2.如果值为空则非法直接返回即可</span><br>        <span class="hljs-keyword">if</span> (StringUtils.isBlank(value)) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//3.对num值进行自增加一</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(value);<br>        stringRedisTemplate.opsForValue().set(<span class="hljs-string">&quot;num&quot;</span>, String.valueOf(++num));<br><br>        <span class="hljs-comment">//4.将锁释放</span><br>        <span class="hljs-keyword">if</span>(uuid.equals((String)stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;lock&quot;</span>))) &#123;<br>            stringRedisTemplate.delete(<span class="hljs-string">&quot;lock&quot;</span>);<br>        &#125;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            Thread.sleep(<span class="hljs-number">100</span>);<br>            <span class="hljs-built_in">this</span>.testLock();<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125; <br></code></pre></td></tr></table></figure>
+
+<p><strong>问题：</strong>删除操作缺乏原子性。</p>
+<p>场景：</p>
+<p>​	1、index1执行删除时，查询到的lock值确实和uuid相等</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps17.jpg" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
+
+<p>​	2、index1执行删除前，lock刚好过期时间已到，被Redis自动释放，在Redis中没有了锁。</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps18.jpg" srcset="/img/loading.gif" lazyload alt style="zoom: 67%;"> 
+
+<p>​	3、index2获取了lock,index2线程获取到了cpu的资源，开始执行方法</p>
+<p>​	4、index1执行删除，此时会把index2的lock删除。</p>
+<p>index1 因为已经在方法中了，所以不需要重新上锁。index1有执行的权限。index1已经比较完成了，这个时候，开始执行</p>
+<img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC2%E7%AB%A0_%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85/wps19.jpg" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
+
+<p>删除了index2的锁！</p>
+<h4 id="4、优化之LUA脚本保证删除的原子性"><a href="#4、优化之LUA脚本保证删除的原子性" class="headerlink" title="4、优化之LUA脚本保证删除的原子性"></a>4、优化之LUA脚本保证删除的原子性</h4><p>释放锁的LUA脚本：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-keyword">if</span> redis.call(<span class="hljs-string">&#x27;get&#x27;</span>, KEYS[<span class="hljs-number">1</span>]) == ARGV[<span class="hljs-number">1</span>] <span class="hljs-keyword">then</span> <span class="hljs-keyword">return</span> redis.call(<span class="hljs-string">&#x27;del&#x27;</span>, KEYS[<span class="hljs-number">1</span>]) <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-number">0</span> <span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
+
+<p>redis java客户端使用LUA脚本：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//通过execute可以执行LUA脚本，参数1：脚本字符串，参数2：脚本返回值类型,参数3：keys列表，参数4：argv列表</span><br>stringRedisTemplate.execute(<span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultRedisScript</span>&lt;&gt;(script , Boolean.class),list,args...)<br></code></pre></td></tr></table></figure>
+
+<p>使用LUA脚本优化分布式锁</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 采用SpringDataRedis实现分布式锁</span><br><span class="hljs-comment"> * 原理：执行业务方法前先尝试获取锁（setnx存入key val），如果获取锁成功再执行业务代码，业务执行完毕后将锁释放(del key)</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">testLock</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-comment">//0.先尝试获取锁 setnx key val</span><br>    <span class="hljs-comment">//问题：锁可能存在线程间相互释放</span><br>    <span class="hljs-comment">//Boolean flag = stringRedisTemplate.opsForValue().setIfAbsent(&quot;lock&quot;, &quot;lock&quot;, 10, TimeUnit.SECONDS);</span><br>    <span class="hljs-comment">//解决：锁值设置为uuid</span><br>    <span class="hljs-type">String</span> <span class="hljs-variable">uuid</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString();<br>    <span class="hljs-type">Boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> stringRedisTemplate.opsForValue().setIfAbsent(<span class="hljs-string">&quot;lock&quot;</span>, uuid, <span class="hljs-number">10</span>, TimeUnit.SECONDS);<br><br>    <span class="hljs-keyword">if</span>(flag)&#123;<br>        <span class="hljs-comment">//获取锁成功，执行业务代码</span><br>        <span class="hljs-comment">//1.先从redis中通过key num获取值  key提前手动设置 num 初始值：0</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">value</span> <span class="hljs-operator">=</span> stringRedisTemplate.opsForValue().get(<span class="hljs-string">&quot;num&quot;</span>);<br>        <span class="hljs-comment">//2.如果值为空则非法直接返回即可</span><br>        <span class="hljs-keyword">if</span> (StringUtils.isBlank(value)) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-comment">//3.对num值进行自增加一</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> Integer.parseInt(value);<br>        stringRedisTemplate.opsForValue().set(<span class="hljs-string">&quot;num&quot;</span>, String.valueOf(++num));<br><br>        <span class="hljs-comment">//4.将锁释放 判断uuid</span><br>        <span class="hljs-comment">//问题：删除操作缺乏原子性。</span><br>        <span class="hljs-comment">//if(uuid.equals(stringRedisTemplate.opsForValue().get(&quot;lock&quot;)))&#123; //线程一：判断是满足是当前线程锁的值</span><br>        <span class="hljs-comment">//    //条件满足，此时锁正好到期，redis锁自动释放了线程2获取锁成功，线程1将线程2的锁删除</span><br>        <span class="hljs-comment">//    stringRedisTemplate.delete(&quot;lock&quot;);</span><br>        <span class="hljs-comment">//&#125;</span><br>        <span class="hljs-comment">//解决：redis执行lua脚本保证原子，lua脚本执行会作为一个整体执行</span><br><br>        <span class="hljs-comment">//执行脚本参数 参数1：脚本对象封装lua脚本，参数二：lua脚本中需要key参数（KEYS[i]）  参数三：lua脚本中需要参数值 ARGV[i]</span><br>        <span class="hljs-comment">//4.1 先创建脚本对象 DefaultRedisScript泛型脚本语言返回值类型 Long 0：失败 1：成功</span><br>        DefaultRedisScript&lt;Long&gt; redisScript = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultRedisScript</span>&lt;&gt;();<br>        <span class="hljs-comment">//4.2设置脚本文本</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">script</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;if redis.call(\&quot;get\&quot;,KEYS[1]) == ARGV[1]\n&quot;</span> +<br>                <span class="hljs-string">&quot;then\n&quot;</span> +<br>                <span class="hljs-string">&quot;    return redis.call(\&quot;del\&quot;,KEYS[1])\n&quot;</span> +<br>                <span class="hljs-string">&quot;else\n&quot;</span> +<br>                <span class="hljs-string">&quot;    return 0\n&quot;</span> +<br>                <span class="hljs-string">&quot;end&quot;</span>;<br>        redisScript.setScriptText(script);<br>        <span class="hljs-comment">//4.3 设置响应类型</span><br>        redisScript.setResultType(Long.class);<br>        stringRedisTemplate.execute(redisScript, Arrays.asList(<span class="hljs-string">&quot;lock&quot;</span>), uuid);<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//睡眠</span><br>            Thread.sleep(<span class="hljs-number">100</span>);<br>            <span class="hljs-comment">//自旋重试</span><br>            <span class="hljs-built_in">this</span>.testLock();<br>        &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-4-4-分布式锁总结"><a href="#2-4-4-分布式锁总结" class="headerlink" title="2.4.4 分布式锁总结"></a>2.4.4 分布式锁总结</h3><p>为了确保分布式锁可用，我们至少要确保锁的实现同时满足以下几个条件：</p>
+<ul>
+<li><p>互斥性。在任意时刻，只有一个客户端能持有锁。</p>
+</li>
+<li><p>不会发生死锁。即使有一个客户端在持有锁的期间崩溃而没有主动解锁，也能保证后续其他客户端能加锁。</p>
+</li>
+<li><p>解铃还须系铃人。加锁和解锁必须是同一个客户端，客户端自己不能把别人加的锁给解了。</p>
+</li>
+<li><p>加锁和解锁必须具有原子性。</p>
+</li>
+</ul>
+<h3 id="2-4-5-改造获取商品详情信息"><a href="#2-4-5-改造获取商品详情信息" class="headerlink" title="2.4.5 改造获取商品详情信息"></a>2.4.5 改造获取商品详情信息</h3><p>操作模块：<code>spzx-product</code></p>
+<p>操作类：com.spzx.product.service.impl.ProductServiceImpl#getProductSku</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> RedisTemplate redisTemplate;<br><br><span class="hljs-comment">/*</span><br><span class="hljs-comment"> * 根据SkuID查询SKU商品信息</span><br><span class="hljs-comment"> * @param skuId</span><br><span class="hljs-comment"> * @return</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> ProductSku <span class="hljs-title function_">getProductSku</span><span class="hljs-params">(Long skuId)</span> &#123;<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-comment">//1.优先从缓存中获取数据</span><br>        <span class="hljs-comment">//1.1 构建业务数据Key 形式：前缀+业务唯一标识</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">dataKey</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;product:sku:&quot;</span> + skuId;<br>        <span class="hljs-comment">//1.2 查询Redis获取业务数据</span><br>        <span class="hljs-type">ProductSku</span> <span class="hljs-variable">productSku</span> <span class="hljs-operator">=</span> (ProductSku) redisTemplate.opsForValue().get(dataKey);<br>        <span class="hljs-comment">//1.3 命中缓存则直接返回</span><br>        <span class="hljs-keyword">if</span> (productSku != <span class="hljs-literal">null</span>) &#123;<br>            log.info(<span class="hljs-string">&quot;命中缓存，直接返回，线程ID：&#123;&#125;，线程名称：&#123;&#125;&quot;</span>, Thread.currentThread().getId(), Thread.currentThread().getName());<br>            <span class="hljs-keyword">return</span> productSku;<br>        &#125;<br>        <span class="hljs-comment">//2.尝试获取分布式锁（set k v ex nx可能获取锁失败）</span><br>        <span class="hljs-comment">//2.1 构建锁key</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">lockKey</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;product:sku:lock:&quot;</span> + skuId;<br>        <span class="hljs-comment">//2.2 采用UUID作为线程标识</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">lockVal</span> <span class="hljs-operator">=</span> UUID.randomUUID().toString().replaceAll(<span class="hljs-string">&quot;-&quot;</span>, <span class="hljs-string">&quot;&quot;</span>);<br>        <span class="hljs-comment">//2.3 利用Redis提供set nx ex 获取分布式锁</span><br>        <span class="hljs-type">Boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().setIfAbsent(lockKey, lockVal, <span class="hljs-number">5</span>, TimeUnit.SECONDS);<br>        <span class="hljs-keyword">if</span> (flag) &#123;<br>            <span class="hljs-comment">//3.获取锁成功执行业务,将查询业务数据放入缓存Redis</span><br>            log.info(<span class="hljs-string">&quot;获取锁成功：&#123;&#125;，线程名称：&#123;&#125;&quot;</span>, Thread.currentThread().getId(), Thread.currentThread().getName());<br>            <span class="hljs-keyword">try</span> &#123;<br>                productSku = <span class="hljs-built_in">this</span>.getProductSkuFromDB(skuId);<br>                <span class="hljs-type">long</span> <span class="hljs-variable">ttl</span> <span class="hljs-operator">=</span> productSku == <span class="hljs-literal">null</span> ? <span class="hljs-number">1</span> * <span class="hljs-number">60</span> : <span class="hljs-number">10</span> * <span class="hljs-number">60</span>;<br>                redisTemplate.opsForValue().set(dataKey, productSku, ttl, TimeUnit.SECONDS);<br>                <span class="hljs-keyword">return</span> productSku;<br>            &#125; <span class="hljs-keyword">finally</span> &#123;<br>                <span class="hljs-comment">//4.业务执行完毕释放锁</span><br>                <span class="hljs-type">String</span> <span class="hljs-variable">scriptText</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;if redis.call(\&quot;get\&quot;,KEYS[1]) == ARGV[1]\n&quot;</span> +<br>                    <span class="hljs-string">&quot;then\n&quot;</span> +<br>                    <span class="hljs-string">&quot;    return redis.call(\&quot;del\&quot;,KEYS[1])\n&quot;</span> +<br>                    <span class="hljs-string">&quot;else\n&quot;</span> +<br>                    <span class="hljs-string">&quot;    return 0\n&quot;</span> +<br>                    <span class="hljs-string">&quot;end&quot;</span>;<br>                DefaultRedisScript&lt;Long&gt; redisScript = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DefaultRedisScript</span>&lt;&gt;();<br>                redisScript.setScriptText(scriptText);<br>                redisScript.setResultType(Long.class);<br>                redisTemplate.execute(redisScript, Arrays.asList(lockKey), lockVal);<br>            &#125;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                <span class="hljs-comment">//5.获取锁失败则自旋（业务要求必须执行）</span><br>                Thread.sleep(<span class="hljs-number">200</span>);<br>            &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>            &#125;<br>            log.error(<span class="hljs-string">&quot;获取锁失败，自旋：&#123;&#125;，线程名称：&#123;&#125;&quot;</span>, Thread.currentThread().getId(), Thread.currentThread().getName());<br>            <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getProductSku(skuId);<br>        &#125;<br>    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>        <span class="hljs-comment">//兜底处理方案：Redis服务有问题，将业务数据获取自动从数据库获取</span><br>        log.error(<span class="hljs-string">&quot;[商品服务]查询商品信息异常：&#123;&#125;&quot;</span>, e);<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.getProductSkuFromDB(skuId);<br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> ProductSku <span class="hljs-title function_">getProductSkuFromDB</span><span class="hljs-params">(Long skuId)</span> &#123;<br>    <span class="hljs-keyword">return</span> productSkuMapper.selectById(skuId);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-5-Redis的Bitmap解决缓存穿透"><a href="#2-5-Redis的Bitmap解决缓存穿透" class="headerlink" title="2.5 Redis的Bitmap解决缓存穿透"></a>2.5 Redis的Bitmap解决缓存穿透</h2><h3 id="2-5-1-概述"><a href="#2-5-1-概述" class="headerlink" title="2.5.1 概述"></a>2.5.1 概述</h3><p>Redis 的 Bitmap（位图）是一种特殊的字符串数据类型，它利用字符串类型键（key）来存储一系列连续的二进制位（bits），每个位可以独立地表示一个布尔值（0 或 1）。这种数据结构非常适合用于存储和操作大量二值状态的数据，尤其在需要高效空间利用率和特定位操作场景中表现出色。</p>
+<h3 id="2-5-2-常见操作命令"><a href="#2-5-2-常见操作命令" class="headerlink" title="2.5.2 常见操作命令"></a>2.5.2 常见操作命令</h3><ul>
+<li><code>setbit key offset value</code>：设置或清除指定偏移量上的位（bit）。<code>offset</code> 是从0开始的位索引，<code>value</code> 可以为 0 或 1。</li>
+<li><code>getbit key offset</code>：返回指定偏移量上的位值。</li>
+</ul>
+<h3 id="2-5-3-整合"><a href="#2-5-3-整合" class="headerlink" title="2.5.3 整合"></a>2.5.3 整合</h3><h4 id="1、初始化数据"><a href="#1、初始化数据" class="headerlink" title="1、初始化数据"></a>1、初始化数据</h4><p>在<code>spzx-product</code> 模块的启动类中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@EnableCustomConfig</span><br><span class="hljs-meta">@EnableRyFeignClients</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SpzxProductApplication</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CommandLineRunner</span>&#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(SpzxProductApplication.class,args);<br>    &#125;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RedisTemplate redisTemplate;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> ProductSkuMapper productSkuMapper;<br><br>    <span class="hljs-comment">//商品功能</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">(String... args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;sku:product:data&quot;</span>;<br>        <span class="hljs-comment">//查询mysql里面商品skuId</span><br>        List&lt;ProductSku&gt; productSkuList = productSkuMapper.selectList(<span class="hljs-literal">null</span>);<br>        productSkuList.forEach(item -&gt; &#123;<br>            <span class="hljs-comment">//为了测试，添加到redis里面</span><br>            redisTemplate.opsForValue().setBit(key,item.getId(),<span class="hljs-literal">true</span>);<br>        &#125;);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、sku加入Bitmap"><a href="#2、sku加入Bitmap" class="headerlink" title="2、sku加入Bitmap"></a>2、sku加入Bitmap</h4><p>商品上架时将数据添加到Bitmap中</p>
+<p>操作：ProductServiceImpl.updateStatus方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional(rollbackFor = Exception.class)</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateStatus</span><span class="hljs-params">(Long id, Integer status)</span> &#123;<br>    <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Product</span>();<br>    product.setId(id);<br>    <span class="hljs-keyword">if</span>(status == <span class="hljs-number">1</span>) &#123;<br>        product.setStatus(<span class="hljs-number">1</span>);<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;sku:product:data&quot;</span>;<br>        List&lt;ProductSku&gt; productSkuList = productSkuMapper<br>                .selectList(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;ProductSku&gt;()<br>                        .eq(ProductSku::getProductId, id));<br>        productSkuList.forEach(item -&gt; &#123;<br>            redisTemplate.opsForValue().setBit(key,item.getId(),<span class="hljs-literal">true</span>);<br>        &#125;);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        product.setStatus(-<span class="hljs-number">1</span>);<br>    &#125;<br>    productMapper.updateById(product);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3、sku详情页添加Bitmap"><a href="#3、sku详情页添加Bitmap" class="headerlink" title="3、sku详情页添加Bitmap"></a>3、sku详情页添加Bitmap</h4><p>操作模块：<code>spzx-channel</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> ItemVo <span class="hljs-title function_">item</span><span class="hljs-params">(Long skuId)</span> &#123;<br>    <span class="hljs-comment">//远程调用商品微服务接口之前 提前知道用户访问商品SKUID是否存在于bitmap中</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;sku:product:data&quot;</span>;<br>        <span class="hljs-type">Boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().getBit(key, skuId);<br>        <span class="hljs-keyword">if</span> (!flag) &#123;<br>            log.error(<span class="hljs-string">&quot;用户查询商品sku不存在：&#123;&#125;&quot;</span>, skuId);<br>            <span class="hljs-comment">//查询数据不存在直接返回空对象</span><br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(<span class="hljs-string">&quot;用户查询商品sku不存在&quot;</span>);<br>        &#125;<br> 	...   <br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-6-异步编排"><a href="#2-6-异步编排" class="headerlink" title="2.6 异步编排"></a>2.6 异步编排</h2><h3 id="2-6-1-问题分析"><a href="#2-6-1-问题分析" class="headerlink" title="2.6.1 .问题分析"></a>2.6.1 .问题分析</h3><p>问题：查询商品详情页的逻辑非常复杂，数据的获取都需要远程调用，必然需要花费更多的时间。</p>
+<p>假如商品详情页的每个查询，需要如下标注的时间才能完成</p>
+<ol>
+<li>获取sku的基本信息	1s<br>. 获取商品信息 	1.5s<br>. 商品最新价格	 0.5s</li>
+</ol>
+<p>那么，用户需要3s后才能看到商品详情页的内容。很显然是不能接受的。如果有多个线程同时完成这4步操作，也许只需要1.5s即可完成响应。</p>
+<p><code>CompletableFuture</code>可以使原本串行执行的代码，变为并行执行，提高代码执行速度。 </p>
+<h3 id="2-6-2-优化商品详情页"><a href="#2-6-2-优化商品详情页" class="headerlink" title="2.6.2 优化商品详情页"></a>2.6.2 优化商品详情页</h3><h4 id="1、ThreadPoolConfig"><a href="#1、ThreadPoolConfig" class="headerlink" title="1、ThreadPoolConfig"></a>1、ThreadPoolConfig</h4><p>全局自定义线程池配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.spzx.channel.configure;<br><br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-keyword">import</span> java.util.concurrent.ArrayBlockingQueue;<br><span class="hljs-keyword">import</span> java.util.concurrent.Executors;<br><span class="hljs-keyword">import</span> java.util.concurrent.ThreadPoolExecutor;<br><span class="hljs-keyword">import</span> java.util.concurrent.TimeUnit;<br><br><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadPoolConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> ThreadPoolExecutor <span class="hljs-title function_">threadPoolExecutor</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-comment">//当前系统可用的处理器数量</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">processorsCount</span> <span class="hljs-operator">=</span> Runtime.getRuntime().availableProcessors();<br>        <span class="hljs-type">ThreadPoolExecutor</span> <span class="hljs-variable">threadPoolExecutor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>(<br>                processorsCount * <span class="hljs-number">2</span>,<br>                processorsCount * <span class="hljs-number">2</span>,<br>                <span class="hljs-number">0</span>,<br>                TimeUnit.SECONDS,<br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="hljs-number">200</span>),<br>                Executors.defaultThreadFactory(),<br>                <span class="hljs-comment">//new ThreadPoolExecutor.CallerRunsPolicy()</span><br>                <span class="hljs-comment">//自定义拒绝策略</span><br>                (runnable, executor) -&gt; &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        Thread.sleep(<span class="hljs-number">200</span>);<br>                    &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;<br>                    &#125;<br>                    <span class="hljs-comment">//再次将拒绝任务提交给线程池执行</span><br>                    executor.submit(runnable);<br>                &#125;<br>        );<br>        <span class="hljs-comment">//线程池创建,核心线程同时创建</span><br>        <span class="hljs-comment">//threadPoolExecutor.prestartCoreThread();</span><br>        threadPoolExecutor.prestartAllCoreThreads();<br>        <span class="hljs-keyword">return</span> threadPoolExecutor;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2、ItemServiceImpl"><a href="#2、ItemServiceImpl" class="headerlink" title="2、ItemServiceImpl"></a>2、ItemServiceImpl</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> ThreadPoolExecutor threadPoolExecutor;<br><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> ItemVo <span class="hljs-title function_">item</span><span class="hljs-params">(Long skuId)</span> &#123;<br>    <span class="hljs-comment">//远程调用商品微服务接口之前 提前知道用户访问商品SKUID是否存在与布隆过滤器</span><br>    RBloomFilter&lt;Object&gt; bloomFilter = redissonClient.getBloomFilter(<span class="hljs-string">&quot;sku:bloom:filter&quot;</span>);<br>    <span class="hljs-keyword">if</span> (!bloomFilter.contains(skuId)) &#123;<br>        <span class="hljs-comment">//查询数据不存在直接返回空对象</span><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(<span class="hljs-string">&quot;用户查询商品sku不存在&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-type">ItemVo</span> <span class="hljs-variable">itemVo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ItemVo</span>();<br>    <span class="hljs-comment">//获取sku信息</span><br>    CompletableFuture&lt;ProductSku&gt; skuCompletableFuture = CompletableFuture.supplyAsync(() -&gt; &#123;<br>        R&lt;ProductSku&gt; productSkuResult = remoteProductService.getProductSku(skuId, SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == productSkuResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(productSkuResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">ProductSku</span> <span class="hljs-variable">productSku</span> <span class="hljs-operator">=</span> productSkuResult.getData();<br>        itemVo.setProductSku(productSku);<br>        <span class="hljs-keyword">return</span> productSku;<br>    &#125;, threadPoolExecutor);<br><br>    <span class="hljs-comment">//获取商品信息</span><br>    CompletableFuture&lt;Void&gt; productComCompletableFuture = skuCompletableFuture.thenAcceptAsync(productSku -&gt; &#123;<br>        R&lt;Product&gt; productResult = remoteProductService.getProduct(productSku.getProductId(), SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == productResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(productResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">Product</span> <span class="hljs-variable">product</span> <span class="hljs-operator">=</span> productResult.getData();<br>        itemVo.setProduct(product);<br>        itemVo.setSliderUrlList(Arrays.asList(product.getSliderUrls().split(<span class="hljs-string">&quot;,&quot;</span>)));<br>        itemVo.setSpecValueList(JSON.parseArray(product.getSpecValue()));<br>    &#125;, threadPoolExecutor);<br><br>    <span class="hljs-comment">//获取商品最新价格</span><br>    CompletableFuture&lt;Void&gt; skuPriceCompletableFuture = CompletableFuture.runAsync(() -&gt; &#123;<br>        R&lt;SkuPrice&gt; skuPriceResult = remoteProductService.getSkuPrice(skuId, SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == skuPriceResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(skuPriceResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">SkuPrice</span> <span class="hljs-variable">skuPrice</span> <span class="hljs-operator">=</span> skuPriceResult.getData();<br>        itemVo.setSkuPrice(skuPrice);<br>    &#125;, threadPoolExecutor);<br><br>    <span class="hljs-comment">//获取商品详情</span><br>    CompletableFuture&lt;Void&gt; productDetailsComCompletableFuture = skuCompletableFuture.thenAcceptAsync(productSku -&gt; &#123;<br>        R&lt;ProductDetails&gt; productDetailsResult = remoteProductService.getProductDetails(productSku.getProductId(), SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == productDetailsResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(productDetailsResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">ProductDetails</span> <span class="hljs-variable">productDetails</span> <span class="hljs-operator">=</span> productDetailsResult.getData();<br>        itemVo.setDetailsimagesUrlList(Arrays.asList(productDetails.getimagesUrls().split(<span class="hljs-string">&quot;,&quot;</span>)));<br>    &#125;, threadPoolExecutor);<br><br>    <span class="hljs-comment">//获取商品规格对应商品skuId信息</span><br>    CompletableFuture&lt;Void&gt; skuSpecValueComCompletableFuture = skuCompletableFuture.thenAcceptAsync(productSku -&gt; &#123;<br>        R&lt;Map&lt;String, Long&gt;&gt; skuSpecValueResult = remoteProductService.getSkuSpecValue(productSku.getProductId(), SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == skuSpecValueResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(skuSpecValueResult.getMsg());<br>        &#125;<br>        Map&lt;String, Long&gt; skuSpecValueMap = skuSpecValueResult.getData();<br>        itemVo.setSkuSpecValueMap(skuSpecValueMap);<br>    &#125;, threadPoolExecutor);<br><br>    <span class="hljs-comment">//获取商品库存信息</span><br>    CompletableFuture&lt;Void&gt; skuStockVoComCompletableFuture = CompletableFuture.runAsync(() -&gt; &#123;<br>        R&lt;SkuStockVo&gt; skuStockResult = remoteProductService.getSkuStock(skuId, SecurityConstants.INNER);<br>        <span class="hljs-keyword">if</span> (R.FAIL == skuStockResult.getCode()) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ServiceException</span>(skuStockResult.getMsg());<br>        &#125;<br>        <span class="hljs-type">SkuStockVo</span> <span class="hljs-variable">skuStockVo</span> <span class="hljs-operator">=</span> skuStockResult.getData();<br>        itemVo.setSkuStockVo(skuStockVo);<br>    &#125;, threadPoolExecutor);<br><br>    <span class="hljs-comment">//x.组合以上七个异步任务</span><br>    CompletableFuture.allOf(<br>            skuCompletableFuture,<br>            productComCompletableFuture,<br>            skuPriceCompletableFuture,<br>            productDetailsComCompletableFuture,<br>            skuSpecValueComCompletableFuture,<br>            skuStockVoComCompletableFuture<br>    ).join();<br>    <span class="hljs-keyword">return</span> itemVo;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2024/11/05/项目/小型电商模拟/第2章_商品详情/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月5日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC1%E7%AB%A0_%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
