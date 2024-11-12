@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/mysql.jpg">
 <meta property="article:published_time" content="2023-04-12T03:50:27.000Z">
-<meta property="article:modified_time" content="2024-11-12T01:06:43.705Z">
+<meta property="article:modified_time" content="2024-11-12T10:59:25.024Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/mysql.jpg">
@@ -306,14 +306,34 @@
 <p>该关系中第一个表中的一个行只可以与第二个表中的一个行相关，且第二个表中的一个行也只可以与第一个表中的一个行相关。</p>
 <p>例如，”人员信息表”,”身份证表”,一个人只能有一个身份证号,反过来一个身份证号只能对应一个人</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-6772.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-6772.png)
+
+-->
+
 <p>2．一对多</p>
 <p>第一个表中的一个行可以与第二个表中的一个或多个行相关，但第二个表中的一个行只可以与第一个表中的一个行相关。</p>
 <p>例如，“商品分类表”和“商品信息表”。一个商品分类对应多个商品,反过来一个商品只属于一个分类,形成了一对多</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-6856.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-6856-17314082712371.png)
+
+-->
+
 <p>3．多对多</p>
 <p>该关系中第一个表中的一个行可以与第二个表中的一个或多个行相关。第二个表中的一个行也可以与第一个表中的一个或多个行相关。通常两个表的多对多关系会借助第三张表，转换为两个一对多的关系。</p>
 <p>例如，选课系统的“学生信息表”和“课程信息表”是多对多关系。一个学生可以选择多门课，一门课程可以被多个学生选择，即“学生信息表”中一条记录可以与“课程信息表”多条记录对应，反过来“课程信息表”的一条记录也可以与“学生信息表”中多条记录对应。它们之间借助第三张“选课信息表”实现关联关系，而“学生信息表”与“选课信息表”是一对多关系，“课程信息表”与“选课信息表”也是一对多关系。“选课信息表”中“学号”字段与“学生信息表”中“学号”字段意义相同。“课程信息表”中“课程编号”字段与“课程信息表”中“课程编号”字段意义相同。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20211127202949314.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-20211127202949314-17314082762733.png)
+
+-->
+
+
+
 <h1 id="第2章-MySQL卸载、安装、登录"><a href="#第2章-MySQL卸载、安装、登录" class="headerlink" title="第2章 MySQL卸载、安装、登录"></a>第2章 MySQL卸载、安装、登录</h1><h1 id="第3章-客户端使用演示"><a href="#第3章-客户端使用演示" class="headerlink" title="第3章 客户端使用演示"></a>第3章 客户端使用演示</h1><h2 id="3-1-命令行客户端"><a href="#3-1-命令行客户端" class="headerlink" title="3.1 命令行客户端"></a>3.1 命令行客户端</h2><h3 id="3-1-1-数据库"><a href="#3-1-1-数据库" class="headerlink" title="3.1.1 数据库"></a>3.1.1 数据库</h3><p>1、查看所有的数据库</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show databases;<br></code></pre></td></tr></table></figure>
 
@@ -360,13 +380,33 @@
 
 <p>注意：在使用命令行导入SQL脚本之前，请使用记事本或NotePad++等文本编辑器打开SQL脚本查看SQL脚本中是否有USE语句，如果没有，那么在命令行中需要先使用USE语句指定具体的数据库，否则会报“No database selected”的错误。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20220222174512444.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-20220222174512444-17314082876785.png)
+
+-->
+
 <h3 id="3-1-4-导出数据"><a href="#3-1-4-导出数据" class="headerlink" title="3.1.4 导出数据"></a>3.1.4 导出数据</h3><p>在命令行客户端不登录mysql，使用mysqldump命令。</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">mysqldump -u用戶名 -p密码 数据库名 &gt; 脚本名.sql<br>mysqldump -u用戶名 -p密码 数据库名 表名 &gt; 脚本名.sql<br></code></pre></td></tr></table></figure>
 
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20220207094511797.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-20220222174512444-17314082918317.png)
+
+-->
+
 <h3 id="3-2-可视化工具导出数据"><a href="#3-2-可视化工具导出数据" class="headerlink" title="3.2 可视化工具导出数据"></a>3.2 可视化工具导出数据</h3><p>第一步：选择要导出的数据库。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20220207094654634.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20220207094813606.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-20220207094654634-17314083001339.png)
+
+![](MySQL8.0_SQL笔记/image-20220207094813606-173140830706611.png)
+
+-->
+
 <h1 id="第4章-SQL语句"><a href="#第4章-SQL语句" class="headerlink" title="第4章 SQL语句"></a>第4章 SQL语句</h1><p>SQL：结构化查询语言，（Structure Query Language），专门用来操作&#x2F;访问数据库的通用语言。</p>
 <h2 id="4-1-SQL的分类"><a href="#4-1-SQL的分类" class="headerlink" title="4.1 SQL的分类"></a>4.1 SQL的分类</h2><ol>
 <li>数据查询语言（Data Query Language, DQL）<ul>
@@ -530,8 +570,20 @@
 </li>
 </ul>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20211201084442467.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-20211201084442467-173140832022413.png)
+
+-->
+
 <p>（2）用户自定义函数：由开发人员自己定义的，通过CREATE FUNCTION语句定义，是属于某个数据库的对象。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20211201083845550.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-20211201083845550-173140832428815.png)
+
+-->
+
 <h2 id="7-1-分组函数"><a href="#7-1-分组函数" class="headerlink" title="7.1 分组函数"></a>7.1 分组函数</h2><p>调用完函数后，结果的行数变少了，可能得到一行，可能得到少数几行。</p>
 <p>分组函数有合并计算过程。</p>
 <p><strong>常用分组函数类型</strong></p>
@@ -1158,6 +1210,12 @@
 <p>前提条件：这些一起查询的表之间是有关系的（一对一、一对多），它们之间一定是有关联字段，这个关联字段可能建立了外键，也可能没有建立外键。</p>
 <p>比如：员工表和部门表，这两个表依靠“部门编号”进行关联。</p>
 <h2 id="8-2-关联查询结果分为几种情况"><a href="#8-2-关联查询结果分为几种情况" class="headerlink" title="8.2 关联查询结果分为几种情况"></a>8.2 关联查询结果分为几种情况</h2><p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20211201000449563.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-20211201083845550.png)
+
+-->
+
 <h2 id="8-3-关联查询的SQL有几种情况"><a href="#8-3-关联查询的SQL有几种情况" class="headerlink" title="8.3  关联查询的SQL有几种情况"></a>8.3  关联查询的SQL有几种情况</h2><p>1、内连接：inner join  … on</p>
 <p>结果：A表 ∩ B表</p>
 <p>2、左连接：A left join B on</p>
@@ -1177,6 +1235,36 @@
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/A%E8%A1%A8%E2%88%AAB%E8%A1%A8.png" srcset="/img/loading.gif" lazyload alt="A表∪B表"></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/%EF%BC%88A%E8%A1%A8%E2%88%AAB%E8%A1%A8%EF%BC%89-%EF%BC%88A%E2%88%A9B%EF%BC%89.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-3779.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/A∩B.png)
+
+
+
+![A表](MySQL8.0_SQL笔记/A表.png)
+
+![A表-（A∩B）](/MySQL8.0_SQL笔记/A表-（A∩B）.png)
+
+
+
+
+
+![B表](/MySQL8.0_SQL笔记/B表.png)
+
+![B表-（A∩B）](/MySQL8.0_SQL笔记/B表-（A∩B）.png)
+
+![A表∪B表](/MySQL8.0_SQL笔记/A表∪B表.png)
+
+
+
+![](/MySQL8.0_SQL笔记/（A表∪B表）-（A∩B）.png)
+
+![](/MySQL8.0_SQL笔记/image-3779.png)
+
+-->
+
+
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs mysql">/*<br>（1）凡是联合查询的两个表，必须有“关联字段”，<br>关联字段是逻辑意义一样，数据类型一样，名字可以一样也可以不一样的两个字段。<br>比如：t_employee （A表）中did和t_department（B表）中的did。<br><br>发现关联字段其实就是“可以”建外键的字段。当然联合查询不要求一定建外键。<br><br>（2）联合查询必须写关联条件，关联条件的个数 = n - 1.<br>n是联合查询的表的数量。<br>如果2个表一起联合查询，关联条件数量是1，<br>如果3个表一起联合查询，关联条件数量是2，<br>如果4个表一起联合查询，关联条件数量是3，<br>。。。。<br>否则就会出现笛卡尔积现象，这是应该避免的。<br><br>（3）关联条件可以用on子句编写，也可以写到where中。<br>但是建议用on单独编写，这样呢，可读性更好。<br><br>每一个join后面都要加on子句<br>A inner|left|right join  B on 条件<br>A inner|left|right join  B on 条件 inner|left|right jon C on 条件<br></code></pre></td></tr></table></figure>
 
 
@@ -1263,6 +1351,12 @@
 </li>
 </ul>
 <h3 id="1、整数类型"><a href="#1、整数类型" class="headerlink" title="1、整数类型"></a>1、整数类型</h3><p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-6588.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-6588.png)
+
+-->
+
 <p>说明：</p>
 <p>对于整数类型，MySQL还支持在类型名称后面加小括号(M)，而小括号中的M表示显示宽度，M的取值范围是(0, 255)。int(M)这个M在字段的属性中指定了unsigned（无符号）和zerofill（零填充）的情况下才有意义。表示当整数值不够M位时，用0填充。如果整数值超过M位但是没有超过当前数据类型的范围时，就按照实际位数存储。当M宽度超过当前数据类型可存储数值范围的最大宽度时，也是以实际存储范围为准。</p>
 <p>MySQL8之前，int没有指定(M)，默认显示(11)。最多能存储和显示11位整数。从MySQL 8.0.17开始，整数数据类型不推荐使用显示宽度属性，默认显示int。</p>
@@ -1282,6 +1376,12 @@
 <p>浮点型FLOAT(M，D) 和DOUBLE(M，D)是非标准用法，如果考虑到数据库迁移，则最好不要使用，而且从MySQL 8.0.17开始，FLOAT(M，D) 和DOUBLE(M，D)用法在官方文档中已经明确不推荐使用，将来可能被移除。另外，关于浮点型FLOAT和DOUBLE的UNSIGNED也不推荐使用了，将来也可能被移除。FLOAT和DOUBLE类型在不指定（M，D）时，默认会按照实际的精度来显示。DECIMAL类型在不指定（M，D）时，默认为（10，0），即只保留整数部分。例如，定义DECIMAL（5,2）的类型，表示该列取值范围是-999.99~999.99。如果用户插入数据的小数部分位数超过D位，MySQL会四舍五入处理，但是如果用户插入数据的整数部分位数超过“M-D”位，则会报“Out of range”的错误。</p>
 <p>DECIMAL实际是以字符串形式存放的，在对精度要求比较高的时候（如货币、科学数据等）使用DECIMAL类型会比较好。浮点数相对于定点数的优点是在长度一定的情况下，浮点数能够表示更大的数据范围，它的缺点是会引起精度问题。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-8326.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-8326-173140863277637.png)
+
+-->
+
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#演示小数类型<br>#创建表格<br>create table t_double(<br>	d1 double,<br>	d2 double(5,2)  #-999.99~999.99<br>);<br><br>#查看表结构<br>desc t_double;<br><br>#添加数据<br>insert into t_double values(2.5,2.5);<br><br>#查看数据<br>select * from t_double;<br>mysql&gt; select * from t_double;<br>+------+------+<br>| d1   | d2   |<br>+------+------+<br>|  2.5 | 2.50 |#d2字段小数点后不够2位用0补充<br>+------+------+<br>1 row in set (0.00 sec)<br><br>#添加数据<br>insert into t_double values(2.5526,2.5526);<br>insert into t_double values(2.5586,2.5586);<br><br>mysql&gt; select * from t_double;<br>+--------+------+<br>| d1     | d2   |<br>+--------+------+<br>|    2.5 | 2.50 |<br>| 2.5526 | 2.55 |#小数点后有截断现象，并且会四舍五入<br>| 2.5586 | 2.56 |#小数点后有截断现象，并且会四舍五入<br>+--------+------+<br>3 rows in set (0.00 sec)<br><br><br>#添加数据<br>insert into t_double values(12852.5526,12852.5526);<br><br>#d2字段整数部分超过(5-2=3)位，添加失败<br>mysql&gt; insert into t_double values(12852.5526,12852.5526); <br>ERROR 1264 (22003): Out of range value for column &#x27;d2&#x27; at row 1<br><br><br>#创建表格<br>create table t_decimal(<br>	d1 decimal,  #没有指定(M,D)默认是(10,0)<br>	d2 decimal(5,2)<br>);<br><br><br>#查看表结构<br>desc t_decimal;<br>mysql&gt; desc t_decimal;<br>+-------+---------------+------+-----+---------+-------+<br>| Field | Type          | Null | Key | Default | Extra |<br>+-------+---------------+------+-----+---------+-------+<br>| d1    | decimal(10,0) | YES  |     | NULL    |       |<br>| d2    | decimal(5,2)  | YES  |     | NULL    |       |<br>+-------+---------------+------+-----+---------+-------+<br>2 rows in set (0.01 sec)<br><br>#添加数据<br>insert into t_decimal values(2.5,2.5);<br><br>#查看数据<br>select * from t_decimal;<br>mysql&gt; select * from t_decimal;<br>+------+------+<br>| d1   | d2   |<br>+------+------+<br>|    3 | 2.50 |  #d1字段小数点后截断<br>+------+------+<br>1 row in set (0.00 sec)<br><br>insert into t_decimal values(12852.5526,12852.5526);<br><br>把小数赋值给整数类型的字段时，会截断小数部分，考虑四舍五入<br>insert into t_int2 values(1.5,1.5);<br></code></pre></td></tr></table></figure>
 
 
@@ -1289,8 +1389,20 @@
 <h2 id="11-2-字符串类型"><a href="#11-2-字符串类型" class="headerlink" title="11.2 字符串类型"></a>11.2 字符串类型</h2><p>MySQL的字符串类型有CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM、SET等。MySQL的字符串类型可以用来存储文本字符串数据，还可以存储二进制字符串。</p>
 <p>文本字符串类型：</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-547156.png" srcset="/img/loading.gif" lazyload alt="image-20211127210547156"></p>
+<!--
+
+![image-20211127210547156](image-547156.png)
+
+-->
+
 <p>二进制字符串类型：</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-8685.png" srcset="/img/loading.gif" lazyload alt="image-20211127210608685"></p>
+<!--
+
+![image-20211127210608685](image-8685.png)
+
+-->
+
 <h3 id="1、char和varchar"><a href="#1、char和varchar" class="headerlink" title="1、char和varchar"></a>1、char和varchar</h3><p>CHAR(M)为固定长度的字符串， M表示最多能存储的字符数，取值范围是0~255个字符，如果未指定(M)表示只能存储1个字符。例如CHAR(4)定义了一个固定长度的字符串列，其包含的字符个数最大为4，如果存储的值少于4个字符，右侧将用空格填充以达到指定的长度，当查询显示CHAR值时，尾部的空格将被删掉。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table temp(<br>	c1 char,<br>    c2 char(3)<br>);<br></code></pre></td></tr></table></figure>
 
@@ -1306,6 +1418,12 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop table temp;<br>create table temp(<br>	name varchar(65535)<br>);<br>#ERROR 1074 (42000): Column length too big for column &#x27;name&#x27; (max = 21845); use BLOB or TEXT instead<br>因为当前的表是UTF8，一个汉字占3个字节<br></code></pre></td></tr></table></figure>
 
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-6463.png" srcset="/img/loading.gif" lazyload alt="image-20211127210826463"></p>
+<!--
+
+![image-20211127210826463](image-6463.png)
+
+-->
+
 <p>例如，身份证号、手机号码、QQ号、用户名username、密码password、银行卡号等固定长度的文本字符串适合使用CHAR类型，而评论、朋友圈、微博不定长度的文本字符串更适合使用VARCHAR类型。</p>
 <p>另外，存储引擎对于选择CHAR和VARCHAR是有影响的。</p>
 <ul>
@@ -1317,8 +1435,20 @@
 <p>字段名 SET（‘值1’，‘值2’，…‘值n’）</p>
 <p>ENUM类型的字段在赋值时，只能在指定的枚举列表中取值，而且一次只能取一个。枚举列表最多可以有65535个成员。ENUM值在内部用整数表示，每个枚举值均有一个索引值， MySQL存储的就是这个索引编号。例如，定义ENUM类型的列(‘first’, ‘second’, ‘third’)。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-43925.png" srcset="/img/loading.gif" lazyload alt="image-20211127211743925"></p>
+<!--
+
+![image-20211127211743925](image-43925.png)
+
+-->
+
 <p>SET类型的字段在赋值时，可从定义的值列表中选择1个或多个值的组合。SET列最多可以有64个成员。SET值在内部也用整数表示，分别是1，2，4，8……，都是2的n次方值，因为这些整数值对应的二进制都是只有1位是1，其余是0。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-889.png" srcset="/img/loading.gif" lazyload alt="image-20211127211806889"></p>
+<!--
+
+![image-20211127211806889](image-889.png)
+
+-->
+
 <p>演示枚举类型：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table temp(<br>	gender enum(&#x27;男&#x27;,&#x27;女&#x27;),<br>    hobby set(&#x27;睡觉&#x27;,&#x27;打游戏&#x27;,&#x27;泡妞&#x27;,&#x27;写代码&#x27;)<br>);<br></code></pre></td></tr></table></figure>
 
@@ -1343,14 +1473,44 @@
 </ul>
 <p>（1）此时在sqlyog客户端查看“t_binary”的数据，发现乱码。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-9215.png" srcset="/img/loading.gif" lazyload alt="image-20211129113339215"></p>
+<!--
+
+![image-20211129113339215](MySQL8.0_SQL笔记/image-9215.png)
+
+-->
+
 <p>因为命令行客户端的编码默认是GBK，而服务器端t_binary表的编码是“utf8mb4”，如果是binary等这种二进制字符串的话，客户端传给服务器端的字符编码的二进制（基于GBK编码的），服务器接收后是“原样”存储，不转码的，所以表格中存储的是“尚硅谷”基于GBK编码的二进制值，在可视化工具中（UTF8编码）显示不了。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-8420.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-8420.png)
+
+-->
+
 <p>如果是char和varchar类型等这种文本字符串的话，客户端传给服务器端的字符编码的二进制（基于GBK编码的），并且会把编码方式一并告诉服务器端，服务器接收后会进行转码，存储为utf8的二进制值。例如：t_char表显示正常。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-0653.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-0653.png)
+
+-->
+
 <p>（2）当我们在可视化工具中，在t_binary表中添加“尚硅谷”时，“尚硅谷”以utf8mb4编码处理，一个汉字是3个字节，“尚硅谷”就有9个字节，而b2和b3最多能存6个字节。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-7292.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](MySQL8.0_SQL笔记/image-7292.png)
+
+-->
+
 <p>当我们在可视化工具中，在t_binary表中添加“尚硅”时，“尚硅”以utf8mb4编码处理，一个汉字是3个字节，“尚硅”就有6个字节。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-1993.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-1993.png)
+
+-->
+
 <p>在命令行客户端，在t_binary表中添加“尚硅”时，“尚硅”以GBK编码处理，一个汉字是2个字节，“尚硅”就有4个字节。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">#添加数据<br>insert into t_binary<br><span class="hljs-title function_">values</span><span class="hljs-params">(<span class="hljs-string">&#x27;a&#x27;</span>,<span class="hljs-string">&#x27;尚硅&#x27;</span>,<span class="hljs-string">&#x27;尚硅&#x27;</span>)</span>;<br></code></pre></td></tr></table></figure>
 
@@ -1371,16 +1531,52 @@
 <p>BLOB类型的数据支持存储图片等数据。存储图片等数据需要借助图形界面工具来实现，下面以SQLyog图形界面工具为例演示操作步骤。</p>
 <p>第1步，选择“t_blob_text”数据表，双击要编辑的BLOB类型的字段b单元格</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-4497.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-4497.png)
+
+-->
+
 <p>第2步，选择“从文件导入”按钮，打开“Open File”对话框，选择图片文件。默认情况下“从文件导入”按钮不可用，去掉“设置为空”前面的对勾，就可以了.</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-8441.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-8441.png)
+
+-->
+
 <p>第3步，导入图片成功，</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-3606.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-3606.png)
+
+-->
+
 <p>注意， BLOB类型的数据除了受到类型本身大小的限制外，还会受到服务器端“max_allowed_packet”变量值限定的字节值大小限制。如果从客户端给服务器端上传的BLOB数据大小超过该值时会报错。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-8862.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-8862.png)
+
+-->
+
 <p>如果确实需要上传并存储更大的图片，可以停止MySQL服务并修改my.ini配置文件的“max_allowed_packet”值大小来解决这个问题，例如将“max_allowed_packet”的默认值4M修改为“max_allowed_packet&#x3D;16M”</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-3824.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-3824.png)
+
+-->
+
 <p>如果图片大小超过blob类型，还需要修改字段的数据类型为mediumblob或longblob类型。</p>
 <h2 id="11-3-日期时间类型"><a href="#11-3-日期时间类型" class="headerlink" title="11.3 日期时间类型"></a>11.3 日期时间类型</h2><p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-7635.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-7635.png)
+
+-->
+
 <ul>
 <li>如果仅仅是表示年份信息，可以只使用YEAR类型，这样更节省空间，格式为“YYYY”，例如“2022”。YEAR允许的值范围是1901<del>2155。YEAR还有格式为“YY”2位数字的形式，值是00</del>69，表示2000<del>2069年，值是70</del>99，表示1970~1999年，从MySQL5.5.27开始，2位格式的YEAR已经不推荐使用。YEAR默认格式就是“YYYY”，没必要写成YEAR(4)，从MySQL 8.0.19开始，不推荐使用指定显示宽度的YEAR(4)数据类型。这个0年，如果是以整数的0添加的话，那么是0000年，如果是以日期&#x2F;字符串的’0’添加的话，是2000年。</li>
 <li>如果要表示年月日，可以使用DATE类型，格式为“YYYY-MM-DD”，例如“2022-02-04”。</li>
@@ -1413,6 +1609,14 @@
 <p>MySQL中使用Geometry（几何）来表示所有地理特征。Geometry指一个点或点的集合，代表世界上任何具有位置的事物。MySQL的空间数据类型（Spatial Data Type）对应于OpenGIS类，包括GEOMETRY、POINT、LINESTRING、POLYGON等单值类型以及MULTIPOINT、MULTILINESTRING、MULTIPOLYGON、GEOMETRYCOLLECTION存放不同几何值的集合类型。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-1863.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-3697.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-1863.png)
+
+![](/MySQL8.0_SQL笔记/image-3697.png)
+
+-->
+
 <h1 id="第12章-DDL"><a href="#第12章-DDL" class="headerlink" title="第12章 DDL"></a>第12章 DDL</h1><p>虽说图形界面工具可以直接创建库、创建表、修改库和表的结构，但是如果批量修改，还是编写DDL语句的脚本，执行脚本更快更方便。</p>
 <h2 id="12-1-和数据库相关的"><a href="#12-1-和数据库相关的" class="headerlink" title="12.1 和数据库相关的"></a>12.1 和数据库相关的</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database 数据库名;<br></code></pre></td></tr></table></figure>
 
@@ -1833,6 +2037,18 @@
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-64.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-841.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-23256.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20211202002655521](/MySQL8.0_SQL笔记/image-5521.png)
+
+![](/MySQL8.0_SQL笔记/image-64.png)
+
+![](/MySQL8.0_SQL笔记/image-841.png)
+
+![](/MySQL8.0_SQL笔记/image-23256.png)
+
+-->
+
 <h1 id="第16章-用户管理"><a href="#第16章-用户管理" class="headerlink" title="第16章 用户管理"></a>第16章 用户管理</h1><h2 id="16-1-用户管理的目标"><a href="#16-1-用户管理的目标" class="headerlink" title="16.1 用户管理的目标"></a>16.1 用户管理的目标</h2><p>1、登录验证：主机IP地址+用户名+密码三重验证</p>
 <p>IP地址可以是一个明确的IP（例如：192.168.1.25），可以是某个IP段（例如：192.168.1.%)，可以是任意IP地址（%)。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql -h mysql服务器的IP地址 -P端口号 -u用户名 -p<br>Enter password: ******<br></code></pre></td></tr></table></figure>
@@ -1843,6 +2059,12 @@
 
 <p>因为mysql服务器不在192.168.31.23上。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20211201195333403.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-20211201195333403.png)
+
+-->
+
 <p>刚才创建了一个用户：</p>
 <p>用户名：yan，主机：192.168.31.%，表示可以从192.168.31段的其他客户端都可以连接到192.168.31.152机器上的mysql服务。</p>
 <p>用户名：lin，主机：%，表示可以从任意一台主机的客户端都可以连接到192.168.31.152机器上的mysql服务。</p>
@@ -1858,17 +2080,57 @@
 <p>对用户的操作进行逐级权限验证，如果上一级有这个权限，下一级就不用验证了。</p>
 <h2 id="16-2-用户管理演示"><a href="#16-2-用户管理演示" class="headerlink" title="16.2  用户管理演示"></a>16.2  用户管理演示</h2><p>当具有权限管理的用户通过SQLyog图形界面工具连接MySQL服务之前，可以按照如下步骤进行用户和权限管理。</p>
 <p>第1步，选择工具栏中的用户管理器工具按钮，打开用户管理界面。</p>
-<p> <img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20211201004001116-173137282902833.png" srcset="/img/loading.gif" lazyload></p>
+<p> <img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-20211201004001116.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+ ![](/MySQL8.0_SQL笔记/image-20211201004001116.png)
+
+-->
+
+
+
 <p>第2步，如果要创建新用户，选择“添加新用户”按钮，弹出新用户信息填写窗口。用户名和主机文本框必须填写，其他项可以不填写，按照默认值处理。如果密码和再一次输入密码框为空，表示密码为空。如果要设置密码必须保证密码框和再一次输入密码框输入相同字符，并在Plugin选择合适的插件“caching_sha2_password”或“mysql_native_password”，默认是“caching_sha2_password”插件。如果需要还可以在下面填写用户资源限制参数，默认值是0表示不限制。</p>
 <p> <img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-4348.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-4348.png)
+
+-->
+
+
+
 <p>​    第3步，如果要修改用户信息，可以直接在“用户”下拉列表中选择用户，然后在右边直接修改用户信息。</p>
 <p> <img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-4021884.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-4021884.png)
+
+-->
+
+
+
 <p>第4步，如果是对已有的用户进行授权操作，或撤销已有用户的授权，可以直接在“用户”下拉列表中选择用户，然后在左下方选择权限等级，右边对应权限打对勾表示授予该项权限，不打对勾表示不授予该项权限。</p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-8884.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-3078.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-38719.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-6096.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/image-4099.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/MySQL8.0_SQL笔记/image-8884.png)
+
+![](/MySQL8.0_SQL笔记/image-3078.png)
+
+![](/MySQL8.0_SQL笔记/image-38719.png)
+
+![](/MySQL8.0_SQL笔记/image-6096.png)
+
+![](image-4099.png)
+
+-->
+
+
+
 <h1 id="第17章-MySQL8的部分新特性"><a href="#第17章-MySQL8的部分新特性" class="headerlink" title="第17章 MySQL8的部分新特性"></a>第17章 MySQL8的部分新特性</h1><h2 id="1、系统表全部为InnoDB表"><a href="#1、系统表全部为InnoDB表" class="headerlink" title="1、系统表全部为InnoDB表"></a>1、系统表全部为InnoDB表</h2><p>从 MySQL 8.0 开始，mysql 系统表和数据字典表使用 InnoDB 存储引擎，存储在 MySQL 数据目录下的 mysql.ibd 表空间文件中。在 MySQL 5.7 之前，这些系统表使用 MyISAM 存储引擎，存储在 mysql 数据库文件目录下各自的表空间文件中。关于数据库存储引擎的详细内容，在MySQL高级课程讲解。</p>
 <p>在MySQL5.7版本中查看系统表类型，结果如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs mysql">mysql&gt; #MySQL5.7<br>mysql&gt; #查看系统表类型<br>mysql&gt; SELECT DISTINCT(ENGINE) FROM information_schema.tables;<br>+----------------------+<br>| ENGINE             		|<br>+----------------------+<br>| MEMORY             		|<br>| InnoDB             		|<br>| MyISAM             		|<br>| CSV                		|<br>| PERFORMANCE_SCHEMA 	|<br>| NULL               		|<br>+----------------------+<br>6 rows in set (0.04 sec)<br></code></pre></td></tr></table></figure>
