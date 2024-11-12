@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/gouwuche.png">
 <meta property="article:published_time" content="2024-11-05T12:44:41.066Z">
-<meta property="article:modified_time" content="2024-11-09T06:53:35.414Z">
+<meta property="article:modified_time" content="2024-11-12T10:21:30.867Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/gouwuche.png">
@@ -290,6 +290,12 @@
 <p>页面效果：</p>
 <img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/1686635045559.png" srcset="/img/loading.gif" lazyload alt style="zoom:67%;">
 
+<!--
+
+<img src="/第3章_购物车/1686635045559.png" srcset="/img/loading.gif" lazyload alt="" style="zoom:67%;" />
+
+-->
+
 
 
 <h2 id="3-2-环境搭建"><a href="#3-2-环境搭建" class="headerlink" title="3.2 环境搭建"></a>3.2 环境搭建</h2><h3 id="3-2-1-新建模块"><a href="#3-2-1-新建模块" class="headerlink" title="3.2.1 新建模块"></a>3.2.1 新建模块</h3><p>在modules模块下新建子模块<code>cart</code></p>
@@ -321,6 +327,11 @@
 <p>加入购物车功能如图所示：</p>
 <img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/add.gif" srcset="/img/loading.gif" lazyload alt style="zoom:67%;">
 
+<!--
+
+<img src="/第3章_购物车/add.gif" srcset="/img/loading.gif" lazyload alt="" style="zoom:67%;" />
+-->
+
 <p><strong>查看接口文档：</strong></p>
 <p>添加购物车接口地址及返回结果</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json">get /cart/addToCart/<span class="hljs-punctuation">&#123;</span>skuId<span class="hljs-punctuation">&#125;</span>/<span class="hljs-punctuation">&#123;</span>skuNum<span class="hljs-punctuation">&#125;</span><br>返回结果：<br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;操作成功&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
@@ -350,6 +361,12 @@
 
 <h2 id="3-4-购物车列表查询"><a href="#3-4-购物车列表查询" class="headerlink" title="3.4 购物车列表查询"></a>3.4 购物车列表查询</h2><h3 id="3-4-1-需求说明"><a href="#3-4-1-需求说明" class="headerlink" title="3.4.1 需求说明"></a>3.4.1 需求说明</h3><p>当用户在商品详情页面点击<strong>购物车</strong>按钮的时候，那么此时就需要将当前登录用户的所对应的所有的购物车数据在购物车页面展出出来。如下图所示，<strong>当商品价格变化时，页面可以显示实时价格：</strong></p>
 <img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/1709791602866.png" srcset="/img/loading.gif" lazyload alt style="zoom: 67%;">
+
+<!--
+
+<img src="/第3章_购物车/1709791602866.png" srcset="/img/loading.gif" lazyload alt="" style="zoom: 67%;" />
+
+-->
 
 <p><strong>查看接口文档：</strong></p>
 <p>购物车列表接口地址及返回结果</p>
@@ -390,6 +407,12 @@
 <h2 id="3-5-删除购物车商品"><a href="#3-5-删除购物车商品" class="headerlink" title="3.5 删除购物车商品"></a>3.5 删除购物车商品</h2><h3 id="3-5-1-需求说明"><a href="#3-5-1-需求说明" class="headerlink" title="3.5.1 需求说明"></a>3.5.1 需求说明</h3><p>删除功能如图所示：</p>
 <img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/delete.gif" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
 
+<!--
+
+<img src="/第3章_购物车/delete.gif" srcset="/img/loading.gif" lazyload alt="" style="zoom:67%;" /> 
+
+-->
+
 <p><strong>查看接口文档：</strong></p>
 <p>删除购物车商品接口地址及返回结果</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json">get /cart/deleteCart/<span class="hljs-punctuation">&#123;</span>skuId<span class="hljs-punctuation">&#125;</span><br>返回结果：<br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;操作成功&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
@@ -406,6 +429,12 @@
 
 <h2 id="3-6-更新选中商品状态"><a href="#3-6-更新选中商品状态" class="headerlink" title="3.6 更新选中商品状态"></a>3.6 更新选中商品状态</h2><h3 id="3-6-1-需求说明"><a href="#3-6-1-需求说明" class="headerlink" title="3.6.1 需求说明"></a>3.6.1 需求说明</h3><p>更新选中商品状态功能如图所示：</p>
 <img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/check.gif" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
+
+<!--
+
+<img src="/第3章_购物车/check.gif" srcset="/img/loading.gif" lazyload alt="" style="zoom:67%;" /> 
+
+-->
 
 <p><strong>查看接口文档：</strong></p>
 <p>更新选中商品状态接口地址及返回结果</p>
@@ -424,6 +453,12 @@
 <h2 id="3-7-完成购物车商品的全选"><a href="#3-7-完成购物车商品的全选" class="headerlink" title="3.7 完成购物车商品的全选"></a>3.7 完成购物车商品的全选</h2><h3 id="3-7-1-需求说明"><a href="#3-7-1-需求说明" class="headerlink" title="3.7.1 需求说明"></a>3.7.1 需求说明</h3><p>更新购物车商品全部选中状态功能如图所示：</p>
 <img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/checkAll.gif" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
 
+<!--
+
+<img src="/第3章_购物车/checkAll.gif" srcset="/img/loading.gif" lazyload alt="" style="zoom:67%;" /> 
+
+-->
+
 <p><strong>查看接口文档：</strong></p>
 <p>更新购物车商品全部选中状态接口地址及返回结果</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs json">get /cart/allCheckCart/<span class="hljs-punctuation">&#123;</span>isChecked<span class="hljs-punctuation">&#125;</span><br>返回结果：<br><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;msg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;操作成功&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;code&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">200</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
@@ -440,6 +475,12 @@
 
 <h2 id="3-8-清空购物车"><a href="#3-8-清空购物车" class="headerlink" title="3.8 清空购物车"></a>3.8 清空购物车</h2><h3 id="3-8-1-需求说明"><a href="#3-8-1-需求说明" class="headerlink" title="3.8.1 需求说明"></a>3.8.1 需求说明</h3><p>清空购物车功能如图所示：</p>
 <img src="/2024/11/05/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC3%E7%AB%A0_%E8%B4%AD%E7%89%A9%E8%BD%A6/clear.gif" srcset="/img/loading.gif" lazyload alt style="zoom:67%;"> 
+
+<!--
+
+<img src="/第3章_购物车/clear.gif" srcset="/img/loading.gif" lazyload alt="" style="zoom:67%;" /> 
+
+-->
 
 <p><strong>查看接口文档：</strong></p>
 <p>清空购物车接口地址及返回结果</p>
