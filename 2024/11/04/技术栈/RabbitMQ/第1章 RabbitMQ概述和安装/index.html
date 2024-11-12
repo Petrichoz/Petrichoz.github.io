@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/rabbitmq.png">
 <meta property="article:published_time" content="2024-11-04T03:24:02.671Z">
-<meta property="article:modified_time" content="2024-11-05T13:28:45.248Z">
+<meta property="article:modified_time" content="2024-11-12T11:06:38.731Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/rabbitmq.png">
@@ -283,6 +283,12 @@
 <h2 id="2-什么是消息中间件"><a href="#2-什么是消息中间件" class="headerlink" title="2 什么是消息中间件"></a>2 什么是消息中间件</h2><p>MQ全称为<strong>Message Queue</strong>， 消息队列(MQ)是一种应用程序对应用程序的通信方法。</p>
 <p>介绍：消息队列就是基础数据结构中的“先进先出”的一种数据机构。想一下，生活中买东西，需要排队，先排的人先买消费，就是典型的“先进先出”。</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-9860.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-9860.png)
+
+-->
+
 <p><strong>消息传递：</strong>指的是程序之间通过消息发送数据进行通信，而不是通过直接调用彼此来通信，直接调用通常是用于诸如远程过程调用的技术。</p>
 <p><strong>排队：</strong>指的是应用程序通过队列来通信。</p>
 <p><strong>业务场景说明：</strong></p>
@@ -301,10 +307,22 @@
 <li>用户下单，需要保存订单，更新购物车，更新库存，还要更新积分，如果在操作过程中，有任何一个环节失败了，最终会导致操作失败，返回错误信息</li>
 </ul>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-8298.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-8298.png)
+
+-->
+
 <ul>
 <li>而采用消息队列方式，可以很好的解决耦合度过高问题</li>
 </ul>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-8001.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-8001.png)
+
+-->
+
 <h3 id="3-2-异步处理"><a href="#3-2-异步处理" class="headerlink" title="3.2 异步处理"></a>3.2 异步处理</h3><p>场景说明：用户注册后，需要发注册邮件和注册短信，传统的做法有两种</p>
 <ul>
 <li><p>串行的方式</p>
@@ -315,12 +333,30 @@
 <p><strong>(1)</strong> <strong>串行方式：</strong></p>
 <p>将注册信息写入数据库后，发送注册邮件，再发送注册短信，以上三个任务全部完成后才返回给客户端。 这有一个问题是，邮件，短信并不是必须的，它只是一个通知，而这种做法让客户端等待没有必要等待的东西。</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/wps1.jpg" srcset="/img/loading.gif" lazyload> </p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/wps1.jpg) 
+
+-->
+
 <p><strong>(2)</strong> <strong>并行方式：</strong></p>
 <p>将注册信息写入数据库后，发送邮件的同时，发送短信，以上三个任务完成后，返回给客户端，并行的方式能提高处理的时间。</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/wps2.jpg" srcset="/img/loading.gif" lazyload> </p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/wps2.jpg) 
+
+-->
+
 <p>假设三个业务节点分别使用50ms，串行方式使用时间150ms，并行使用时间100ms。虽然并行已经提高了处理时间，但是，前面说过，邮件和短信对我正常的使用网站没有任何影响，客户端没有必要等着其发送完成才显示注册成功，应该是写入数据库后就返回.</p>
 <p><strong>(3)消息队列</strong><br>引入消息队列后，把发送邮件，短信不是必须的业务逻辑异步处理</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/wps3.jpg" srcset="/img/loading.gif" lazyload> </p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/wps3.jpg) 
+
+-->
+
 <p>由此可以看出，引入消息队列后，用户的响应时间就等于写入数据库的时间+写入消息队列的时间(可以忽略不计)，</p>
 <p>引入消息队列后处理后，响应时间是串行的3分之1，是并行的2分之1。</p>
 <p><strong>传统模式的缺点：</strong></p>
@@ -332,11 +368,23 @@
 <p><strong>传统模式</strong></p>
 <p>如订单系统，在下单的时候就会往数据库写数据。但是数据库只能支撑每秒1000左右的并发写入，并发量再高就容易宕机。低峰期的时候并发也就100多个，但是在高峰期时候，并发量会突然激增到5000以上，这个时候数据库肯定卡死了。</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/wps4.jpg" srcset="/img/loading.gif" lazyload> </p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/wps4.jpg) 
+
+-->
+
 <p><strong>传统模式的缺点：</strong></p>
 <p>· 并发量大的时候，所有的请求直接怼到数据库，造成数据库连接异常</p>
 <p><strong>中间件模式：</strong></p>
 <p>消息被MQ保存起来了，然后系统就可以按照自己的消费能力来消费，比如每秒1000个数据，这样慢慢写入数据库，这样就不会卡死数据库了。</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/wps5.jpg" srcset="/img/loading.gif" lazyload> </p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/wps5.jpg) 
+
+-->
+
 <p><strong>中间件模式的的优点：</strong></p>
 <p>系统A慢慢按照数据库能处理的并发量，从消息队列中拉取消息。在生产中，这个短暂的高峰期积压是允许的。</p>
 <p><strong>流量削峰也叫做削峰填谷</strong></p>
@@ -354,6 +402,14 @@
 <p>· RocketMQ：基于JMS，阿里巴巴产品</p>
 <p>· Kafka：类似MQ的产品；分布式消息系统，高吞吐量</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-3981.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-3981.png)
+
+-->
+
+
+
 <h2 id="6-RabbitMQ介绍"><a href="#6-RabbitMQ介绍" class="headerlink" title="6 RabbitMQ介绍"></a>6 RabbitMQ介绍</h2><h3 id="6-1-简介"><a href="#6-1-简介" class="headerlink" title="6.1 简介"></a>6.1 简介</h3><p>RabbitMQ是由erlang语言开发，基于AMQP（Advanced Message Queue 高级消息队列协议）协议实现的消息队列，它是一种应用程序之间的通信方法，消息队列在分布式系统开发中应用非常广泛。</p>
 <p>AMQP，即 Advanced Message Queuing Protocol（高级消息队列协议），是一个网络协议，是应用层协议的一个开放标准，为面向消息的中间件设计。基于此协议的客户端与消息中间件可传递消息，并不受客户端&#x2F;中间件不同产品，不同的开发语言等条件的限制。2006年，AMQP 规范发布。类比HTTP。 </p>
 <p>2007年，Rabbit 技术公司基于 AMQP 标准开发的 RabbitMQ 1.0 发布。RabbitMQ 采用 Erlang 语言开发。Erlang 语言由 Ericson 设计，专门为开发高并发和分布式系统的一种语言，在电信领域使用广泛。</p>
@@ -362,10 +418,26 @@
 <p>官网对应模式介绍：<a target="_blank" rel="noopener" href="https://www.rabbitmq.com/getstarted.html">https://www.rabbitmq.com/getstarted.html</a> </p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-2095.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-2986.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-2095.png)
+
+![](/第1章 RabbitMQ概述和安装/image-2986.png)
+
+-->
+
+
+
 <h3 id="6-2-RabbitMQ基础架构"><a href="#6-2-RabbitMQ基础架构" class="headerlink" title="6.2 RabbitMQ基础架构"></a>6.2 RabbitMQ基础架构</h3><ul>
 <li><strong>基础架构图</strong></li>
 </ul>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-4889.png" srcset="/img/loading.gif" lazyload> </p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-4889.png) 
+
+-->
+
 <ul>
 <li><strong>RabbitMQ相关概念</strong></li>
 </ul>
@@ -382,12 +454,40 @@
 
 <h2 id="2-验证"><a href="#2-验证" class="headerlink" title="2 验证"></a>2 验证</h2><p>访问后台管理界面：<a target="_blank" rel="noopener" href="http://192.168.200.100:15672/">http://192.168.200.100:15672</a></p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-2610.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-2610.png)
+
+-->
+
+
+
 <p>使用上面创建Docker容器时指定的默认用户名、密码登录：</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-3997.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-6743.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-3997.png)
+
+
+
+![](/第1章 RabbitMQ概述和安装/image-6743.png)
+
+-->
+
+
+
 <h2 id="3-可能的问题1：Docker升级"><a href="#3-可能的问题1：Docker升级" class="headerlink" title="3 可能的问题1：Docker升级"></a>3 可能的问题1：Docker升级</h2><h3 id="3-1-问题现象"><a href="#3-1-问题现象" class="headerlink" title="3.1 问题现象"></a>3.1 问题现象</h3><p>在使用Docker拉取RabbitMQ镜像的时候，如果遇到提示：missing signature key，那就说明Docker版本太低了，需要升级</p>
 <p>比如我目前的Docker版本如下图所示：</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-5299.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-5299.png)
+
+-->
+
+
+
 <h3 id="3-2-解决办法"><a href="#3-2-解决办法" class="headerlink" title="3.2 解决办法"></a>3.2 解决办法</h3><blockquote>
 <p>基于CentOS7</p>
 </blockquote>
@@ -416,7 +516,23 @@
 
 <h3 id="3-3-验证"><a href="#3-3-验证" class="headerlink" title="3.3 验证"></a>3.3 验证</h3><p>上述操作执行完成后，再次查看Docker版本：</p>
 <p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-8105.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-8105.png)
+
+-->
+
+
+
 <h2 id="4-可能的问题：拉取镜像失败"><a href="#4-可能的问题：拉取镜像失败" class="headerlink" title="4 可能的问题：拉取镜像失败"></a>4 可能的问题：拉取镜像失败</h2><h3 id="1、问题现象"><a href="#1、问题现象" class="headerlink" title="1、问题现象"></a>1、问题现象</h3><p><img src="/2024/11/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/image-3339.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![](/第1章 RabbitMQ概述和安装/image-3339.png)
+
+-->
+
+
+
 <h3 id="2、解决办法"><a href="#2、解决办法" class="headerlink" title="2、解决办法"></a>2、解决办法</h3><h4 id="①daemon-json"><a href="#①daemon-json" class="headerlink" title="①daemon.json"></a>①daemon.json</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">新建或修改 docker 守护进程配置文件：daemon.json</span><br>vim /etc/docker/daemon.json<br></code></pre></td></tr></table></figure>
 
 
