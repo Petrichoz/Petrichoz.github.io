@@ -19,23 +19,23 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="MySQL8高级_架构和优化     第01章 Linux下MySQL的安装与使用1、安装1.1、docker安装12345678docker run -d \-p 3309:3306 \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql \-e MYSQL_RO">
+    <meta name="description" content="第01章 Linux下MySQL的安装与使用1、安装1.1、docker安装12345678docker run -d \-p 3309:3306 \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql \-e MYSQL_ROOT_PASSWORD&#x3D;123">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL8高级_架构和优化">
-<meta property="og:url" content="http://example.com/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:title" content="MySQL高级一">
+<meta property="og:url" content="http://example.com/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="MySQL8高级_架构和优化     第01章 Linux下MySQL的安装与使用1、安装1.1、docker安装12345678docker run -d \-p 3309:3306 \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql \-e MYSQL_RO">
+<meta property="og:description" content="第01章 Linux下MySQL的安装与使用1、安装1.1、docker安装12345678docker run -d \-p 3309:3306 \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;conf:&#x2F;etc&#x2F;mysql&#x2F;conf.d \-v &#x2F;atguigu&#x2F;mysql&#x2F;mysql8&#x2F;data:&#x2F;var&#x2F;lib&#x2F;mysql \-e MYSQL_ROOT_PASSWORD&#x3D;123">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/mysql.jpg">
-<meta property="article:published_time" content="2023-04-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-11-15T07:42:30.586Z">
+<meta property="article:published_time" content="2023-04-28T08:35:21.000Z">
+<meta property="article:modified_time" content="2024-11-18T02:51:19.264Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/mysql.jpg">
   
   
   
-  <title>MySQL8高级_架构和优化 - PZ</title>
+  <title>MySQL高级一 - PZ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MySQL8高级_架构和优化"></span>
+            <span id="subtitle" data-typed-text="MySQL高级一"></span>
           
         </div>
 
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-04-21 00:00" pubdate>
-          2023年4月21日 凌晨
+        <time datetime="2023-04-28 16:35" pubdate>
+          2023年4月28日 下午
         </time>
       </span>
     
@@ -272,20 +272,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MySQL8高级_架构和优化</h1>
+            <h1 id="seo-header">MySQL高级一</h1>
             
             
               <div class="markdown-body">
                 
-                <p><code>MySQL8高级_架构和优化</code></p>
-<!--
+                <!--
 
 ![](timg.jpg)
 
 -->
 
 <hr>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/timg.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/timg.jpg" srcset="/img/loading.gif" lazyload></p>
 <h1 id="第01章-Linux下MySQL的安装与使用"><a href="#第01章-Linux下MySQL的安装与使用" class="headerlink" title="第01章 Linux下MySQL的安装与使用"></a>第01章 Linux下MySQL的安装与使用</h1><h2 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h2><h3 id="1-1、docker安装"><a href="#1-1、docker安装" class="headerlink" title="1.1、docker安装"></a>1.1、docker安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -d \<br>-p 3309:3306 \<br>-v /atguigu/mysql/mysql8/conf:/etc/mysql/conf.d \<br>-v /atguigu/mysql/mysql8/data:/var/lib/mysql \<br>-e MYSQL_ROOT_PASSWORD=123456 \<br>--name atguigu-mysql8 \<br>--restart=always \<br>mysql:8.0.30<br></code></pre></td></tr></table></figure>
 
 
@@ -295,7 +294,7 @@
 
 
 <h3 id="1-3、测试远程链接"><a href="#1-3、测试远程链接" class="headerlink" title="1.3、测试远程链接"></a>1.3、测试远程链接</h3><p><strong>测试连接：</strong>MySQL 8 版本，图形连接时还会出现如下问题</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220625232225259.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220625232225259.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220625232225259.png)
@@ -338,7 +337,7 @@
 <p>注意：不建议在开发过程中修改此参数，将会丢失所有数据</p>
 </blockquote>
 <h1 id="第02章-逻辑架构"><a href="#第02章-逻辑架构" class="headerlink" title="第02章 逻辑架构"></a>第02章 逻辑架构</h1><h2 id="1、逻辑架构剖析"><a href="#1、逻辑架构剖析" class="headerlink" title="1、逻辑架构剖析"></a>1、逻辑架构剖析</h2><h3 id="1-1、服务器处理客户端请求"><a href="#1-1、服务器处理客户端请求" class="headerlink" title="1.1、服务器处理客户端请求"></a>1.1、服务器处理客户端请求</h3><p>下面是MySQL5.7使用的<code>经典架构图</code>，MySQL 8中去掉了Caches&amp;Buffers部分：</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/b7a8eb46-1168-434c-b63b-ec775affab7b.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/b7a8eb46-1168-434c-b63b-ec775affab7b.jpg" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/b7a8eb46-1168-434c-b63b-ec775affab7b.jpg)
@@ -374,7 +373,7 @@
 </li>
 </ul>
 <p>典型的解析树如下：</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702002430362.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702002430362.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220702002430362.png)
@@ -401,7 +400,7 @@
 </ul>
 <h4 id="第3层：引擎层"><a href="#第3层：引擎层" class="headerlink" title="第3层：引擎层"></a><strong>第3层：引擎层</strong></h4><p>存储引擎层（ Storage Engines），<code>负责MySQL中数据的存储和提取，对物理服务器级别维护的底层数据执行操作，服务器通过API与存储引擎进行通信</code>。不同的存储引擎具有的功能不同，管理的表有不同的存储结构，采用的存取算法也不同，这样我们可以根据自己的实际需要进行选取。例如MyISAM引擎和InnoDB引擎。</p>
 <h3 id="1-4、存储层"><a href="#1-4、存储层" class="headerlink" title="1.4、存储层"></a>1.4、存储层</h3><p>所有的数据、数据库、表的定义、表的每一行的内容、索引，都是存在<code>文件系统</code> 上，以文件的方式存在，并完成与存储引擎的交互。</p>
-<h3 id="1-5、查询流程说明"><a href="#1-5、查询流程说明" class="headerlink" title="1.5、查询流程说明"></a>1.5、查询流程说明</h3><p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220914161040788.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="1-5、查询流程说明"><a href="#1-5、查询流程说明" class="headerlink" title="1.5、查询流程说明"></a>1.5、查询流程说明</h3><p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220914161040788.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220914161040788.png)
@@ -420,7 +419,7 @@
 <p>确认profiling是否开启</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%profiling%&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702072007905.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702072007905.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220702072007905.png)
@@ -430,7 +429,7 @@
 <p>profiling&#x3D;0 代表关闭，我们需要把 profiling 打开，即设置为 1：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SET</span> profiling <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;  <span class="hljs-comment">-- profiling = ON</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702073213225.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702073213225.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220702073213225.png)
@@ -446,7 +445,7 @@
 <p>显示最近的几次查询：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> PROFILES;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702074559798.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702074559798.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220702074559798.png)
@@ -459,7 +458,7 @@
 <p><strong>查看最后一个SQL的执行流程：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> PROFILE;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702080919952.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702080919952.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220702080919952.png)
@@ -474,7 +473,7 @@
 <p><strong>查询更丰富的内容：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> PROFILE cpu,block io <span class="hljs-keyword">FOR</span> QUERY <span class="hljs-number">3</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702080407463.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220702080407463.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220702080407463.png)
@@ -519,7 +518,7 @@
 <ul>
 <li>第一次执行查询SQL：</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703162615147.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703162615147.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220703162615147.png)
@@ -531,7 +530,7 @@
 <ul>
 <li>第二次执行相同的SQL：</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703162803963.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703162803963.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220703162803963.png)
@@ -546,7 +545,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> ENGINES;<br></code></pre></td></tr></table></figure>
 
 <p>下面的结果表示MySQL中默认使用的存储引擎是InnoDB，支持事务，行锁，外键，支持分布式事务(XA)，支持保存点(回滚)</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703164220030.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703164220030.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220703164220030.png)
@@ -558,7 +557,7 @@
 <p>也可以通过以下语句查看默认的存储引擎：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%default_storage_engine%&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703170334348.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220703170334348.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220703170334348.png)
@@ -676,7 +675,7 @@
 
 
 
-<h2 id="2、常见七种JOIN查询"><a href="#2、常见七种JOIN查询" class="headerlink" title="2、常见七种JOIN查询"></a>2、常见七种JOIN查询</h2><p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/af2eb76c-a503-4845-8fd4-3f7cd3441831.jpg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="2、常见七种JOIN查询"><a href="#2、常见七种JOIN查询" class="headerlink" title="2、常见七种JOIN查询"></a>2、常见七种JOIN查询</h2><p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/af2eb76c-a503-4845-8fd4-3f7cd3441831.jpg" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/af2eb76c-a503-4845-8fd4-3f7cd3441831.jpg)
@@ -772,7 +771,7 @@
 <h1 id="第04章-MySQL索引"><a href="#第04章-MySQL索引" class="headerlink" title="第04章 MySQL索引"></a>第04章 MySQL索引</h1><h2 id="1、索引简介"><a href="#1、索引简介" class="headerlink" title="1、索引简介"></a>1、索引简介</h2><h3 id="1-1、什么是索引☆"><a href="#1-1、什么是索引☆" class="headerlink" title="1.1、什么是索引☆"></a>1.1、什么是索引<strong>☆</strong></h3><p>MySQL官方对索引的定义为：<strong>索引（Index）是帮助MySQL高效获取数据的数据结构。</strong><br><strong>索引的本质：</strong>索引是数据结构。你可以简单理解为<code>“排好序的快速查找数据结构”</code>。这些数据结构以某种方式指向数据， 可以在这些数据结构的基础上实现高级查找算法 。</p>
 <h3 id="1-2、索引的优缺点☆"><a href="#1-2、索引的优缺点☆" class="headerlink" title="1.2、索引的优缺点☆"></a>1.2、索引的优缺点<strong>☆</strong></h3><p><strong>优点：</strong></p>
 <p>（1）<code>提高数据检索的效率，降低数据库的IO成本</code><br>（2）保证表中每条记录的<code>唯一性</code> 。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220704024203535.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220704024203535.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220704024203535.png)
@@ -789,10 +788,10 @@
 </ul>
 <h2 id="2、树"><a href="#2、树" class="headerlink" title="2、树"></a>2、树</h2><h3 id="2-1、二叉树"><a href="#2-1、二叉树" class="headerlink" title="2.1、二叉树"></a>2.1、二叉树</h3><p><strong>二叉树</strong></p>
 <p>树有很多种，每个节点<code>最多</code>只能有<code>两个子节点</code>的一种形式称为二叉树。二叉树的子节点分为左节点和右节点。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220805121226057-1665643436299.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220805121226057.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220805121226057-1665643436299.png)
+![](MySQL8高级-架构和优化/image-20220805121226057.png)
 
 -->
 
@@ -801,10 +800,10 @@
 <p><strong>二叉搜索树BST</strong></p>
 <p><code>BST(Binary Sort(Search) Tree)：</code>对于二叉排序树的任何一个非叶子节点，要求左子节点的值比当前节点的值小，右子节点的值比当前节点的值大。</p>
 <p><code>特别说明：</code>如果有相同的值，可以将该节点放在左子节点或右子节点。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708231318868-1665643436299.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708231318868.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220708231318868-1665643436299.png)
+![](MySQL8高级-架构和优化/image-20220708231318868.png)
 
 -->
 
@@ -813,20 +812,20 @@
 <ul>
 <li>左边是数据表，一共有两列七条记录，最左边的是数据记录的物理地址：</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220704025815748-1665643436299.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220704025815748.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220704025815748-1665643436299.png)
+![](MySQL8高级-架构和优化/image-20220704025815748.png)
 
 -->
 
 <ul>
 <li>为了加快Col2的查找，可以维护一个右边所示的二叉查找树，每个节点分别包含索引键值和一个指向对应数据记录物理地址的指针，这样就可以运用二叉查找获取到相应数据，从而快速的检索出符合条件的记录：</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220704025257848-1665643436299.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220704025257848.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220704025257848-1665643436299.png)
+![](MySQL8高级-架构和优化/image-20220704025257848.png)
 
 -->
 
@@ -837,10 +836,10 @@
 <li>上面演示的实际上是一个特殊的<code>二叉搜索树</code>，叫做<code>平衡 二叉搜索树</code>，  如果二叉树不平衡，例如左子树全部为空，从形式上看，更像一个单链表，不能发挥BST的优势。</li>
 <li><code>解决方案：平衡二叉树(AVL)</code></li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708231622916-1665643436299.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708231622916.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220708231622916-1665643436299.png)
+![](MySQL8高级-架构和优化/image-20220708231622916.png)
 
 -->
 
@@ -854,28 +853,28 @@
 <li>它是一棵空树或它的左右两个子树的高度差的绝对值不超过1</li>
 <li>并且左右两个子树都是一棵平衡二叉树。</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708235509010-1665643436299.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708235509010.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220708235509010-1665643436299.png)
+![](MySQL8高级-架构和优化/image-20220708235509010.png)
 
 -->
 
 <p>AVL的生成演示：<a target="_blank" rel="noopener" href="https://www.cs.usfca.edu/~galles/visualization/AVLtree.html">https://www.cs.usfca.edu/~galles/visualization/AVLtree.html</a></p>
 <p><strong>AVL的问题</strong></p>
 <p>众所周知，IO操作的效率很低，在大量数据存储中，查询时我们不能一下子将所有数据加载到内存中，只能逐节点加载（一个节点一次IO）。如果我们利用二叉树作为索引结构，<code>那么磁盘的IO次数和索引树的高度是相关的</code>。平衡二叉树由于树深度过大而造成磁盘IO读写过于频繁，进而导致效率低下。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708233351509-1665643436300.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708233351509.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220708233351509-1665643436300.png)
+![](MySQL8高级-架构和优化/image-20220708233351509.png)
 
 -->
 
 <p>为了提高查询效率，就需要 减少磁盘IO数 。<code>为了减少磁盘IO的次数，就需要尽量降低树的高度</code> ，需要把原来“瘦高”的树结构变的“矮胖”，树的每层的分叉越多越好。针对同样的数据，如果我们把二叉树改成 三叉树：</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708235725124-1665643436300.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220708235725124.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220708235725124-1665643436300.png)
+![](MySQL8高级-架构和优化/image-20220708235725124.png)
 
 -->
 
@@ -884,10 +883,10 @@
 <li><code>B-Tree即B树，Balance Tree，平衡树,B树就是典型的多叉树，它的高度远小于平衡二叉树的高度</code>。</li>
 <li><code>B树的阶：</code>节点的最多子节点个数。</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709054736482-1665643436300.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709054736482.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220709054736482-1665643436300.png)
+![](MySQL8高级-架构和优化/image-20220709054736482.png)
 
 -->
 
@@ -902,10 +901,10 @@
 <p><strong>再举例：</strong></p>
 <p><code>假设</code>使用B树作为索引结构，存放MySQL中的数据：</p>
 <p><code>蓝色</code>部分表示数据的主键，<code>黄色</code>部分表示除主键外的其他数据，<code>紫色</code>部分表示指向子节点的指针</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709075255638-1665643436300.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709075255638.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
-![](MySQL8高级-架构和优化/image-20220709075255638-1665643436300.png)
+![](MySQL8高级-架构和优化/image-20220709075255638.png)
 
 -->
 
@@ -917,7 +916,7 @@
 
 
 <p>index_demo表的简化的行格式示意图如下：</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709071958145.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709071958145.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709071958145.png)
@@ -932,7 +931,7 @@
 <li><code>各个列的值：</code>这里只记录在 index_demo 表中的三个列，分别是 c1 、 c2 和 c3 。</li>
 </ul>
 <p>把一些记录放到页里的示意图就是<code>（这里一页就是一个磁盘块，代表一次IO）</code>：</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709072138395.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709072138395.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709072138395.png)
@@ -944,7 +943,7 @@
 <p><code>MySQL InnoDB的默认的页大小是16KB</code>：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 查看默认页的大小</span><br><span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">GLOBAL</span> STATUS <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;Innodb_page_size&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711220407169.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711220407169.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220711220407169.png)
@@ -958,7 +957,7 @@
 <li><code>下一个数据页中用户记录的主键值必须大于上一个页中用户记录的主键值</code></li>
 <li>给所有的页建立目录项</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709073749310.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709073749310.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709073749310.png)
@@ -972,7 +971,7 @@
 </ol>
 <p>至此，针对数据页做的简易目录就搞定了。这个目录有一个别名，称为<code>索引</code> 。 </p>
 <h4 id="3-1-2、InnoDB中的索引方案"><a href="#3-1-2、InnoDB中的索引方案" class="headerlink" title="3.1.2、InnoDB中的索引方案"></a>3.1.2、InnoDB中的索引方案</h4><p>我们新分配一个编号为30的页来专门存储<code>目录项记录</code>，页10、28、9、20专门存储<code>用户记录</code>： </p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709074801215.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709074801215.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709074801215.png)
@@ -991,7 +990,7 @@
 </ol>
 <p><strong>更复杂的情况如下：</strong></p>
 <p>我们生成了一个存储更高级目录项的 页33 ，这个页中的两条记录分别代表页30和页32，如果用户记录的主键值在 <code>[1, 320)</code> 之间，则到页30中查找更详细的目录项记录，如果主键值 不小于320 的话，就到页32中查找更详细的目录项记录。<strong>这个数据结构，它的名称是 B+树 。</strong> </p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709080648851.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709080648851.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709080648851.png)
@@ -1052,7 +1051,7 @@
 <h3 id="3-4、非聚簇索引☆"><a href="#3-4、非聚簇索引☆" class="headerlink" title="3.4、非聚簇索引☆"></a>3.4、非聚簇索引<strong>☆</strong></h3><p><strong>（二级索引、辅助索引）</strong></p>
 <p><code>聚簇索引</code>，只能在搜索条件是<code>主键值</code>时才发挥作用，因为B+树中的数据都是按照主键进行排序的，如果我们想以别的列作为搜索条件，那么需要创建<code>非聚簇索引</code>。</p>
 <p><strong>例如，</strong><code>以c2列作为搜索条件</code>，那么需要使<code>用c2列创建一棵B+树</code>，如下所示：</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709130937991.png" srcset="/img/loading.gif" lazyload>&#96;</p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709130937991.png" srcset="/img/loading.gif" lazyload>&#96;</p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709130937991.png)
@@ -1079,7 +1078,7 @@
 <li>在页34和35中<code>定位到具体的记录</code>。</li>
 <li>但是这个B+树的叶子节点<code>只存储了c2和c1（主键）</code>两个列，所以我们必须<code>再根据主键值去聚簇索引中再查找</code>一遍完整的用户记录。</li>
 </ol>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220714101340016.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220714101340016.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220714101340016.png)
@@ -1092,7 +1091,7 @@
 <p>为什么我们还需要一次回表操作呢？直接把完整的用户记录放到叶子节点不OK吗？</p>
 <p><strong>回答：</strong><br>如果把完整的用户记录放到叶子节点是可以不用回表。但是<code>太占地方</code>了，相当于每建立一棵B+树都需要把所有的用户记录再都拷贝一遍，这就有点太浪费存储空间了。</p>
 <p><strong>一张表可以有多个非聚簇索引：</strong></p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709134109900.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709134109900.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709134109900.png)
@@ -1108,7 +1107,7 @@
 <li>B+树叶子节点处的记录由<code>c2列、c3列和主键c1列组成</code></li>
 <li>本质上也是二级索引</li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712002627554.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712002627554.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712002627554.png)
@@ -1125,7 +1124,7 @@
 
 <h3 id="3-7、MyISAM中的索引☆"><a href="#3-7、MyISAM中的索引☆" class="headerlink" title="3.7、MyISAM中的索引☆"></a>3.7、MyISAM中的索引<strong>☆</strong></h3><p>MyISAM引擎使用 B+Tree 作为索引结构，<code>叶子节点的data域存放的是数据记录的地址</code> 。 </p>
 <p>下图是MyISAM索引的原理图<code>（索引和数据分开存储，是非聚簇索引）</code>： </p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709180255597.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709180255597.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709180255597.png)
@@ -1135,7 +1134,7 @@
 
 
 <p>如果我们在Col2上建立一个二级索引，则此索引的结构如下图所示<code>（是非聚簇索引）</code>：</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709180605148.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709180605148.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709180605148.png)
@@ -1160,7 +1159,7 @@
 <li><p><code>MyISAM的回表操作是十分快速的</code>，因为是拿着地址偏移量直接到文件中取数据的，反观InnoDB是通过获取主键之后再去聚簇索引里找记录，虽然说也不慢，但还是比不上直接用地址去访问。</p>
 </li>
 </ul>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709183820796.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709183820796.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709183820796.png)
@@ -1200,7 +1199,7 @@
 
 <h2 id="5、索引的使用场景☆"><a href="#5、索引的使用场景☆" class="headerlink" title="5、索引的使用场景☆"></a>5、索引的使用场景<strong>☆</strong></h2><p><strong>哪些情况适合创建索引：</strong></p>
 <ul>
-<li>频繁作为WHERE查询条件的字段     id &#x3D; 聚簇索引，不需要回表</li>
+<li>频繁作为WHERE查询条件的字段     id &#x3D; 聚簇索引，不需要回表 iphone</li>
 <li>经常GROUP BY 和 ORDER BY的列    </li>
 <li>字段的值有唯一性的限制 </li>
 <li>DISTINCT字段需要创建索引</li>
@@ -1249,7 +1248,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1, t2, t3;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710000757241.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710000757241.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710000757241.png)
@@ -1263,7 +1262,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> t1.id <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">WHERE</span> t1.id <span class="hljs-operator">=</span>(<br>  <span class="hljs-keyword">SELECT</span> t2.id <span class="hljs-keyword">FROM</span> t2 <span class="hljs-keyword">WHERE</span> t2.id <span class="hljs-operator">=</span>(<br>    <span class="hljs-keyword">SELECT</span> t3.id <span class="hljs-keyword">FROM</span> t3 <span class="hljs-keyword">WHERE</span> t3.content <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;000&#x27;</span><br>  )<br>);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806204009208.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806204009208.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220806204009208.png)
@@ -1274,7 +1273,7 @@
 <p><strong>注意：</strong>查询优化器可能对涉及子查询的语句进行优化，<code>转为连接查询</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">WHERE</span> content <span class="hljs-keyword">IN</span> (<span class="hljs-keyword">SELECT</span> content <span class="hljs-keyword">FROM</span> t2 <span class="hljs-keyword">WHERE</span> content <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;a&#x27;</span>);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711123408605.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711123408605.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220711123408605.png)
@@ -1288,7 +1287,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">UNION</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t2;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710001512891.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710001512891.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710001512891.png)
@@ -1298,7 +1297,7 @@
 <p>因此包含UNION ALL的执行计划中就没有这条记录</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">UNION</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t2;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806205841029.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806205841029.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220806205841029.png)
@@ -1318,7 +1317,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710101402666.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710101402666.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710101402666.png)
@@ -1330,7 +1329,7 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sqlite">EXPLAIN SELECT * FROM t1, t2 WHERE t1.id = t2.id;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220807014004193.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220807014004193.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220807014004193.png)
@@ -1351,7 +1350,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712065946659.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712065946659.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712065946659.png)
@@ -1365,7 +1364,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> content1 <span class="hljs-keyword">FROM</span> t4;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806200359943.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806200359943.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220806200359943.png)
@@ -1374,7 +1373,7 @@
 
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> id <span class="hljs-keyword">FROM</span> t1;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712065815768.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712065815768.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712065815768.png)
@@ -1388,7 +1387,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">&gt;</span> <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806211954646.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806211954646.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220806211954646.png)
@@ -1402,7 +1401,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t4 <span class="hljs-keyword">WHERE</span> content1 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;a&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806212137124.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806212137124.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220806212137124.png)
@@ -1418,7 +1417,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1, t2 <span class="hljs-keyword">WHERE</span> t1.id <span class="hljs-operator">=</span> t2.id;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712070851089.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712070851089.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712070851089.png)
@@ -1432,7 +1431,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712070944090.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712070944090.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712070944090.png)
@@ -1446,7 +1445,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> t(i <span class="hljs-type">int</span>) Engine<span class="hljs-operator">=</span>MyISAM;<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> t <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">1</span>);<br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711125730163.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711125730163.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220711125730163.png)
@@ -1463,7 +1462,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> id <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">WHERE</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710142152514.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710142152514.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710142152514.png)
@@ -1482,7 +1481,7 @@
 </ol>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_age_name <span class="hljs-keyword">ON</span> t_emp(age, `name`);<br><span class="hljs-comment">-- 测试1</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp <span class="hljs-keyword">WHERE</span> age <span class="hljs-operator">=</span> <span class="hljs-number">30</span> <span class="hljs-keyword">AND</span> `name` <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;ab%&#x27;</span>;<br><span class="hljs-comment">-- 测试2</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp <span class="hljs-keyword">WHERE</span> age <span class="hljs-operator">=</span> <span class="hljs-number">30</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710130548971.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710130548971.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710130548971.png)
@@ -1497,7 +1496,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t4 <span class="hljs-keyword">WHERE</span> content1 <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;a&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806213843328.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806213843328.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220806213843328.png)
@@ -1511,7 +1510,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1, t2 <span class="hljs-keyword">WHERE</span> t1.id <span class="hljs-operator">=</span> t2.id;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806214146640.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220806214146640.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220806214146640.png)
@@ -1523,7 +1522,7 @@
 <h4 id="2-3-9、rows-☆"><a href="#2-3-9、rows-☆" class="headerlink" title="2.3.9、rows ☆"></a>2.3.9、rows <strong>☆</strong></h4><p>MySQL认为它执行查询时实际从索引树中查找到的行数。<code>值越小越好。</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 如果是全表扫描，rows的值就是表中数据的估计行数</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp <span class="hljs-keyword">WHERE</span> empno <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;100001&#x27;</span>;<br><br><span class="hljs-comment">-- 如果是使用索引查询，rows的值就是预计扫描索引记录行数</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp <span class="hljs-keyword">WHERE</span> deptId <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710131916240.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710131916240.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710131916240.png)
@@ -1540,7 +1539,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp <span class="hljs-keyword">WHERE</span> `name` <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;风清扬&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709215122017.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220709215122017.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220709215122017.png)
@@ -1555,7 +1554,7 @@
 <p>如果出现了Using filesort 说明排序没有使用上索引，如下所示：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> id;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710172607190.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710172607190.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710172607190.png)
@@ -1565,7 +1564,7 @@
 <p>如果排序操作无法使用到索引，只能在内存中（记录较少时）或者磁盘中（记录较多时）进行排序（filesort），如下所示：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1 <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> content;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710172926396.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710172926396.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710172926396.png)
@@ -1579,7 +1578,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> id, content1 <span class="hljs-keyword">FROM</span> t4;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712071716131.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712071716131.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712071716131.png)
@@ -1597,7 +1596,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- content1列上有索引idx_content1</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t4 <span class="hljs-keyword">WHERE</span> content1 <span class="hljs-operator">&gt;</span> <span class="hljs-string">&#x27;z&#x27;</span> <span class="hljs-keyword">AND</span> content1 <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%a&#x27;</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710180257692.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710180257692.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710180257692.png)
@@ -1605,7 +1604,7 @@
 -->
 
 <p><strong>注意：</strong>如果这里的查询条件<code>只有content1 &gt; &#39;z&#39;</code>，那么找到满足条件的索引后也会进行一次索引下推的操作，判断content1 &gt; ‘z’是否成立（这是源码中为了编程方便做的冗余判断）</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712012108900.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712012108900.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712012108900.png)
@@ -1619,7 +1618,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN  <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t1, t2 <span class="hljs-keyword">WHERE</span> t1.content <span class="hljs-operator">=</span> t2.content;<br># 创建了索引就不会出现<span class="hljs-keyword">Using</span> <span class="hljs-keyword">join</span> buffer！<br><span class="hljs-keyword">create</span> index idx_content <span class="hljs-keyword">on</span> t2(content);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710182356817.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710182356817.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710182356817.png)
@@ -1629,7 +1628,7 @@
 <p>下面这个例子就是被驱动表使用了索引，此时Extra中就没有Using join buffer了：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp, t_dept <span class="hljs-keyword">WHERE</span> t_dept.id <span class="hljs-operator">=</span> t_emp.deptId;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710182524371.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710182524371.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710182524371.png)
@@ -1718,7 +1717,7 @@
 
 <h3 id="4-1、计算、函数导致索引失效"><a href="#4-1、计算、函数导致索引失效" class="headerlink" title="4.1、计算、函数导致索引失效"></a>4.1、计算、函数导致索引失效</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 显示查询分析</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> emp.name  <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;abc%&#x27;</span>;<br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">LEFT</span>(emp.name,<span class="hljs-number">3</span>) <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;abc&#x27;</span>; <span class="hljs-comment">--索引失效</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710212756603.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710212756603.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710212756603.png)
@@ -1729,7 +1728,7 @@
 
 <h3 id="4-2、LIKE以-开头索引失效"><a href="#4-2、LIKE以-开头索引失效" class="headerlink" title="4.2、LIKE以%开头索引失效"></a>4.2、LIKE以%开头索引失效</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> name <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%ab%&#x27;</span>; <span class="hljs-comment">--索引失效</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710213641577.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710213641577.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710213641577.png)
@@ -1742,7 +1741,7 @@
 </blockquote>
 <h3 id="4-3、不等于-或者-索引失效"><a href="#4-3、不等于-或者-索引失效" class="headerlink" title="4.3、不等于(!&#x3D; 或者&lt;&gt;)索引失效"></a>4.3、不等于(!&#x3D; 或者&lt;&gt;)索引失效</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> emp.name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;abc&#x27;</span> ;<br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> emp.name <span class="hljs-operator">&lt;&gt;</span> <span class="hljs-string">&#x27;abc&#x27;</span> ; <span class="hljs-comment">--索引失效</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710214317491.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710214317491.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710214317491.png)
@@ -1753,7 +1752,7 @@
 
 <h3 id="4-4、IS-NOT-NULL-和-IS-NULL"><a href="#4-4、IS-NOT-NULL-和-IS-NULL" class="headerlink" title="4.4、IS NOT NULL 和 IS NULL"></a>4.4、IS NOT NULL 和 IS NULL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> emp.name <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;<br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> emp.name <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>; <span class="hljs-comment">--索引失效</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710214840703.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710214840703.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710214840703.png)
@@ -1765,7 +1764,7 @@
 <p><strong>注意：</strong>当数据库中的数据的索引列的<code>NULL值达到比较高的比例的时候</code>，即使在IS NOT NULL 的情况下 MySQL的查询优化器会选择使用索引，<code>此时type的值是range（范围查询）</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 将 id&gt;20000 的数据的 name 值改为 NULL</span><br><span class="hljs-keyword">UPDATE</span> emp <span class="hljs-keyword">SET</span> `name` <span class="hljs-operator">=</span> <span class="hljs-keyword">NULL</span> <span class="hljs-keyword">WHERE</span> `id` <span class="hljs-operator">&gt;</span> <span class="hljs-number">20000</span>;<br><br><span class="hljs-comment">-- 执行查询分析，可以发现 IS NOT NULL 使用了索引</span><br><span class="hljs-comment">-- 具体多少条记录的值为NULL可以使索引在IS NOT NULL的情况下生效，由查询优化器的算法决定</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> emp.name <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711175040606.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711175040606.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220711175040606.png)
@@ -1781,7 +1780,7 @@
 
 <h3 id="4-5、类型转换导致索引失效"><a href="#4-5、类型转换导致索引失效" class="headerlink" title="4.5、类型转换导致索引失效"></a>4.5、类型转换导致索引失效</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;123&#x27;</span>; <br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> name<span class="hljs-operator">=</span> <span class="hljs-number">123</span>; <span class="hljs-comment">--索引失效</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710215217274.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220710215217274.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220710215217274.png)
@@ -1800,7 +1799,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建索引：分别创建以下三种索引的一种，并分别进行以上查询分析</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_age <span class="hljs-keyword">ON</span> emp(age);<br><span class="hljs-keyword">CREATE</span> INDEX idx_age_deptid <span class="hljs-keyword">ON</span> emp(age,deptid);<br><span class="hljs-keyword">CREATE</span> INDEX idx_age_deptid_name <span class="hljs-keyword">ON</span> emp(age,deptid,`name`);<br></code></pre></td></tr></table></figure>
 
 <p><strong>结论：</strong>可以发现最高效的查询应用了联合索引 <code>idx_age_deptid_name</code> </p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711190731030.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711190731030.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220711190731030.png)
@@ -1832,7 +1831,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建索引并执行以上SQL语句的EXPLAIN</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_age_deptid_name <span class="hljs-keyword">ON</span> emp(age,deptid,`name`);<br><span class="hljs-comment">-- key_len：10， 只是用了 age 和 deptid索引，name失效</span><br></code></pre></td></tr></table></figure>
 
 <p><strong>注意：</strong>当我们修改deptId的范围条件的时候，例如deptId&gt;100，那么整个索引失效，MySQL的优化器基于成本计算后认为没必要使用索引了，所以就进行了全表扫描。<code>（注意：因为表中的数据是随机生成的，因此实际测试中根据具体数据的不同测试的结果也会不一样，最终是否使用索引由优化器决定）</code></p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711215826013.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220711215826013.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220711215826013.png)
@@ -1842,7 +1841,7 @@
 <p><strong>测试2：</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建索引并执行以上SQL语句的EXPLAIN（将deptid索引的放在最后）</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_age_name_deptid <span class="hljs-keyword">ON</span> emp(age,`name`,deptid);<br><span class="hljs-comment">-- 使用了完整的索引</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712080350120.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712080350120.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712080350120.png)
@@ -1858,7 +1857,7 @@
 <h3 id="5-2、左外连接"><a href="#5-2、左外连接" class="headerlink" title="5.2、左外连接"></a>5.2、左外连接</h3><p><strong>没有创建索引前的测试：</strong>进行了<code>全表扫描</code>，查询次数为<code>16*20</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> class <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> book <span class="hljs-keyword">ON</span> class.card <span class="hljs-operator">=</span> book.card;<br><span class="hljs-comment">-- 左表class：驱动表、右表book：被驱动表</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194001008.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194001008.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712194001008.png)
@@ -1868,7 +1867,7 @@
 <p><strong>测试1：</strong>在驱动表上创建索引：进行了<code>全索引扫描</code>，查询次数是<code>16*20</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_class_card <span class="hljs-keyword">ON</span> class(card);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194239217.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194239217.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712194239217.png)
@@ -1878,7 +1877,7 @@
 <p><strong>测试2：</strong>在被驱动表上创建索引：可以避免全表扫描，查询次数是<code>16*1</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 首先删除之前创建的索引</span><br><span class="hljs-keyword">CALL</span> proc_drop_index(&quot;atguigudb&quot;,&quot;class&quot;);<br><span class="hljs-comment">-- 创建索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_book_card <span class="hljs-keyword">ON</span> book(card);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194515757.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194515757.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712194515757.png)
@@ -1888,7 +1887,7 @@
 <p><strong>测试3：</strong>同时给两张表添加索引：充分利用了索引，查询次数是<code>16*1</code></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 已经有了book索引</span><br><span class="hljs-keyword">CREATE</span> INDEX idx_class_card <span class="hljs-keyword">ON</span> class(card);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194722843.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712194722843.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712194722843.png)
@@ -1914,7 +1913,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 换成inner join</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> class <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> book <span class="hljs-keyword">ON</span> class.card<span class="hljs-operator">=</span>book.card;<br><span class="hljs-comment">-- 交换class和book的位置</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> book <span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> class <span class="hljs-keyword">ON</span> class.card<span class="hljs-operator">=</span>book.card;<br></code></pre></td></tr></table></figure>
 
 <p><strong>都有索引的情况下：</strong>查询优化器自动选择数据量小的表做为驱动表</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712195140151.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712195140151.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712195140151.png)
@@ -1922,7 +1921,7 @@
 -->
 
 <p><strong>class表有索引的情况下：</strong>book表是驱动表</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712205137594.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712205137594.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712205137594.png)
@@ -1930,7 +1929,7 @@
 -->
 
 <p><strong>book表有索引的情况下：</strong>class表是驱动表</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712204913627.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712204913627.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712204913627.png)
@@ -1938,7 +1937,7 @@
 -->
 
 <p><strong>都没有索引的情况下：</strong>选择数据量小的表做为驱动表</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712205030216.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712205030216.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712205030216.png)
@@ -1956,7 +1955,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 员工表(t_emp)、部门表(t_dept)、ceo(t_emp)表 关联查询</span><br>EXPLAIN <span class="hljs-keyword">SELECT</span> emp.name, ceo.name <span class="hljs-keyword">AS</span> ceoname <br><span class="hljs-keyword">FROM</span> emp<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> emp.deptid <span class="hljs-operator">=</span> dept.id <br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> emp ceo <span class="hljs-keyword">ON</span> dept.ceo <span class="hljs-operator">=</span> ceo.id;<br></code></pre></td></tr></table></figure>
 
 <p>一趟查询，用到了主键索引，<code>效果最佳</code></p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712210059275.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712210059275.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712210059275.png)
@@ -1969,7 +1968,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> emp.name,<br>(<span class="hljs-keyword">SELECT</span> emp.name <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> emp.id <span class="hljs-operator">=</span> dept.ceo) <span class="hljs-keyword">AS</span> ceoname<br><span class="hljs-keyword">FROM</span> emp <br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> emp.deptid <span class="hljs-operator">=</span> dept.id;<br></code></pre></td></tr></table></figure>
 
 <p>两趟查询，用到了主键索引，<code>跟第一种比，效果稍微差点</code>。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712210641833.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712210641833.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712210641833.png)
@@ -1982,7 +1981,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> emp_with_ceo_id.name, emp.name <span class="hljs-keyword">AS</span> ceoname <br><span class="hljs-keyword">FROM</span> <br>( <br><span class="hljs-keyword">SELECT</span> emp.name, dept.ceo <br><span class="hljs-keyword">FROM</span> emp <br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> emp.deptid <span class="hljs-operator">=</span> dept.id <br>) emp_with_ceo_id<br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> emp <span class="hljs-keyword">ON</span> emp_with_ceo_id.ceo <span class="hljs-operator">=</span> emp.id;<br></code></pre></td></tr></table></figure>
 
 <p>查询一趟，<code>MySQL查询优化器将衍生表查询转换成了连接表查询</code>，速度堪比第一种方式</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712211307003.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712211307003.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712211307003.png)
@@ -1990,7 +1989,7 @@
 -->
 
 <p><strong>MySQL5.5查询结果：</strong>两趟查询，先查询a,b产生衍生表ab,衍生表作为驱动表，c作为被驱动表，使用到c表主键。效果比后面一种要好一点。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/3c5034f7-69f3-4381-9354-70f4a4220165.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/3c5034f7-69f3-4381-9354-70f4a4220165.jpg" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/3c5034f7-69f3-4381-9354-70f4a4220165.jpg)
@@ -2003,7 +2002,7 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> emp.name, ceo.ceoname <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span><br>( <br><span class="hljs-keyword">SELECT</span> emp.deptId <span class="hljs-keyword">AS</span> deptId, emp.name <span class="hljs-keyword">AS</span> ceoname <br><span class="hljs-keyword">FROM</span> emp <br><span class="hljs-keyword">INNER</span> <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> emp.id <span class="hljs-operator">=</span> dept.ceo <br>) ceo<br><span class="hljs-keyword">ON</span> emp.deptId <span class="hljs-operator">=</span> ceo.deptId;<br></code></pre></td></tr></table></figure>
 
 <p>查询一趟，<code>MySQL查询优化器将衍生表查询转换成了连接表查询</code>，但是只有一个表使用了索引，数据检索的次数稍多，<code>性能最差</code>。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712211909850.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220712211909850.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220712211909850.png)
@@ -2011,7 +2010,7 @@
 -->
 
 <p><strong>MySQL5.5查询结果：</strong>两趟查询，先查询b, a产生衍生表ab,衍生表作为被驱动表，衍生表无法建立索引，也就无法优化; 所以，这种语句是性能最差的。</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/f3725755-bbbf-44da-99c7-20fc04d86c5d.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/f3725755-bbbf-44da-99c7-20fc04d86c5d.jpg" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/f3725755-bbbf-44da-99c7-20fc04d86c5d.jpg)
@@ -2037,7 +2036,7 @@
 <h2 id="6、子查询优化"><a href="#6、子查询优化" class="headerlink" title="6、子查询优化"></a>6、子查询优化</h2><p><strong>查询非掌门人</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 不推荐</span><br><span class="hljs-comment">-- 查询员工，这些员工的id没在（掌门人id列表中）</span><br><span class="hljs-comment">-- 【查询不是CEO的员工】</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp emp <span class="hljs-keyword">WHERE</span> emp.id <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> <br>(<span class="hljs-keyword">SELECT</span> dept.ceo <span class="hljs-keyword">FROM</span> t_dept dept <span class="hljs-keyword">WHERE</span> dept.ceo <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>);<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220809115231228.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220809115231228.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220809115231228.png)
@@ -2049,7 +2048,7 @@
 <p>注意：使用大表测试更加直观！</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 推荐</span><br><span class="hljs-comment">-- 按照集合查询</span><br><span class="hljs-keyword">SELECT</span> emp.<span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> t_emp emp <br><span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> t_dept dept <span class="hljs-keyword">ON</span> emp.id <span class="hljs-operator">=</span> dept.ceo <span class="hljs-keyword">WHERE</span> dept.id <span class="hljs-keyword">IS</span> <span class="hljs-keyword">NULL</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220809115259956.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220809115259956.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220809115259956.png)
@@ -2059,7 +2058,7 @@
 
 
 <p>也可以为ceo添加一个索引字段</p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220809115203460.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220809115203460.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220809115203460.png)
@@ -2106,8 +2105,8 @@
 <p><strong>测试1：</strong>很显然，type 是 ALL，即最坏的情况。Extra 里还出现了 Using filesort,也是最坏的情况。优化是必须的。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">EXPLAIN <span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> emp <span class="hljs-keyword">WHERE</span> age <span class="hljs-operator">=</span><span class="hljs-number">30</span> <span class="hljs-keyword">AND</span> empno <span class="hljs-operator">&lt;</span><span class="hljs-number">101000</span> <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> `name`;<br><span class="hljs-comment">-- 然后查看一下SQL的执行时间</span><br></code></pre></td></tr></table></figure>
 
-<p><code>性能测试：</code><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083659641.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713011923316.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>性能测试：</code><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083659641.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713011923316.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220713083659641.png)
@@ -2123,8 +2122,8 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> INDEX idx_age_empno_name <span class="hljs-keyword">ON</span> emp (age,empno,`name`);<br></code></pre></td></tr></table></figure>
 
 <p>最后的name索引没有用到，出现了Using filesort。原因是，因为empno是一个范围过滤，所以索引后面的字段不会再使用索引了。所以我们建一个3值索引是没有意义的 </p>
-<p><code>性能测试：</code><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083739538.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713013325047.png" srcset="/img/loading.gif" lazyload></p>
+<p><code>性能测试：</code><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083739538.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713013325047.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220713083739538.png)
@@ -2140,8 +2139,8 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> INDEX idx_age_name <span class="hljs-keyword">ON</span> emp(age,`name`);<br></code></pre></td></tr></table></figure>
 
 <p>这样我们优化掉了 using filesort。但是经过测试，性能反而下降</p>
-<p><code>性能测试：</code><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083832940.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713082858826.png" srcset="/img/loading.gif" lazyload>&#96;</p>
+<p><code>性能测试：</code><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083832940.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713082858826.png" srcset="/img/loading.gif" lazyload>&#96;</p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220713083832940.png)
@@ -2154,8 +2153,8 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> INDEX idx_age_name <span class="hljs-keyword">ON</span> emp;<br><span class="hljs-keyword">CREATE</span> INDEX idx_age_empno <span class="hljs-keyword">ON</span> emp(age,empno);<br></code></pre></td></tr></table></figure>
 
 <p>执行原始的sql语句，查看性能，结果竟然有 filesort的 sql 运行速度，超过了已经优化掉 filesort的 sql，而且快了好多倍。何故？</p>
-<p><code>性能测试：</code><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083927522.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083429530.png" srcset="/img/loading.gif" lazyload>&#96;</p>
+<p><code>性能测试：</code><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083927522.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713083429530.png" srcset="/img/loading.gif" lazyload>&#96;</p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220713083927522.png)
@@ -2206,7 +2205,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%sort_buffer_size%&#x27;</span>; <span class="hljs-comment">--默认1MB</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/ec4536a6-8738-4aeb-9edf-0e7d42187d86.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/ec4536a6-8738-4aeb-9edf-0e7d42187d86.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/ec4536a6-8738-4aeb-9edf-0e7d42187d86.png)
@@ -2218,7 +2217,7 @@
 </ul>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%max_length_for_sort_data%&#x27;</span>; <span class="hljs-comment">--默认4K</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713124733970.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713124733970.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220713124733970.png)
@@ -2251,7 +2250,7 @@
 <p>然后我们再来查看下慢查询日志是否开启，以及慢查询日志文件的位置：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SHOW</span> VARIABLES <span class="hljs-keyword">LIKE</span> <span class="hljs-string">&#x27;%slow_query_log%&#x27;</span>; <br></code></pre></td></tr></table></figure>
 
-<p><img src="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713130039824.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/image-20220713130039824.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![](MySQL8高级-架构和优化/image-20220713130039824.png)
@@ -2377,8 +2376,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MySQL8高级_架构和优化</div>
-      <div>http://example.com/2023/04/21/技术栈/MySQL/MySQL8高级-架构和优化/</div>
+      <div>MySQL高级一</div>
+      <div>http://example.com/2023/04/28/技术栈/MySQL/MySQL8高级-架构和优化/</div>
     </div>
     <div class="license-meta">
       
@@ -2390,7 +2389,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年4月21日</div>
+          <div>2023年4月28日</div>
         </div>
       
       
@@ -2422,9 +2421,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/mysql%E8%AF%AD%E5%8F%A5/" title="MySQL语句">
+                      <a href="/2023/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/" title="MySQL高级二">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MySQL语句</span>
+                        <span class="hidden-mobile">MySQL高级二</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -2432,8 +2431,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/" title="MySQL基础">
-                        <span class="hidden-mobile">MySQL基础</span>
+                      <a href="/2023/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/mysql%E8%AF%AD%E5%8F%A5/" title="MySQL语句">
+                        <span class="hidden-mobile">MySQL语句</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
