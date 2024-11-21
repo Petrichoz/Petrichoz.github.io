@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DQL 数据查询语句 DDL 库表操作语句 DML 数据操作语句 1、数据库的基本操作创建数据库1create database 数据库名;  查看所有的数据库1show databases; #有一个s，代表多个数据库  查看某个数据库的详细定义语句1show create database 数据库名;  1show create database 数据库名\G  修改数据库编码12#修改数据库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL语句">
+<meta property="og:url" content="http://example.com/2024/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/mysql%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="DQL 数据查询语句 DDL 库表操作语句 DML 数据操作语句 1、数据库的基本操作创建数据库1create database 数据库名;  查看所有的数据库1show databases; #有一个s，代表多个数据库  查看某个数据库的详细定义语句1show create database 数据库名;  1show create database 数据库名\G  修改数据库编码12#修改数据库">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/mysql.jpg">
+<meta property="article:published_time" content="2024-04-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-11-21T01:57:43.914Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/mysql.jpg">
+  
+  
+  
+  <title>MySQL语句 - PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MySQL语句"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-21 00:00" pubdate>
+          2024年4月21日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          939 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          8 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">MySQL语句</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>DQL</p>
+<p>数据查询语句</p>
+<p>DDL</p>
+<p>库表操作语句</p>
+<p>DML</p>
+<p>数据操作语句</p>
+<h1 id="1、数据库的基本操作"><a href="#1、数据库的基本操作" class="headerlink" title="1、数据库的基本操作"></a>1、数据库的基本操作</h1><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database 数据库名;<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看所有的数据库"><a href="#查看所有的数据库" class="headerlink" title="查看所有的数据库"></a>查看所有的数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show databases; #有一个s，代表多个数据库<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看某个数据库的详细定义语句"><a href="#查看某个数据库的详细定义语句" class="headerlink" title="查看某个数据库的详细定义语句"></a>查看某个数据库的详细定义语句</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show create database 数据库名;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show create database 数据库名\G<br></code></pre></td></tr></table></figure>
+
+<h3 id="修改数据库编码"><a href="#修改数据库编码" class="headerlink" title="修改数据库编码"></a>修改数据库编码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#修改数据库字符集和校对规则<br>ALTER DATABASE 数据库名称 CHARACTER SET 字符集名称 COLLATE 字符集对应校对规则;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER DATABASE atguigu_chapter3_two CHARACTER SET utf8 COLLATE utf8_general_ci;<br></code></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;<strong>注意，</strong>&#x3D;&#x3D;修改数据库编码只会影响之后创建的表的默认编码，之前创建的表不会受影响。</p>
+<h3 id="删除数据库"><a href="#删除数据库" class="headerlink" title="删除数据库"></a>删除数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop database 数据库名;<br></code></pre></td></tr></table></figure>
+
+<h3 id="使用数据库"><a href="#使用数据库" class="headerlink" title="使用数据库"></a>使用数据库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use 数据库名;<br></code></pre></td></tr></table></figure>
+
+<h1 id="2、数据表相关操作"><a href="#2、数据表相关操作" class="headerlink" title="2、数据表相关操作"></a>2、数据表相关操作</h1><h3 id="查看某个数据库的所有表格"><a href="#查看某个数据库的所有表格" class="headerlink" title="查看某个数据库的所有表格"></a>查看某个数据库的所有表格</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use 数据库名;<br><br>show tables;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show tables from 数据库名;<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建表格"><a href="#创建表格" class="headerlink" title="创建表格"></a>创建表格</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table 数据表名称(<br>	字段名  数据类型,<br>    字段名  数据类型<br>);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table teacher(<br>	tid int,<br>    tname varchar(5),<br>    salary double,<br>    weight double(5,2),<br>    birthday date,<br>    gender enum(&#x27;男&#x27;,&#x27;女&#x27;),<br>    blood enum(&#x27;A&#x27;,&#x27;B&#x27;,&#x27;AB&#x27;,&#x27;O&#x27;),<br>	tel char(11)<br>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看表的详细定义信息"><a href="#查看表的详细定义信息" class="headerlink" title="查看表的详细定义信息"></a>查看表的详细定义信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show create table 表名称;<br>show create table 表名称;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="修改数据表编码"><a href="#修改数据表编码" class="headerlink" title="修改数据表编码"></a>修改数据表编码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">ALTER TABLE 表名称 CHARSET=新字符集 COLLATE=新校对规则;<br></code></pre></td></tr></table></figure>
+
+<h3 id="查看表结构"><a href="#查看表结构" class="headerlink" title="查看表结构"></a>查看表结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">desc 表名称;<br>describe 表名称;<br></code></pre></td></tr></table></figure>
+
+<h3 id="删除表格，包括表结构和里面的数据"><a href="#删除表格，包括表结构和里面的数据" class="headerlink" title="删除表格，包括表结构和里面的数据"></a>删除表格，包括表结构和里面的数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop table 表名称;<br></code></pre></td></tr></table></figure>
+
+<h3 id="修改表结构：删除字段"><a href="#修改表结构：删除字段" class="headerlink" title="修改表结构：删除字段"></a>修改表结构：删除字段</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 表名称 drop 【column】 字段名称; <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table teacher drop column weight;<br></code></pre></td></tr></table></figure>
+
+<h3 id="修改表结构：增加字段"><a href="#修改表结构：增加字段" class="headerlink" title="修改表结构：增加字段"></a>修改表结构：增加字段</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 表名称 add 【column】 字段名称 数据类型; <br>alter table 表名称 add 【column】 字段名称 数据类型 first;<br>alter table 表名称 add 【column】 字段名称 数据类型 after 另一个字段;<br></code></pre></td></tr></table></figure>
+
+<h3 id="修改表结构：修改字段的数据类型"><a href="#修改表结构：修改字段的数据类型" class="headerlink" title="修改表结构：修改字段的数据类型"></a>修改表结构：修改字段的数据类型</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 表名称 modify 【column】 字段名称 新的数据类型; <br></code></pre></td></tr></table></figure>
+
+<h3 id="修改表结构：修改字段的名称"><a href="#修改表结构：修改字段的名称" class="headerlink" title="修改表结构：修改字段的名称"></a>修改表结构：修改字段的名称</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 表名称 change 【column】 旧字段名称 新的字段名称 新的数据类型; <br></code></pre></td></tr></table></figure>
+
+<h3 id="修改表结构：修改字段位置"><a href="#修改表结构：修改字段位置" class="headerlink" title="修改表结构：修改字段位置"></a>修改表结构：修改字段位置</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 表名称 modify 【column】 字段名称 数据类型 first;<br>alter table 表名称 modify 【column】 字段名称 数据类型 after 另一个字段;<br></code></pre></td></tr></table></figure>
+
+<h3 id="修改表名称（重命名表）"><a href="#修改表名称（重命名表）" class="headerlink" title="修改表名称（重命名表）"></a>修改表名称（重命名表）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 旧表名 rename 【to】 新表名;<br>rename table 旧表名称 to 新表名称;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="添加语句"><a href="#添加语句" class="headerlink" title="添加语句"></a>添加语句</h2><h3 id="（1）添加一条记录到某个表中"><a href="#（1）添加一条记录到某个表中" class="headerlink" title="（1）添加一条记录到某个表中"></a>（1）添加一条记录到某个表中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">insert into 表名称 values(值列表); #值列表中的值的顺序、类型、个数必须与表结构一一对应<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="（2）添加一条记录到某个表中"><a href="#（2）添加一条记录到某个表中" class="headerlink" title="（2）添加一条记录到某个表中"></a>（2）添加一条记录到某个表中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">insert into 表名称 (字段列表) values(值列表); #值列表中的值的顺序、类型、个数必须与(字段列表)一一对应<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">insert into teacher(tid,tname,salary,phone) values(3,&#x27;王五&#x27;,16000,&#x27;15789546586&#x27;);<br></code></pre></td></tr></table></figure>
+
+<h3 id="（3）添加多条记录到某个表中"><a href="#（3）添加多条记录到某个表中" class="headerlink" title="（3）添加多条记录到某个表中"></a>（3）添加多条记录到某个表中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">insert into 表名称 values(值列表),(值列表),(值列表); #值列表中的值的顺序、类型、个数必须与表结构一一对应<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">insert into 表名称 (字段列表) values(值列表),(值列表),(值列表); #值列表中的值的顺序、类型、个数必须与(字段列表)一一对应<br></code></pre></td></tr></table></figure>
+
+<h2 id="修改语句"><a href="#修改语句" class="headerlink" title="修改语句"></a>修改语句</h2><h3 id="修改所有行"><a href="#修改所有行" class="headerlink" title="修改所有行"></a>修改所有行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update 表名称 set 字段名 = 值, 字段名 = 值; #给所有行修改<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mysql">#修改所有人的薪资，都涨了1000<br>update teacher set salary = salary + 1000 ; <br></code></pre></td></tr></table></figure>
+
+<h3 id="修改部分行"><a href="#修改部分行" class="headerlink" title="修改部分行"></a>修改部分行</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">update 表名称 set 字段名 = 值, 字段名 = 值 where 条件; #给满足条件的行修改<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><h3 id="删除部分行的数据"><a href="#删除部分行的数据" class="headerlink" title="删除部分行的数据"></a>删除部分行的数据</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">delete from 表名称 where 条件;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">delete from teacher where tname = &#x27;天琪&#x27;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="删除整张表的数据，但表结构留下"><a href="#删除整张表的数据，但表结构留下" class="headerlink" title="删除整张表的数据，但表结构留下"></a>删除整张表的数据，但表结构留下</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">delete from 表名称;<br></code></pre></td></tr></table></figure>
+
+<h3 id="截断表，清空表中的数据，只有表结构"><a href="#截断表，清空表中的数据，只有表结构" class="headerlink" title="截断表，清空表中的数据，只有表结构"></a>截断表，清空表中的数据，只有表结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">truncate 表名称;<br></code></pre></td></tr></table></figure>
+
+<p>truncate表和delete表的区别：</p>
+<p>delete是一条一条删除记录的。如果在事务中，事务提交之前支持回滚。（后面会讲事务）</p>
+<p>truncate是把整个表drop，新建一张，效率更高。就算在事务中，也无法回滚。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MySQL语句</div>
+      <div>http://example.com/2024/04/21/技术栈/MySQL/mysql语句/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/" title="MySQL高级一">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MySQL高级一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/12/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8.0_SQL%E7%AC%94%E8%AE%B0/" title="MySQL基础">
+                        <span class="hidden-mobile">MySQL基础</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1216 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1 MySQL基础日志1.1 日志分类在任何一种数据库中，都会有各种各样的日志，记录着数据库工作的方方面面，以帮助数据库管理员追踪数据库曾经发生过的各种事件。MySQL有多种类型的日志，用于记录数据库的操作和状态。以下是一些常见的MySQL日志： 1、错误日志（Error Log）：记录MySQL服务器在启动、运行过程中发生的错误和异常情况，如启动错误、语法错误等。 2、查询日志（Query Lo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL高级二">
+<meta property="og:url" content="http://example.com/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="1 MySQL基础日志1.1 日志分类在任何一种数据库中，都会有各种各样的日志，记录着数据库工作的方方面面，以帮助数据库管理员追踪数据库曾经发生过的各种事件。MySQL有多种类型的日志，用于记录数据库的操作和状态。以下是一些常见的MySQL日志： 1、错误日志（Error Log）：记录MySQL服务器在启动、运行过程中发生的错误和异常情况，如启动错误、语法错误等。 2、查询日志（Query Lo">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/mysql.jpg">
+<meta property="article:published_time" content="2024-04-28T08:38:46.000Z">
+<meta property="article:modified_time" content="2024-11-21T01:57:36.824Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/mysql.jpg">
+  
+  
+  
+  <title>MySQL高级二 - PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MySQL高级二"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-28 16:38" pubdate>
+          2024年4月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          83 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">MySQL高级二</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="1-MySQL基础日志"><a href="#1-MySQL基础日志" class="headerlink" title="1 MySQL基础日志"></a>1 MySQL基础日志</h1><h2 id="1-1-日志分类"><a href="#1-1-日志分类" class="headerlink" title="1.1 日志分类"></a>1.1 日志分类</h2><p>在任何一种数据库中，都会有各种各样的日志，记录着数据库工作的方方面面，以帮助数据库管理员追踪数据库曾经发生过的各种事件。MySQL有多种类型的日志，用于记录数据库的操作和状态。以下是一些常见的MySQL日志：</p>
+<p>1、错误日志（Error Log）：记录MySQL服务器在启动、运行过程中发生的错误和异常情况，如启动错误、语法错误等。</p>
+<p>2、查询日志（Query Log）：记录所有执行的查询语句，包括SELECT、INSERT、UPDATE、DELETE等操作。可以用于分析查询性能和调试问题，但需要注意对于高负载的系统，开启查询日志可能会对性能产生影响。</p>
+<p>3、慢查询日志（Slow Query Log）：记录执行时间超过指定阈值的查询语句。慢查询日志可以帮助你找出执行时间较长的查询，以便进行性能优化。</p>
+<p>4、二进制日志（Binary Log）：记录所有对数据库的更改操作，包括数据修改、表结构变更等。二进制日志可以用于数据恢复、主从复制等场景。</p>
+<p>5、事务日志（Transaction Log）：也称为重做日志（Redo Log），记录正在进行的事务的更改操作。事务日志用于保证数据库的ACID特性，并支持崩溃恢复。</p>
+<h1 id="2-MySQL事务日志"><a href="#2-MySQL事务日志" class="headerlink" title="2 MySQL事务日志"></a>2 MySQL事务日志</h1><h2 id="2-1-事务概述"><a href="#2-1-事务概述" class="headerlink" title="2.1 事务概述"></a>2.1 事务概述</h2><p>概述：就是由多个操作组成的一个逻辑单元，组成这个逻辑单元的多个操作要么都成功要么都失败。</p>
+<p>作用：保证数据的一致性</p>
+<p>举例：转账</p>
+<h2 id="2-2-ACID四大特性"><a href="#2-2-ACID四大特性" class="headerlink" title="2.2 ACID四大特性"></a>2.2 ACID四大特性</h2><p><strong>A：原子性(Atomicity)</strong></p>
+<p>一个事务(transaction)中的所有操作，要么全部完成，要么全部不完成，不会结束在中间某个环节。事务在执行过程中发生错误，会被回滚（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。</p>
+<p><strong>C：一致性(Consistency)</strong></p>
+<p>事务的一致性指的是在一个事务执行之前和执行之后数据库都必须处于一致性状态。</p>
+<p>如果事务成功地完成，那么系统中所有变化将正确地应用，系统处于有效状态。</p>
+<p>如果在事务中出现错误，那么系统中的所有变化将自动地回滚，系统返回到原始状态。</p>
+<p><strong>I：隔离性(Isolation)</strong></p>
+<p>指的是在并发环境中，当不同的事务同时操纵相同的数据时，每个事务都有各自的完整数据空间。由并发事务所做的修改必须与任何其他并发事务所做的修改隔离。</p>
+<p>事务查看数据更新时，数据所处的状态要么是另一事务修改它之前的状态，要么是另一事务修改它之后的状态，事务不会查看到中间状态的数据。</p>
+<p><strong>D：持久性(Durability)</strong></p>
+<p>指的是只要事务成功结束，它对数据库所做的更新就必须保存下来。即使发生系统崩溃，重新启动数据库系统后，数据库还能恢复到事务成功结束时的状态。</p>
+<p>注意：</p>
+<p>1、事务的隔离性由 <strong>锁机制</strong> 实现。</p>
+<p>2、而事务的原子性、一致性和持久性由事务的 <strong>redo日志</strong>和<strong>undo日志</strong>来保证。</p>
+<ul>
+<li><p>redo log称为重做日志 ，它记录了对数据库进行修改的操作，包括插入、更新和删除等。Redo日志的主要作用是保证数据库的持久性和恢复能力。</p>
+</li>
+<li><p>undo log称为回滚日志 ，它记录了对数据库进行修改的操作的<strong>逆操作</strong>，用于实现事务的回滚和MVCC（多版本并发控制）。</p>
+</li>
+</ul>
+<h2 id="2-3-undo日志"><a href="#2-3-undo日志" class="headerlink" title="2.3 undo日志"></a>2.3 undo日志</h2><h3 id="2-3-1-undo日志简介"><a href="#2-3-1-undo日志简介" class="headerlink" title="2.3.1 undo日志简介"></a>2.3.1 undo日志简介</h3><p>为了保证 <strong>原子性</strong> ROLLBACK 把数据改回原先的样子，这个过程称之为 <strong>回滚</strong> </p>
+<p>如何保证原子性呢? </p>
+<p>1、你<strong>插入一条记录</strong>时，至少要把这条记录的<strong>主键值记录</strong>下来，之后回滚的时候只需要把这个主键值对应的<strong>记录删除</strong>掉就好了(对于INSER，INNODB存储引擎会完成一个DELETE)。</p>
+<p>2、你<strong>删除一条记录</strong>时，至少把这条记录的<strong>内容都记录</strong>下来，这样之后回滚时再把这些内容组成的<strong>记录插入</strong>到表中就好了(对于每个DELETE，INNODB存储引擎会执行一个INSERT)。</p>
+<p>3、你<strong>修改一条记录</strong>时，至少要把修改这条记录前的<strong>旧值都记录</strong>下来，这样之后回滚时把这条<strong>记录更新</strong>为旧值就好了(对于每个UPDATE,INNODB存储引擎会执行一个反向的UPDATE,将修改之前的行放回去)。</p>
+<p>MySQL把这些为了回滚而记录的这些内容称之为<strong>撤销日志</strong>或者<strong>回滚日志</strong>(undo log)</p>
+<p>redo log是事务持久性的保证，undo log是事务原子性的保证。在事务中<strong>更新数据</strong>的<strong>前置操作</strong>其实是要先写入一个undo log。</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230621074108422.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230621074108422](MySQL课件补充/image-20230621074108422.png)
+
+-->
+
+<p>undo日志作用：</p>
+<p>1、回滚数据</p>
+<p>2、MVCC</p>
+<h3 id="2-3-2-undo-log存储结构"><a href="#2-3-2-undo-log存储结构" class="headerlink" title="2.3.2 undo log存储结构"></a>2.3.2 undo log存储结构</h3><h4 id="回滚段与undo页"><a href="#回滚段与undo页" class="headerlink" title="回滚段与undo页"></a>回滚段与undo页</h4><p>InnoDB对undo log的管理采用段的方式，也就是回滚段（<strong>rollback segment</strong>） 。每个回滚段记录了 1024 个 <strong>undo log segment</strong> ，而在每个undo log segment段中进行 <strong>undo页</strong> (存储的就是回滚记录)的申请。 在 InnoDB1.1版本之前 （不包括1.1版本），只有一个rollback segment，因此支持同时在线的事务限制为 1024 。虽然对绝大多数的应用来说都已经够用。 从1.1版本开始InnoDB支持最大 128个rollback segment ，故其支持同时在线的事务限制提高到 了 128*1024 。</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230629145317132.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230629145317132](MySQL课件补充/image-20230629145317132.png)
+
+--> 
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">通过如下的SQL语句查询回滚段的大小</span><br><span class="hljs-meta prompt_">mysql&gt; </span><span class="language-bash">SHOW VARIABLES LIKE <span class="hljs-string">&#x27;innodb_rollback_segments&#x27;</span>;</span><br>+--------------------------+-------+<br>| Variable_name            | Value |<br>+--------------------------+-------+<br>| innodb_rollback_segments | 128   |<br>+--------------------------+-------+<br>1 row in set (0.00 sec)<br></code></pre></td></tr></table></figure>
+
+<h4 id="undo页的重用"><a href="#undo页的重用" class="headerlink" title="undo页的重用"></a>undo页的重用</h4><p>在MySQL中，undo页的重用是指当事务提交或回滚后，<strong>之前使用的undo页可以被重新利用</strong>来存储新的事务的undo信息</p>
+<h4 id="回滚段与事务"><a href="#回滚段与事务" class="headerlink" title="回滚段与事务"></a>回滚段与事务</h4><p>1、每个事务只会使用一个回滚段，一个回滚段在同一时刻可能会服务于多个事务。</p>
+<p>2、当一个事务开始的时候，会制定一个回滚段，在事务进行的过程中，当数据被修改时，原始的数据会被复制到回滚段。</p>
+<p>3、当事务提交时，InnoDB存储引擎会做以下两件事情： </p>
+<ul>
+<li>将undo log放入列表中，以供之后的purge(<strong>清理</strong>)操作 </li>
+<li>判断undo log所在的页是否可以重用，若可以分配给下个事务使用</li>
+</ul>
+<h4 id="回滚段中的数据分类"><a href="#回滚段中的数据分类" class="headerlink" title="回滚段中的数据分类"></a>回滚段中的数据分类</h4><h5 id="uncommitted-undo-information"><a href="#uncommitted-undo-information" class="headerlink" title="uncommitted undo information"></a>uncommitted undo information</h5><p>未提交的回滚数据（uncommitted undo information）是指在<strong>事务执行过程中所做的修改，但尚未提交的数据</strong>。<strong>只对当前正在执行的事务可见</strong>。</p>
+<h5 id="committed-undo-information"><a href="#committed-undo-information" class="headerlink" title="committed undo information"></a>committed undo information</h5><p>已经提交但未过期的回滚数据（committed undo information）是指在事务执行过程中所做的修改，并且已经成功提交到数据库中的数据。<strong>对其他事务可见</strong>，可以被读取和修改。已经提交的回滚数据只有<strong>在没有过期的情况下才能被保留</strong>。过期数据是指由于某些原因（如长时间未使用）而被标记为可回收的数据。</p>
+<h5 id="expired-undo-information"><a href="#expired-undo-information" class="headerlink" title="expired undo information"></a>expired undo information</h5><p>事务已经提交并过期的数据（expired undo information）是指在事务执行过程中所做的修改，并且已经成功提交到数据库中，但由于某些原因被标记为可回收的数据。<strong>过期的回滚数据可能会被后续的事务覆盖或清理，以释放存储空间或提高性能。</strong>这意味着虽然这些数据已经成功提交，但它们<strong>可能不再对其他事务可见或可访问。</strong></p>
+<p>需要注意的是，过期的回滚数据的处理方式可能因数据库管理系统而异。一些数据库系统会自动清理过期数据，而另一些则需要手动管理和清理。</p>
+<h3 id="2-3-3-undo-log类型"><a href="#2-3-3-undo-log类型" class="headerlink" title="2.3.3 undo log类型"></a>2.3.3 undo log类型</h3><p>在InnoDB存储引擎中，undo log分为：insert undo log和update undo log</p>
+<h4 id="insert-undo-log"><a href="#insert-undo-log" class="headerlink" title="insert undo log"></a>insert undo log</h4><p>Insert undo log（插入撤销日志）是数据库中用于记录<strong>插入操作</strong>的一种撤销日志。因为insert操作的记录，只对事务本身可见，对其他事务不可见(这是事务的隔离性的要求)，因此 undo log可以在<strong>事务提交之后删除</strong>。</p>
+<h4 id="update-undo-log"><a href="#update-undo-log" class="headerlink" title="update undo log"></a>update undo log</h4><p>Update undo log（更新撤销日志）是数据库中用于记录<strong>更新操作(delete、update)<strong>的一种撤销日志。该undo log可能需要提供MVCC机制，因此不能</strong>在事务提交时就进行删除。提交是放入undo log链表，等待purge线程进行最后的删除。</strong></p>
+<h3 id="2-3-4-undo-log的生命周期"><a href="#2-3-4-undo-log的生命周期" class="headerlink" title="2.3.4 undo log的生命周期"></a>2.3.4 undo log的生命周期</h3><h4 id="undo-log生成过程"><a href="#undo-log生成过程" class="headerlink" title="undo log生成过程"></a>undo log生成过程</h4><h5 id="简要生成过程"><a href="#简要生成过程" class="headerlink" title="简要生成过程"></a>简要生成过程</h5><p>假设有2个数值，分别为A&#x3D;1和B&#x3D;2, 然后将A修改为3，B修改为4</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">1、start transaction ;<br>2、记录A=1到undo log  ;<br>3、update A = 3		;<br>4、记录A=3到redo log  ;<br>5、记录B=2到undo log  ;<br>6、update B = 4 ;<br>7、记录B=4到redo log  ;<br>8、将redo log刷新到磁盘<br>9、commit<br></code></pre></td></tr></table></figure>
+
+<p>异常情况分析：</p>
+<p>1、在1~8步骤的任意一步系统宕机，事务未提交，该事务就不会对磁盘上的数据做任何影响。</p>
+<p>2、如果在8~9之间宕机，恢复之后可以选择回滚，也可以选择继续完成事务提交，因为此时redo log已经持久化。</p>
+<p>3、若在9之后系统宕机，内存映射中变更的数据还来不及刷回磁盘，那么系统恢复之后，可以根据redo log把数据刷回磁盘。</p>
+<h5 id="详细生成过程"><a href="#详细生成过程" class="headerlink" title="详细生成过程"></a>详细生成过程</h5><p>对于InnoDB引擎来说，每个行记录除了记录本身的数据之外，还有几个隐藏的列：</p>
+<p>1、DB_ROW_ID: 如果没有为表显式的定义主键，并且表中也没有定义唯一索引，那么InnoDB会自动为表添加一个row_id的隐藏列作为主键。</p>
+<p>2、DB_TRX_ID: 每个事务都会分配一个事务的ID，当对某条记录发生变更时，就会将这个事务的事务ID写入trx_id中。</p>
+<p>3、DB_ROLL_PTR: 回滚指针，本质上就是指向undo log的指针。</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230621085633180.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230621085633180](MySQL课件补充/image-20230621085633180.png)
+
+--> 
+
+
+
+<p>当我们执行INSERT时：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">begin</span>;<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> <span class="hljs-keyword">user</span> (name) <span class="hljs-keyword">VALUES</span> (&quot;tom&quot;);<br></code></pre></td></tr></table></figure>
+
+<p>插入的数据都会生成一条insert undo log , 并且数据的回滚指针会指向它。undo log会记录undo log的序号，插入主键的列和值…., 那么在进行rollback的时候，通过主键直接把对应的数据删除即可。</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230621085924320.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230621085924320](MySQL课件补充/image-20230621085924320.png)
+
+--> 
+
+
+
+<p>当我们执行UPDATE时：</p>
+<p>对于更新的操作会产生update undo log，并且会分更新主键的和不更新主键的，假设现在执行：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">set</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Sun&#x27;</span> <span class="hljs-keyword">where</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> ;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230621090118337.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230621090118337](MySQL课件补充/image-20230621090118337.png)
+
+--> 
+
+<p>这时会把老的记录写入新的undo log，让回滚指针指向定的undo log，它的undo log是1，并且新的undo log会指向老的undo log(undo no &#x3D; 0)。</p>
+<p>假设现在执行：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">update</span> <span class="hljs-keyword">user</span> <span class="hljs-keyword">set</span> id <span class="hljs-operator">=</span> <span class="hljs-number">2</span> <span class="hljs-keyword">where</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> ;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230621090421981.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230621090421981](MySQL课件补充/image-20230621090421981.png)
+
+--> 
+
+<p>对于更新主键的操作，会先<strong>把原来的数据deletemark标识打开</strong>，这时并没有真正的删除数据，真正的删除会交给<strong>清理线程</strong>去判断，然后在后面插入一条新的数据，新数据也会产生undo log，并且undo log的序号会递增。</p>
+<p>可以发现每次对数据的变更都会产生一个undo log，当一条记录被变更多次时，那么，就会产生多条undo log，undo log记录的是变更前的日志，并且每个undo log的序号是递增的，那么，要当回滚的时候，按照序号依次向前，这样就会找到原始数据了。</p>
+<h4 id="回滚流程"><a href="#回滚流程" class="headerlink" title="回滚流程"></a>回滚流程</h4><p>以上面的例子来说，假设执行rollback，那么，对应的流程应该是这样：</p>
+<p>1、通过undo no&#x3D;3的日志把id&#x3D;2的数据删除 </p>
+<p>2、通过undo no&#x3D;2的日志把id&#x3D;1的数据的deletemark还原成0 </p>
+<p>3、通过undo no&#x3D;1的日志把id&#x3D;1的数据的name还原成Tom </p>
+<p>4、通过undo no&#x3D;0的日志把id&#x3D;1的数据删除</p>
+<h4 id="undo-log的删除"><a href="#undo-log的删除" class="headerlink" title="undo log的删除"></a>undo log的删除</h4><p>1、针对于insert undo log 因为insert操作的记录，只对事务本身可见，对其他事务不可见。故该undo log可以在事务提交后直接删除，不需要进行purge操作。 </p>
+<p>2、针对于update undo log 该undo log可能需要提供MVCC机制，因此不能在事务提交时就进行删除。提交时放入undo log链表，等待purge线程进行最后的删除。</p>
+<h1 id="3-MySQL锁"><a href="#3-MySQL锁" class="headerlink" title="3 MySQL锁"></a>3 MySQL锁</h1><p>事务的 <strong>隔离性</strong> 由这章讲述的 <strong>锁</strong> 来实现。</p>
+<h2 id="3-1-锁概述"><a href="#3-1-锁概述" class="headerlink" title="3.1 锁概述"></a>3.1 锁概述</h2><p><strong>锁</strong>是计算机协调多个进程或者线程<strong>并发访问某一个资源</strong>的机制。数据在任何时刻<strong>最多只有一个线程</strong>在访问，保证数据的完整性和一致性。</p>
+<h2 id="3-2-并发事务带来的问题"><a href="#3-2-并发事务带来的问题" class="headerlink" title="3.2 并发事务带来的问题"></a>3.2 并发事务带来的问题</h2><p>在典型的应用程序中，多个事务并发运行，经常会操作相同的数据来完成各自的任务（多个用户对同一数据进行操作）。并发虽然是必须的，但可能会导致以下的问题。</p>
+<p><strong>脏读（Dirty read）</strong>: 当一个事务正在访问数据并且对数据进行了修改，而这种修改还没有提交到数据库中，这时另外一个事务也访问了这个数据，然后使用了这个数据。因为这个数据是还没有提交的数据，那么另外一个事务读到的这个数据是“脏数据”，依据“脏数据”所做的操作可能是不正确的。</p>
+<p><strong>丢失修改（Lost to modify）</strong>：指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。 例如：事务1读取某表中的数据A&#x3D;20，事务2也读取A&#x3D;20，事务1修改A&#x3D;A-1，事务2也修改A&#x3D;A-1，最终结果A&#x3D;19，事务1的修改被丢失。</p>
+<p><strong>不可重复读（Unrepeatableread）</strong>：指在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务修改了该数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到的数据是不一样的情况，因此称为不可重复读。</p>
+<p><strong>幻读（Phantom read）</strong>：幻读与不可重复读类似。它发生在一个事务（T1）读取了几行数据，接着另一个并发事务（T2）插入了一些数据时。在随后的查询中，第一个事务（T1）就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。</p>
+<h2 id="3-3-并发事务的解决方案"><a href="#3-3-并发事务的解决方案" class="headerlink" title="3.3 并发事务的解决方案"></a>3.3 并发事务的解决方案</h2><p>解决方案：对事务进行隔离</p>
+<p>MySQL的四种隔离级别如下:</p>
+<p>**读未提交(READ UNCOMMITTED)**：这个隔离级别下，其他事务可以看到本事务没有提交的部分修改。因此，会造成脏读的问题(读取到了其他事务未提交的部分，而之后该事务进行了回滚)。这个级别的性能没有足够大的优势，但是又有很多的问题，因此很少使用。</p>
+<p>sql演示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 创建数据库表<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> goods_innodb(<br>	id <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> AUTO_INCREMENT,<br>	name <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>    <span class="hljs-keyword">primary</span> key(id)<br>)ENGINE<span class="hljs-operator">=</span>innodb <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8;<br><br># 插入数据<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> goods_innodb(name) <span class="hljs-keyword">values</span>(<span class="hljs-string">&#x27;华为&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> goods_innodb(name) <span class="hljs-keyword">values</span>(<span class="hljs-string">&#x27;小米&#x27;</span>);<br><br># 会话一<br><span class="hljs-keyword">set</span> session transaction isolation level read uncommitted ;		# 设置事务的隔离级别为read uncommitted<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br><br># 会话二<br><span class="hljs-keyword">set</span> session transaction isolation level read uncommitted ;		# 设置事务的隔离级别为read uncommitted<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">update</span> goods_innodb <span class="hljs-keyword">set</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;中兴&#x27;</span> <span class="hljs-keyword">where</span> id <span class="hljs-operator">=</span> <span class="hljs-number">2</span> ;			   # 修改数据<br><br># 会话一<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br></code></pre></td></tr></table></figure>
+
+<p>**读已提交(READ COMMITTED)**：其他事务只能读取到本事务已经提交的部分。这个隔离级别有不可重复读的问题，在同一个事务内的两次读取，拿到的结果竟然不一样，因为，另外一个事务对数据进行了修改。</p>
+<p>sql演示：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 会话一<br><span class="hljs-keyword">set</span> session transaction isolation level read committed ;		# 设置事务的隔离级别为read committed<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br><br># 会话二<br><span class="hljs-keyword">set</span> session transaction isolation level read committed ;		# 设置事务的隔离级别为read committed<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">update</span> goods_innodb <span class="hljs-keyword">set</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;小米&#x27;</span> <span class="hljs-keyword">where</span> id <span class="hljs-operator">=</span> <span class="hljs-number">2</span> ;			   # 修改数据<br><br># 会话一<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br><br># 会话二<br><span class="hljs-keyword">commit</span>;															# 提交事务<br><br># 会话一<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br></code></pre></td></tr></table></figure>
+
+<p><strong>REPEATABLE READ(可重复读)<strong>：可重复读隔离级别解决了上面不可重复读的问题(看名字也知道)，但是不能完全解决幻读。MySql默认的事务隔离级别就是：</strong>REPEATABLE READ</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> @<span class="hljs-variable">@global</span>.transaction_isolation ;<br></code></pre></td></tr></table></figure>
+
+<p>sql演示(解决不可重复读)：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 会话一<br><span class="hljs-keyword">set</span> session transaction isolation level REPEATABLE READ ;<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br><br># 会话二<br><span class="hljs-keyword">set</span> session transaction isolation level REPEATABLE READ ;<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">update</span> goods_innodb <span class="hljs-keyword">set</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;荣耀&#x27;</span> <span class="hljs-keyword">where</span> id <span class="hljs-operator">=</span> <span class="hljs-number">1</span> ;			   # 修改数据<br><br># 会话一<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br><br># 会话二<br><span class="hljs-keyword">commit</span>;															# 提交事务<br><br># 会话一<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br></code></pre></td></tr></table></figure>
+
+
+
+<p>sql演示(测试不会出现幻读的情况)：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 会话一<br><span class="hljs-keyword">set</span> session transaction isolation level REPEATABLE READ ;<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br><br># 会话二<br><span class="hljs-keyword">set</span> session transaction isolation level REPEATABLE READ ;<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> goods_innodb(name) <span class="hljs-keyword">values</span>(<span class="hljs-string">&#x27;小米&#x27;</span>);			   	   # 插入数据<br><span class="hljs-keyword">commit</span>;															# 提交事务<br><br># 会话一<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb ;									# 查询数据<br></code></pre></td></tr></table></figure>
+
+<p>sql演示(测试出现幻读的情况)：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 表结构进行修改<br><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">TABLE</span> goods_innodb <span class="hljs-keyword">ADD</span> version <span class="hljs-type">int</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">NULL</span> ;<br><br># 会话一<br><span class="hljs-keyword">set</span> session transaction isolation level REPEATABLE READ ;<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb <span class="hljs-keyword">where</span> version <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;					# 查询一条不满足条件的数据<br><br># 会话二<br><span class="hljs-keyword">set</span> session transaction isolation level REPEATABLE READ ;<br><span class="hljs-keyword">start</span> transaction ;												# 开启事务<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> goods_innodb(name, version) <span class="hljs-keyword">values</span>(<span class="hljs-string">&#x27;vivo&#x27;</span>, <span class="hljs-number">1</span>);	    # 插入一条满足条件的数据 <br><span class="hljs-keyword">commit</span>;															# 提交事务<br><br># 会话一<br><span class="hljs-keyword">update</span> goods_innodb <span class="hljs-keyword">set</span> name <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;金立&#x27;</span> <span class="hljs-keyword">where</span> version <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; 		   # 将version为<span class="hljs-number">1</span>的数据更改为<span class="hljs-string">&#x27;金立&#x27;</span><br><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> goods_innodb <span class="hljs-keyword">where</span> version <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;					# 查询一条不满足条件的数据<br></code></pre></td></tr></table></figure>
+
+<p>**SERIALIZABLE(可串行化)**：这是最高的隔离级别，可以解决上面提到的所有问题，因为他强制将所以的操作串行执行，这会导致并发性能极速下降，因此也不是很常用。</p>
+<h2 id="3-4-并发事务访问情况说明"><a href="#3-4-并发事务访问情况说明" class="headerlink" title="3.4 并发事务访问情况说明"></a>3.4 并发事务访问情况说明</h2><p>并发事务访问相同记录的情况大致可以划分为3种：读-读情况、写-写情况、读-写或写-读情况</p>
+<h3 id="3-4-1-读-读情况"><a href="#3-4-1-读-读情况" class="headerlink" title="3.4.1 读-读情况"></a>3.4.1 读-读情况</h3><p><strong>读-读</strong>情况，即并发事务相继<strong>读取相同的记录</strong> 。读取操作本身不会对记录有任何影响，并不会引起什么问题，所以允许这种情况的发生。</p>
+<h3 id="3-4-2-写-写情况"><a href="#3-4-2-写-写情况" class="headerlink" title="3.4.2 写-写情况"></a>3.4.2 写-写情况</h3><p>写-写 情况，即并发事务相继对相同的记录做出改动。 在这种情况下会发生 <strong>脏写(脏写读取、脏写覆盖)</strong> 的问题，任何一种隔离级别都不允许这种问题的发生。所以在多个未提交事务相继对一条记录做改动时，需要让它们排队执行 ，这个排队的过程其实是通过<strong>锁</strong>来实现的。这个所谓 的锁其实是一个 内存中的结构 ，在事务执行前本来是没有锁的，也就是说一开始是没有 锁结构 和记录进行关联的，如图所示：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623085931717.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623085931717](MySQL课件补充/image-20230623085931717.png)
+
+--> 
+
+<p>当一个事务想对这条记录做改动时，首先会看看内存中有没有与这条记录关联的<strong>锁结构</strong> ，当没有的时候 就会在内存中生成一个 锁结构 与之关联。比如，事务 T1 要对这条记录做改动，就需要生成一个 锁结构 与之关联：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623090948272.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623090948272](MySQL课件补充/image-20230623090948272.png)
+
+-->  
+
+<p>在锁结构中存在很多的信息，为了简化理解，只把两个比较重要的属性拿出来：</p>
+<p>1、trx信息：代表这个锁结构是哪一个事务生成的</p>
+<p>2、is_waiting: 代表当前事务是否在线等待</p>
+<p>当事务T1改动了这条记录后，就生成了一个锁结构与该条记录关联，因为之前没有别的事务为这条记录加锁，所以is_waiting属性就是false，我们把这个场景就称之为获取锁成功，或者加锁成功。然后就可以继续进行操作了。</p>
+<p>在事务T1提交之前，另外一个事务T2也想对该记录做更改，那么，先看看有没有锁结构与该条记录关联，发现有一个锁结构与之关联，然后也生成了一个锁结构与这条记录关联，不过锁结构的is_waiting属性就是true，表示当前事务需要等待，我们把这个场景就称之为获取锁失败，或者加锁失败。如下图所示：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623090651438.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623090651438](MySQL课件补充/image-20230623090651438.png)
+
+--> 
+
+<p>当事务T1提交之后，就会把该事务生成的<strong>锁结构释放掉</strong>，然后看看有没有别的事务在等待获取锁，发现了事务T2还在等待获取锁，所以把<strong>事务T2对应的锁结构的is_waiting属性设置为false</strong>，然后，把该事务对应的线程唤醒，让他继续执行，此时，事务T2就算获取到了锁，效果如下所示：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623090921426.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623090921426](MySQL课件补充/image-20230623090921426.png)
+
+--> 
+
+<h3 id="3-4-3-读-写情况"><a href="#3-4-3-读-写情况" class="headerlink" title="3.4.3 读-写情况"></a>3.4.3 读-写情况</h3><p>读-写 或 写-读 ，即一个事务进行读取操作，另一个进行改动操作。这种情况下可能发生 脏读 、 不可重 复读 、 幻读 的问题。</p>
+<p>使用事务的隔离级别解决，原理有两种：</p>
+<p>1、使用<strong>MVCC</strong>：读操作利用多版本并发控制（ MVCC ），写操作进行加锁 。</p>
+<p>2、读、写操作都采用 加锁 的方式。</p>
+<h2 id="3-5-锁的分类"><a href="#3-5-锁的分类" class="headerlink" title="3.5 锁的分类"></a>3.5 锁的分类</h2><p>从对数据操作的粒度分 ： </p>
+<p>1） 表锁：操作时，会锁定整个表。</p>
+<p>2）页面锁：操作时，会锁定某一页的数据。</p>
+<p>3） 行锁：操作时，会锁定当前操作行。</p>
+<p>从对数据操作的类型分：</p>
+<p>1） 读锁（共享锁）：针对同一份数据，多个读操作可以同时进行而不会互相影响。</p>
+<p>2） 写锁（排它锁）：当前操作没有完成之前，它会阻断其他写锁和读锁。</p>
+<table>
+<thead>
+<tr>
+<th>存储引擎</th>
+<th>表级锁</th>
+<th>行级锁</th>
+<th>页面锁</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MyISAM</td>
+<td>支持</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>InnoDB</td>
+<td>支持</td>
+<td>支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>MEMORY</td>
+<td>支持</td>
+<td>不支持</td>
+<td>不支持</td>
+</tr>
+<tr>
+<td>BDB</td>
+<td>支持</td>
+<td>不支持</td>
+<td>支持</td>
+</tr>
+</tbody></table>
+<p>MySQL这3种锁的特性可大致归纳如下 ：</p>
+<table>
+<thead>
+<tr>
+<th>锁类型</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表级锁</td>
+<td>偏向MyISAM 存储引擎，开销小，加锁快；不会出现死锁；锁定粒度大，发生锁冲突的概率最高,并发度最低。</td>
+</tr>
+<tr>
+<td>行级锁</td>
+<td>偏向InnoDB 存储引擎，开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低,并发度也最高。</td>
+</tr>
+<tr>
+<td>页面锁</td>
+<td>开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。</td>
+</tr>
+</tbody></table>
+<h2 id="3-6-InnoDB行锁"><a href="#3-6-InnoDB行锁" class="headerlink" title="3.6 InnoDB行锁"></a>3.6 InnoDB行锁</h2><h3 id="3-6-1-加锁特点"><a href="#3-6-1-加锁特点" class="headerlink" title="3.6.1 加锁特点"></a>3.6.1 加锁特点</h3><p>行锁特点 ：偏向InnoDB 存储引擎，开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高。</p>
+<p>InnoDB 与 MyISAM 的最大不同有两点：一是支持事务；二是 采用了行级锁。</p>
+<p>InnoDB  实现了以下两种类型的行锁。</p>
+<p>1、共享锁（S）：又称为读锁，简称S锁，共享锁就是多个事务对于同一数据可以共享一把锁，都能访问到数据，但是只能读不能修改。</p>
+<p>2、排他锁（X）：又称为写锁，简称X锁，排他锁就是不能与其他锁并存，如一个事务获取了一个数据行的排他锁，其他事务就不能再获取该行的其他锁，包括共享锁和排他锁，但是获取排他锁的事务是可以对数据进行读取和修改。</p>
+<p><strong>对于UPDATE、DELETE和INSERT语句，InnoDB会自动给涉及数据集加排他锁（X)；</strong></p>
+<p><strong>对于普通SELECT语句，InnoDB不会加任何锁；</strong></p>
+<p>可以通过以下语句显示给记录集加共享锁或排他锁 。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs sql">共享锁（S）：<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> table_name <span class="hljs-keyword">WHERE</span> ... LOCK <span class="hljs-keyword">IN</span> SHARE MODE<br>排他锁（X) ：<span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> table_name <span class="hljs-keyword">WHERE</span> ... <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">UPDATE</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-6-2-案例准备工作"><a href="#3-6-2-案例准备工作" class="headerlink" title="3.6.2 案例准备工作"></a>3.6.2 案例准备工作</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> test_innodb_lock(<br>	id <span class="hljs-type">int</span>(<span class="hljs-number">11</span>),<br>	name <span class="hljs-type">varchar</span>(<span class="hljs-number">16</span>),<br>	sex <span class="hljs-type">varchar</span>(<span class="hljs-number">1</span>)<br>)engine <span class="hljs-operator">=</span> innodb <span class="hljs-keyword">default</span> charset<span class="hljs-operator">=</span>utf8;<br><br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;100&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">3</span>,<span class="hljs-string">&#x27;3&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">4</span>,<span class="hljs-string">&#x27;400&#x27;</span>,<span class="hljs-string">&#x27;0&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">5</span>,<span class="hljs-string">&#x27;500&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">6</span>,<span class="hljs-string">&#x27;600&#x27;</span>,<span class="hljs-string">&#x27;0&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">7</span>,<span class="hljs-string">&#x27;700&#x27;</span>,<span class="hljs-string">&#x27;0&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">8</span>,<span class="hljs-string">&#x27;800&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">9</span>,<span class="hljs-string">&#x27;900&#x27;</span>,<span class="hljs-string">&#x27;1&#x27;</span>);<br><span class="hljs-keyword">insert</span> <span class="hljs-keyword">into</span> test_innodb_lock <span class="hljs-keyword">values</span>(<span class="hljs-number">1</span>,<span class="hljs-string">&#x27;200&#x27;</span>,<span class="hljs-string">&#x27;0&#x27;</span>);<br><br><span class="hljs-keyword">create</span> index idx_test_innodb_lock_id <span class="hljs-keyword">on</span> test_innodb_lock(id);<br><span class="hljs-keyword">create</span> index idx_test_innodb_lock_name <span class="hljs-keyword">on</span> test_innodb_lock(name);<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-6-3-行锁基本演示"><a href="#3-6-3-行锁基本演示" class="headerlink" title="3.6.3 行锁基本演示"></a>3.6.3 行锁基本演示</h3><table>
+<thead>
+<tr>
+<th>Session-1</th>
+<th>Session-2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554354615030.png" srcset="/img/loading.gif" lazyload> 关闭自动提交功能</td>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554354601867.png" srcset="/img/loading.gif" lazyload>  关闭自动提交功能</td>
+</tr>
+<tr>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554354713628.png" srcset="/img/loading.gif" lazyload> 可以正常的查询出全部的数据</td>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554354717336.png" srcset="/img/loading.gif" lazyload> 可以正常的查询出全部的数据</td>
+</tr>
+<tr>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554354830589.png" srcset="/img/loading.gif" lazyload>查询id 为3的数据 ；</td>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554354832708.png" srcset="/img/loading.gif" lazyload>获取id为3的数据 ；</td>
+</tr>
+<tr>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554382789984.png" srcset="/img/loading.gif" lazyload> 更新id为3的数据，但是不提交；</td>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554382905352.png" srcset="/img/loading.gif" lazyload> 更新id为3 的数据， 出于等待状态</td>
+</tr>
+<tr>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554382977653.png" srcset="/img/loading.gif" lazyload> 通过commit， 提交事务</td>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554383044542.png" srcset="/img/loading.gif" lazyload> 解除阻塞，更新正常进行</td>
+</tr>
+<tr>
+<td>以上， 操作的都是同一行的数据，接下来，演示不同行的数据 ：</td>
+<td></td>
+</tr>
+<tr>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554385220580.png" srcset="/img/loading.gif" lazyload> 更新id为3数据，正常的获取到行锁 ， 执行更新 ；</td>
+<td><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554385236768.png" srcset="/img/loading.gif" lazyload> 由于与Session-1 操作不是同一行，获取当前行锁，执行更新；</td>
+</tr>
+</tbody></table>
+<!--
+
+| Session-1                                                    | Session-2                                                    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![1554354615030](MySQL课件补充/1554354615030.png) 关闭自动提交功能 | ![1554354601867](MySQL课件补充/1554354601867.png)  关闭自动提交功能 |
+| ![1554354713628](MySQL课件补充/1554354713628.png) 可以正常的查询出全部的数据 | ![1554354717336](MySQL课件补充/1554354717336.png) 可以正常的查询出全部的数据 |
+| ![1554354830589](MySQL课件补充/1554354830589.png)查询id 为3的数据 ； | ![1554354832708](MySQL课件补充/1554354832708.png)获取id为3的数据 ； |
+| ![1554382789984](MySQL课件补充/1554382789984.png) 更新id为3的数据，但是不提交； | ![1554382905352](MySQL课件补充/1554382905352.png) 更新id为3 的数据， 出于等待状态 |
+| ![1554382977653](MySQL课件补充/1554382977653.png) 通过commit， 提交事务 | ![1554383044542](MySQL课件补充/1554383044542.png) 解除阻塞，更新正常进行 |
+| 以上， 操作的都是同一行的数据，接下来，演示不同行的数据 ：   |                                                              |
+| ![1554385220580](MySQL课件补充/1554385220580.png) 更新id为3数据，正常的获取到行锁 ， 执行更新 ； | ![1554385236768](MySQL课件补充/1554385236768.png) 由于与Session-1 操作不是同一行，获取当前行锁，执行更新； |
+
+-->
+
+<h3 id="3-6-4-无索引，行锁升级为表锁"><a href="#3-6-4-无索引，行锁升级为表锁" class="headerlink" title="3.6.4 无索引，行锁升级为表锁"></a>3.6.4 无索引，行锁升级为表锁</h3><p><strong>如果不通过索引条件检索数据，那么InnoDB将对表中的所有记录加锁，实际效果跟表锁一样。</strong>一定需要注意索引失效的问题。</p>
+<p>查看当前表的索引 ： show  index  from test_innodb_lock ;</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554385956215.png" srcset="/img/loading.gif" lazyload> </p>
+<table>
+<thead>
+<tr>
+<th>Session-1</th>
+<th>Session-2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>关闭事务的自动提交<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554386287454.png" srcset="/img/loading.gif" lazyload></td>
+<td>关闭事务的自动提交<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554386312524.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td>执行更新语句 ：<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554386654793.png" srcset="/img/loading.gif" lazyload></td>
+<td>执行更新语句， 但处于阻塞状态：<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554386685610.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td>提交事务：<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554386721653.png" srcset="/img/loading.gif" lazyload></td>
+<td>解除阻塞，执行更新成功 ：<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554386750004.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+<tr>
+<td></td>
+<td>执行提交操作 ：<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1554386804807.png" srcset="/img/loading.gif" lazyload></td>
+</tr>
+</tbody></table>
+<!--
+
+![1554385956215](MySQL课件补充/1554385956215.png) 
+
+| Session-1                                                    | Session-2                                                    |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 关闭事务的自动提交![1554386287454](MySQL课件补充/1554386287454.png) | 关闭事务的自动提交![1554386312524](MySQL课件补充/1554386312524.png) |
+| 执行更新语句 ：![1554386654793](MySQL课件补充/1554386654793.png) | 执行更新语句， 但处于阻塞状态：![1554386685610](MySQL课件补充/1554386685610.png) |
+| 提交事务：![1554386721653](MySQL课件补充/1554386721653.png)  | 解除阻塞，执行更新成功 ：![1554386750004](MySQL课件补充/1554386750004.png) |
+|                                                              | 执行提交操作 ：![1554386804807](MySQL课件补充/1554386804807.png) |
+
+-->
+
+<p>由于 执行更新时 ， name字段本来为varchar类型， 我们是作为数字类型使用，存在类型转换，索引失效，最终行锁变为表锁 ；</p>
+<h3 id="3-6-6-InnoDB-行锁争用情况"><a href="#3-6-6-InnoDB-行锁争用情况" class="headerlink" title="3.6.6 InnoDB 行锁争用情况"></a>3.6.6 InnoDB 行锁争用情况</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">show</span> status <span class="hljs-keyword">like</span> <span class="hljs-string">&#x27;innodb_row_lock%&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/1556455943670.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![1556455943670](MySQL课件补充/1556455943670.png)
+
+-->
+
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-attr">Innodb_row_lock_current_waits</span>: <span class="hljs-string">当前正在等待锁定的数量</span><br><span class="hljs-attr">Innodb_row_lock_time</span>: <span class="hljs-string">从系统启动到现在锁定总时间长度</span><br><span class="hljs-attr">Innodb_row_lock_time_avg</span>:<span class="hljs-string">每次等待所花平均时长</span><br><span class="hljs-attr">Innodb_row_lock_time_max</span>:<span class="hljs-string">从系统启动到现在等待最长的一次所花的时间</span><br><span class="hljs-attr">Innodb_row_lock_waits</span>: <span class="hljs-string">系统启动后到现在总共等待的次数</span><br><br><span class="hljs-attr">当等待的次数很高，而且每次等待的时长也不小的时候，我们就需要分析系统中为什么会有如此多的等待，然后根据分析结果着手制定优化计划。</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="4-MySQL中的MVCC"><a href="#4-MySQL中的MVCC" class="headerlink" title="4 MySQL中的MVCC"></a>4 MySQL中的MVCC</h1><h2 id="4-1-MVCC概述"><a href="#4-1-MVCC概述" class="headerlink" title="4.1 MVCC概述"></a>4.1 MVCC概述</h2><p>一想到并发控制，很多人第一反应就是加锁，的确，加锁确实是解决并发问题最常见的方案。但是，其实除了加锁以外，在数据库领域，还有一种无锁的方案可以来实现并发控制，那就是大名鼎鼎的MVCC。</p>
+<p>MVCC （Multiversion Concurrency Control），多版本并发控制。顾名思义，MVCC 是通过<strong>数据行的多个版本管理来实现数据库的并发控制</strong> 。</p>
+<p>这项技术使得在InnoDB的事务隔离级别下执行 <strong>一致性读</strong> 操作有了保 证。换言之，就是为了查询一些正在被另一个事务更新的行，并且可以看到它们被更新之前的值，这样 在做查询的时候就不用等待另一个事务释放锁。</p>
+<p>在数据库中，对数据的操作主要有2中，分别是读和写，而在并发场景下，就可能出现以下三种情况：</p>
+<blockquote>
+<p>读-读并发</p>
+<p>写-写并发</p>
+<p>读-写并发</p>
+</blockquote>
+<p>我们都知道，在没有写的情况下发读-读并是不会出现问题的，而写-写并发这种情况比较常用的就是通过加锁的方式实现。那么，<strong>【读-写并发】则可以通过MVCC的机制解决。</strong></p>
+<h2 id="4-2-快照读和当前读"><a href="#4-2-快照读和当前读" class="headerlink" title="4.2 快照读和当前读"></a>4.2 快照读和当前读</h2><p>MVCC在MySQL InnoDB中的实现主要是为了提高数据库并发性能，用更好的方式去处理 读-写冲突 ，做到 即使有<strong>读写冲突</strong>时，也能做到 <strong>不加锁 ，非阻塞并发读</strong> ，而这个读指的就是 快照读 , 而非 当前读 。当前 读实际上是一种加锁的操作，是悲观锁的实现。而MVCC本质是采用乐观锁思想的一种方式。</p>
+<h3 id="4-2-1-快照读"><a href="#4-2-1-快照读" class="headerlink" title="4.2.1 快照读"></a>4.2.1 快照读</h3><p>快照读又叫<strong>一致性读</strong>，读取的是快照数据。<strong>不加锁的简单的 SELECT 都属于快照读</strong>，即不加锁的非阻塞 读；比如这样：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> xx_table <span class="hljs-keyword">WHERE</span> ...<br></code></pre></td></tr></table></figure>
+
+<p>之所以出现快照读的情况，是基于提高并发性能的考虑，快照读的实现是基于MVCC，它在很多情况下， 避免了加锁操作，降低了开销。 既然是基于多版本，那么<strong>快照读可能读到的并不一定是数据的最新版本，而有可能是之前的历史版本</strong>。 快照读的前提是隔离级别不是串行级别，串行级别下的快照读会退化成当前读。</p>
+<h3 id="4-2-2-当前读"><a href="#4-2-2-当前读" class="headerlink" title="4.2.2 当前读"></a>4.2.2 当前读</h3><p>和快照读相对应的另外一个概念叫做当前读，<strong>当前读读取的是记录的最新版本</strong>（最新数据，而不是历史版本的数据），读取时还要保证其他并发事务 不能修改当前记录，会对读取的记录进行加锁。<strong>加锁的 SELECT，或者对数据进行增删改都会进行当前读</strong>。比如：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> xx_table LOCK <span class="hljs-keyword">IN</span> SHARE MODE;  # 共享锁<br><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> xx_table <span class="hljs-keyword">FOR</span> <span class="hljs-keyword">UPDATE</span>;			# 排它锁<br><span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> xx_table ...					# 排它锁<br><span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> xx_table ...					# 排它锁<br><span class="hljs-keyword">UPDATE</span> xx_table ...							# 排它锁<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-3-隐藏字段以及Undo-Log版本链"><a href="#4-3-隐藏字段以及Undo-Log版本链" class="headerlink" title="4.3 隐藏字段以及Undo Log版本链"></a>4.3 隐藏字段以及Undo Log版本链</h2><p>对于使用 InnoDB 存储引擎的表来说，它的聚簇索引记录中都包含两个必 要的隐藏列。 </p>
+<p>1、trx_id ：每次一个事务对某条聚簇索引记录进行改动时，都会把该事务的 <strong>事务id</strong> 赋值给 trx_id 隐藏列。 </p>
+<p>2、roll_pointer ：每次对某条聚簇索引记录进行改动时，都会把旧的版本写入到 undo日志 中，然 后这个隐藏列就相当于一个指针，可以通过它来找到该记录修改前的信息。</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623113348581.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623113348581](MySQL课件补充/image-20230623113348581.png)
+
+--> 
+
+<p><strong>insert undo只在事务回滚时起作用</strong>，当事务提交后，该类型的undo日志就没用了，它占用的Undo Log Segment也会被系统回收（也就是该undo日志占用的Undo页面链表要么被重用，要么被释放）。</p>
+<p>假设 id &#x3D; 100 的事务 A <strong>插入一条行</strong>记录（id &#x3D; 1, username &#x3D; “Jack”, age &#x3D; 18），那么，这行记录的两个隐藏字段 trx_id &#x3D; 100 和 roll_pointer指向一个空的 undo log，因为在这之前并没有事务操作 id &#x3D; 1 的这行记录。如图所示：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623120729145.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623120729145](MySQL课件补充/image-20230623120729145.png)
+
+--> 
+
+<p>然后，id &#x3D; 200 的事务 B 修改了这条行记录，把 age 从 18 修改成了 20，于是，这条行记录的 trx_id就变成了 200，roll_pointer就指向事务 A 生成的 undo log ：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623120845318.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623120845318](MySQL课件补充/image-20230623120845318.png)
+
+--> 
+
+<p>接着，id &#x3D; 300 的事务 C 再次修改了这条行记录，把 age 从 20 修改成了 30，如下图：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623120926172.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623120926172](MySQL课件补充/image-20230623120926172.png)
+
+--> 
+
+<p>可以看到，每次修改行记录都会更新 trx_id 和 roll_pointer 这两个隐藏字段，之前的多个数据快照对应的 undo log 会通过 roll_pointer 指针串联起来，从而形成一个<strong>版本链</strong>。MVCC 这个机制，其实就是靠 update undo log 实现的。</p>
+<p>那么，一条记录在同一时刻可能有多个事务在执行，那么，undo log会有一条记录的多个快照，那么在这一时刻发生SELECT要进行快照读的时候，要读哪个快照呢？</p>
+<h2 id="4-4-MVCC之ReadView"><a href="#4-4-MVCC之ReadView" class="headerlink" title="4.4 MVCC之ReadView"></a>4.4 MVCC之ReadView</h2><h3 id="4-4-1-ReadView简介"><a href="#4-4-1-ReadView简介" class="headerlink" title="4.4.1 ReadView简介"></a>4.4.1 ReadView简介</h3><p><strong>Read View 主要来帮我们解决可见性的问题的</strong>，即他会来告诉我们本次事务应该看到哪个快照，不应该看到哪个快照。</p>
+<p>MVCC主要针对的是READ COMMITTED、REPEATABLE READ</p>
+<p>1、READ UNCOMMITTED 隔离级别的事务，由于可以读到未提交事务修改过的记录，所以直接读取记录的最新版本就好了。</p>
+<p>2、SERIALIZABLE 隔离级别的事务，InnoDB规定使用加锁的方式来访问记录。</p>
+<p>3、READ COMMITTED 和 REPEATABLE READ 隔离级别的事务，都必须保证读到 <strong>已经提交了的</strong> 事务修改过的记录。</p>
+<p>这个ReadView中主要包含4个比较重要的内容，分别如下：</p>
+<p>1、creator_trx_id ，创建这个 Read View 的事务 ID。</p>
+<p>2、m_ids，生成 ReadView 时有哪些事务在执行但是还没提交的（称为 ”<strong>活跃事务</strong>“），这些活跃事务的 id 就存在这个字段里。</p>
+<p>3、min_trx_id：m_ids 里最小的值</p>
+<p>4、max_trx_id：生成 ReadView 时 InnoDB 将分配给下一个事务的 ID 的值（事务 ID 是递增分配的，越后面申请的事务 ID 越大）max_trx_id是系统最大的事务id值，这里要注意是系统中的事务id，需要区别于正在活跃的事务ID。</p>
+<p>注意：max_trx_id并不是trx_ids中的最大值，事务id是递增分配的。比如，现在有id为1， 2，3这三个事务，之后id为3的事务提交了。那么一个新的读事务在生成ReadView时， m_ids就包括1和2，min_trx_id的值就是1，max_trx_id的值就是4。</p>
+<h3 id="4-4-2-ReadView工作原理"><a href="#4-4-2-ReadView工作原理" class="headerlink" title="4.4.2 ReadView工作原理"></a>4.4.2 ReadView工作原理</h3><p>通过一个例子来理解下 ReaView 机制是如何做到判断当前事务能够看见哪些版本的：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"># 创建数据库表<br><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> <span class="hljs-keyword">user</span>(<br>	id <span class="hljs-type">int</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span> AUTO_INCREMENT,<br>	username <span class="hljs-type">varchar</span>(<span class="hljs-number">20</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">NULL</span>,<br>	age <span class="hljs-type">int</span>,<br>    <span class="hljs-keyword">primary</span> key(id)<br>)ENGINE<span class="hljs-operator">=</span>innodb <span class="hljs-keyword">DEFAULT</span> CHARSET<span class="hljs-operator">=</span>utf8;<br></code></pre></td></tr></table></figure>
+
+<p>假设表中已经被之前的事务 A（id &#x3D; 100）插入了一条行记录（id &#x3D; 1, username &#x3D; “Jack”, age &#x3D; 18），如图所示：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623121312957.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623121312957](MySQL课件补充/image-20230623121312957.png)
+
+--> 
+
+
+
+<hr>
+<p>接下来，有两个事务 B（id &#x3D; 200） 和 C（id &#x3D; 300）过来<strong>并发执行</strong>，事务 C 想要更新（update）这行 id &#x3D; 1 的记录，而事务 B（select）想要查询这行数据，这两个事务都执行了相应的操作，但是<strong>还没有进行提交</strong>：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623121412041.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623121412041](MySQL课件补充/image-20230623121412041.png)
+
+--> 
+
+
+
+<p>如果现在事务 B 开启了一个 ReadView，在这个 ReadView 里面：</p>
+<p>1、m_ids 就包含了当前的活跃事务的 id，即事务 B 和事务 C 这两个 id，200 和 300</p>
+<p>2、min_trx_id就是 200</p>
+<p>3、max_trx_id是下一个能够分配的事务的 id，那就是 301</p>
+<p>4、creator_trx_id是当前创建 ReadView 事务 B 的 id 200</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623121606073.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623121606073](MySQL课件补充/image-20230623121606073.png)
+
+--> 
+
+
+
+<p>现在事务 B 进行第一次查询，会把使用行记录的隐藏字段 <strong>trx_id 和 ReadView 的 min_trx_id 进行下判断</strong>，此时，发现 trx_id 是100，小于 ReadView 里的 min_trx_id（200），这说明在事务 B 开始之前，修改这行记录的事务 A 已经提交了，所以开始于事务 A 提交之后的事务 B是可以查到事务 A 对这行记录的更新的。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">row.trx_id <span class="hljs-operator">&amp;</span>lt; ReadView.min_trx_id<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623121849654.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623121849654](MySQL课件补充/image-20230623121849654.png)
+
+--> 
+
+
+
+<p>接着事务 C 过来修改这行记录，把 age &#x3D; 18 改成了 age &#x3D; 20，所以这行记录的 trx_id就变成了 300，同时 roll_pointer指向了事务 C 修改之前生成的 undo log：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623121949894.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623121949894](MySQL课件补充/image-20230623121949894.png)
+
+--> 
+
+
+
+<p>那这个时候事务 B 再次进行查询操作，会发现这行记录的 trx_id（300）大于 ReadView 的 min_trx_id（200），并且小于 max_trx_id（301）。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">row.trx_id <span class="hljs-operator">&amp;</span>gt; ReadView.min_trx_id <span class="hljs-operator">&amp;</span>amp;<span class="hljs-operator">&amp;</span>amp; row.trx_id <span class="hljs-operator">&amp;</span>lt; max_trx_id<br></code></pre></td></tr></table></figure>
+
+<p>这说明一个问题，就是更新这行记录的事务很有可能也存在于 ReadView 的 m_ids（活跃事务）中。所以事务 B 会去判断下 ReadView 的 m_ids 里面是否存在 trx_id &#x3D; 300的事务，显然是存在的，这就表示这个 id &#x3D; 300 的事务是跟自己（事务 B）在同一时间段并发执行的事务，也就说明这行 age &#x3D; 20 的记录事务 B 是不能查询到的。</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623122306320.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623122306320](MySQL课件补充/image-20230623122306320.png)
+
+--> 
+
+<p>既然无法查询，那该咋整？事务 B 这次的查询操作能够查到啥呢？ 没错，undo log 版本链！</p>
+<p>这时事务 B 就会顺着这行记录的 roll_pointer 指针往下找，就会找到最近的一条trx_id &#x3D; 100 的 undo log，而自己的 id 是 200，即说明这个 trx_id &#x3D; 100 的 undo log 版本必然是在事务 B 开启之前就已经提交的了。所以事务 B 的这次查询操作读到的就是这个版本的数据即 age &#x3D; 18。</p>
+<p>通过上述的例子，我们得出的结论是，<strong>通过 undo log 版本链和 ReadView 机制，可以保证一个事务不会读到并发执行的另一个事务的更新</strong>。</p>
+<hr>
+<p>那自己修改的值，自己能不能读到呢？肯定可以读到。不过上面的例子我们只涉及到了 ReadView 中的前三个字段，而 <strong>creator_trx_id</strong> 就与自己读自己的修改有关，所以这里还是图解出来让大家更进一步理解下 ReadView 机制：</p>
+<p>假设事务 C 的修改已经提交了，然后事务 B 更新了这行记录，把 age &#x3D; 20 改成了 age &#x3D; 66，如下图所示：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623124002089.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623124002089](MySQL课件补充/image-20230623124002089.png)
+
+--> 
+
+<p>然后，事务 B 再来查询这条记录，发现 trx_id &#x3D; 200与 ReadView 里的 creator_trx_id &#x3D; 200 一样，这就说明这是我自己刚刚修改的啊，当然可以被查询到。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">row.trx_id <span class="hljs-operator">=</span> ReadView.creator_trx_id<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623124329590.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623124329590](MySQL课件补充/image-20230623124329590.png)
+
+--> 
+
+
+
+
+
+<hr>
+<p>那如果在事务 B 的执行期间，突然开了一个 id &#x3D; 500 的事务 D，并更新这行记录 age &#x3D; 88 会更新成功吗？事务可否正常提交？然后事务 B 再去读这行记录，读到的是88吗？</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623124410244.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623124410244](MySQL课件补充/image-20230623124410244.png)
+
+--> 
+
+<p>答案：66。因为事务B修改了数据66，增加了排他锁，事务还未结束，锁还没有释放。事务D无法修改数据为88，处于等待锁状态。</p>
+<p>如果这个时候事务 B 再去查询这行记录，就会发现 trx_id &#x3D; 500大于 ReadView 中的 max_trx_id &#x3D; 301，这说明事务 B 执行期间，有另外一个事务正要更新数据，所以不能查询到另外一个事务的更新。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql">row.trx_id <span class="hljs-operator">&amp;</span>gt; ReadView.max_trx_id<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623124531685.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623124531685](MySQL课件补充/image-20230623124531685.png)
+
+--> 
+
+<p>那通过上述的例子，我们得出的结论是，<strong>通过 undo log 版本链和 ReadView 机制，可以保证一个事务只可以读到该事务自己修改的数据或该事务开始之前的数据</strong>。</p>
+<h3 id="4-4-3-ReadView总结"><a href="#4-4-3-ReadView总结" class="headerlink" title="4.4.3 ReadView总结"></a>4.4.3 ReadView总结</h3><h4 id="ReadView的规则"><a href="#ReadView的规则" class="headerlink" title="ReadView的规则"></a>ReadView的规则</h4><p>1、如果被访问版本的trx_id属性值与ReadView中的 creator_trx_id 值相同，意味着当前事务在访问 它自己修改过的记录，所以，该版本可以被当前事务访问。 </p>
+<p>row.trx_id &#x3D; ReadView.creator_trx_id</p>
+<p>2、如果被访问版本的trx_id属性值小于ReadView中的 min_trx_id 值，表明生成该版本的事务在当前事务生成ReadView前已经提交，所以该版本可以被当前事务访问。</p>
+<p>row.trx_id &lt; ReadView.min_trx_id</p>
+<p>3、如果row.trx_id &gt; ReadView.min_trx_id &amp;&amp; row.trx_id &lt; max_trx_id说明，在执行当前事务的时候很有可能存在一个并发事务，然后，需要判断当前行记录的事务的id，是否在ReadView的m_ids（活跃事务）中，如果存在就说明的确存在一个并发事务，在进行数据读取的时候不允许读取当前行记录，可以通过行记录的回滚指针读取undo log获取数据。</p>
+<p>row.trx_id &gt; ReadView.min_trx_id &amp;&amp; row.trx_id &lt; max_trx_id</p>
+<p>4、如果row.trx_id &gt; max_trx_id，说明在执行当前事务的时候，有另外一个事务执行了并且提交了，那么，当前事务在读取数据的时候不允许读取当前行数据，可以通过行记录的回滚指针读取undo log获取数据。</p>
+<p>row.trx_id &gt; max_trx_id</p>
+<h4 id="MVCC整体操作流程"><a href="#MVCC整体操作流程" class="headerlink" title="MVCC整体操作流程"></a>MVCC整体操作流程</h4><p>了解了这些概念之后，我们来看下当查询一条记录的时候，系统如何通过MVCC找到它： </p>
+<p>1、首先，获取事务自己的版本号，也就是事务 ID； </p>
+<p>2、获取 ReadView； </p>
+<p>3、查询得到的数据，然后与 ReadView 中的事务版本号进行比较； </p>
+<p>4、如果不符合 ReadView 规则，就需要从 Undo Log 中获取历史快照；</p>
+<p>最后返回符合规则的数据。 在隔离级别为读已提交（Read Committed）时，一个事务中的每一次 SELECT 查询都会重新获取一次 Read View。</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623125112202.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623125112202](MySQL课件补充/image-20230623125112202.png)
+
+--> 
+
+<p>注意：此时同样的查询语句都会重新获取一次 Read View，这时如果 Read View 不同，就可能产生不可重复读或者幻读的情况。</p>
+<p>当隔离级别为可重复读的时候，就避免了不可重复读，这是因为一个事务只在第一次 SELECT 的时候会 获取一次 Read View，而后面所有的 SELECT 都会复用这个 Read View，如下表所示：</p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL%E8%AF%BE%E4%BB%B6%E8%A1%A5%E5%85%85/image-20230623125152008.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20230623125152008](MySQL课件补充/image-20230623125152008.png)
+
+--> 
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MySQL高级二</div>
+      <div>http://example.com/2024/04/28/技术栈/MySQL/MySQL课件补充/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/29/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/ShardingSphere5/ShardingSphere5%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98/" title="ShardingSphere5">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ShardingSphere5</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/" title="MySQL高级一">
+                        <span class="hidden-mobile">MySQL高级一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
