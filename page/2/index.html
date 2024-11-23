@@ -225,23 +225,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" target="_self">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="5、消息百分百成功投递">
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="9、延迟队列">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" target="_self">
-          5、消息百分百成功投递
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
+          9、延迟队列
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" target="_self">
+      <a class="index-excerpt " href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
         <div>
-          消息百分百成功投递1 消息百分百成功投递谈到消息的可靠性投递，无法避免的，在实际的工作中会经常碰到，比如一些核心业务需要保障消息不丢失，接下来我们看一个可靠性投递的流程图，说明可靠性投递的概念：   Step 1： 首先把消息信息(业务数据）存储到数据库中，紧接着，我们再把这个消息记录也存储到一张消息记录表里（或者另外一个同源数据库的消息记录表） Step 2：发送消息到MQ Broker节点（采
+          延迟队列1 概述 延迟队列存储的对象肯定是对应的延时消息，所谓”延时消息”是指当消息被发送以后，并不想让消费者立即拿到消息，而是等待指定时间后，消费者才拿到这个消息进行消费。  场景：在订单系统中，一个用户下单之后通常有30分钟的时间进行支付，如果30分钟之内没有支付成功，那么这个订单将进行取消处理。这时就可以使用延时队列将订单信息发送到延时队列。  需求：    下单后，30分钟未支付，取消订单
         </div>
       </a>
 
@@ -249,8 +249,75 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-05 00:00" pubdate>
-              2024-06-05
+            <time datetime="2024-06-06 00:00" pubdate>
+              2024-06-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="8、死信队列">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/" target="_self">
+          8、死信队列
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC8%E7%AB%A0%20%E6%AD%BB%E4%BF%A1%E9%98%9F%E5%88%97/" target="_self">
+        <div>
+          死信队列1 概述1.1 什么是死信队列死信队列，英文缩写：DLX 。DeadLetter Exchange（死信交换机），当消息成为Dead message后，可以被重新发送到另一个交换机，这个交换机就是DLX。  先从概念解释上搞清楚这个定义，死信，顾名思义就是无法被消费的消息，字面意思可以这样理解，一般来说，producer将消息投递到broker或者直接到queue里了，consumer从q
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-06 00:00" pubdate>
+              2024-06-06
             </time>
           </div>
         
@@ -359,6 +426,73 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="5、消息百分百成功投递">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" target="_self">
+          5、消息百分百成功投递
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" target="_self">
+        <div>
+          消息百分百成功投递1 消息百分百成功投递谈到消息的可靠性投递，无法避免的，在实际的工作中会经常碰到，比如一些核心业务需要保障消息不丢失，接下来我们看一个可靠性投递的流程图，说明可靠性投递的概念：   Step 1： 首先把消息信息(业务数据）存储到数据库中，紧接着，我们再把这个消息记录也存储到一张消息记录表里（或者另外一个同源数据库的消息记录表） Step 2：发送消息到MQ Broker节点（采
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-05 00:00" pubdate>
+              2024-06-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
           <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="2、RabbitMQ入门案例">
         </a>
@@ -376,6 +510,73 @@
       <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
         <div>
           RabbitMQ入门案例一、目标生产者发送消息，消费者接收消息，用最简单的方式实现      二、创建队列     队列名称：atguigu.queue.simple        三、Java 客户端：整合 SpringBoot1、生产者端工程①创建module     ②配置POM12345678910111213141516&lt;parent&gt;    &lt;groupId&gt;o
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-04 00:00" pubdate>
+              2024-06-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="1、RabbitMQ概述和安装">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/" target="_self">
+          1、RabbitMQ概述和安装
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/" target="_self">
+        <div>
+          RabbitMQ概述和安装一、消息中间件概述1 为什么学习消息队列在互联网应用中，经常需要对庞大的海量数据进行监控，随着网络技术和软件开发技术的不断提高，在实战开发中MQ的使用与日俱增，特别是RabbitMQ在分布式系统中存储转发消息，可以保证数据不丢失，也能保证高可用性，即集群部署的时候部分机器宕机可以继续运行。在大型电子商务类网站，如京东、淘宝、去哪儿等网站有着深入的应用 。 消息队列的主要作
         </div>
       </a>
 
@@ -560,73 +761,6 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/" target="_self">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="1、RabbitMQ概述和安装">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/" target="_self">
-          1、RabbitMQ概述和安装
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC1%E7%AB%A0%20RabbitMQ%E6%A6%82%E8%BF%B0%E5%92%8C%E5%AE%89%E8%A3%85/" target="_self">
-        <div>
-          RabbitMQ概述和安装一、消息中间件概述1 为什么学习消息队列在互联网应用中，经常需要对庞大的海量数据进行监控，随着网络技术和软件开发技术的不断提高，在实战开发中MQ的使用与日俱增，特别是RabbitMQ在分布式系统中存储转发消息，可以保证数据不丢失，也能保证高可用性，即集群部署的时候部分机器宕机可以继续运行。在大型电子商务类网站，如京东、淘宝、去哪儿等网站有着深入的应用 。 消息队列的主要作
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-04 00:00" pubdate>
-              2024-06-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/04/29/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/ShardingSphere5/ShardingSphere5%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98/" target="_self">
           <img src="/img/shardingSphere.png" srcset="/img/loading.gif" lazyload alt="ShardingSphere5">
         </a>
@@ -727,140 +861,6 @@
             <i class="iconfont icon-date"></i>
             <time datetime="2024-04-28 16:38" pubdate>
               2024-04-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/" target="_self">
-          <img src="/img/mysql.jpg" srcset="/img/loading.gif" lazyload alt="MySQL高级一">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/" target="_self">
-          MySQL高级一
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/MySQL8%E9%AB%98%E7%BA%A7-%E6%9E%B6%E6%9E%84%E5%92%8C%E4%BC%98%E5%8C%96/" target="_self">
-        <div>
-          第01章 Linux下MySQL的安装与使用1、安装1.1、docker安装12345678docker run -d \-p 3309:3306 \-v /atguigu/mysql/mysql8/conf:/etc/mysql/conf.d \-v /atguigu/mysql/mysql8/data:/var/lib/mysql \-e MYSQL_ROOT_PASSWORD=123
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-28 16:35" pubdate>
-              2024-04-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/" class="category-chain-item">MySQL</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/mysql%E8%AF%AD%E5%8F%A5/" target="_self">
-          <img src="/img/mysql.jpg" srcset="/img/loading.gif" lazyload alt="MySQL语句">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/mysql%E8%AF%AD%E5%8F%A5/" target="_self">
-          MySQL语句
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/mysql%E8%AF%AD%E5%8F%A5/" target="_self">
-        <div>
-          DQL 数据查询语句 DDL 库表操作语句 DML 数据操作语句 1、数据库的基本操作创建数据库1create database 数据库名;  查看所有的数据库1show databases; #有一个s，代表多个数据库  查看某个数据库的详细定义语句1show create database 数据库名;  1show create database 数据库名\G  修改数据库编码12#修改数据库
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-21 00:00" pubdate>
-              2024-04-21
             </time>
           </div>
         

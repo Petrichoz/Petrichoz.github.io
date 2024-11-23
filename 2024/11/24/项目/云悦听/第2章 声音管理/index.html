@@ -1,0 +1,797 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第2章 声音管理学习目标：  声音相关业务流程&amp;数据模型  新增声音（音视频文件上传到腾讯云点播服务）  修改声音  删除声音  点击添加声音的时候会触发一个查询所有专辑列表 http:&#x2F;&#x2F;127.0.0.1&#x2F;api&#x2F;album&#x2F;albumInfo&#x2F;findUserAllAlbumList 主要目的是为了让专辑与声音进行挂钩！ 主要是根据userId查询数据{专辑Id，专辑标题}。然后并按">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PZ">
+<meta property="og:url" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="第2章 声音管理学习目标：  声音相关业务流程&amp;数据模型  新增声音（音视频文件上传到腾讯云点播服务）  修改声音  删除声音  点击添加声音的时候会触发一个查询所有专辑列表 http:&#x2F;&#x2F;127.0.0.1&#x2F;api&#x2F;album&#x2F;albumInfo&#x2F;findUserAllAlbumList 主要目的是为了让专辑与声音进行挂钩！ 主要是根据userId查询数据{专辑Id，专辑标题}。然后并按">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%B8%93%E8%BE%91%E5%88%97%E8%A1%A8.gif">
+<meta property="og:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/tingshu051.png">
+<meta property="og:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/tingshu049.png">
+<meta property="og:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E4%BF%9D%E5%AD%98%E5%A3%B0%E9%9F%B3.gif">
+<meta property="og:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E5%A3%B0%E9%9F%B3%E5%88%97%E8%A1%A8.gif">
+<meta property="og:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E5%A3%B0%E9%9F%B3%E5%88%A0%E9%99%A4.gif">
+<meta property="og:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E5%A3%B0%E9%9F%B3%E4%BF%AE%E6%94%B9.gif">
+<meta property="article:published_time" content="2024-11-23T16:49:31.869Z">
+<meta property="article:modified_time" content="2024-11-23T16:55:35.164Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%B8%93%E8%BE%91%E5%88%97%E8%A1%A8.gif">
+  
+  
+  
+  <title>PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-24 00:49" pubdate>
+          2024年11月24日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="第2章-声音管理"><a href="#第2章-声音管理" class="headerlink" title="第2章 声音管理"></a>第2章 声音管理</h3><p><strong>学习目标：</strong></p>
+<ul>
+<li><p>声音相关业务流程&amp;数据模型</p>
+</li>
+<li><p>新增声音（音视频文件上传到腾讯云点播服务）</p>
+</li>
+<li><p>修改声音</p>
+</li>
+<li><h6 id="删除声音"><a href="#删除声音" class="headerlink" title="删除声音"></a>删除声音</h6></li>
+</ul>
+<p>点击添加声音的时候会触发一个查询所有专辑列表</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/api/album/albumInfo/findUserAllAlbumList">http://127.0.0.1/api/album/albumInfo/findUserAllAlbumList</a> 主要目的是为了让专辑与声音进行挂钩！</p>
+<p>主要是根据userId查询数据{专辑Id，专辑标题}。然后并按照专辑Id 进行降序排列</p>
+<h1 id="1、保存声音"><a href="#1、保存声音" class="headerlink" title="1、保存声音"></a>1、保存声音</h1><h2 id="1-1-获取当前用户全部专辑列表"><a href="#1-1-获取当前用户全部专辑列表" class="headerlink" title="1.1 获取当前用户全部专辑列表"></a>1.1 获取当前用户全部专辑列表</h2><p><img src="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E4%B8%93%E8%BE%91%E5%88%97%E8%A1%A8.gif" srcset="/img/loading.gif" lazyload></p>
+<!--
+![声音-获取用户专辑列表](第2章 声音管理/声音-获取用户专辑列表.gif)
+
+-->
+
+<h3 id="1-1-1-控制器"><a href="#1-1-1-控制器" class="headerlink" title="1.1.1 控制器"></a>1.1.1 控制器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 获取当前用户专辑列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@Operation(summary = &quot;获取当前用户全部专辑列表&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;findUserAllAlbumList&quot;)</span><br><span class="hljs-keyword">public</span> Result <span class="hljs-title function_">findUserAllAlbumList</span><span class="hljs-params">()</span> &#123;<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  List&lt;AlbumInfo&gt; list = albumInfoService.findUserAllAlbumList(AuthContextHolder.getUserId());<br>  <span class="hljs-keyword">return</span> Result.ok(list);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-1-2-接口与实现"><a href="#1-1-2-接口与实现" class="headerlink" title="1.1.2 接口与实现"></a>1.1.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 获取当前用户专辑列表</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> userId</span><br><span class="hljs-comment">* <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">*/</span><br>List&lt;AlbumInfo&gt; <span class="hljs-title function_">findUserAllAlbumList</span><span class="hljs-params">(Long userId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> List&lt;AlbumInfo&gt; <span class="hljs-title function_">findUserAllAlbumList</span><span class="hljs-params">(<span class="hljs-type">long</span> userId)</span> &#123;<br>   <span class="hljs-comment">// 默认查看第一页</span><br>   Page&lt;AlbumInfo&gt; albumInfoPage = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(<span class="hljs-number">1</span>,<span class="hljs-number">100</span>);<br>   <span class="hljs-comment">// 设置查询条件</span><br>   LambdaQueryWrapper&lt;AlbumInfo&gt; wrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>   wrapper.select(AlbumInfo::getId,AlbumInfo::getAlbumTitle);<br>   wrapper.eq(AlbumInfo::getUserId,userId);<br>   wrapper.orderByDesc(AlbumInfo::getId);<br>   <span class="hljs-comment">// 返回查询记录</span><br>   <span class="hljs-keyword">return</span> albumInfoMapper.selectPage(albumInfoPage,wrapper).getRecords();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1-2-上传声音"><a href="#1-2-上传声音" class="headerlink" title="1.2 上传声音"></a>1.2 上传声音</h2><p>需要开通腾讯云服务 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/">https://cloud.tencent.com/</a></p>
+<p><strong>腾讯云点播服务</strong>面向音视频、图片等媒体，提供制作上传、存储、转码、媒体处理、媒体 AI、加速分发播放、版权保护等一体化高品质媒体服务。使用腾讯云服务可以为音视频文件的存储、传输、处理和分发提供<strong>可靠</strong>、<strong>高效</strong>和<strong>安全</strong>的解决方案。这可以节省你自己构建和维护存储基础设施的成本和精力，并为用户提供更好的音视频体验。</p>
+<ol>
+<li><strong>可靠性和可用性：</strong> 腾讯云提供高可靠性的存储服务，确保音视频文件的安全和持久保存。腾讯云具有跨多个地理区域和数据中心的数据冗余备份，以确保数据的高可用性和容灾能力。</li>
+<li><strong>扩展性和弹性：</strong> 腾讯云提供高度可扩展的存储解决方案，可以根据需要轻松扩展存储容量，适应不断增长的音视频数据需求。你可以根据实际情况动态调整存储空间，并随时新增或删除文件。</li>
+<li><strong>快速传输和低延迟：</strong> 腾讯云拥有全球范围的网络基础设施，可以提供快速的音视频文件上传和下载速度，同时降低传输延迟，使用户能够更快速地访问和共享文件。</li>
+<li><strong>安全性和权限控制：</strong> 腾讯云提供多层次的安全机制来保护用户的音视频文件。你可以使用腾讯云提供的身份验证和权限控制功能确保只有授权用户才能访问和管理文件。此外，腾讯云也提供数据加密和防止盗链等功能，以增强音视频文件的安全性。</li>
+<li><strong>多媒体处理和分发：</strong> 腾讯云提供了丰富的多媒体处理和分发服务，可以对上传的音视频文件进行转码、截图、剪辑等处理，并提供内容分发网络（CDN）加速服务，使用户能够高效地将音视频内容传送到全球各地的用户。</li>
+</ol>
+<p>快速介入流程：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/266/8757">云点播 快速入门-文档中心-腾讯云 (tencent.com)</a></p>
+<p>微信扫码登录：</p>
+<p>关注公众号：</p>
+<p>搜索云点播：</p>
+<p>微信认证：</p>
+<p>实名认证：</p>
+<p>立即开通服务：</p>
+<p>右边：点击访问管理</p>
+<h3 id="1-2-1-控制器"><a href="#1-2-1-控制器" class="headerlink" title="1.2.1 控制器"></a>1.2.1 控制器</h3><p>TrackInfoApiController 控制器中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.album.api;<br><br><span class="hljs-keyword">import</span> com.atguigu.tingshu.album.service.TrackInfoService;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.common.result.Result;<br><span class="hljs-keyword">import</span> io.swagger.v3.oas.annotations.Operation;<br><span class="hljs-keyword">import</span> io.swagger.v3.oas.annotations.tags.Tag;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.GetMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.PostMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;<br><span class="hljs-keyword">import</span> org.springframework.web.bind.annotation.RestController;<br><span class="hljs-keyword">import</span> org.springframework.web.multipart.MultipartFile;<br><br><span class="hljs-keyword">import</span> java.util.Map;<br><br><span class="hljs-meta">@Tag(name = &quot;声音管理&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;/api/album/trackInfo&quot;)</span><br><span class="hljs-meta">@SuppressWarnings(&#123;&quot;unchecked&quot;, &quot;rawtypes&quot;&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TrackInfoApiController</span> &#123;<br>	<br>	<span class="hljs-meta">@Autowired</span><br>	<span class="hljs-keyword">private</span> TrackInfoService trackInfoService;<br>  <br>	<span class="hljs-meta">@Autowired</span><br>	<span class="hljs-keyword">private</span> VodService vodService;<br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">	 * 上传声音</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@param</span> file</span><br><span class="hljs-comment">	 * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">	 */</span><br>	<span class="hljs-meta">@Operation(summary = &quot;上传声音&quot;)</span><br>	<span class="hljs-meta">@PostMapping(&quot;uploadTrack&quot;)</span><br>	<span class="hljs-keyword">public</span> Result&lt;Map&lt;String,Object&gt;&gt; <span class="hljs-title function_">uploadTrack</span><span class="hljs-params">(MultipartFile file)</span> &#123;<br>		<span class="hljs-comment">//	调用服务层方法</span><br>		Map&lt;String,Object&gt; map = vodService.uploadTrack(file);<br>		<span class="hljs-keyword">return</span> Result.ok(map);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-2-接口与实现"><a href="#1-2-2-接口与实现" class="headerlink" title="1.2.2 接口与实现"></a>1.2.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.album.service;<br><br><span class="hljs-keyword">import</span> org.springframework.web.multipart.MultipartFile;<br><br><span class="hljs-keyword">import</span> java.util.Map;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">VodService</span> &#123;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 上传声音</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> file</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    Map&lt;String, Object&gt; <span class="hljs-title function_">uploadTrack</span><span class="hljs-params">(MultipartFile file)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>实现类 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/266/10276">云点播 Java SDK-开发指南-文档中心-腾讯云 (tencent.com)</a> Java 语言实现声音上传功能API</p>
+<p>访问密钥：</p>
+<p><img src="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/tingshu051.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第2章 声音管理/tingshu051.png)
+
+-->
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.album.service.impl;<br><br><span class="hljs-keyword">import</span> com.atguigu.tingshu.album.config.VodConstantProperties;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.album.service.VodService;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.common.util.UploadFileUtil;<br><span class="hljs-keyword">import</span> com.qcloud.vod.VodUploadClient;<br><span class="hljs-keyword">import</span> com.qcloud.vod.model.VodUploadRequest;<br><span class="hljs-keyword">import</span> com.qcloud.vod.model.VodUploadResponse;<br><span class="hljs-keyword">import</span> lombok.SneakyThrows;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><span class="hljs-keyword">import</span> org.springframework.web.multipart.MultipartFile;<br><br><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.Map;<br><br><br><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">VodServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">VodService</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> VodConstantProperties vodConstantProperties;<br><br>    <span class="hljs-meta">@SneakyThrows</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Map&lt;String, Object&gt; <span class="hljs-title function_">uploadTrack</span><span class="hljs-params">(MultipartFile file)</span> &#123;<br>        <span class="hljs-comment">//  声音上传临时目录：</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">tempPath</span> <span class="hljs-operator">=</span> UploadFileUtil.uploadTempPath(vodConstantProperties.getTempPath(), file);<br>        <span class="hljs-comment">//  创建上传声音客户端</span><br>        <span class="hljs-type">VodUploadClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">VodUploadClient</span>(vodConstantProperties.getSecretId(), vodConstantProperties.getSecretKey());<br>        <span class="hljs-comment">//  构建上传请求对象</span><br>        <span class="hljs-type">VodUploadRequest</span> <span class="hljs-variable">request</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">VodUploadRequest</span>();<br>        <span class="hljs-comment">//  设置视频本地地址</span><br>        request.setMediaFilePath(tempPath);<br>        <span class="hljs-comment">//  指定任务流</span><br>        request.setProcedure(vodConstantProperties.getProcedure());<br>        <span class="hljs-comment">//  调用上传方法</span><br>        <span class="hljs-type">VodUploadResponse</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> client.upload(vodConstantProperties.getRegion(), request);<br>        <span class="hljs-comment">//  创建map 对象</span><br>        HashMap&lt;String, Object&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        map.put(<span class="hljs-string">&quot;mediaFileId&quot;</span>,response.getFileId());<br>        map.put(<span class="hljs-string">&quot;mediaUrl&quot;</span>,response.getMediaUrl());<br>        <span class="hljs-comment">//  返回map 数据</span><br>        <span class="hljs-keyword">return</span> map;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上传之后可以在：<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/vod/media">音视频管理 - 媒资管理 - 云点播 - 控制台 (tencent.com)</a>看是否有音频</p>
+<p><img src="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/tingshu049.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第2章 声音管理/tingshu049.png)
+
+-->
+
+<h2 id="1-3-实现保存声音"><a href="#1-3-实现保存声音" class="headerlink" title="1.3 实现保存声音"></a>1.3 实现保存声音</h2><p><img src="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E4%BF%9D%E5%AD%98%E5%A3%B0%E9%9F%B3.gif" srcset="/img/loading.gif" lazyload></p>
+<!--
+![声音-保存声音](第2章 声音管理/声音-保存声音.gif)
+
+-->
+
+<p>思想思路：</p>
+<p>前端传递Json 字符串，此时我们可以使用封装好的TrackInfoVo实体类进行接收，方便处理数据</p>
+<p>设计到的表有：</p>
+<p>track_info 声音信息表</p>
+<p>​	user_id : 直接从工具类中获取</p>
+<p>​	order_num :  声音在专辑中的排序值，从1开始依次递增，值越小排序越前，根据专辑Id查询上一条声音的排序值 并且按照声音Id 进行降序排列 并且 获取第一条数</p>
+<p>​	media_duration , media_size ,media_type, media_url：根据流媒体Id获取到数据并赋值！获取到的数据使用TrackMediaInfoVo 对象接收</p>
+<p>track_stat 声音统计表</p>
+<p>​	初始化： 播放量 收藏量 点赞数 评论数</p>
+<p>album_info 专辑表</p>
+<p>​	因为修改专辑中的字段 include_track_count 专辑包含声音的总数</p>
+<p>控制器，此时有还没有写用户登录相关代码，所以可以给用户Id 一个初始化数据 1</p>
+<h3 id="1-3-1-控制器"><a href="#1-3-1-控制器" class="headerlink" title="1.3.1 控制器"></a>1.3.1 控制器</h3><p>TrackInfoApiController</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 保存声音</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> trackInfoVo</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@Operation(summary = &quot;新增声音&quot;)</span><br><span class="hljs-meta">@PostMapping(&quot;saveTrackInfo&quot;)</span><br><span class="hljs-keyword">public</span> Result <span class="hljs-title function_">saveTrackInfo</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> <span class="hljs-meta">@Validated</span> TrackInfoVo trackInfoVo)</span> &#123;<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  trackInfoService.saveTrackInfo(trackInfoVo, AuthContextHolder.getUserId());<br>  <span class="hljs-keyword">return</span> Result.ok();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-2-接口与实现"><a href="#1-3-2-接口与实现" class="headerlink" title="1.3.2 接口与实现"></a>1.3.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 保存声音</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> trackInfoVo</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> userId</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">saveTrackInfo</span><span class="hljs-params">(TrackInfoVo trackInfoVo, Long userId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-meta">@Transactional(rollbackFor = Exception.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">saveTrackInfo</span><span class="hljs-params">(TrackInfoVo trackInfoVo, Long userId)</span> &#123;<br>   <span class="hljs-comment">// 创建声音对象</span><br>   <span class="hljs-type">TrackInfo</span> <span class="hljs-variable">trackInfo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TrackInfo</span>();<br>   <span class="hljs-comment">// 属性拷贝</span><br>   BeanUtils.copyProperties(trackInfoVo,trackInfo);<br>   trackInfo.setStatus(SystemConstant.TRACK_STATUS_PASS);<br>   trackInfo.setUserId(userId);<br>   <span class="hljs-comment">// 获取上一条声音</span><br>   <span class="hljs-type">TrackInfo</span> <span class="hljs-variable">preTrackInfo</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.getOne(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;TrackInfo&gt;().eq(TrackInfo::getAlbumId, trackInfoVo.getAlbumId()).orderByDesc(TrackInfo::getId).select(TrackInfo::getOrderNum).last(<span class="hljs-string">&quot; limit 1 &quot;</span>));<br>   <span class="hljs-type">int</span> <span class="hljs-variable">orderNum</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>   <span class="hljs-keyword">if</span>(<span class="hljs-literal">null</span> != preTrackInfo) &#123;<br>      orderNum = preTrackInfo.getOrderNum() + <span class="hljs-number">1</span>;<br>   &#125;<br>   <span class="hljs-comment">// 获取流媒体信息.</span><br>   <span class="hljs-type">TrackMediaInfoVo</span> <span class="hljs-variable">trackMediaInfo</span> <span class="hljs-operator">=</span> vodService.getTrackMediaInfo(trackInfoVo.getMediaFileId());<br>   <span class="hljs-comment">// 赋值排序值</span><br>   trackInfo.setOrderNum(orderNum);<br>   <span class="hljs-comment">// 赋值声音</span><br>   trackInfo.setMediaSize(trackMediaInfo.getSize());<br>   trackInfo.setMediaUrl(trackMediaInfo.getMediaUrl());<br>   trackInfo.setMediaDuration(trackMediaInfo.getDuration());<br>   trackInfo.setMediaType(trackMediaInfo.getType());<br><br>   <span class="hljs-built_in">this</span>.save(trackInfo);<br><br>   <span class="hljs-comment">// 更新专辑声音总数</span><br>   <span class="hljs-type">AlbumInfo</span> <span class="hljs-variable">albumInfo</span> <span class="hljs-operator">=</span> albumInfoService.getById(trackInfo.getAlbumId());<br>   <span class="hljs-type">int</span> <span class="hljs-variable">includeTrackCount</span> <span class="hljs-operator">=</span> albumInfo.getIncludeTrackCount() + <span class="hljs-number">1</span>;<br>   albumInfo.setIncludeTrackCount(includeTrackCount);<br>   albumInfoService.updateById(albumInfo);<br><br>   <span class="hljs-comment">// 初始化统计数据</span><br>   <span class="hljs-built_in">this</span>.saveTrackStat(trackInfo.getId(),SystemConstant.TRACK_STAT_PLAY);<br>   <span class="hljs-built_in">this</span>.saveTrackStat(trackInfo.getId(),SystemConstant.TRACK_STAT_COLLECT);<br>   <span class="hljs-built_in">this</span>.saveTrackStat(trackInfo.getId(),SystemConstant.TRACK_STAT_PRAISE);<br>   <span class="hljs-built_in">this</span>.saveTrackStat(trackInfo.getId(),SystemConstant.TRACK_STAT_COMMENT);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>初始化统计数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 初始化统计数量</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> trackId</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> trackType</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">saveTrackStat</span><span class="hljs-params">(Long trackId, String trackType)</span> &#123;<br>  <span class="hljs-type">TrackStat</span> <span class="hljs-variable">trackStat</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TrackStat</span>();<br>  trackStat.setTrackId(trackId);<br>  trackStat.setStatType(trackType);<br>  trackStat.setStatNum(<span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">this</span>.trackStatMapper.insert(trackStat);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>获取流媒体数据方法实现  参考地址<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/api/explorer?Product=vod&Version=2018-07-17&Action=DescribeMediaInfos">API Explorer - 云 API - 控制台 (tencent.com)</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SneakyThrows</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> TrackMediaInfoVo <span class="hljs-title function_">getTrackMediaInfo</span><span class="hljs-params">(String mediaFileId)</span> &#123;<br>  <span class="hljs-comment">//  初始化认证对象</span><br>  <span class="hljs-type">Credential</span> <span class="hljs-variable">cred</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Credential</span>(vodConstantProperties.getSecretId(), vodConstantProperties.getSecretKey());<br>  <span class="hljs-comment">// 实例化要请求产品的client对象,clientProfile是可选的</span><br>  <span class="hljs-type">VodClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">VodClient</span>(cred, vodConstantProperties.getRegion());<br>  <span class="hljs-comment">// 实例化一个请求对象,每个接口都会对应一个request对象</span><br>  <span class="hljs-type">DescribeMediaInfosRequest</span> <span class="hljs-variable">req</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DescribeMediaInfosRequest</span>();<br>  <span class="hljs-comment">//  设置当前fileIds</span><br>  req.setFileIds(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;mediaFileId&#125;);<br>  <span class="hljs-comment">// 返回的resp是一个DescribeMediaInfosResponse的实例，与请求对象对应</span><br>  <span class="hljs-type">DescribeMediaInfosResponse</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> client.DescribeMediaInfos(req);<br>  log.info(<span class="hljs-string">&quot;声音详细返回结果：&#123;&#125;&quot;</span>, JSON.toJSONString(response));<br>  <span class="hljs-comment">//  判断对象不为空</span><br>  <span class="hljs-keyword">if</span> (response.getMediaInfoSet().length&gt;<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-comment">//  获取到</span><br>    <span class="hljs-type">MediaInfo</span> <span class="hljs-variable">mediaInfo</span> <span class="hljs-operator">=</span> response.getMediaInfoSet()[<span class="hljs-number">0</span>];<br>    <span class="hljs-comment">//  创建流媒体信息对象</span><br>    <span class="hljs-type">TrackMediaInfoVo</span> <span class="hljs-variable">trackMediaInfoVo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TrackMediaInfoVo</span>();<br>    trackMediaInfoVo.setDuration(mediaInfo.getMetaData().getDuration());<br>    trackMediaInfoVo.setSize(mediaInfo.getMetaData().getSize());<br>    trackMediaInfoVo.setMediaUrl(mediaInfo.getBasicInfo().getMediaUrl());<br>    trackMediaInfoVo.setType(mediaInfo.getBasicInfo().getType());<br>    <span class="hljs-comment">//  返回数据</span><br>    <span class="hljs-keyword">return</span> trackMediaInfoVo;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="2、查询声音列表"><a href="#2、查询声音列表" class="headerlink" title="2、查询声音列表"></a>2、查询声音列表</h1><p>需要根据用户Id，状态或标题查询当前声音列表！这三个条件被封装到一个实体类中 <strong>TrackInfoQuery</strong>,返回结果对象封装到 <strong>TrackListVo</strong> 实体类中<br><img src="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E5%A3%B0%E9%9F%B3%E5%88%97%E8%A1%A8.gif" srcset="/img/loading.gif" lazyload></p>
+<!--
+![声音-声音列表](第2章 声音管理/声音-声音列表.gif)
+
+-->
+
+
+
+<h2 id="2-1-控制器"><a href="#2-1-控制器" class="headerlink" title="2.1 控制器"></a>2.1 控制器</h2><p>TrackInfoApiController 控制器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 查看声音专辑列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> page</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> limit</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> trackInfoQuery</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@Operation(summary = &quot;获取当前用户声音分页列表&quot;)</span><br><span class="hljs-meta">@PostMapping(&quot;findUserTrackPage/&#123;page&#125;/&#123;limit&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;IPage&lt;TrackListVo&gt;&gt; <span class="hljs-title function_">findUserTrackPage</span><span class="hljs-params">(<span class="hljs-meta">@Parameter(name = &quot;page&quot;,description = &quot;当前页面&quot;,required = true)</span></span><br><span class="hljs-params">                                                    <span class="hljs-meta">@PathVariable</span> Long page,</span><br><span class="hljs-params">                                                    <span class="hljs-meta">@Parameter(name = &quot;limit&quot;,description = &quot;每页记录数&quot;,required = true)</span></span><br><span class="hljs-params">                                                    <span class="hljs-meta">@PathVariable</span> Long limit,</span><br><span class="hljs-params">                                                    <span class="hljs-meta">@Parameter(name = &quot;trackInfoQuery&quot;,description = &quot;查询对象&quot;,required = false)</span></span><br><span class="hljs-params">                                                    <span class="hljs-meta">@RequestBody</span> TrackInfoQuery trackInfoQuery)</span>&#123;<br>  <span class="hljs-comment">//	设置当前用户Id</span><br>  trackInfoQuery.setUserId(AuthContextHolder.getUserId());<br>  <span class="hljs-comment">//	创建对象</span><br>  Page&lt;TrackListVo&gt; trackListVoPage = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(page,limit);<br>  IPage&lt;TrackListVo&gt; trackListVoIPage = trackInfoService.findUserTrackPage(trackListVoPage,trackInfoQuery);<br>  <span class="hljs-comment">//	返回数据</span><br>  <span class="hljs-keyword">return</span> Result.ok(trackListVoIPage);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-2-接口与实现"><a href="#2-2-接口与实现" class="headerlink" title="2.2 接口与实现"></a>2.2 接口与实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 查询声音专辑列表</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> trackListVoPage</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> trackInfoQuery</span><br><span class="hljs-comment">* <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">*/</span><br>IPage&lt;TrackListVo&gt; <span class="hljs-title function_">findUserTrackPage</span><span class="hljs-params">(Page&lt;TrackListVo&gt; trackListVoPage, TrackInfoQuery trackInfoQuery)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> IPage&lt;TrackListVo&gt; <span class="hljs-title function_">findUserTrackPage</span><span class="hljs-params">(Page&lt;TrackListVo&gt; trackListVoPage, TrackInfoQuery trackInfoQuery)</span> &#123;<br><span class="hljs-comment">//	调用mapper层方法</span><br><span class="hljs-keyword">return</span> trackInfoMapper.selectUserTrackPage(trackListVoPage,trackInfoQuery);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>TrackInfoMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.album.mapper;<br><br><span class="hljs-keyword">import</span> com.atguigu.tingshu.model.album.TrackInfo;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.query.album.TrackInfoQuery;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.vo.album.TrackListVo;<br><span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.mapper.BaseMapper;<br><span class="hljs-keyword">import</span> com.baomidou.mybatisplus.core.metadata.IPage;<br><span class="hljs-keyword">import</span> com.baomidou.mybatisplus.extension.plugins.pagination.Page;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Mapper;<br><span class="hljs-keyword">import</span> org.apache.ibatis.annotations.Param;<br><br><span class="hljs-meta">@Mapper</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TrackInfoMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseMapper</span>&lt;TrackInfo&gt; &#123;<br><br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 查询声音专辑列表</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> trackListVoPage</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> trackInfoQuery</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    IPage&lt;TrackListVo&gt; <span class="hljs-title function_">selectUserTrackPage</span><span class="hljs-params">(Page&lt;TrackListVo&gt; trackListVoPage, <span class="hljs-meta">@Param(&quot;vo&quot;)</span> TrackInfoQuery trackInfoQuery)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>TrackInfoMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span> ?&gt;</span><br><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">mapper</span></span><br><span class="hljs-meta"><span class="hljs-keyword">PUBLIC</span> <span class="hljs-string">&quot;-//ibatis.apache.org//DTD Mapper 3.0//EN&quot;</span></span><br><span class="hljs-meta"><span class="hljs-string">&quot;http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">mapper</span> <span class="hljs-attr">namespace</span>=<span class="hljs-string">&quot;com.atguigu.tingshu.album.mapper.TrackInfoMapper&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectUserTrackPage&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.atguigu.tingshu.vo.album.TrackListVo&quot;</span>&gt;</span><br>        select album.id as albumId,<br>        album.album_title,<br>        track.id as trackId,<br>        track.track_title,<br>        track.media_duration,<br>        if(track.cover_url is null or track.cover_url = &#x27;&#x27;, album.cover_url, track.cover_url) as coverUrl,<br>        track.status,<br>        track.create_time                                    as createTime,<br>        MAX(IF(stat.stat_type = &#x27;0701&#x27;, stat.stat_num, 0))   as playStatNum,<br>        MAX(IF(stat.stat_type = &#x27;0702&#x27;, stat.stat_num, 0))   as collectStatNum,<br>        MAX(IF(stat.stat_type = &#x27;0703&#x27;, stat.stat_num, 0))   as praiseStatNum,<br>        MAX(IF(stat.stat_type = &#x27;0704&#x27;, stat.stat_num, 0))   as commentStatNum<br>        from track_info track<br>        left join track_stat stat on stat.track_id = track.id<br>        left join album_info album on album.id = track.album_id<br>        <span class="hljs-tag">&lt;<span class="hljs-name">where</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;vo.userId!=null&quot;</span>&gt;</span><br>                track.user_id=#&#123;vo.userId&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;vo.status!=null and vo.status!=&#x27;&#x27;&quot;</span>&gt;</span><br>                and track.status = #&#123;vo.status&#125;<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">if</span> <span class="hljs-attr">test</span>=<span class="hljs-string">&quot;vo.trackTitle!=null and vo.trackTitle !=&#x27;&#x27;&quot;</span>&gt;</span><br>                and track.track_title like concat(&#x27;%&#x27;,#&#123;vo.trackTitle&#125;,&#x27;%&#x27;)<br>            <span class="hljs-tag">&lt;/<span class="hljs-name">if</span>&gt;</span><br>            and track.is_deleted = 0<br>        <span class="hljs-tag">&lt;/<span class="hljs-name">where</span>&gt;</span><br>        group by track.id<br>        order by track.id desc<br>    <span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mapper</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="3、删除声音"><a href="#3、删除声音" class="headerlink" title="3、删除声音"></a>3、删除声音</h1><p><img src="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E5%A3%B0%E9%9F%B3%E5%88%A0%E9%99%A4.gif" srcset="/img/loading.gif" lazyload></p>
+<!--
+![声音-声音删除](第2章 声音管理/声音-声音删除.gif)
+
+-->
+
+<p>设计的表： track_info，album_info，track_stat，media</p>
+<p>思路：</p>
+<ol>
+<li>track_info,track_stat：对这两张表要进行逻辑删除<br>2.修改album_info 表中的专辑声音总数<br>3.删除云点播中的声音记录</li>
+</ol>
+<h2 id="3-1-控制器"><a href="#3-1-控制器" class="headerlink" title="3.1 控制器"></a>3.1 控制器</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 删除声音</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">* <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">*/</span><br><span class="hljs-meta">@Operation(summary = &quot;删除声音信息&quot;)</span><br><span class="hljs-meta">@DeleteMapping(&quot;removeTrackInfo/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result <span class="hljs-title function_">removeTrackInfo</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long id)</span> &#123;<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  trackInfoService.removeTrackInfo(id);<br>  <span class="hljs-keyword">return</span> Result.ok();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-2-接口与实现"><a href="#3-2-接口与实现" class="headerlink" title="3.2 接口与实现"></a>3.2 接口与实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 删除声音</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">removeTrackInfo</span><span class="hljs-params">(Long id)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeTrackInfo</span><span class="hljs-params">(Long id)</span> &#123;<br>   <span class="hljs-comment">// 获取声音对象数据</span><br>   <span class="hljs-type">TrackInfo</span> <span class="hljs-variable">trackInfo</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.getById(id);<br>   <span class="hljs-comment">// 删除</span><br>   <span class="hljs-built_in">this</span>.removeById(id);<br>   <span class="hljs-comment">//更新专辑声音总数</span><br>   <span class="hljs-type">AlbumInfo</span> <span class="hljs-variable">albumInfo</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.albumInfoService.getById(trackInfo.getAlbumId());<br>   <span class="hljs-type">int</span> <span class="hljs-variable">includeTrackCount</span> <span class="hljs-operator">=</span> albumInfo.getIncludeTrackCount() - <span class="hljs-number">1</span>;<br>   albumInfo.setIncludeTrackCount(includeTrackCount);<br>   albumInfoService.updateById(albumInfo);<br>   <span class="hljs-comment">//删除统计数据</span><br>   trackStatMapper.delete(<span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;TrackStat&gt;().eq(TrackStat::getTrackId, id));<br>   <span class="hljs-comment">//  序号重新更新</span><br>   trackInfoMapper.updateTrackNum(trackInfo.getAlbumId(),trackInfo.getOrderNum());<br>   <span class="hljs-comment">//删除声音媒体</span><br>   vodService.removeTrack(trackInfo.getMediaFileId());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>TrackInfoMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 修改序号</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> orderNum</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">updateTrackNum</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;albumId&quot;)</span> Long albumId, <span class="hljs-meta">@Param(&quot;orderNum&quot;)</span> Integer orderNum)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>TrackInfoMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateTrackNum&quot;</span>&gt;</span><br>    update track_info set order_num = order_num - 1 where album_id=#&#123;albumId&#125; and order_num &gt; #&#123;orderNum&#125; and is_deleted = 0<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>删除云点播声音</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 根据媒体Id 删除数据</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> mediaFileId</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">removeTrack</span><span class="hljs-params">(String mediaFileId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/api/explorer?Product=vod&Version=2018-07-17&Action=DeleteMedia">API Explorer - 云 API - 控制台 (tencent.com)</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SneakyThrows</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">removeTrack</span><span class="hljs-params">(String mediaFileId)</span> &#123;<br>  <span class="hljs-type">Credential</span> <span class="hljs-variable">cred</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Credential</span>(vodConstantProperties.getSecretId(), vodConstantProperties.getSecretKey());<br>  <span class="hljs-comment">// 实例化要请求产品的client对象,clientProfile是可选的</span><br>  <span class="hljs-type">VodClient</span> <span class="hljs-variable">client</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">VodClient</span>(cred, <span class="hljs-string">&quot;&quot;</span>);<br>  <span class="hljs-comment">// 实例化一个请求对象,每个接口都会对应一个request对象</span><br>  <span class="hljs-type">DeleteMediaRequest</span> <span class="hljs-variable">req</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DeleteMediaRequest</span>();<br>  req.setFileId(mediaFileId);<br>  <span class="hljs-comment">// 返回的resp是一个DeleteMediaResponse的实例，与请求对象对应</span><br>  <span class="hljs-type">DeleteMediaResponse</span> <span class="hljs-variable">response</span> <span class="hljs-operator">=</span> client.DeleteMedia(req);<br>  <span class="hljs-comment">// 输出json格式的字符串回包</span><br>  log.info(<span class="hljs-string">&quot;声音删除返回结课: &#123;&#125;&quot;</span>, JSON.toJSONString(response));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="4、修改声音"><a href="#4、修改声音" class="headerlink" title="4、修改声音"></a>4、修改声音</h1><p><img src="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/%E5%A3%B0%E9%9F%B3-%E5%A3%B0%E9%9F%B3%E4%BF%AE%E6%94%B9.gif" srcset="/img/loading.gif" lazyload></p>
+<!--
+![声音-声音修改](第2章 声音管理/声音-声音修改.gif)
+
+-->
+
+<p>思路：</p>
+<ol>
+<li><p>根据Id获取数据并回显 将数据封装到 TrackInfo对象</p>
+</li>
+<li><p>保存修改之后的数据</p>
+<p>​	修改的时候，传递的有声音Id ，还有修改的Json 字符串.</p>
+<p>​	只修改track_info 表中的数据就可以了</p>
+<p>​	涉及到声音保存的问题，如果修改了声音，那么track_info 中声音信息，就需要修改media_duration , media_size ,media_type, media_url这些字段信息。</p>
+</li>
+</ol>
+<h2 id="4-1-回显声音信息"><a href="#4-1-回显声音信息" class="headerlink" title="4.1 回显声音信息"></a>4.1 回显声音信息</h2><h3 id="4-1-1-控制器"><a href="#4-1-1-控制器" class="headerlink" title="4.1.1 控制器"></a>4.1.1 控制器</h3>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 根据Id 获取数据</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">* <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">*/</span><br><span class="hljs-meta">@Operation(summary = &quot;获取声音信息&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;getTrackInfo/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;TrackInfo&gt; <span class="hljs-title function_">getTrackInfo</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long id)</span> &#123;<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  <span class="hljs-type">TrackInfo</span> <span class="hljs-variable">trackInfo</span> <span class="hljs-operator">=</span> trackInfoService.getById(id);<br>  <span class="hljs-keyword">return</span> Result.ok(trackInfo);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-2-保存修改声音"><a href="#4-2-保存修改声音" class="headerlink" title="4.2 保存修改声音"></a>4.2 保存修改声音</h2><p>   传递声音Id ，封装好的TrackInfoVo 实体类。</p>
+<h3 id="4-2-1-控制器"><a href="#4-2-1-控制器" class="headerlink" title="4.2.1 控制器"></a>4.2.1 控制器</h3>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 保存修改声音数据</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> trackInfoVo</span><br><span class="hljs-comment">* <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">*/</span><br><span class="hljs-meta">@Operation(summary = &quot;修改声音&quot;)</span><br><span class="hljs-meta">@PutMapping(&quot;updateTrackInfo/&#123;id&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result <span class="hljs-title function_">updateById</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long id, <span class="hljs-meta">@RequestBody</span> <span class="hljs-meta">@Validated</span> TrackInfoVo trackInfoVo)</span> &#123;<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  trackInfoService.updateTrackInfo(id, trackInfoVo);<br>  <span class="hljs-keyword">return</span> Result.ok();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-2-2-接口与实现"><a href="#4-2-2-接口与实现" class="headerlink" title="4.2.2 接口与实现"></a>4.2.2 接口与实现</h3>   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 保存数据</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> trackInfoVo</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">updateTrackInfo</span><span class="hljs-params">(Long id, TrackInfoVo trackInfoVo)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>   实现类</p>
+   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateTrackInfo</span><span class="hljs-params">(Long id, TrackInfoVo trackInfoVo)</span> &#123;<br>  <span class="hljs-comment">//	获取到声音对象</span><br>  <span class="hljs-type">TrackInfo</span> <span class="hljs-variable">trackInfo</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.getById(id);<br>  <span class="hljs-comment">//    获取传递的fileId</span><br>  <span class="hljs-type">String</span> <span class="hljs-variable">mediaFileId</span> <span class="hljs-operator">=</span> trackInfo.getMediaFileId();<br>  <span class="hljs-comment">//	进行属性拷贝</span><br>  BeanUtils.copyProperties(trackInfoVo, trackInfo);<br>  <span class="hljs-comment">//	获取声音信息 页面传递的fileId 与 数据库的 fileId 不相等就修改</span><br>  <span class="hljs-keyword">if</span> (!trackInfoVo.getMediaFileId().equals(mediaFileId)) &#123;   <br>    <span class="hljs-comment">//	说明已经修改过了.</span><br>    <span class="hljs-type">TrackMediaInfoVo</span> <span class="hljs-variable">trackMediaInfoVo</span> <span class="hljs-operator">=</span> vodService.getTrackMediaInfo(trackInfoVo.getMediaFileId());<br>    <span class="hljs-comment">//	判断对象不为空.</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span>==trackMediaInfoVo)&#123;<br>      <span class="hljs-comment">//	抛出异常</span><br>      <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GuiguException</span>(ResultCodeEnum.VOD_FILE_ID_ERROR);<br>    &#125;<br>    trackInfo.setMediaUrl(trackMediaInfoVo.getMediaUrl());<br>    trackInfo.setMediaType(trackMediaInfoVo.getType());<br>    trackInfo.setMediaDuration(trackMediaInfo.getDuration());<br>    trackInfo.setMediaSize(trackMediaInfoVo.getSize());<br>    <span class="hljs-comment">// 删除云点播声音</span><br>    vodService.removeTrack(mediaFileId);<br>  &#125;<br>  <span class="hljs-comment">//	修改数据</span><br>  <span class="hljs-built_in">this</span>.updateById(trackInfo);<br>&#125;<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>http://example.com/2024/11/24/项目/云悦听/第2章 声音管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/24/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC3%E7%AB%A0%20%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/09/10/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC1%E7%AB%A0%20%E4%B8%93%E8%BE%91%E7%AE%A1%E7%90%86/" title="1、专辑管理">
+                        <span class="hidden-mobile">1、专辑管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
