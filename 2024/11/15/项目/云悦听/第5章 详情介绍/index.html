@@ -1,0 +1,958 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第5章 专辑详情1、专辑详情    主要功能如下：    我的–&gt;创作中心–&gt;专辑详情 查看专辑详细信息  或在检索列表中直接点击专辑都可以查看专辑详细信息！       http:&#x2F;&#x2F;127.0.0.1&#x2F;api&#x2F;search&#x2F;albumInfo&#x2F;125 在商品检索微服务中编写控制器： 以下是详情需要获取到的数据集  通过专辑Id 获取专辑数据{已存在} 通过专辑Id 获取专辑统计信息">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5-2、专辑详情">
+<meta property="og:url" content="http://example.com/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="第5章 专辑详情1、专辑详情    主要功能如下：    我的–&gt;创作中心–&gt;专辑详情 查看专辑详细信息  或在检索列表中直接点击专辑都可以查看专辑详细信息！       http:&#x2F;&#x2F;127.0.0.1&#x2F;api&#x2F;search&#x2F;albumInfo&#x2F;125 在商品检索微服务中编写控制器： 以下是详情需要获取到的数据集  通过专辑Id 获取专辑数据{已存在} 通过专辑Id 获取专辑统计信息">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/yunyueting.png">
+<meta property="article:published_time" content="2024-11-15T11:33:21.000Z">
+<meta property="article:modified_time" content="2024-11-29T11:36:05.999Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/yunyueting.png">
+  
+  
+  
+  <title>5-2、专辑详情 - PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="5-2、专辑详情"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-15 19:33" pubdate>
+          2024年11月15日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          53 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">5-2、专辑详情</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="第5章-专辑详情"><a href="#第5章-专辑详情" class="headerlink" title="第5章 专辑详情"></a>第5章 专辑详情</h2><h1 id="1、专辑详情"><a href="#1、专辑详情" class="headerlink" title="1、专辑详情"></a>1、专辑详情</h1><p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/%E8%AF%A6%E6%83%85-%E4%B8%93%E8%BE%91%E8%AF%A6%E6%83%85%E5%92%8C%E5%A3%B0%E9%9F%B3%E5%88%97%E8%A1%A8.gif" srcset="/img/loading.gif" lazyload></p>
+<!--
+![详情-专辑详情和声音列表](第5章 详情介绍/详情-专辑详情和声音列表.gif)
+
+-->
+
+
+<p>主要功能如下：</p>
+<p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu012.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu012.png)
+
+-->
+
+<p>我的–&gt;创作中心–&gt;专辑详情 查看专辑详细信息  或在检索列表中直接点击专辑都可以查看专辑详细信息！</p>
+<p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu060.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu060.png)
+
+-->
+
+<p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu061.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu061.png)
+
+-->
+
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/api/search/albumInfo/125">http://127.0.0.1/api/search/albumInfo/125</a></p>
+<p>在商品检索微服务中编写控制器：</p>
+<p>以下是详情需要获取到的数据集</p>
+<ol>
+<li>通过专辑Id 获取专辑数据{已存在}</li>
+<li>通过专辑Id 获取专辑统计信息{不存在}</li>
+<li>通过三级分类Id 获取到分类数据{已存在}</li>
+<li>通过用户Id 获取到主播信息{已存在}</li>
+</ol>
+<h2 id="1-1-根据专辑Id-获取到统计信息"><a href="#1-1-根据专辑Id-获取到统计信息" class="headerlink" title="1.1 根据专辑Id 获取到统计信息"></a>1.1 根据专辑Id 获取到统计信息</h2><h3 id="1-1-1-封装feign远程调用接口"><a href="#1-1-1-封装feign远程调用接口" class="headerlink" title="1.1.1 封装feign远程调用接口"></a>1.1.1 封装feign远程调用接口</h3><p>根据专辑Id 获取到状态数据之后，将数据封装到 AlbumStatVo 实体类中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.vo.album;<br><br><span class="hljs-keyword">import</span> io.swagger.v3.oas.annotations.media.Schema;<br><span class="hljs-keyword">import</span> lombok.Data;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Schema(description = &quot;专辑统计信息&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AlbumStatVo</span> &#123;<br><br>   <span class="hljs-meta">@Schema(description = &quot;专辑id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long albumId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;播放量&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer playStatNum;<br><br>   <span class="hljs-meta">@Schema(description = &quot;订阅量&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer subscribeStatNum;<br><br>   <span class="hljs-meta">@Schema(description = &quot;购买量&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer buyStatNum;<br><br>   <span class="hljs-meta">@Schema(description = &quot;评论数&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer commentStatNum;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>AlbumInfoFeignClient 接口中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 通过专辑Id 获取到专辑状态信息</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@GetMapping(&quot;api/album/albumInfo/getAlbumStatVo/&#123;albumId&#125;&quot;)</span><br>Result&lt;AlbumStatVo&gt; <span class="hljs-title function_">getAlbumStatVo</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long albumId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>熔断类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AlbumInfoDegradeFeignClient</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">AlbumInfoFeignClient</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Result&lt;AlbumStatVo&gt; <span class="hljs-title function_">getAlbumStatVo</span><span class="hljs-params">(Long albumId)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;    <br></code></pre></td></tr></table></figure>
+
+<h3 id="1-1-2-专辑微服务"><a href="#1-1-2-专辑微服务" class="headerlink" title="1.1.2 专辑微服务"></a>1.1.2 专辑微服务</h3><h4 id="1-1-2-1-控制器"><a href="#1-1-2-1-控制器" class="headerlink" title="1.1.2.1 控制器"></a>1.1.2.1 控制器</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 根据专辑Id 获取到统计信息</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@Operation(summary = &quot;获取到专辑统计信息&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;/getAlbumStatVo/&#123;albumId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result <span class="hljs-title function_">getAlbumStatVo</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long albumId)</span>&#123;<br>  <span class="hljs-comment">//	获取服务层方法</span><br>  <span class="hljs-type">AlbumStatVo</span> <span class="hljs-variable">albumStatVo</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.albumInfoService.getAlbumStatVoByAlbumId(albumId);<br>  <span class="hljs-keyword">return</span> Result.ok(albumStatVo);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-1-3-接口与实现类"><a href="#1-1-3-接口与实现类" class="headerlink" title="1.1.3 接口与实现类"></a>1.1.3 接口与实现类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 根据专辑Id 获取到统计信息</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br>AlbumStatVo <span class="hljs-title function_">getAlbumStatVoByAlbumId</span><span class="hljs-params">(Long albumId)</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> AlbumStatVo <span class="hljs-title function_">getAlbumStatVoByAlbumId</span><span class="hljs-params">(Long albumId)</span> &#123;<br>  <span class="hljs-comment">//	调用mapper 层方法</span><br>  <span class="hljs-keyword">return</span> albumInfoMapper.selectAlbumStat(albumId);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>albumInfoMapper.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 根据专辑Id 获取到统计信息</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">* <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">*/</span><br>AlbumStatVo <span class="hljs-title function_">selectAlbumStat</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;albumId&quot;)</span> Long albumId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>albumInfoMapper.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--根据专辑Id 获取到统计数据--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectAlbumStat&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.atguigu.tingshu.vo.album.AlbumStatVo&quot;</span>&gt;</span><br>       select<br>        stat.album_id,<br>        max(if(stat.stat_type = &#x27;0401&#x27;,stat.stat_num,0)) playStatNum,<br>        max(if(stat.stat_type = &#x27;0402&#x27;,stat.stat_num,0)) subscribeStatNum,<br>        max(if(stat.stat_type = &#x27;0403&#x27;,stat.stat_num,0)) buyStatNum,<br>        max(if(stat.stat_type = &#x27;0404&#x27;,stat.stat_num,0)) commentStatNum<br>    from album_stat stat where album_id = #&#123;albumId&#125; and stat.is_deleted = 0<br>    group by stat.album_id<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="1-2-整合详情信息接口"><a href="#1-2-整合详情信息接口" class="headerlink" title="1.2 整合详情信息接口"></a>1.2 整合详情信息接口</h2><p>回显时，后台需要提供将数据封装到map集合中;</p>
+<p>result.put(“albumInfo”, albumInfo);			获取专辑信息<br>result.put(“albumStatVo”, albumStatVo);		获取专辑统计信息<br>result.put(“baseCategoryView”, baseCategoryView);	获取分类信息<br>result.put(“announcer”, userInfoVo);	获取主播信息</p>
+<h3 id="1-2-1-控制器"><a href="#1-2-1-控制器" class="headerlink" title="1.2.1 控制器"></a>1.2.1 控制器</h3><p>itemApiController </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Tag(name = &quot;专辑详情管理&quot;)</span><br><span class="hljs-meta">@RestController</span><br><span class="hljs-meta">@RequestMapping(&quot;api/search/albumInfo&quot;)</span><br><span class="hljs-meta">@SuppressWarnings(&#123;&quot;unchecked&quot;, &quot;rawtypes&quot;&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">itemApiController</span> &#123;<br><br>   <span class="hljs-meta">@Autowired</span><br>   <span class="hljs-keyword">private</span> ItemService itemService;<br><br>   <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 根据专辑Id 获取详情数据</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">    * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-meta">@GuiGuLogin(required = false)</span><br>   <span class="hljs-meta">@Operation(summary = &quot;专辑详情&quot;)</span><br>   <span class="hljs-meta">@GetMapping(&quot;&#123;albumId&#125;&quot;)</span><br>   <span class="hljs-keyword">public</span> Result <span class="hljs-title function_">getItem</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long albumId)</span>&#123;<br>      <span class="hljs-comment">// 获取到专辑详情数据</span><br>      Map&lt;String,Object&gt; result = <span class="hljs-built_in">this</span>.itemService.getItem(albumId);<br>      <span class="hljs-comment">// 返回数据</span><br>      <span class="hljs-keyword">return</span> Result.ok(result);<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-2-接口与实现"><a href="#1-2-2-接口与实现" class="headerlink" title="1.2.2 接口与实现"></a>1.2.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.search.service;<br><br><span class="hljs-keyword">import</span> java.util.Map;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ItemService</span> &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 根据专辑Id 获取数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    Map&lt;String, Object&gt; <span class="hljs-title function_">getItem</span><span class="hljs-params">(Long albumId)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.search.service.impl;<br><br><span class="hljs-keyword">import</span> com.alibaba.fastjson.JSON;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.album.client.*;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.common.cache.GuiguCache;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.common.result.Result;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.common.util.AuthContextHolder;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.model.album.AlbumInfo;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.model.album.BaseCategoryView;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.search.service.ItemService;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.vo.album.AlbumStatVo;<br><span class="hljs-keyword">import</span> com.atguigu.tingshu.vo.user.UserInfoVo;<br><span class="hljs-keyword">import</span> lombok.extern.slf4j.Slf4j;<br><span class="hljs-keyword">import</span> org.redisson.api.RedissonClient;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Service;<br><span class="hljs-keyword">import</span> org.springframework.util.Assert;<br><span class="hljs-keyword">import</span> org.springframework.web.context.request.RequestContextHolder;<br><span class="hljs-keyword">import</span> org.springframework.web.context.request.ServletRequestAttributes;<br><br><span class="hljs-keyword">import</span> java.util.HashMap;<br><span class="hljs-keyword">import</span> java.util.Map;<br><span class="hljs-keyword">import</span> java.util.concurrent.CompletableFuture;<br><span class="hljs-keyword">import</span> java.util.concurrent.ThreadPoolExecutor;<br><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-meta">@Service</span><br><span class="hljs-meta">@SuppressWarnings(&#123;&quot;unchecked&quot;, &quot;rawtypes&quot;&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ItemServiceImpl</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">ItemService</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> AlbumInfoFeignClient albumInfoFeignClient;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> TrackInfoFeignClient trackInfoFeignClient;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> CategoryFeignClient categoryFeignClient;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> UserInfoFeignClient userInfoFeignClient;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> UserListenProcessFeignClient userListenProcessFeignClient;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RedissonClient redissonClient;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> ThreadPoolExecutor threadPoolExecutor;<br><br>    <span class="hljs-meta">@GuiguCache</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Map&lt;String, Object&gt; <span class="hljs-title function_">getItem</span><span class="hljs-params">(Long albumId)</span> &#123;<br>        <span class="hljs-comment">// 创建map集合对象</span><br>        Map&lt;String, Object&gt; result = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br><br>        <span class="hljs-comment">// 通过albumId 查询albumInfo</span><br>        CompletableFuture&lt;AlbumInfo&gt; albumCompletableFuture = CompletableFuture.supplyAsync(() -&gt; &#123;<br>            Result&lt;AlbumInfo&gt; albumInfoResult = albumInfoFeignClient.getAlbumInfo(albumId);<br>            Assert.notNull(albumInfoResult);<br>            <span class="hljs-type">AlbumInfo</span> <span class="hljs-variable">albumInfo</span> <span class="hljs-operator">=</span> albumInfoResult.getData();<br>            <span class="hljs-comment">// 保存albumInfo</span><br>            result.put(<span class="hljs-string">&quot;albumInfo&quot;</span>, albumInfo);<br>            log.info(<span class="hljs-string">&quot;albumInfo:&#123;&#125;&quot;</span>, JSON.toJSONString(albumInfo));<br>            <span class="hljs-keyword">return</span> albumInfo;<br>        &#125;, threadPoolExecutor);<br><br>        CompletableFuture&lt;Void&gt; albumStatCompletableFuture = CompletableFuture.runAsync(() -&gt; &#123;<br>            Result&lt;AlbumStatVo&gt; albumStatVoResult = albumInfoFeignClient.getAlbumStatVo(albumId);<br>            <span class="hljs-type">AlbumStatVo</span> <span class="hljs-variable">albumStatVo</span> <span class="hljs-operator">=</span> albumStatVoResult.getData();<br>            result.put(<span class="hljs-string">&quot;albumStatVo&quot;</span>, albumStatVo);<br>            log.info(<span class="hljs-string">&quot;albumStatVo:&#123;&#125;&quot;</span>, JSON.toJSONString(albumStatVo));<br>        &#125;, threadPoolExecutor);<br><br>        CompletableFuture&lt;Void&gt; baseCategoryViewCompletableFuture = albumCompletableFuture.thenAcceptAsync(albumInfo -&gt; &#123;<br>            Result&lt;BaseCategoryView&gt; baseCategoryViewResult = categoryFeignClient.getCategoryView(albumInfo.getCategory3Id());<br>            <span class="hljs-type">BaseCategoryView</span> <span class="hljs-variable">baseCategoryView</span> <span class="hljs-operator">=</span> baseCategoryViewResult.getData();<br>            result.put(<span class="hljs-string">&quot;baseCategoryView&quot;</span>, baseCategoryView);<br>            log.info(<span class="hljs-string">&quot;baseCategoryView:&#123;&#125;&quot;</span>, JSON.toJSONString(baseCategoryView));<br>        &#125;, threadPoolExecutor);<br><br>        CompletableFuture&lt;Void&gt; announcerCompletableFuture = albumCompletableFuture.thenAcceptAsync(albumInfo -&gt; &#123;<br>            Result&lt;UserInfoVo&gt; userInfoVoResult = userInfoFeignClient.getUserInfoVo(albumInfo.getUserId());<br>            <span class="hljs-type">UserInfoVo</span> <span class="hljs-variable">userInfoVo</span> <span class="hljs-operator">=</span> userInfoVoResult.getData();<br>            result.put(<span class="hljs-string">&quot;announcer&quot;</span>, userInfoVo);<br>            log.info(<span class="hljs-string">&quot;announcer:&#123;&#125;&quot;</span>, JSON.toJSONString(userInfoVo));<br>        &#125;, threadPoolExecutor);<br>       <br>        CompletableFuture.allOf(albumCompletableFuture, albumStatCompletableFuture, baseCategoryViewCompletableFuture, announcerCompletableFuture).join();<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>配置自定义线程池：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.search.config;<br><br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><br><span class="hljs-keyword">import</span> java.util.concurrent.ArrayBlockingQueue;<br><span class="hljs-keyword">import</span> java.util.concurrent.ThreadPoolExecutor;<br><span class="hljs-keyword">import</span> java.util.concurrent.TimeUnit;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> atguigu-mqx</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@ClassName</span> ThreadPoolExecutorConfig</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@description</span>: TODO</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2023年09月24日</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span>: 1.0</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ThreadPoolExecutorConfig</span> &#123;<br><br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-keyword">public</span> ThreadPoolExecutor <span class="hljs-title function_">threadPoolExecutor</span><span class="hljs-params">()</span>&#123;<br>        <span class="hljs-comment">//  自定义线程池-不能使用工具类创建线程池. 阻塞队列或最大线程个数是21亿，这样会导致OOM!</span><br>        <span class="hljs-type">ThreadPoolExecutor</span> <span class="hljs-variable">threadPoolExecutor</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ThreadPoolExecutor</span>(<br>                <span class="hljs-number">8</span>,    <span class="hljs-comment">//  核心线程数 IO:2n  cpu:n+1</span><br>                <span class="hljs-number">16</span>,   <span class="hljs-comment">//  最大线程数</span><br>                <span class="hljs-number">3</span>,  <span class="hljs-comment">//  空闲线程存活时间</span><br>                TimeUnit.SECONDS, <span class="hljs-comment">// 空闲线程存活时间单位</span><br>                <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayBlockingQueue</span>&lt;&gt;(<span class="hljs-number">10</span>) <span class="hljs-comment">// 阻塞队列</span><br>        );<br>        <span class="hljs-keyword">return</span> threadPoolExecutor;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="1-3-根据专辑Id获取专辑声音列表"><a href="#1-3-根据专辑Id获取专辑声音列表" class="headerlink" title="1.3 根据专辑Id获取专辑声音列表"></a>1.3 根据专辑Id获取专辑声音列表</h2><p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu010.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu010.png)
+
+-->
+
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1/api/album/trackInfo/findAlbumTrackPage/1593/1/10">http://127.0.0.1/api/album/trackInfo/findAlbumTrackPage/1593/1/10</a>  获取专辑声音列表</p>
+<p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu011.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu011.png)
+
+-->
+
+<h3 id="1-3-1-控制器"><a href="#1-3-1-控制器" class="headerlink" title="1.3.1 控制器"></a>1.3.1 控制器</h3><p>我们将数据都统一封装到 AlbumTrackListVo 实体类中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.vo.album;<br><br><span class="hljs-keyword">import</span> io.swagger.v3.oas.annotations.media.Schema;<br><span class="hljs-keyword">import</span> lombok.Data;<br><br><span class="hljs-keyword">import</span> java.math.BigDecimal;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Schema(description = &quot;用户专辑声音列表信息&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AlbumTrackListVo</span> &#123;<br><br>   <span class="hljs-meta">@Schema(description = &quot;声音id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long trackId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;标题&quot;)</span><br>   <span class="hljs-keyword">private</span> String trackTitle;<br><br>   <span class="hljs-meta">@Schema(description = &quot;声音媒体时长，单位秒&quot;)</span><br>   <span class="hljs-keyword">private</span> BigDecimal mediaDuration;<br><br>   <span class="hljs-meta">@Schema(description = &quot;排序&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer orderNum;<br><br>   <span class="hljs-meta">@Schema(description = &quot;播放量&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer playStatNum;<br><br>   <span class="hljs-meta">@Schema(description = &quot;评论数&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer commentStatNum;<br><br>   <span class="hljs-meta">@Schema(description = &quot;发布时间&quot;)</span><br>   <span class="hljs-keyword">private</span> Date createTime;<br><br>   <span class="hljs-meta">@Schema(description = &quot;是否显示付费标识，isShowPiadMark=true，则显示付费标识&quot;)</span><br>   <span class="hljs-keyword">private</span> <span class="hljs-type">Boolean</span> <span class="hljs-variable">isShowPaidMark</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在service-album 微服务中添加控制器TrackInfoApiController. 获取专辑声音列表时</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 根据专辑Id获取声音列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> page</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> limit</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@GuiGuLogin(required = false)</span><br><span class="hljs-meta">@Operation(summary = &quot;获取专辑声音分页列表&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;findAlbumTrackPage/&#123;albumId&#125;/&#123;page&#125;/&#123;limit&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;IPage&lt;AlbumTrackListVo&gt;&gt; <span class="hljs-title function_">findAlbumTrackPage</span><span class="hljs-params">(</span><br><span class="hljs-params">		<span class="hljs-meta">@Parameter(name = &quot;albumId&quot;, description = &quot;专辑id&quot;, required = true)</span></span><br><span class="hljs-params">		<span class="hljs-meta">@PathVariable</span> Long albumId,</span><br><span class="hljs-params">		<span class="hljs-meta">@Parameter(name = &quot;page&quot;, description = &quot;当前页码&quot;, required = true)</span></span><br><span class="hljs-params">		<span class="hljs-meta">@PathVariable</span> Long page,</span><br><span class="hljs-params">		<span class="hljs-meta">@Parameter(name = &quot;limit&quot;, description = &quot;每页记录数&quot;, required = true)</span></span><br><span class="hljs-params">		<span class="hljs-meta">@PathVariable</span> Long limit)</span> &#123;<br>	<span class="hljs-comment">//	获取用户Id</span><br>	<span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> AuthContextHolder.getUserId();<br>	<span class="hljs-comment">//	构建分页对象</span><br>	Page&lt;AlbumTrackListVo&gt; pageParam = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Page</span>&lt;&gt;(page, limit);<br>	<span class="hljs-comment">//	调用服务层方法</span><br>	IPage&lt;AlbumTrackListVo&gt; pageModel = trackInfoService.findAlbumTrackPage(pageParam, albumId, userId);<br>	<span class="hljs-comment">//	返回数据</span><br>	<span class="hljs-keyword">return</span> Result.ok(pageModel);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-3-2-接口与实现"><a href="#1-3-2-接口与实现" class="headerlink" title="1.3.2 接口与实现"></a>1.3.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TrackInfoService</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">IService</span>&lt;TrackInfo&gt; &#123;   <br>	IPage&lt;AlbumTrackListVo&gt; <span class="hljs-title function_">findAlbumTrackPage</span><span class="hljs-params">(Page&lt;AlbumTrackListVo&gt; pageParam, Long albumId, Long userId)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<p>思路：</p>
+<ol>
+<li><p>根据专辑Id 获取到声音列表 ，将数据封装到 AlbumTrackListVo 类中</p>
+<ol>
+<li><p>用户为空的时候，只要是付费专辑，都需要在页面显示要付款的标识 {<strong>但是，要除去试听集数</strong>} isShowPaidMark&#x3D;true</p>
+<p>付费类型： 0101-免费 0102-vip付费 0103-付费</p>
+</li>
+<li><p>用户不为空的时候</p>
+<p>判断专辑的支付类型</p>
+<ol start="3">
+<li><p>专辑类型属于 vip 免费类型   0102-vip付费</p>
+<p>判断用户如果不是vip ，则需要付费</p>
+<p>判断用户如果是vip 但是已经过期了, 也需要显示付费</p>
+</li>
+<li><p>需要付费  0103-付费</p>
+<p>需要显示付费</p>
+</li>
+</ol>
+</li>
+<li><p>统一处理需要付费业务</p>
+<p>​    获取到声音Id列表集合 与 用户购买声音Id集合进行比较  [ 将用户购买的声音存储到map中，key&#x3D;trackId value &#x3D; 1或0; 1:表示购买过，0：表示没有购买过 </p>
+<p>   如果声音Id集合不包含购买的声音Id，则将显示为付费，否则不需要付费</p>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> IPage&lt;AlbumTrackListVo&gt; <span class="hljs-title function_">findAlbumTrackPage</span><span class="hljs-params">(Page&lt;AlbumTrackListVo&gt; pageParam, Long albumId, Long userId)</span> &#123;<br>  <span class="hljs-comment">//	根据专辑Id 获取到声音集合</span><br>  IPage&lt;AlbumTrackListVo&gt; pageInfo = trackInfoMapper.selectAlbumTrackPage(pageParam,albumId);<br><br>  <span class="hljs-comment">//	判断用户是否需要付费：0101-免费 0102-vip付费 0103-付费</span><br>  <span class="hljs-type">AlbumInfo</span> <span class="hljs-variable">albumInfo</span> <span class="hljs-operator">=</span> albumInfoService.getById(albumId);<br>  Assert.notNull(albumInfo,<span class="hljs-string">&quot;专辑对象不能为空&quot;</span>);<br>  <span class="hljs-comment">//	判断用户是否登录</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> == userId)&#123;<br>    <span class="hljs-comment">//	除免费的专辑都需要显示付费表示</span><br>    <span class="hljs-keyword">if</span> (!SystemConstant.ALBUM_PAY_TYPE_FREE.equals(albumInfo.getPayType()))&#123;<br>      <span class="hljs-comment">//	处理试听声音，获取需要付费的声音列表</span><br>      List&lt;AlbumTrackListVo&gt; albumTrackNeedPaidListVoList = pageInfo.getRecords().stream().filter(albumTrackListVo -&gt; albumTrackListVo.getOrderNum().intValue() &gt; albumInfo.getTracksForFree()).collect(Collectors.toList());<br>      <span class="hljs-keyword">if</span> (!CollectionUtils.isEmpty(albumTrackNeedPaidListVoList))&#123;<br>        albumTrackNeedPaidListVoList.forEach(albumTrackListVo -&gt; &#123;<br>          <span class="hljs-comment">//	显示付费通知</span><br>          albumTrackListVo.setIsShowPaidMark(<span class="hljs-literal">true</span>);<br>        &#125;);<br>      &#125;<br>    &#125;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">//	用户已登录</span><br>    <span class="hljs-comment">//	声明变量是否需要付费，默认不需要付费</span><br>    <span class="hljs-type">boolean</span> <span class="hljs-variable">isNeedPaid</span> <span class="hljs-operator">=</span> <span class="hljs-literal">false</span>;<br>    <span class="hljs-comment">//  vip 付费情况</span><br>    <span class="hljs-keyword">if</span> (SystemConstant.ALBUM_PAY_TYPE_VIPFREE.equals(albumInfo.getPayType()))&#123;<br>      <span class="hljs-comment">//	获取用户信息</span><br>      Result&lt;UserInfoVo&gt; userInfoVoResult = userInfoFeignClient.getUserInfoVo(userId);<br>      Assert.notNull(userInfoVoResult,<span class="hljs-string">&quot;用户信息不能为空&quot;</span>);<br>      <span class="hljs-type">UserInfoVo</span> <span class="hljs-variable">userInfoVo</span> <span class="hljs-operator">=</span> userInfoVoResult.getData();<br>      <span class="hljs-comment">//	1.	VIP 免费,如果不是vip则需要付费，将这个变量设置为true，需要购买</span><br>      <span class="hljs-keyword">if</span> (userInfoVo.getIsVip().intValue() == <span class="hljs-number">0</span>)&#123;<br>        isNeedPaid = <span class="hljs-literal">true</span>;<br>      &#125;<br>      <span class="hljs-comment">//1.1 如果是vip但是vip过期了（定时任务还为更新状态）</span><br>	  <span class="hljs-keyword">if</span>(userInfoVo.getIsVip().intValue() == <span class="hljs-number">1</span> &amp;&amp; userInfoVo.getVipExpireTime().before(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>())) &#123;<br>		isNeedPaid = <span class="hljs-literal">true</span>;<br>	  &#125;<br>    &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(SystemConstant.ALBUM_PAY_TYPE_REQUIRE.equals(albumInfo.getPayType()))&#123;<br>      <span class="hljs-comment">//	2.	付费</span><br>      isNeedPaid = <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-comment">//需要付费，判断用户是否购买过专辑或声音</span><br>    <span class="hljs-keyword">if</span>(isNeedPaid) &#123;<br>      <span class="hljs-comment">//	处理试听声音，获取需要付费的声音列表</span><br>      List&lt;AlbumTrackListVo&gt; albumTrackNeedPaidListVoList = pageInfo.getRecords().stream().filter(albumTrackListVo -&gt; albumTrackListVo.getOrderNum().intValue() &gt; albumInfo.getTracksForFree()).collect(Collectors.toList());<br>      <span class="hljs-comment">//	判断</span><br>      <span class="hljs-keyword">if</span> (!CollectionUtils.isEmpty(albumTrackNeedPaidListVoList))&#123;<br>        <span class="hljs-comment">//	判断用户是否购买该声音</span><br>        <span class="hljs-comment">//	获取到声音Id 集合列表</span><br>        List&lt;Long&gt; trackIdList = albumTrackNeedPaidListVoList.stream().map(AlbumTrackListVo::getTrackId).collect(Collectors.toList());<br>        <span class="hljs-comment">//	获取用户购买的声音列表</span><br>        Result&lt;Map&lt;Long, Integer&gt;&gt; mapResult = userInfoFeignClient.userIsPaidTrack(albumId,trackIdList);<br>        Assert.notNull(mapResult,<span class="hljs-string">&quot;声音集合不能为空.&quot;</span>);<br>        Map&lt;Long, Integer&gt; map = mapResult.getData();<br>        Assert.notNull(map,<span class="hljs-string">&quot;map集合不能为空.&quot;</span>);<br>        albumTrackNeedPaidListVoList.forEach(albumTrackListVo -&gt; &#123;          <br>            <span class="hljs-comment">//	如果map.get(albumTrackListVo.getTrackId()) == 1 已经购买过，则不显示付费标识;</span><br>            <span class="hljs-type">boolean</span> <span class="hljs-variable">isBuy</span> <span class="hljs-operator">=</span> map.get(albumTrackListVo.getTrackId()) == <span class="hljs-number">1</span> ? <span class="hljs-literal">false</span> : <span class="hljs-literal">true</span>;<br>            albumTrackListVo.setIsShowPaidMark(isBuy);         <br>        &#125;);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 返回集合数据</span><br>  <span class="hljs-keyword">return</span> pageInfo;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3-2-1-根据专辑Id-获取到声音列表"><a href="#1-3-2-1-根据专辑Id-获取到声音列表" class="headerlink" title="1.3.2.1 根据专辑Id 获取到声音列表"></a>1.3.2.1 根据专辑Id 获取到声音列表</h4><p>条件必须是当前已经<strong>开放</strong>并且是<strong>审核通过状态</strong>的数据,并且还需要获取到声音的<strong>播放量以及评论数量</strong></p>
+<p><strong>TrackInfoMapper</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Mapper</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">TrackInfoMapper</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">BaseMapper</span>&lt;TrackInfo&gt; &#123;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取专辑声音列表</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> pageParam</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    IPage&lt;AlbumTrackListVo&gt; <span class="hljs-title function_">selectAlbumTrackPage</span><span class="hljs-params">(Page&lt;AlbumTrackListVo&gt; pageParam, <span class="hljs-meta">@Param(&quot;albumId&quot;)</span> Long albumId)</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>TrackInfoMapper.xml</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--根据专辑 Id 获取到声音列表--&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">select</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;selectAlbumTrackPage&quot;</span> <span class="hljs-attr">resultType</span>=<span class="hljs-string">&quot;com.atguigu.tingshu.vo.album.AlbumTrackListVo&quot;</span>&gt;</span><br>  select<br>  info.trackId,<br>  info.trackTitle,<br>  info.mediaDuration,<br>  info.orderNum,<br>  info.createTime,<br>  MAX(IF(info.statType = &#x27;0701&#x27;, info.statNum, 0)) as playStatNum,<br>  MAX(IF(info.statType = &#x27;0704&#x27;, info.statNum, 0)) as commentStatNum<br>  from<br>  (select<br>      track.id as trackId,<br>      track.track_title as trackTitle,<br>      track.media_duration as mediaDuration,<br>      track.order_num as orderNum,<br>      track.create_time as createTime,<br>      stat.stat_type as statType,<br>      stat.stat_num as statNum<br>  from track_info track<br>  left join track_stat stat on stat.track_id = track.id<br>  where track.album_id = #&#123;albumId&#125; and track.is_open = &#x27;1&#x27; and track.status = &#x27;0501&#x27;) info<br>  group by info.trackId<br>  order by info.orderNum asc<br><span class="hljs-tag">&lt;/<span class="hljs-name">select</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="1-3-2-2-判断用户是否购买声音列表"><a href="#1-3-2-2-判断用户是否购买声音列表" class="headerlink" title="1.3.2.2 判断用户是否购买声音列表"></a>1.3.2.2 判断用户是否购买声音列表</h4><p>user_paid_album 这张表记录了用户购买过的专辑</p>
+<p>如果购买过，则在 map 中存储数据 key&#x3D;trackId value &#x3D; 1</p>
+<p><strong>UserInfoFeignClient</strong> 远程调用接口中添加：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 判断用户是否购买声音列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> trackIdList</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@PostMapping(&quot;api/user/userInfo/userIsPaidTrack/&#123;albumId&#125;&quot;)</span><br>Result&lt;Map&lt;Long, Integer&gt;&gt; <span class="hljs-title function_">userIsPaidTrack</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable(&quot;albumId&quot;)</span> Long albumId, <span class="hljs-meta">@RequestBody</span> List&lt;Long&gt; trackIdList)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>熔断类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserInfoDegradeFeignClient</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">UserInfoFeignClient</span> &#123;<br><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Result&lt;Map&lt;Long, Integer&gt;&gt; <span class="hljs-title function_">userIsPaidTrack</span><span class="hljs-params">(Long albumId, List&lt;Long&gt; trackIdList)</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="1-3-2-2-1-控制器"><a href="#1-3-2-2-1-控制器" class="headerlink" title="1.3.2.2.1 控制器"></a>1.3.2.2.1 控制器</h5><p>itemApiController </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 判断用户是否购买声音列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> trackIdList</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@GuiGuLogin(required = false)</span><br><span class="hljs-meta">@Operation(summary = &quot;判断用户是否购买声音列表&quot;)</span><br><span class="hljs-meta">@PostMapping(&quot;userIsPaidTrack/&#123;albumId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;Map&lt;Long, Integer&gt;&gt; <span class="hljs-title function_">userIsPaidTrack</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long albumId, <span class="hljs-meta">@RequestBody</span> List&lt;Long&gt; trackIdList)</span> &#123;<br>  <span class="hljs-comment">//	获取用户Id</span><br>  <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> AuthContextHolder.getUserId();<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  Map&lt;Long, Integer&gt; map = userInfoService.userIsPaidTrack(userId, albumId, trackIdList);<br>  <span class="hljs-comment">//	返回map 集合数据</span><br>  <span class="hljs-keyword">return</span> Result.ok(map);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="1-2-2-2-2-接口与实现"><a href="#1-2-2-2-2-接口与实现" class="headerlink" title="1.2.2.2.2 接口与实现"></a>1.2.2.2.2 接口与实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 判断用户是否购买过声音列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> userId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> trackIdList</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br>Map&lt;Long, Integer&gt; <span class="hljs-title function_">userIsPaidTrack</span><span class="hljs-params">(Long userId, Long albumId, List&lt;Long&gt; trackIdList)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<ol>
+<li>根据用户Id，专辑Id 获取到用户付款专辑对象<ol>
+<li>如果对象不为空，说明购买过专辑，则设置在map集合中 声音Id为1  map.put(trackId,1); 并返回集合map</li>
+<li>如果对象为空，说明用户没有购买过专辑，但是，需要查询当前用户Id是否购买过声音Id集合中的声音<ol>
+<li>判断当前专辑声音Id集合列表 中是否包含已购买的声音Id。<ol>
+<li>true: 设置为 trackId 1</li>
+<li>false: 设置为 trackId 0</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Map&lt;Long, Integer&gt; <span class="hljs-title function_">userIsPaidTrack</span><span class="hljs-params">(Long userId, Long albumId, List&lt;Long&gt; trackIdList)</span> &#123;<br>  <span class="hljs-comment">//	根据UserId,albumId 获取到用户付款专辑对象</span><br>  LambdaQueryWrapper&lt;UserPaidAlbum&gt; userPaidAlbumLambdaQueryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>  userPaidAlbumLambdaQueryWrapper.eq(UserPaidAlbum::getUserId,userId).eq(UserPaidAlbum::getAlbumId,albumId);<br>  <span class="hljs-type">UserPaidAlbum</span> <span class="hljs-variable">userPaidAlbum</span> <span class="hljs-operator">=</span> userPaidAlbumMapper.selectOne(userPaidAlbumLambdaQueryWrapper);<br>  <span class="hljs-comment">//	判断</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != userPaidAlbum)&#123;<br>    <span class="hljs-comment">//	创建一个map 集合</span><br>    HashMap&lt;Long, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    <span class="hljs-comment">//	如果查询到对应的专辑购买记录，则默认将声音Id 赋值为 1</span><br>    trackIdList.forEach(trackId-&gt;&#123;<br>      map.put(trackId,<span class="hljs-number">1</span>);<br>    &#125;);<br>    <span class="hljs-keyword">return</span> map;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">//	根据用户Id 与专辑Id 查询用户购买声音记录</span><br>    LambdaQueryWrapper&lt;UserPaidTrack&gt; userPaidTrackLambdaQueryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>    userPaidTrackLambdaQueryWrapper.eq(UserPaidTrack::getUserId,userId).in(UserPaidTrack::getTrackId,trackIdList);<br>    List&lt;UserPaidTrack&gt; userPaidTrackList = userPaidTrackService.list(userPaidTrackLambdaQueryWrapper);<br>    <span class="hljs-comment">//	获取到用户购买声音Id 集合</span><br>    List&lt;Long&gt; userPaidTrackIdList = userPaidTrackList.stream().map(UserPaidTrack::getTrackId).collect(Collectors.toList());<br>    <span class="hljs-comment">//	创建一个map 集合</span><br>    HashMap&lt;Long, Integer&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>    trackIdList.forEach(trackId -&gt;&#123;<br>      <span class="hljs-keyword">if</span> (userPaidTrackIdList.contains(trackId))&#123;<br>        <span class="hljs-comment">//	用户已购买声音</span><br>        map.put(trackId,<span class="hljs-number">1</span>);<br>      &#125;<span class="hljs-keyword">else</span> &#123;<br>        map.put(trackId,<span class="hljs-number">0</span>);<br>      &#125;<br>    &#125;);<br>    <span class="hljs-keyword">return</span> map;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="2、声音详情"><a href="#2、声音详情" class="headerlink" title="2、声音详情"></a>2、声音详情</h1><p>![详情-获取播放记录进度](第5章 详情介绍&#x2F;详情-获取播放记录进度.gif)</p>
+<h2 id="2-1-获取声音播放进度"><a href="#2-1-获取声音播放进度" class="headerlink" title="2.1 获取声音播放进度"></a>2.1 获取声音播放进度</h2><p>在播放声音的时候，会有触发一个获取播放进度的控制器！因为页面每隔3s会自动触发一次保存功能，会将数据写入MongoDB中。所以我们直接从MongoDB中获取到声音的播放时间即可！</p>
+<p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu013.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu013.png)
+
+-->
+
+<h3 id="2-1-1-控制器"><a href="#2-1-1-控制器" class="headerlink" title="2.1.1 控制器"></a>2.1.1 控制器</h3><p>在 service-user 微服务的 UserListenProcessApiController 控制器中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 获取声音播放的时间</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> trackId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@GuiGuLogin</span><br><span class="hljs-meta">@Operation(summary = &quot;获取声音的上次跳出时间&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;/getTrackBreakSecond/&#123;trackId&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;BigDecimal&gt; <span class="hljs-title function_">getTrackBreakSecond</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long trackId)</span> &#123;<br>  <span class="hljs-comment">//	获取用户Id</span><br>  <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> AuthContextHolder.getUserId();<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  <span class="hljs-type">BigDecimal</span> <span class="hljs-variable">trackBreakSecond</span> <span class="hljs-operator">=</span> userListenProcessService.getTrackBreakSecond(userId, trackId);<br>  <span class="hljs-comment">//	返回数据</span><br>  <span class="hljs-keyword">return</span> Result.ok(trackBreakSecond);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-1-2-接口与实现"><a href="#2-1-2-接口与实现" class="headerlink" title="2.1.2 接口与实现"></a>2.1.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 根据用户Id,声音Id 获取到播放进度</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> userId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> trackId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br>BigDecimal <span class="hljs-title function_">getTrackBreakSecond</span><span class="hljs-params">(Long userId, Long trackId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<p>思路：</p>
+<ol>
+<li>根据userId, 声音Id 获取数据 从MongoDB 获取数据 </li>
+<li>给集合起一个名称 userListenProcess_userId</li>
+<li>存储数据的时候，将数据封装到 UserListenProcess 这个对象中</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.model.user;<br><br><span class="hljs-keyword">import</span> io.swagger.v3.oas.annotations.media.Schema;<br><span class="hljs-keyword">import</span> lombok.Data;<br><span class="hljs-keyword">import</span> org.springframework.data.annotation.Id;<br><span class="hljs-keyword">import</span> org.springframework.data.mongodb.core.mapping.Document;<br><br><span class="hljs-keyword">import</span> java.math.BigDecimal;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Schema(description = &quot;UserListenProcess&quot;)</span><br><span class="hljs-meta">@Document</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserListenProcess</span> &#123;<br><br>   <span class="hljs-meta">@Schema(description = &quot;id&quot;)</span><br>   <span class="hljs-meta">@Id</span><br>   <span class="hljs-keyword">private</span> String id;<br><br>   <span class="hljs-meta">@Schema(description = &quot;用户id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long userId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;专辑id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long albumId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;声音id，声音id为0时，浏览的是专辑&quot;)</span><br>   <span class="hljs-keyword">private</span> Long trackId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;相对于音频开始位置的播放跳出位置，单位为秒。比如当前音频总时长60s，本次播放到音频第25s处就退出或者切到下一首，那么break_second就是25&quot;)</span><br>   <span class="hljs-keyword">private</span> BigDecimal breakSecond;<br><br>   <span class="hljs-meta">@Schema(description = &quot;是否显示&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer isShow;<br><br>   <span class="hljs-meta">@Schema(description = &quot;创建时间&quot;)</span><br>   <span class="hljs-keyword">private</span> Date createTime;<br><br>   <span class="hljs-meta">@Schema(description = &quot;更新时间&quot;)</span><br>   <span class="hljs-keyword">private</span> Date updateTime;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> BigDecimal <span class="hljs-title function_">getTrackBreakSecond</span><span class="hljs-params">(Long userId, Long trackId)</span> &#123;<br>  <span class="hljs-comment">//	根据用户Id,声音Id获取播放进度对象</span><br>  <span class="hljs-type">Query</span> <span class="hljs-variable">query</span> <span class="hljs-operator">=</span> Query.query(Criteria.where(<span class="hljs-string">&quot;userId&quot;</span>).is(userId).and(<span class="hljs-string">&quot;trackId&quot;</span>).is(trackId));<br>  <span class="hljs-type">UserListenProcess</span> <span class="hljs-variable">userListenProcess</span> <span class="hljs-operator">=</span> mongoTemplate.findOne(query, UserListenProcess.class, MongoUtil.getCollectionName(MongoUtil.MongoCollectionEnum.USER_LISTEN_PROCESS, userId));<br>  <span class="hljs-comment">//	判断</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != userListenProcess)&#123;<br>    <span class="hljs-comment">//	获取到播放的跳出时间</span><br>    <span class="hljs-keyword">return</span> userListenProcess.getBreakSecond();<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BigDecimal</span>(<span class="hljs-string">&quot;0&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-2-更新保存播放进度"><a href="#2-2-更新保存播放进度" class="headerlink" title="2.2 更新保存播放进度"></a>2.2 更新保存播放进度</h2><p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu015.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu015.png)
+
+-->
+
+<p>实体类</p>
+<p>在 UserListenProcessApiController 控制器中添加</p>
+<p>页面每隔3秒左右更新播放进度.</p>
+<ol>
+<li>更新播放进度页面会传递 专辑Id ，秒数，声音Id 。后台会将这个三个属性封装到UserListenProcessVo 对象中。然后利用MongoDB进行存储到 UserListenProcess 实体类中！</li>
+<li>为了更好的统计声音播放次数，将用户信息与声音信息存储到缓存-redis 中，判断同一个用户在一天之内，对同一个声音多次播放，只计算一次。并且要发送消息给mq。</li>
+<li>mq监听消息并消费，更新专辑与声音的统计数据。</li>
+</ol>
+<p>接收前端页面传递参数实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Schema(description = &quot;UserListenProcess&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserListenProcessVo</span> &#123;<br><br>   <span class="hljs-meta">@Schema(description = &quot;专辑id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long albumId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;声音id，声音id为0时，浏览的是专辑&quot;)</span><br>   <span class="hljs-keyword">private</span> Long trackId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;相对于音频开始位置的播放跳出位置，单位为秒。比如当前音频总时长60s，本次播放到音频第25s处就退出或者切到下一首，那么break_second就是25&quot;)</span><br>   <span class="hljs-meta">@TableField(&quot;break_second&quot;)</span><br>   <span class="hljs-keyword">private</span> BigDecimal breakSecond;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>数据存储实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Schema(description = &quot;UserListenProcess&quot;)</span><br><span class="hljs-meta">@Document</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserListenProcess</span> &#123;<br><br>   <span class="hljs-meta">@Schema(description = &quot;id&quot;)</span><br>   <span class="hljs-meta">@Id</span><br>   <span class="hljs-keyword">private</span> String id;<br><br>   <span class="hljs-meta">@Schema(description = &quot;用户id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long userId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;专辑id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long albumId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;声音id，声音id为0时，浏览的是专辑&quot;)</span><br>   <span class="hljs-keyword">private</span> Long trackId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;相对于音频开始位置的播放跳出位置，单位为秒。比如当前音频总时长60s，本次播放到音频第25s处就退出或者切到下一首，那么break_second就是25&quot;)</span><br>   <span class="hljs-keyword">private</span> BigDecimal breakSecond;<br><br>   <span class="hljs-meta">@Schema(description = &quot;是否显示&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer isShow;<br><br>   <span class="hljs-meta">@Schema(description = &quot;创建时间&quot;)</span><br>   <span class="hljs-keyword">private</span> Date createTime;<br><br>   <span class="hljs-meta">@Schema(description = &quot;更新时间&quot;)</span><br>   <span class="hljs-keyword">private</span> Date updateTime;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-1-控制器"><a href="#2-2-1-控制器" class="headerlink" title="2.2.1 控制器"></a>2.2.1 控制器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 更新播放进度</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> userListenProcessVo</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@GuiGuLogin</span><br><span class="hljs-meta">@Operation(summary = &quot;更新播放进度&quot;)</span><br><span class="hljs-meta">@PostMapping(&quot;/updateListenProcess&quot;)</span><br><span class="hljs-keyword">public</span> Result <span class="hljs-title function_">updateListenProcess</span><span class="hljs-params">(<span class="hljs-meta">@RequestBody</span> UserListenProcessVo userListenProcessVo)</span> &#123;<br>  <span class="hljs-comment">//	获取用户Id</span><br>  <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> AuthContextHolder.getUserId();<br>  <span class="hljs-comment">//	调用服务层方法</span><br>  userListenProcessService.updateListenProcess(userId, userListenProcessVo);<br>  <span class="hljs-keyword">return</span> Result.ok();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-2-2-接口与实现"><a href="#2-2-2-接口与实现" class="headerlink" title="2.2.2 接口与实现"></a>2.2.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">* 更新播放进度</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> userId</span><br><span class="hljs-comment">* <span class="hljs-doctag">@param</span> userListenProcessVo</span><br><span class="hljs-comment">*/</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">updateListenProcess</span><span class="hljs-params">(Long userId, UserListenProcessVo userListenProcessVo)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<p>思路：</p>
+<ol>
+<li>根据用户Id，声音Id 查询当前存储对象信息</li>
+<li>如果对象不为空，修改当前对象的更新时间与跳出时间，并写入MongoDB</li>
+<li>如果对象为空，说明当前声音从来没有播放过，需要创建对象并赋值然后写入MongoDB中</li>
+<li>通过<strong>声音Id，用户Id</strong> 两个维度来判断是否存在当前声音记录</li>
+<li>如果存在，将声音Id，用户Id 存储到缓存中，在发送一个消息来更新声音，专辑的统计数据 封装发送消息的实体类 TrackStatMqVo</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Data</span><br><span class="hljs-meta">@Schema(description = &quot;TrackStatMqVo&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TrackStatMqVo</span> &#123;<br><br>   <span class="hljs-meta">@Schema(description = &quot;业务编号：去重使用&quot;)</span><br>   <span class="hljs-keyword">private</span> String businessNo;<br><br>   <span class="hljs-meta">@Schema(description = &quot;专辑id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long albumId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;声音id&quot;)</span><br>   <span class="hljs-keyword">private</span> Long trackId;<br><br>   <span class="hljs-meta">@Schema(description = &quot;统计类型&quot;)</span><br>   <span class="hljs-keyword">private</span> String statType;<br><br>   <span class="hljs-meta">@Schema(description = &quot;更新数目&quot;)</span><br>   <span class="hljs-keyword">private</span> Integer count;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateListenProcess</span><span class="hljs-params">(Long userId, UserListenProcessVo userListenProcessVo)</span> &#123;<br>  <span class="hljs-comment">// 根据用户Id，声音Id 设置查询条件</span><br>  <span class="hljs-type">Query</span> <span class="hljs-variable">query</span> <span class="hljs-operator">=</span> Query.query(Criteria.where(<span class="hljs-string">&quot;userId&quot;</span>).is(userId).and(<span class="hljs-string">&quot;trackId&quot;</span>).is(userListenProcessVo.getTrackId()));<br>  <span class="hljs-type">UserListenProcess</span> <span class="hljs-variable">userListenProcess</span> <span class="hljs-operator">=</span> <span class="hljs-built_in">this</span>.mongoTemplate.findOne(query, UserListenProcess.class, MongoUtil.getCollectionName(MongoUtil.MongoCollectionEnum.USER_LISTEN_PROCESS, userId));<br>  <span class="hljs-comment">//	判断</span><br>  <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != userListenProcess)&#123;<br>    <span class="hljs-comment">//	设置更新时间</span><br>    userListenProcess.setUpdateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>    <span class="hljs-comment">//	设置跳出时间</span><br>    userListenProcess.setBreakSecond(userListenProcessVo.getBreakSecond());<br>    <span class="hljs-comment">//	存储数据</span><br> mongoTemplate.save(userListenProcess,MongoUtil.getCollectionName(MongoUtil.MongoCollectionEnum.USER_LISTEN_PROCESS,userId));<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">//	创建对象</span><br>    userListenProcess = <span class="hljs-keyword">new</span> <span class="hljs-title class_">UserListenProcess</span>();<br>    <span class="hljs-comment">//	进行属性拷贝</span><br>    BeanUtils.copyProperties(userListenProcessVo, userListenProcess);<br>    <span class="hljs-comment">//	设置Id</span><br>    userListenProcess.setId(ObjectId.get().toString());<br>    <span class="hljs-comment">//	设置用户Id</span><br>    userListenProcess.setUserId(userId);<br>    <span class="hljs-comment">//	设置是否显示</span><br>    userListenProcess.setIsShow(<span class="hljs-number">1</span>);<br>    <span class="hljs-comment">//	创建时间</span><br>    userListenProcess.setCreateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>    <span class="hljs-comment">//	更新时间</span><br>    userListenProcess.setUpdateTime(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>());<br>    <span class="hljs-comment">//	保存数据</span><br>    mongoTemplate.save(userListenProcess, MongoUtil.getCollectionName(MongoUtil.MongoCollectionEnum.USER_LISTEN_PROCESS, userId));<br>  &#125;<br>  <span class="hljs-comment">// 记录专辑与声音播放量，同一个用户同一个声音每天只记录一次播放量</span><br>  <span class="hljs-comment">// 专辑的播放量 = 声音播放量的总和   声音：用户</span><br>  <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;user:track:&quot;</span> + userId;<br>  <span class="hljs-comment">// getbit key offset offset=trackId;</span><br>  <span class="hljs-type">Boolean</span> <span class="hljs-variable">isExist</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().getBit(key, userListenProcessVo.getTrackId());<br>  <span class="hljs-keyword">if</span>(!isExist) &#123;<br>     redisTemplate.opsForValue().setBit(key, userListenProcessVo.getTrackId(), <span class="hljs-literal">true</span>);<br>  <br>     <span class="hljs-comment">//  设置key 的过期时间</span><br>     redisTemplate.expire(key, <span class="hljs-number">24</span>*<span class="hljs-number">60</span>*<span class="hljs-number">60</span>, TimeUnit.SECONDS);<br>  <br>     <span class="hljs-comment">// 发送消息，更新播放量统计</span><br>     <span class="hljs-type">TrackStatMqVo</span> <span class="hljs-variable">trackStatMqVo</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">TrackStatMqVo</span>();<br>     trackStatMqVo.setBusinessNo(UUID.randomUUID().toString().replaceAll(<span class="hljs-string">&quot;-&quot;</span>,<span class="hljs-string">&quot;&quot;</span>));<br>     trackStatMqVo.setAlbumId(userListenProcessVo.getAlbumId());<br>     trackStatMqVo.setTarckId(userListenProcessVo.getTrackId());<br>     trackStatMqVo.setStatType(SystemConstant.TRACK_STAT_PLAY);<br>     trackStatMqVo.setCount(<span class="hljs-number">1</span>);<br>     rabbitService.sendMessage(MqConst.EXCHANGE_TRACK, MqConst.ROUTING_TRACK_STAT_UPDATE, JSON.toJSONString(trackStatMqVo));<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-1-在service-album-监听消息"><a href="#2-2-2-1-在service-album-监听消息" class="headerlink" title="2.2.2.1 在service-album 监听消息"></a>2.2.2.1 在service-album 监听消息</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.album.receiver;<br><br><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">TrackReceiver</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> TrackInfoService trackInfoService;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RedisTemplate redisTemplate;<br><br>    <span class="hljs-meta">@SneakyThrows</span><br>    <span class="hljs-meta">@RabbitListener(bindings = @QueueBinding(</span><br><span class="hljs-meta">            exchange = @Exchange(value = MqConst.EXCHANGE_TRACK, durable = &quot;true&quot;),</span><br><span class="hljs-meta">            value = @Queue(value = MqConst.QUEUE_TRACK_STAT_UPDATE, durable = &quot;true&quot;),</span><br><span class="hljs-meta">            key = &#123;MqConst.ROUTING_TRACK_STAT_UPDATE&#125;</span><br><span class="hljs-meta">    ))</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateStat</span><span class="hljs-params">(String content, Message message, Channel channel)</span> &#123;<br>        <span class="hljs-keyword">if</span> (StringUtils.hasText(content)) &#123;<br>            <span class="hljs-type">TrackStatMqVo</span> <span class="hljs-variable">trackStatMqVo</span> <span class="hljs-operator">=</span> JSON.parseObject(content, TrackStatMqVo.class);<br>            log.info(<span class="hljs-string">&quot;更新声音统计：&quot;</span> + JSON.toJSONString(trackStatMqVo));<br>            <span class="hljs-comment">//业务处理</span><br>            <span class="hljs-keyword">if</span> (<span class="hljs-literal">null</span> != trackStatMqVo) &#123;<br>                log.info(<span class="hljs-string">&quot;更新声音统计：&quot;</span> + JSON.toJSONString(trackStatMqVo));<br>                <span class="hljs-comment">//业务去重</span><br>                <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> trackStatMqVo.getBusinessNo();<br>                <span class="hljs-type">boolean</span> <span class="hljs-variable">isExist</span> <span class="hljs-operator">=</span> redisTemplate.opsForValue().setIfAbsent(key, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, TimeUnit.HOURS);<br>                <span class="hljs-keyword">if</span> (isExist) &#123;<br>                    <span class="hljs-keyword">try</span> &#123;<br>                        trackInfoService.updateStat(trackStatMqVo.getAlbumId(), trackStatMqVo.getTarckId(), trackStatMqVo.getStatType(), trackStatMqVo.getCount());<br>                    &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>                        redisTemplate.delete(key);<br>                        e.printStackTrace();<br>                    &#125;<br>                &#125;<br>            &#125;<br>        &#125;<br><br>        <span class="hljs-comment">//手动应答</span><br>        channel.basicAck(message.getMessageProperties().getDeliveryTag(), <span class="hljs-literal">false</span>);<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="2-2-2-2-接口与实现"><a href="#2-2-2-2-接口与实现" class="headerlink" title="2.2.2.2 接口与实现"></a>2.2.2.2 接口与实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 更新统计方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> trackId</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> statType</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> count</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">updateStat</span><span class="hljs-params">(Long albumId, Long trackId, String statType,Integer count)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>TrackInfoServiceImpl 实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Transactional</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateStat</span><span class="hljs-params">(Long albumId, Long trackId, String statType, Integer count)</span> &#123;<br>  <span class="hljs-comment">//	更新声音播放量</span><br>  trackInfoMapper.updateStat(trackId, statType, count);<br>  <span class="hljs-comment">//	更新专辑播放量</span><br>  <span class="hljs-keyword">if</span>(statType.equals(SystemConstant.TRACK_STAT_PLAY)) &#123;<br>    albumInfoService.updateStat(albumId, SystemConstant.ALBUM_STAT_PLAY, count);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="2-2-2-2-1-更新声音播放量"><a href="#2-2-2-2-1-更新声音播放量" class="headerlink" title="2.2.2.2.1 更新声音播放量"></a>2.2.2.2.1 更新声音播放量</h5><p><strong>TrackInfoMapper</strong> 添加方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 更新评论数据</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> trackId</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> statType</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> count</span><br><span class="hljs-comment">   */</span><br>Integer <span class="hljs-title function_">updateStat</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;trackId&quot;)</span> Long trackId, <span class="hljs-meta">@Param(&quot;statType&quot;)</span> String statType, <span class="hljs-meta">@Param(&quot;count&quot;)</span> Integer count)</span><br></code></pre></td></tr></table></figure>
+
+<p>TrackInfoMapper.xml 实现</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-comment">&lt;!--更新统计状态--&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateStat&quot;</span>&gt;</span><br>        update track_stat<br>        set stat_num = stat_num + #&#123;count&#125;<br>where track_id = #&#123;trackId&#125; and stat_type = #&#123;statType&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>更新专辑的播放量</p>
+<p>AlbumInfoService 接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 更新播放量</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> statType</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> count</span><br><span class="hljs-comment">  */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">updateStat</span><span class="hljs-params">(Long albumId, String statType, Integer count)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>AlbumInfoServiceImpl 实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateStat</span><span class="hljs-params">(Long albumId, String statType, Integer count)</span> &#123;<br>  <span class="hljs-comment">//	更新数据</span><br>  albumInfoMapper.updateStat(albumId, statType, count);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>AlbumInfoMapper接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 更新播放量</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> albumId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> statType</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> count</span><br><span class="hljs-comment">  */</span><br>Integer <span class="hljs-title function_">updateStat</span><span class="hljs-params">(<span class="hljs-meta">@Param(&quot;albumId&quot;)</span> Long albumId, <span class="hljs-meta">@Param(&quot;statType&quot;)</span> String statType, <span class="hljs-meta">@Param(&quot;count&quot;)</span> Integer count)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>AlbumInfoMapper.xml 实现</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">update</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;updateStat&quot;</span>&gt;</span><br>        update album_stat<br>        set stat_num = stat_num + #&#123;count&#125;<br>where album_id = #&#123;albumId&#125; and stat_type = #&#123;statType&#125;<br><span class="hljs-tag">&lt;/<span class="hljs-name">update</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="2-3-更新排行榜"><a href="#2-3-更新排行榜" class="headerlink" title="2.3 更新排行榜"></a>2.3 更新排行榜</h2><p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/%E8%AF%A6%E6%83%85-%E6%8E%92%E8%A1%8C%E6%A6%9C.gif" srcset="/img/loading.gif" lazyload></p>
+<!--
+![详情-排行榜](第5章 详情介绍/详情-排行榜.gif)
+
+-->
+
+<p>手动调用一次更新，查看排行榜。后续会整合 xxl-job 分布式定时任务调度框架做定时调用。es—&gt;</p>
+<p>排行榜：热度评分</p>
+<p>DSL:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs json">GET /albuminfo/_search<br><span class="hljs-punctuation">&#123;</span><br>  <span class="hljs-attr">&quot;query&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;term&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;category1Id&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;value&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;1&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">,</span><span class="hljs-attr">&quot;sort&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>    <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;playStatNum&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;order&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;desc&quot;</span><br>      <span class="hljs-punctuation">&#125;</span><br>    <span class="hljs-punctuation">&#125;</span><br>  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>  <span class="hljs-attr">&quot;size&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">10</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-1-控制器"><a href="#2-3-1-控制器" class="headerlink" title="2.3.1 控制器"></a>2.3.1 控制器</h3><p>在SearchApiController 中添加控制器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 更新排行榜</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@SneakyThrows</span><br><span class="hljs-meta">@Operation(summary = &quot;更新排行榜&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;updateLatelyAlbumRanking&quot;)</span><br><span class="hljs-keyword">public</span> Result <span class="hljs-title function_">updateLatelyAlbumRanking</span><span class="hljs-params">()</span> &#123;<br>  <span class="hljs-comment">//  调用服务层方法</span><br>  searchService.updateLatelyAlbumRanking();<br>  <span class="hljs-comment">//  默认返回</span><br>  <span class="hljs-keyword">return</span> Result.ok();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-3-2-接口与实现"><a href="#2-3-2-接口与实现" class="headerlink" title="2.3.2 接口与实现"></a>2.3.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 更新排行榜</span><br><span class="hljs-comment">  */</span><br><span class="hljs-keyword">void</span> <span class="hljs-title function_">updateLatelyAlbumRanking</span><span class="hljs-params">()</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<p>思路：</p>
+<ol>
+<li>先查询所有一级分类数据</li>
+<li>按照每个维度来统计排行 热度:hotScore、播放量:playStatNum、订阅量:subscribeStatNum、购买量:buyStatNum、评论数:commentStatNum</li>
+<li>从es中重新获取排序之后的专辑信息，并写入缓存中</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">updateLatelyAlbumRanking</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//  先获取到所有一级分类数据</span><br>    Result&lt;List&lt;BaseCategory1&gt;&gt; baseCategory1Result = categoryFeignClient.findAllCategory1();<br>    <span class="hljs-comment">//  获取集合</span><br>    Assert.notNull(baseCategory1Result,<span class="hljs-string">&quot;一级分类结果集为空&quot;</span>);<br>    List&lt;BaseCategory1&gt; baseCategory1List = baseCategory1Result.getData();<br>    Assert.notNull(baseCategory1List,<span class="hljs-string">&quot;一级分类集合为空&quot;</span>);<br>    <span class="hljs-comment">//  循环遍历</span><br>    <span class="hljs-keyword">for</span> (BaseCategory1 baseCategory1 : baseCategory1List) &#123;<br>        <span class="hljs-comment">//  baseCategory1.getId()</span><br>        <span class="hljs-comment">//  Hash数据结构： hset key field value;  key=category1Id field = 热度/播放量/订阅量/ value=热度data/播放量data;</span><br>        String[] rankingDimensionArray = <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>[]&#123;<span class="hljs-string">&quot;hotScore&quot;</span>, <span class="hljs-string">&quot;playStatNum&quot;</span>, <span class="hljs-string">&quot;subscribeStatNum&quot;</span>, <span class="hljs-string">&quot;buyStatNum&quot;</span>, <span class="hljs-string">&quot;commentStatNum&quot;</span>&#125;;<br>        <span class="hljs-comment">//  排行榜数据从哪里来的? es 中!</span><br>        <span class="hljs-keyword">for</span> (String ranging : rankingDimensionArray) &#123;<br>            <span class="hljs-comment">//  执行dsl语句 获取到结果集.</span><br>            SearchResponse&lt;AlbumInfoIndex&gt; response = <span class="hljs-literal">null</span>;<br>            <span class="hljs-keyword">try</span> &#123;<br>                response = elasticsearchClient.search(f -&gt; f.index(<span class="hljs-string">&quot;albuminfo&quot;</span>)<br>                        .query(q -&gt; q.term(t -&gt; t.field(<span class="hljs-string">&quot;category1Id&quot;</span>).value(baseCategory1.getId())))<br>                        .sort(s -&gt; s.field(d -&gt; d.field(ranging).order(SortOrder.Desc)))<br>                        .size(<span class="hljs-number">10</span>), AlbumInfoIndex.class);<br>            &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);<br>            &#125;<br>            <span class="hljs-comment">//  获取到当前执行结果集，将数据存储到缓存：</span><br>            List&lt;AlbumInfoIndex&gt; albumInfoIndexList = response.hits().hits().stream().map(Hit::source).collect(Collectors.toList());<br>            <span class="hljs-comment">//  使用hash 数据结构 hset key field value;</span><br>            <span class="hljs-type">String</span> <span class="hljs-variable">rangKey</span> <span class="hljs-operator">=</span> RedisConstant.RANKING_KEY_PREFIX+baseCategory1.getId();<br>            <span class="hljs-built_in">this</span>.redisTemplate.boundHashOps(rangKey).put(ranging,albumInfoIndexList);<br>            <span class="hljs-comment">//  this.redisTemplate.opsForHash().put(rangKey,ranging,albumInfoIndexList);</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>获取全部一级分类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@FeignClient(value = &quot;service-album&quot;, fallback = CategoryDegradeFeignClient.class)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">CategoryFeignClient</span> &#123;<br>	<span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 获取全部一级分类</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@GetMapping(&quot;api/album/category/findAllCategory1&quot;)</span><br>    Result&lt;List&lt;BaseCategory1&gt;&gt; <span class="hljs-title function_">findAllCategory1</span><span class="hljs-params">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>熔断类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Component</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CategoryDegradeFeignClient</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">CategoryFeignClient</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Result&lt;List&lt;BaseCategory1&gt;&gt; <span class="hljs-title function_">findAllCategory1</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>service-album 微服务中BaseCategoryApiController控制器中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 查询所有的一级分类数据</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Operation(summary = &quot;查询所有的一级分类信息&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;findAllCategory1&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;List&lt;BaseCategory1&gt;&gt; <span class="hljs-title function_">findAllCategory1</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-comment">//	获取所有的一级分类数据</span><br>	List&lt;BaseCategory1&gt; baseCategory1List = baseCategoryService.findAllCategory1();<br>	<span class="hljs-keyword">return</span> Result.ok(baseCategory1List);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 获取所有一级分类数据</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br>List&lt;BaseCategory1&gt; <span class="hljs-title function_">findAllCategory1</span><span class="hljs-params">()</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> List&lt;BaseCategory1&gt; <span class="hljs-title function_">findAllCategory1</span><span class="hljs-params">()</span> &#123;<br>  <span class="hljs-keyword">return</span> baseCategory1Mapper.selectList(<span class="hljs-literal">null</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-4-获取排行榜"><a href="#2-4-获取排行榜" class="headerlink" title="2.4 获取排行榜"></a>2.4 获取排行榜</h2><p>点击排行榜的时候，能看到获取排行榜的地址</p>
+<p>排行榜：key&#x3D;ranking:category1Id  field &#x3D; hotScore 或 playStatNum 或 subscribeStatNum 或 buyStatNum 或albumCommentStatNum value&#x3D;List<albuminfoindexvo></albuminfoindexvo></p>
+<p><img src="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BB%8B%E7%BB%8D/tingshu016.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![](第5章 详情介绍/tingshu016.png)
+
+-->
+
+<h3 id="2-4-1-控制器"><a href="#2-4-1-控制器" class="headerlink" title="2.4.1 控制器"></a>2.4.1 控制器</h3><p>SearchApiController 控制器中添加</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 获取排行榜列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> category1Id</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> dimension</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br><span class="hljs-meta">@Operation(summary = &quot;获取排行榜列表&quot;)</span><br><span class="hljs-meta">@Parameters(&#123;</span><br><span class="hljs-meta">  @Parameter(name = &quot;category1Id&quot;,description = &quot;一级分类&quot;,in = ParameterIn.PATH,required = true),</span><br><span class="hljs-meta">  @Parameter(name = &quot;dimension&quot;,description = &quot;热度:hotScore、播放量:playStatNum、订阅量:subscribeStatNum、购买量:buyStatNum、评论数:albumCommentStatNum&quot;,required = true,in = ParameterIn.PATH),</span><br><span class="hljs-meta">&#125;)</span><br><span class="hljs-meta">@GetMapping(&quot;findRankingList/&#123;category1Id&#125;/&#123;dimension&#125;&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;List&lt;AlbumInfoIndexVo&gt;&gt; <span class="hljs-title function_">findRankingList</span><span class="hljs-params">(<span class="hljs-meta">@PathVariable</span> Long category1Id, <span class="hljs-meta">@PathVariable</span> String dimension)</span> &#123;<br>  <span class="hljs-comment">//  调用服务层方法</span><br>  List&lt;AlbumInfoIndexVo&gt; infoIndexVoList = searchService.findRankingList(category1Id, dimension);<br>  <span class="hljs-comment">//  返回结果集</span><br>  <span class="hljs-keyword">return</span> Result.ok(infoIndexVoList);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-4-2-接口与实现"><a href="#2-4-2-接口与实现" class="headerlink" title="2.4.2 接口与实现"></a>2.4.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 获取排行榜列表</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> category1Id</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> dimension</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br>List&lt;AlbumInfoIndexVo&gt; <span class="hljs-title function_">findRankingList</span><span class="hljs-params">(Long category1Id, String dimension)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> List&lt;AlbumInfoIndexVo&gt; <span class="hljs-title function_">findRankingList</span><span class="hljs-params">(Long category1Id, String dimension)</span> &#123;<br>	<span class="hljs-keyword">return</span> (List&lt;AlbumInfoIndexVo&gt;) redisTemplate.boundHashOps(RedisConstant.RANKING_KEY_PREFIX + category1Id).get(dimension);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="2-5-听专辑：播放最近一次播放记录"><a href="#2-5-听专辑：播放最近一次播放记录" class="headerlink" title="2.5 听专辑：播放最近一次播放记录"></a>2.5 听专辑：播放最近一次播放记录</h2><h3 id="2-5-1-控制器"><a href="#2-5-1-控制器" class="headerlink" title="2.5.1 控制器"></a>2.5.1 控制器</h3><p> UserListenProcessApiController</p>
+<p>我们需要根据用户Id 来获取播放记录 ，需要获取到专辑Id 与声音Id 封装到map中然后返回数据即可！</p>
+<p>如何知道最近播放的记录？ 是通过MongoDB中存储声音记录去查询！{按照 userId, updateTime 降序排序 取出 albumId,trackId}</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取最近一次播放声音</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@GuiGuLogin</span><br><span class="hljs-meta">@Operation(summary = &quot;获取最近一次播放声音&quot;)</span><br><span class="hljs-meta">@GetMapping(&quot;/getLatelyTrack&quot;)</span><br><span class="hljs-keyword">public</span> Result&lt;Map&lt;String,Object&gt;&gt; <span class="hljs-title function_">getLatelyTrack</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-comment">// 获取用户Id</span><br>   <span class="hljs-type">Long</span> <span class="hljs-variable">userId</span> <span class="hljs-operator">=</span> AuthContextHolder.getUserId();<br>   <span class="hljs-comment">// 获取播放记录</span><br>   Map&lt;String,Object&gt; map = userListenProcessService.getLatelyTrack(userId);<br>   <span class="hljs-comment">// 返回数据</span><br>   <span class="hljs-keyword">return</span> Result.ok(map);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-5-2-接口与实现"><a href="#2-5-2-接口与实现" class="headerlink" title="2.5.2 接口与实现"></a>2.5.2 接口与实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 获取播放记录</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@param</span> userId</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment"> */</span><br>Map&lt;String, Object&gt; <span class="hljs-title function_">getLatelyTrack</span><span class="hljs-params">(Long userId)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> Map&lt;String, Object&gt; <span class="hljs-title function_">getLatelyTrack</span><span class="hljs-params">(Long userId)</span> &#123;<br>   <span class="hljs-comment">// 根据用户Id 查询数据</span><br>   <span class="hljs-type">Query</span> <span class="hljs-variable">query</span> <span class="hljs-operator">=</span> Query.query(Criteria.where(<span class="hljs-string">&quot;userId&quot;</span>).is(userId));<br>   <span class="hljs-comment">// 按照更新时间做降序排列</span><br>   <span class="hljs-type">Sort</span> <span class="hljs-variable">sort</span> <span class="hljs-operator">=</span> Sort.by(Sort.Direction.DESC, <span class="hljs-string">&quot;updateTime&quot;</span>);<br>   query.with(sort);<br>   <span class="hljs-comment">// 按照条件查询数据并返回结果</span><br>   <span class="hljs-type">UserListenProcess</span> <span class="hljs-variable">userListenProcess</span> <span class="hljs-operator">=</span> mongoTemplate.findOne(query, UserListenProcess.class, MongoUtil.getCollectionName(MongoUtil.MongoCollectionEnum.USER_LISTEN_PROCESS, userId));<br>   <span class="hljs-keyword">if</span>(<span class="hljs-literal">null</span> == userListenProcess) &#123;<br>      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>   &#125;<br>   <span class="hljs-comment">// 声明一个map 集合</span><br>   Map&lt;String, Object&gt; map = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>   <span class="hljs-comment">// 存储数据</span><br>   map.put(<span class="hljs-string">&quot;albumId&quot;</span>, userListenProcess.getAlbumId());<br>   map.put(<span class="hljs-string">&quot;trackId&quot;</span>, userListenProcess.getTrackId());<br>   <span class="hljs-comment">// 返回数据</span><br>   <span class="hljs-keyword">return</span> map;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/" class="category-chain-item">云悦听</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>5-2、专辑详情</div>
+      <div>http://example.com/2024/11/15/项目/云悦听/第5章 详情介绍/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月15日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20MongoDB%E5%85%A5%E9%97%A8/" title="5-1、MongoDB">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">5-1、MongoDB</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/10/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC4%E7%AB%A0%20%E4%B8%93%E8%BE%91%E6%A3%80%E7%B4%A2/" title="4-2、专辑检索">
+                        <span class="hidden-mobile">4-2、专辑检索</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
