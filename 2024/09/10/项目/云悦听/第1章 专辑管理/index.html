@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/yunyueting.png">
 <meta property="article:published_time" content="2024-09-10T07:50:27.000Z">
-<meta property="article:modified_time" content="2024-11-21T08:33:01.351Z">
+<meta property="article:modified_time" content="2024-12-02T01:56:00.395Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/yunyueting.png">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k 字
+          6.6k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          58 分钟
+          56 分钟
         
       </span>
     
@@ -306,28 +306,54 @@
 </ol>
 <p>总的来说，听书软件的开发推动了阅读体验的数字化和个性化，为用户提供了更加便捷、多样化的阅读方式，也促进了作家和内容创作者的创作和传播。</p>
 <h2 id="1-2-项目技术栈"><a href="#1-2-项目技术栈" class="headerlink" title="1.2 项目技术栈"></a>1.2 项目技术栈</h2><ul>
-<li><strong>SpringBoot</strong>：简化Spring应用的初始搭建以及开发过程</li>
-<li><strong>SpringCloud</strong>：基于Spring Boot实现的云原生应用开发工具，SpringCloud使用的技术：（Spring Cloud Gateway、Spring Cloud Task和Spring Cloud Feign等）</li>
+<li><strong>SpringBoot</strong></li>
+<li><strong>SpringCloud</strong></li>
 <li><strong>SpringBoot+SpringCloudAlibaba(Nacos，Sentinel)+Cloud OpenFeign</strong></li>
-<li>MyBatis-Plus：持久层框架，也依赖mybatis</li>
-<li>Redis：内存做缓存</li>
-<li><strong>Redisson</strong>：基于redis的Java驻内存数据网格 - 框架；操作redis的框架</li>
-<li><strong>MongoDB</strong>: 分布式文件存储的数据库</li>
-<li>Rabbitmq：消息中间件；大型分布式项目是标配；分布式事务最终一致性</li>
-<li><strong>ElasticSearch+Kibana+Logstash</strong> 全文检索服务器+可视化数据监控：检索</li>
-<li>ThreadPoolExecutor+<strong>CompletableFuture</strong>：线程池来实现异步操作，提高效率</li>
-<li><strong>xxl-Job</strong>: 分布式定时任务调用中心</li>
-<li>Knife4J&#x2F;<strong>YAPI</strong>：Api接口文档工具</li>
-<li>MinIO（私有化对象存储集群）：分布式文件存储</li>
-<li>支付平台：微信支付</li>
-<li>MySQL：关系型数据库 {shardingSphere-jdbc 进行读写分离; 分库，分表}</li>
-<li>Lombok: 实体类的中get&#x2F;set 生成的jar包</li>
-<li>natapp：内网穿透</li>
-<li>Docker：容器化技术;  生产环境Redis（运维人员）；快速搭建环境Docker run</li>
-<li>Git：代码管理工具；git使用，拉代码、提交、推送、合并、冲突解决</li>
-<li><strong>Cannal</strong>：阿里开源增量订阅组件，数据增量同步</li>
-<li><strong>Seata</strong>：阿里开源分布式事务解决方案</li>
+<li>MyBatis-Plus</li>
+<li>Redis</li>
+<li><strong>Redisson</strong></li>
+<li><strong>MongoDB</strong></li>
+<li>Rabbitmq</li>
+<li><strong>ElasticSearch+Kibana+Logstash</strong></li>
+<li>ThreadPoolExecutor+<strong>CompletableFuture</strong></li>
+<li><strong>xxl-Job</strong></li>
+<li>Knife4J&#x2F;<strong>YAPI</strong></li>
+<li>MinIO（私有化对象存储集群）</li>
+<li>支付平台</li>
+<li>MySQL</li>
+<li>Lombok</li>
+<li>natapp</li>
+<li>Docker</li>
+<li>Git</li>
+<li><strong>Cannal</strong></li>
+<li><strong>Seata</strong></li>
 </ul>
+<!--
+
+- **SpringBoot**：简化Spring应用的初始搭建以及开发过程
+- **SpringCloud**：基于Spring Boot实现的云原生应用开发工具，SpringCloud使用的技术：（Spring Cloud Gateway、Spring Cloud Task和Spring Cloud Feign等）
+- **SpringBoot+SpringCloudAlibaba(Nacos，Sentinel)+Cloud OpenFeign**
+- MyBatis-Plus：持久层框架，也依赖mybatis
+- Redis：内存做缓存
+- **Redisson**：基于redis的Java驻内存数据网格 - 框架；操作redis的框架
+- **MongoDB**: 分布式文件存储的数据库
+- Rabbitmq：消息中间件；大型分布式项目是标配；分布式事务最终一致性
+- **ElasticSearch+Kibana+Logstash** 全文检索服务器+可视化数据监控：检索
+- ThreadPoolExecutor+**CompletableFuture**：线程池来实现异步操作，提高效率
+- **xxl-Job**: 分布式定时任务调用中心
+- Knife4J/**YAPI**：Api接口文档工具
+- MinIO（私有化对象存储集群）：分布式文件存储
+- 支付平台：微信支付
+- MySQL：关系型数据库 {shardingSphere-jdbc 进行读写分离; 分库，分表}
+- Lombok: 实体类的中get/set 生成的jar包
+- natapp：内网穿透
+- Docker：容器化技术;  生产环境Redis（运维人员）；快速搭建环境Docker run
+- Git：代码管理工具；git使用，拉代码、提交、推送、合并、冲突解决
+- **Cannal**：阿里开源增量订阅组件，数据增量同步
+- **Seata**：阿里开源分布式事务解决方案
+
+-->
+
 <p>前端技术栈</p>
 <ul>
 <li><p>UniApp</p>
@@ -407,7 +433,7 @@
 <tr>
 <td align="center">YAPI</td>
 <td align="left"><a target="_blank" rel="noopener" href="http://192.168.200.130:3000/">http://192.168.200.130:3000</a></td>
-<td align="center"><a href="mailto:&#97;&#100;&#109;&#105;&#x6e;&#64;&#x61;&#100;&#109;&#105;&#110;&#x2e;&#99;&#111;&#109;">&#97;&#100;&#109;&#105;&#x6e;&#64;&#x61;&#100;&#109;&#105;&#110;&#x2e;&#99;&#111;&#109;</a>&#x2F;ymfe.org</td>
+<td align="center"><a href="mailto:&#97;&#100;&#x6d;&#105;&#110;&#x40;&#x61;&#x64;&#109;&#105;&#x6e;&#x2e;&#x63;&#111;&#109;">&#97;&#100;&#x6d;&#105;&#110;&#x40;&#x61;&#x64;&#109;&#105;&#x6e;&#x2e;&#x63;&#111;&#109;</a>&#x2F;ymfe.org</td>
 </tr>
 <tr>
 <td align="center">MongoDB</td>
@@ -718,9 +744,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/09/25/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/" title="第2章 声音管理">
+                      <a href="/2024/09/25/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC2%E7%AB%A0%20%E5%A3%B0%E9%9F%B3%E7%AE%A1%E7%90%86/" title="2、声音管理">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">第2章 声音管理</span>
+                        <span class="hidden-mobile">2、声音管理</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
