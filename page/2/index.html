@@ -694,23 +694,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" target="_self">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="7、消息超时">
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="9、延迟队列">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" target="_self">
-          7、消息超时
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
+          9、延迟队列
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" target="_self">
+      <a class="index-excerpt " href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
         <div>
-          消息超时1 概述TTL 全称 Time To Live（存活时间&#x2F;过期时间）。 当消息到达存活时间后，还没有被消费，会被自动清除。 RabbitMQ可以对消息设置过期时间，也可以对整个队列（Queue）设置过期时间。  2 具体实现一、队列层面设置1、设置 别忘了设置绑定关系：  2、测试 不启动消费端程序 向设置了过期时间的队列中发送100条消息 等10秒后，看是否全部被过期删除
+          延迟队列1 概述 延迟队列存储的对象肯定是对应的延时消息，所谓”延时消息”是指当消息被发送以后，并不想让消费者立即拿到消息，而是等待指定时间后，消费者才拿到这个消息进行消费。  场景：在订单系统中，一个用户下单之后通常有30分钟的时间进行支付，如果30分钟之内没有支付成功，那么这个订单将进行取消处理。这时就可以使用延时队列将订单信息发送到延时队列。  需求：    下单后，30分钟未支付，取消订单
         </div>
       </a>
 
@@ -828,23 +828,23 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="9、延迟队列">
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="7、消息超时">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
-          9、延迟队列
+        <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" target="_self">
+          7、消息超时
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" target="_self">
+      <a class="index-excerpt " href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" target="_self">
         <div>
-          延迟队列1 概述 延迟队列存储的对象肯定是对应的延时消息，所谓”延时消息”是指当消息被发送以后，并不想让消费者立即拿到消息，而是等待指定时间后，消费者才拿到这个消息进行消费。  场景：在订单系统中，一个用户下单之后通常有30分钟的时间进行支付，如果30分钟之内没有支付成功，那么这个订单将进行取消处理。这时就可以使用延时队列将订单信息发送到延时队列。  需求：    下单后，30分钟未支付，取消订单
+          消息超时1 概述TTL 全称 Time To Live（存活时间&#x2F;过期时间）。 当消息到达存活时间后，还没有被消费，会被自动清除。 RabbitMQ可以对消息设置过期时间，也可以对整个队列（Queue）设置过期时间。  2 具体实现一、队列层面设置1、设置 别忘了设置绑定关系：  2、测试 不启动消费端程序 向设置了过期时间的队列中发送100条消息 等10秒后，看是否全部被过期删除
         </div>
       </a>
 
