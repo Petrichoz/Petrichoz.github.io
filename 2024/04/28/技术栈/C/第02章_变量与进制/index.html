@@ -1,0 +1,1732 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第02章_变量与进制本章专题脉络  1、关键字(keyword)定义：被C语言赋予了特殊含义，用做专门用途的字符串（或单词）。 特点：全部关键字都是小写字母。 举例：HelloWorld案例中，出现的关键字有 int、return等，这些单词已经被C语言定义好了。 传统的C语言（ANSI C）有32个关键字。如下：    类型 具体关键字    控制语句关键字（12 个） break, case,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL高级一">
+<meta property="og:url" content="http://example.com/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC02%E7%AB%A0_%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%9B%E5%88%B6/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="第02章_变量与进制本章专题脉络  1、关键字(keyword)定义：被C语言赋予了特殊含义，用做专门用途的字符串（或单词）。 特点：全部关键字都是小写字母。 举例：HelloWorld案例中，出现的关键字有 int、return等，这些单词已经被C语言定义好了。 传统的C语言（ANSI C）有32个关键字。如下：    类型 具体关键字    控制语句关键字（12 个） break, case,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/c.png">
+<meta property="article:published_time" content="2024-04-28T08:35:21.000Z">
+<meta property="article:modified_time" content="2025-01-29T12:02:45.401Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/c.png">
+  
+  
+  
+  <title>MySQL高级一 - PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MySQL高级一"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-28 16:35" pubdate>
+          2024年4月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          95 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">MySQL高级一</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第02章-变量与进制"><a href="#第02章-变量与进制" class="headerlink" title="第02章_变量与进制"></a>第02章_变量与进制</h1><h2 id="本章专题脉络"><a href="#本章专题脉络" class="headerlink" title="本章专题脉络"></a>本章专题脉络</h2><img src="images/第2章_变量与进制.png" srcset="/img/loading.gif" lazyload alt="第2章_变量与进制" style="zoom: 40%;">
+
+<h2 id="1、关键字-keyword"><a href="#1、关键字-keyword" class="headerlink" title="1、关键字(keyword)"></a>1、关键字(keyword)</h2><p>定义：<strong>被C语言赋予了特殊含义，用做专门用途的字符串（或单词）。</strong></p>
+<p>特点：全部关键字都是<code>小写字母</code>。</p>
+<p>举例：HelloWorld案例中，出现的关键字有 <code>int</code>、<code>return</code>等，这些单词已经被C语言定义好了。</p>
+<p>传统的C语言（ANSI C）有32个关键字。如下：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>具体关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>控制语句关键字（12 个）</td>
+<td>break, case, continue, default, do, else, for, goto, if, return, switch, while</td>
+</tr>
+<tr>
+<td>数据类型关键字（12 个）</td>
+<td>char, enum, double, long, float, int, short, signed, struct, unsigned, union, void</td>
+</tr>
+<tr>
+<td>存储类型关键字（4 个）</td>
+<td>auto, extern, register, static</td>
+</tr>
+<tr>
+<td>其他关键字（4 个）</td>
+<td>const, sizeof, typedef, volatile</td>
+</tr>
+</tbody></table>
+<p>后续，1999年，C99标准增加了5个关键字：<code>inline</code>、<code>restrict</code>、<code>_Bool</code>、<code>_Complex</code>和<code>_Imaginary</code>。</p>
+<p>2011年，C11标准又增加了7个关键字：<code>_Alignas</code>、<code>_Alignof</code>、<code>_Atomic</code>、<code>_Static_assert</code>、<code>_Noreturn</code>、<code>_Thread_local</code>和<code>_Generic</code>。</p>
+<blockquote>
+<p>说明：</p>
+<p>1、ANSI C、C99和C11，它们之间差别并不大，在大多数情况下，它们都是和谐共处的。</p>
+<p>2、不需要死记硬背，学到哪里记到哪里即可。</p>
+</blockquote>
+<h2 id="2、标识符-Identifier"><a href="#2、标识符-Identifier" class="headerlink" title="2、标识符(Identifier)"></a>2、标识符(Identifier)</h2><p>C语言中变量、函数、数组名、结构体等要素命名时使用的字符序列，称为标识符。</p>
+<p>技巧：凡是自己可以起名字的地方都叫标识符。</p>
+<p><strong>标识符的命名规则</strong>（必须遵守的<code>硬性规定</code>）</p>
+<ul>
+<li>只能由26个英文字母大小写，0-9 或 _ 组成</li>
+<li>数字不可以开头</li>
+<li>不可以是关键字，但可以包含关键字</li>
+<li>C99和C11允许使用更长的标识符名，但是编译器只识别前63个字符。(会忽略超出的字符)</li>
+<li>不允许有空格。</li>
+<li>严格区分大小写字母。比如：Hello、hello是不同的标识符。</li>
+</ul>
+<p><strong>标识符的命名建议</strong>（建议遵守的<code>软性要求</code>）</p>
+<ul>
+<li><p>在起名字时，为了提高阅读性，要尽量有意义，“见名知意”。如：sum，name，max，year，total 等。</p>
+</li>
+<li><p>不要出现仅靠大小写区分不同的标识符。如：name、Name 容易混淆</p>
+</li>
+<li><p>尽量避免名字中出现数字编号，如value1、value2等，除非逻辑上需要编号。</p>
+</li>
+<li><p>习惯上，所有宏定义、枚举常数、常量(只读变量)全用大写字母命名，用下划线分隔单词。</p>
+<p>比如： const double TAX_RATE &#x3D; 0.08; &#x2F;&#x2F;TAX_RATE 只读变量</p>
+</li>
+<li><p>系统内部使用了一些下划线开头的标识符（比如两个下划线开头的变量名、一个下划线 + 大写英文字母开头的变量名）。比如，C99 标准添加的类型 <code>_Bool</code>。为防止冲突，建议用户尽量避免使用下划线开头的标识符。</p>
+</li>
+<li><p>下划线通常用于连接一个比较长的变量名。如：max_classes_per_student。</p>
+</li>
+<li><p>变量名、函数名：多单词组成时，第一个单词首字母小写，第二个单词开始每个单词首字母大写：xxxYyyZzz (驼峰法，小驼峰)。比如：<code>short stuAge = 20; </code>，<code>tankShotGame</code>。</p>
+</li>
+</ul>
+<p>举例：合法的标识符：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">a、BOOK1、_sun、MAX_SIZE、Mouse、student23、Football、FOOTBALL、max、_add、num_1、sum_of_numbers<br></code></pre></td></tr></table></figure>
+
+<p>举例：非法的标识符：</p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs excel">$zj、<span class="hljs-number">3</span><span class="hljs-built_in">sum</span>、ab#cd、<span class="hljs-number">23</span>student、Foot-baii、s.com、b＆c、j**p、book-<span class="hljs-number">1</span>、tax <span class="hljs-built_in">rate</span>、don&#x27;<span class="hljs-built_in">t</span><br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>【武汉科技大学2019研】</p>
+<p>以下均是合法变量名的是（　）。<br>A．#name   total<br>B．node 　value_max<br>C．_var 　long<br>D．stu－code   a＋b</p>
+<p>【答案】B</p>
+<p>【解析】C语言中变量名只能包含数字，字母和下划线，且只能以字母和下划线开始。A项含非法字符#，错误；C中long为关键字，变量不能以关键字命名；D中含非法字符－和＋。</p>
+</blockquote>
+<blockquote>
+<p> 【四川大学2017研】以下不合法的用户标识符是（　　）。<br> A．J2_KEY<br> B．Double<br> C．4d<br> D．_8_</p>
+<p> 【答案】C</p>
+<p> 【解析】标识符只能包含数字，字母，下划线，且不能以数字开头，选项C错误。</p>
+</blockquote>
+<blockquote>
+<p>练习</p>
+<p>下列定义变量的语句中错误的是（　　）。<br>A．double int_；<br>B．float US$；<br>C．char For；<br>D．int _int；</p>
+<p>【答案】B【解析】标识符由字母、数字、下划线组成。$是非法字符，不能出现在标识符中。答案选择B选项。</p>
+</blockquote>
+<h2 id="3、变量-variable"><a href="#3、变量-variable" class="headerlink" title="3、变量(variable)"></a>3、变量(variable)</h2><h3 id="3-1-为什么需要变量"><a href="#3-1-为什么需要变量" class="headerlink" title="3.1 为什么需要变量"></a>3.1 为什么需要变量</h3><p><img src="/images/image-20220513235020527.png" srcset="/img/loading.gif" lazyload alt="image-20220513235020527"></p>
+<p>一花一世界，如果把一个程序看做一个世界或一个社会的话，那么变量就是程序世界的花花草草、万事万物。即，<strong>变量是程序中不可或缺的组成单位，最基本的存储单元</strong>。</p>
+<p><img src="/images/image-20220513235828042.png" srcset="/img/loading.gif" lazyload alt="image-20220513235828042"></p>
+<h3 id="3-2-初识变量"><a href="#3-2-初识变量" class="headerlink" title="3.2 初识变量"></a>3.2 初识变量</h3><ul>
+<li><p>变量的概念：</p>
+<ul>
+<li><p>内存中的一个存储区域，该区域的数据可以在同一类型范围内不断变化。</p>
+</li>
+<li><p>通过变量名，可以访问这块内存区域，获取里面存储的值。</p>
+</li>
+<li><p>变量的构成包含三个要素：<code>数据类型</code>、<code>变量名</code>、<code>存储的值</code></p>
+</li>
+<li><p>C语言中变量声明的格式：<code>数据类型 变量名 = 变量值</code></p>
+<p><img src="/images/image-20230620171948703.png" srcset="/img/loading.gif" lazyload alt="image-20230620171948703"></p>
+</li>
+</ul>
+</li>
+<li><p>变量的作用：用于在内存中保存数据。</p>
+</li>
+<li><p>使用变量注意：</p>
+<ul>
+<li>C语言中每个变量必须先声明，后使用。</li>
+<li>不同的数据类型，占用的空间大小不一样。</li>
+<li>一旦声明，变量的类型就不能在运行时修改。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-3-变量的声明与赋值"><a href="#3-3-变量的声明与赋值" class="headerlink" title="3.3 变量的声明与赋值"></a>3.3 变量的声明与赋值</h3><h4 id="步骤1：变量的声明"><a href="#步骤1：变量的声明" class="headerlink" title="步骤1：变量的声明"></a>步骤1：变量的声明</h4><p>格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">数据类型  变量名;  <span class="hljs-comment">//声明变量的语句必须以分号结尾</span><br></code></pre></td></tr></table></figure>
+
+<p>举例1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> width;<br></code></pre></td></tr></table></figure>
+
+<p>举例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> width,height;<br><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-type">int</span> width;<br><span class="hljs-type">int</span> height;<br></code></pre></td></tr></table></figure>
+
+<h4 id="步骤2：变量的赋值"><a href="#步骤2：变量的赋值" class="headerlink" title="步骤2：变量的赋值"></a>步骤2：变量的赋值</h4><p>变量声明时，就为它分配内存空间，但是不会清除内存里面原来的值。这导致声明变量以后，变量会是一个随机的值。所以，变量一定要赋值以后才能使用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> age; <span class="hljs-comment">//变量的声明</span><br>age = <span class="hljs-number">18</span>;  <span class="hljs-comment">//变量的赋值</span><br></code></pre></td></tr></table></figure>
+
+<p>变量的声明和赋值，也可以写在一行。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> age = <span class="hljs-number">18</span>;<br></code></pre></td></tr></table></figure>
+
+<p>多个相同类型变量的赋值，可以写在同一行。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a = <span class="hljs-number">1</span>, b = <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a, b;<br>a = <span class="hljs-number">1</span>;<br>b = (a = <span class="hljs-number">2</span> * a);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a, b, c, x, y;<br>a = b = c = x = y = <span class="hljs-number">10</span>;  <span class="hljs-comment">//连续赋值</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：声明变量以后，不用忘记初始化赋值！定义变量时编译器并不一定清空了这块内存，它的值可能是无效的数据，运行程序，会异常退出。</p>
+</blockquote>
+<h3 id="3-4-变量的作用域-scope"><a href="#3-4-变量的作用域-scope" class="headerlink" title="3.4 变量的作用域(scope)"></a>3.4 变量的作用域(scope)</h3><ul>
+<li><p>变量的作用域：其定义所在的一对{ }内。</p>
+</li>
+<li><p>变量只有在其<code>作用域</code>内才有效。出了作用域，变量不可以再被调用。</p>
+</li>
+<li><p>同一个作用域内，不能定义重名的变量。</p>
+</li>
+<li><p>C 语言的变量作用域主要有两种：文件作用域（file scope）和块作用域（block scope）。</p>
+</li>
+</ul>
+<p><code>文件作用域（file scope）</code>指的是，在源码文件顶层声明的变量，从声明的位置到文件结束都有效。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x = <span class="hljs-number">1</span>;<br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, x);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><code>块作用域（block scope）</code>指的是由大括号（ {} ）组成的代码块，它形成一个单独的作用域。凡是在块作用域里面声明的变量，只在当前代码块有效，代码块外部不可见。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> m = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">if</span> (m == <span class="hljs-number">10</span>) &#123;<br>        <span class="hljs-type">int</span> n = <span class="hljs-number">20</span>;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d\n&quot;</span>, m, n);  <span class="hljs-comment">// 10 20</span><br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, m);  <span class="hljs-comment">// 10</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, n);  <span class="hljs-comment">// 超出作用域，报错</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>最常见的块作用域就是函数，函数内部声明的变量，对于函数外部是不可见的。 for 循环也是一个块作用域，循环变量只对循环体内部可见，外部是不可见的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)&#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i);<br>&#125;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, i); <span class="hljs-comment">// 超出作用域，报错</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="3-5-变量按类型的分类"><a href="#3-5-变量按类型的分类" class="headerlink" title="3.5 变量按类型的分类"></a>3.5 变量按类型的分类</h3><p>变量可以按<code>数据类型</code>来分，也可以按<code>声明的位置</code>来分（全局变量、局部变量）。本节主讲变量的不同类型。</p>
+<p>C 语言中的变量按照数据类型分为：</p>
+<p><img src="/images/image-20230810152811098.png" srcset="/img/loading.gif" lazyload alt="image-20230810152811098"></p>
+<blockquote>
+<p>注意1：这里列举的是C语言的常用类型，后续C语言版本还有新增的类型。</p>
+<p>注意2：空类型：void 表示空类型（无类型）。通常应用于函数的返回值类型、函数的参数、指针类型。</p>
+<p>注意3：在C语言中，没有<code>字符串类型</code>，使用字符数组表示字符串。</p>
+</blockquote>
+<h2 id="4、基本数据类型"><a href="#4、基本数据类型" class="headerlink" title="4、基本数据类型"></a>4、基本数据类型</h2><h3 id="4-1-整数类型"><a href="#4-1-整数类型" class="headerlink" title="4.1 整数类型"></a>4.1 整数类型</h3><h4 id="4-1-1-类型说明"><a href="#4-1-1-类型说明" class="headerlink" title="4.1.1 类型说明"></a>4.1.1 类型说明</h4><ul>
+<li><p>C语言规定了如下的几类整型：短整型(short)、整型(int)、长整型(long)、更长的整型(long long)</p>
+</li>
+<li><p>每种类型都可以被 signed 和unsigned 修饰。其中，</p>
+<ul>
+<li>使用 <code>signed 修饰</code>，表示该类型的变量是带符号位的，有正负号，可以表示负值。<code>默认是signed</code>。</li>
+<li>使用 <code>unsigned 修饰</code>，表示该类型的变量是不带符号位的，没有有正负号，只能表示零和正整数。</li>
+</ul>
+</li>
+<li><p>bit(位)：计算机中的最小存储单位。</p>
+<p>byte(字节)：计算机中基本存储单元。</p>
+<p>1byte &#x3D; 8bit</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>修饰符</th>
+<th>占用空间</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>short [int]</td>
+<td>signed</td>
+<td>2个字节(&#x3D;16位)</td>
+<td>-32768 ~ 32767 (-$2^{15}$ ~ $2^{15}$-1)</td>
+</tr>
+<tr>
+<td>short [int]</td>
+<td>unsigned</td>
+<td>2个字节(&#x3D;16位)</td>
+<td>0 ~ 65535  (0 ~ $2^{16}$-1)</td>
+</tr>
+<tr>
+<td>int</td>
+<td>signed</td>
+<td>通常4个字节</td>
+<td>-2147483648 ~ 2147483647 (-$2^{31}$ ~ $2^{31}$-1)</td>
+</tr>
+<tr>
+<td>int</td>
+<td>unsigned</td>
+<td>通常4个字节</td>
+<td>0 ~ 4294967295  (0 ~ $2^{32}$-1)</td>
+</tr>
+<tr>
+<td>long [int]</td>
+<td>signed</td>
+<td>4个或8个字节</td>
+<td>4字节时：-2147483648 ~ 2147483647 (-$2^{31}$ ~ $2^{31}$-1)</td>
+</tr>
+<tr>
+<td>long [int]</td>
+<td>unsigned</td>
+<td>4个或8个字节</td>
+<td>4字节时：-0 ~ 4294967295  (0 ~ $2^{32}$-1)</td>
+</tr>
+</tbody></table>
+<p>long long int是<code>C99新增</code>的：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>修饰符</th>
+<th>占用空间</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>long long [int]</td>
+<td>signed</td>
+<td>8个字节(&#x3D;64位)</td>
+<td>-9223372036854775808~ 9223372036854775807(-$2^{63}$ ~ $2^{63}$-1)</td>
+</tr>
+<tr>
+<td>long long [int]</td>
+<td>unsigned</td>
+<td>8个字节(&#x3D;64位)</td>
+<td>0 ~ 18446744073709551615(0 ~ $2^{64}$-1)</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>说明1：不同计算机的 int 类型的大小是不一样的。比较常见的是使用4个字节（32位）存储一个 int 类型的值，具体情况如下：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>16位编译器</th>
+<th>32位编译器</th>
+<th>64位编译器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>short int</td>
+<td>2字节</td>
+<td>2字节</td>
+<td>2字节</td>
+</tr>
+<tr>
+<td>int</td>
+<td>2字节</td>
+<td>4字节</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>2字节</td>
+<td>4字节</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>long</td>
+<td>4字节</td>
+<td>4字节</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>unsigned long</td>
+<td>4字节</td>
+<td>4字节</td>
+<td>8字节</td>
+</tr>
+<tr>
+<td>long long</td>
+<td>8字节</td>
+<td>8字节</td>
+<td>8字节</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>说明2：C标准虽然没有具体规定各种类型数据所占用存储单元的长度，但几条铁定的原则（ANSI&#x2F;ISO制订的）：<br>① sizeof(short int) ≤ sizeof(int) ≤ sizeof(long int) ≤ sizeof(long long)，具体由各编译系统自行决定的。其中，sizeof是测量类型或变量长度的运算符。</p>
+<p>② short int至少应为2字节，long int至少应为4字节。</p>
+</blockquote>
+<p>这样约定的好处就是使得C语言可以长久使用。<code>现在的主流CPU是64位</code>，可以预测不久的将来会推出128位甚至256位的CPU，但是在C语言刚刚出现的时候，CPU还是以8位和16位为主。如果那时候就将整型定死为8位或16位，那么现在我们肯定不会再学习C语言了。</p>
+<blockquote>
+<p>说明3：</p>
+<p>最常用的整型类型为：int类型。</p>
+<p>整数型常量，默认为int类型。</p>
+</blockquote>
+<h4 id="4-1-2-举例"><a href="#4-1-2-举例" class="headerlink" title="4.1.2 举例"></a>4.1.2 举例</h4><p>举例1：对于 int 类型，默认是带有正负号的。即 int 等同于 signed int 。一般情况下，关键字signed省略不写。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">signed</span> <span class="hljs-type">int</span> m;  <span class="hljs-comment">//声明了一个带符号的整数变量 m </span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-type">int</span> m;   <span class="hljs-comment">//声明了一个带符号的整数变量 m</span><br></code></pre></td></tr></table></figure>
+
+<p>举例2：int 类型也可以不带正负号，只表示非负整数。这时就必须使用关键字 unsigned 声明变量。表数范围为：0~4294967295</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> a;   <span class="hljs-comment">//声明了一个不带符号的整数变量a，表数范围为：0~4294967295</span><br></code></pre></td></tr></table></figure>
+
+<p>unsigned int 里面的 int 可以省略，所以上面的变量声明也可以写成这样：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> a;<br></code></pre></td></tr></table></figure>
+
+<p>举例3：</p>
+<p>int 类型使用4个字节表示一个整数，对于小整数，这样做很浪费空间。另一方面，某些场合需要更大的整数，8个字节还不够。此时，可以使用short int （简写为 short ）、long int （简写为 long ）、long long int （简写为 long long ）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">signed</span> <span class="hljs-type">short</span> <span class="hljs-type">int</span> a; <br><span class="hljs-type">signed</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> b;<br><span class="hljs-type">signed</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> c;<br></code></pre></td></tr></table></figure>
+
+<p>默认情况下， short 、 long 、 long long 都是带符号的（signed），即 signed 关键字可以省略。代码简写为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">short</span> a; <br><span class="hljs-type">long</span> b;<br><span class="hljs-type">long</span> <span class="hljs-type">long</span> c;<br></code></pre></td></tr></table></figure>
+
+<p>它们也可以声明为不带符号（unsigned），使得能够表示的最大值扩大一倍。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">short</span> a;  <span class="hljs-comment">//无符号短整型，表数范围：0~65535</span><br><span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> b;   <span class="hljs-comment">//无符号长整型，表数范围：0~4294967295</span><br><span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> c;  <span class="hljs-comment">//无符号长整型，表数范围：0~18446744073709551615</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="4-1-3-关于后缀"><a href="#4-1-3-关于后缀" class="headerlink" title="4.1.3 关于后缀"></a>4.1.3 关于后缀</h4><p>编译器将一个整数字面量指定为 int 类型，但是如果希望将其指定为 long 类型，需要在该字面量末尾加上后缀 <code>l</code> 或 <code>L</code> ，编译器会把这个字面量的类型指定为 long 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">long</span> x = <span class="hljs-number">123L</span>; <span class="hljs-comment">//或者写成 123l</span><br></code></pre></td></tr></table></figure>
+
+<p>如果希望字面量指定为long long类型，则后缀以<code>ll</code>或<code>LL</code>结尾。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">long</span> <span class="hljs-type">long</span> y = <span class="hljs-number">123LL</span>;<br></code></pre></td></tr></table></figure>
+
+<p>如果希望指定为无符号整数 unsigned int ，可以使用后缀 <code>u</code> 或 <code>U</code> 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> x = <span class="hljs-number">123U</span>;<br></code></pre></td></tr></table></figure>
+
+<p>L 和 U 可以结合使用，表示 unsigned long 类型。 L 和 U 的大小写和组合顺序无所谓。</p>
+<p>u 还可以与其他整数后缀结合，放在前面或后面都可以，比如 10UL 、 10ULL 和 10LLU 都是合法的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span>      x = <span class="hljs-number">1234UL</span>;<br><span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> x = <span class="hljs-number">1234ULL</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-1-4-精确宽度类型-了解"><a href="#4-1-4-精确宽度类型-了解" class="headerlink" title="4.1.4 精确宽度类型(了解)"></a>4.1.4 精确宽度类型(了解)</h4><p>C 语言的整数类型（short、int、long）在不同计算机上，占用的字节宽度可能是不一样的，无法提前知道它们到底占用多少个字节。程序员有时控制准确的字节宽度，这样的话，代码可以有更好的可移植性，头文件 stdint.h 创造了一些新的类型别名。</p>
+<p>**精确宽度类型(exact-width integer type)**：保证某个整数类型的宽度是确定的。</p>
+<ul>
+<li><p>int8_t ：8位有符号整数</p>
+</li>
+<li><p>int16_t ：16位有符号整数</p>
+</li>
+<li><p>int32_t ：32位有符号整数</p>
+</li>
+<li><p>int64_t ：64位有符号整数</p>
+</li>
+<li><p>uint8_t ：8位无符号整数</p>
+</li>
+<li><p>uint16_t ：16位无符号整数</p>
+</li>
+<li><p>uint32_t ：32位无符号整数</p>
+</li>
+<li><p>uint64_t ：64位无符号整数</p>
+</li>
+</ul>
+<p>上面这些都是类型别名，编译器会指定它们指向的底层类型。比如，某个系统中，如果 int 类型为32位， int32_t 就会指向 int ；如果 long 类型为32位， int32_t 则会指向 long 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-type">int32_t</span> x32 = <span class="hljs-number">45933945</span>;  <span class="hljs-comment">//变量 x32 声明为 int32_t 类型，可以保证是32位的宽度。</span><br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x32 = %d\n&quot;</span>, x32);<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-1-5-整型的极限值-了解"><a href="#4-1-5-整型的极限值-了解" class="headerlink" title="4.1.5 整型的极限值(了解)"></a>4.1.5 整型的极限值(了解)</h4><p>有时候需要查看，当前系统不同整数类型的最大值和最小值，C 语言的头文件 <code>limits.h</code> 提供了相应的常量。比如：INT_MIN 代表 signed int 类型的最小值 -2147483648， INT_MAX 代表 signed int 类型的最大值 2147483647。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;limits.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, INT_MIN  );  <span class="hljs-comment">// -2147483648</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, INT_MAX  );  <span class="hljs-comment">// 2147483647</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>为了代码的可移植性，需要知道某种整数类型的极限值时，应该尽量使用这些常量。</p>
+<ul>
+<li><p>SCHAR_MIN ， SCHAR_MAX ：signed char 的最小值和最大值。</p>
+</li>
+<li><p>SHRT_MIN ， SHRT_MAX ：short 的最小值和最大值。</p>
+</li>
+<li><p>INT_MIN ， INT_MAX ：int 的最小值和最大值。</p>
+</li>
+<li><p>LONG_MIN ， LONG_MAX ：long 的最小值和最大值。</p>
+</li>
+<li><p>LLONG_MIN ， LLONG_MAX ：long long 的最小值和最大值。</p>
+</li>
+<li><p>UCHAR_MAX ：unsigned char 的最大值。</p>
+</li>
+<li><p>USHRT_MAX ：unsigned short 的最大值。</p>
+</li>
+<li><p>UINT_MAX ：unsigned int 的最大值。</p>
+</li>
+<li><p>ULONG_MAX ：unsigned long 的最大值。</p>
+</li>
+<li><p>ULLONG_MAX ：unsigned long long 的最大值。</p>
+</li>
+</ul>
+<h3 id="4-2-浮点类型"><a href="#4-2-浮点类型" class="headerlink" title="4.2 浮点类型"></a>4.2 浮点类型</h3><h4 id="4-2-1-类型说明"><a href="#4-2-1-类型说明" class="headerlink" title="4.2.1 类型说明"></a>4.2.1 类型说明</h4><p>浮点型变量，也称为实型变量，用来存储小数数值的。因为32位浮点数提供的精度或者数值范围还不够，C 语言又提供了另外两种更大的浮点数类型。</p>
+<p>在C语言中，浮点型变量分为三种：单精度浮点型(float)、双精度浮点型(double)、长双精度浮点型(long double)。</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>占用空间</th>
+<th>取值范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4个字节 (&#x3D;32位)</td>
+<td>$-1.4<em>10^{-45}$ ~ $-3.4</em>10^{+38}$，$1.4<em>10^{-45}$ ~ $3.4</em>10^{+38}$</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8个字节 (&#x3D;64位)</td>
+<td>$-4.9<em>10^{-324}$ ~ $-1.7</em>10^{+308}$，$4.9<em>10^{-324}$ ~ $1.7</em>10^{+308}$</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>12个字节(&#x3D;96位)</td>
+<td>太大了…</td>
+</tr>
+</tbody></table>
+<p>其中，</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>16位编译器</th>
+<th>32位编译器</th>
+<th>64位编译器</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4字节</td>
+<td>4字节</td>
+<td>4字节</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>8字节</td>
+<td>8字节</td>
+</tr>
+</tbody></table>
+<p>C语言的第3种浮点类型是long double，以满足比double类型更高的精度要求。不过，C只保证long double类型至少与double类型的精度相同。</p>
+<p>浮点型变量不能使用signed或unsigned修饰符。</p>
+<p>最常用的浮点类型为：double 类型，因为精度比float高。</p>
+<p>浮点型常量，默认为 double 类型。</p>
+<p><strong>关于后缀：</strong></p>
+<p>对于浮点数，编译器默认指定为 double 类型，如果希望指定为float类型，需要在小数后面添加后缀 <code>f</code>或<code>F</code>；如果希望指定为long double类型，需要在小数后面添加后缀 <code>l</code>或<code>L</code>。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> x       = <span class="hljs-number">3.14f</span>;<br><span class="hljs-type">double</span> x      = <span class="hljs-number">3.14</span>;<br><span class="hljs-type">long</span> <span class="hljs-type">double</span> x = <span class="hljs-number">3.14L</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-2-2-举例"><a href="#4-2-2-举例" class="headerlink" title="4.2.2 举例"></a>4.2.2 举例</h4><p><strong>举例1：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> f = <span class="hljs-number">123.4f</span>;　　<span class="hljs-comment">//后面必须加上字母f</span><br><span class="hljs-type">double</span> d1 = <span class="hljs-number">101.1</span>;　<span class="hljs-comment">//后面可以省略字母d</span><br><span class="hljs-type">double</span> d2 = <span class="hljs-number">299.4</span>;　　<span class="hljs-comment">//后面可以加上字母d</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>举例2：</strong></p>
+<p>C 语言允许使用科学计数法表示浮点数，使用字母 e 来分隔小数部分和指数部分。注意，e 的前后，不能存在空格。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">double</span> x = <span class="hljs-number">123.456e+3</span>; <span class="hljs-comment">// 123.456 x 10^3</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-type">double</span> x = <span class="hljs-number">123.456e3</span>;<br></code></pre></td></tr></table></figure>
+
+<p>另外，科学计数法的小数部分如果是 0.x 或 x.0 的形式，那么 0 可以省略。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-number">0.3E6</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-number">.3E6</span><br>    <br><span class="hljs-number">3.0E6</span><br><span class="hljs-comment">// 等同于</span><br><span class="hljs-number">3.E6</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>举例3：</strong>可以在常量的末尾加专用字符，强制指定常量的类型</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> a = <span class="hljs-number">3.14159f</span>; <span class="hljs-comment">//把此3.14159按单精度浮点常量处理</span><br><span class="hljs-type">long</span> <span class="hljs-type">double</span> a = <span class="hljs-number">1.23L</span>; <span class="hljs-comment">//把此1.23作为long double型处理</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>举例4：</strong></p>
+<p>有人用温度计测量出用华氏法表示的温度(如64°F），今要求把它转换为以摄氏法表示的温度(如17.8℃)。转换的公式为：$c &#x3D; \frac{5}{9}(f - 32)$。</p>
+<p>其中，f 代表华氏温度，c 代表摄氏温度。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">float</span> f, c; <span class="hljs-comment">//定义f和c分别表示华氏温度、摄氏温度</span><br>    f = <span class="hljs-number">64.0</span>; <span class="hljs-comment">//指定f的值</span><br>    c = (<span class="hljs-number">5.0</span> / <span class="hljs-number">9</span>) * (f - <span class="hljs-number">32</span>); <span class="hljs-comment">//利用公式计算c的值</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;f=%f\nc=%f\n&quot;</span>, f, c); <span class="hljs-comment">//输出c的值</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-2-3-存储规则-了解"><a href="#4-2-3-存储规则-了解" class="headerlink" title="4.2.3 存储规则(了解)"></a>4.2.3 存储规则(了解)</h4><p>任何有小数点的数值，都会被编译器解释为浮点数。所谓“浮点数”就是使用 m * b^e 的形式，存储一个数值， m 是小数部分， b 是基数， e 是指数部分。</p>
+<p><strong>从十进制的角度：</strong></p>
+<p><img src="/images/1688554845769.png" srcset="/img/loading.gif" lazyload alt="1688554845769"></p>
+<p><strong>从二进制的角度：</strong></p>
+<p>根据国际标准IEEE（电气和电子工程协会） 754，任意一个二进制浮点数V可以表示成下面的形式：$(-1)^S * M * 2^E$</p>
+<p>其中：</p>
+<ul>
+<li><p>$(-1)^s$表示符号位，当s&#x3D;0，V为正数；当s&#x3D;1，V为负数。</p>
+</li>
+<li><p>M表示有效数字，大于等于1，小于2。</p>
+</li>
+<li><p>$2^E$表示指数位。</p>
+</li>
+</ul>
+<p>举例来说：</p>
+<p>十进制的5.0，写成二进制是 101.0 ，相当于 1.01×2^2 。即，按照上面V的格式，可以得出s&#x3D;0，M&#x3D;1.01，E&#x3D;2。</p>
+<p>十进制的-5.0，写成二进制是 -101.0 ，相当于 -1.01×2^2 。即，s&#x3D;1，M&#x3D;1.01，E&#x3D;2。</p>
+<p><code>IEEE 754规定：</code></p>
+<p>对于32位的浮点数，最高的1位是符号位s，接着的8位是指数E，剩下的23位为有效数字M。</p>
+<p><img src="/images/1688626607436.png" srcset="/img/loading.gif" lazyload alt="1688626607436"></p>
+<p>对于64位的浮点数，最高的1位是符号位S，接着的11位是指数E，剩下的52位为有效数字M。</p>
+<p><img src="/images/1688626635111.png" srcset="/img/loading.gif" lazyload alt="1688626635111"></p>
+<p>浮点数的存储方式，决定了浮点数精度控制在一定范围内。有效数字部分可能丢失，造成精度损失。</p>
+<h3 id="4-3-字符类型"><a href="#4-3-字符类型" class="headerlink" title="4.3 字符类型"></a>4.3 字符类型</h3><p>C语言中，使用 char 关键字来表示字符型，用于存储一个<code>单一字符</code>。</p>
+<p>字符型变量赋值时，需要用一对英文半角格式的单引号（<code>&#39;&#39;</code>）把字符括起来。</p>
+<p>每个字符变量，在16位、32位或64位编译器中都是<code>占用 1 个字节(=8位)</code>。</p>
+<p><strong>表示方式1：最常见</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> c = <span class="hljs-string">&#x27;A&#x27;</span>;　<span class="hljs-comment">//为一个char类型的变量赋值字符&#x27;A&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p>每个字符对应一个整数（由 ASCII 码确定），比如 A 对应整数 65 。</p>
+<p>只要在字符类型的范围之内，整数与字符是可以互换的，都可以赋值给字符类型的变量。</p>
+<p><strong>表示方式2：ASCII 码值</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> c = <span class="hljs-number">66</span>;<br><span class="hljs-comment">// 等同于</span><br><span class="hljs-type">char</span> c = <span class="hljs-string">&#x27;B&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>两个字符类型的变量可以进行数学运算。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> a = <span class="hljs-string">&#x27;B&#x27;</span>; <span class="hljs-comment">// 等同于 char a = 66;</span><br><span class="hljs-type">char</span> b = <span class="hljs-string">&#x27;C&#x27;</span>; <span class="hljs-comment">// 等同于 char b = 67;</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, a + b); <span class="hljs-comment">// 输出133</span><br></code></pre></td></tr></table></figure>
+
+<p><code>常见的ASCII值与对应的字符如下：(ASCII数值范围为0-127)</code></p>
+<p><img src="/images/image-20220513095907601.png" srcset="/img/loading.gif" lazyload alt="image-20220513095907601"></p>
+<blockquote>
+<p>ASCII码：上个世纪60年代，美国制定了一套字符编码，对<strong>英语字符</strong>与<strong>二进制位之间的关系</strong>，做了统一规定。这被称为ASCII码。ASCII码一共规定了<strong>127</strong>个字符的编码，比如空格“SPACE”是32（二进制00100000），大写的字母A是65（二进制01000001）。这128个符号（包括32个不能打印出来的控制符号），只占用了一个字节的后面7位，最前面的1位统一规定为0，也就是说，ASCII虽然用8位二进制编码表示字符，但是其有效位为7位。</p>
+</blockquote>
+<p>举例1：字符′1′和整数1是不同的概念。（参看ASCII码表）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> c1 = <span class="hljs-number">1</span>;<br><span class="hljs-type">char</span> c2 = <span class="hljs-string">&#x27;1&#x27;</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;c1 = %d\n&quot;</span>,c1); <span class="hljs-comment">// c1 = 1</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;c2 = %d\n&quot;</span>,c2); <span class="hljs-comment">// c2 = 49</span><br></code></pre></td></tr></table></figure>
+
+<p>举例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> c=<span class="hljs-string">&#x27;?&#x27;</span>; <span class="hljs-comment">//定义c为字符型变量并使初值为字符&#x27;?&#x27;。&#x27;?&#x27;的ASCII代码是63，系统把整数63赋给变量c。</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %c\n&quot;</span>,c,c); <span class="hljs-comment">//用&quot;%d&quot;格式输出十进制整数63，用&quot;%c&quot;格式输出字符&#x27;?&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>signed 和 unsigned 修饰：</strong></p>
+<p>根据C90标准，C语言允许在关键字char前面使用signed或unsigned。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">signed</span> <span class="hljs-type">char</span> c; <span class="hljs-comment">// 范围为 -128 到 127</span><br><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> c; <span class="hljs-comment">// 范围为 0 到 255</span><br></code></pre></td></tr></table></figure>
+
+<p>注意，C 语言规定 char 类型默认是否带有正负号，由当前系统决定，这一点与 int 不同， int 等同于 signed int 。这就是说， char 不等同于signed char ，它有可能是 signed char（范围-128 到 127） ，也有可能是 unsigned char （范围0 到255）。不管是哪种，范围都正好都能覆盖 0 到 127 的 ASCII 字符范围。</p>
+<p><strong>表示方式3：使用转义字符</strong></p>
+<p>单引号本身也是一个字符，如果要表示这个字符常量，必须使用反斜杠转义。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> t = <span class="hljs-string">&#x27;\&#x27;&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>char还可以用来表示转义字符。比如：</p>
+<table>
+<thead>
+<tr>
+<th>字符形式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\n</code></td>
+<td>换行符（光标移动到下行行首）</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>水平制表符，光标移到下一个Tab位置</td>
+</tr>
+<tr>
+<td><code>\&#39;</code></td>
+<td>单引号字符 ‘</td>
+</tr>
+<tr>
+<td><code>\&quot;</code></td>
+<td>双引号字符 “</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>反斜杠字符 ’\’</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>回车符，光标移到本行开头</td>
+</tr>
+<tr>
+<td><code>\0</code></td>
+<td>null 字符，代表没有内容。注意，这个值不等于数字0。</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>退格键，光标回退一个字符，但不删除字符</td>
+</tr>
+</tbody></table>
+<h3 id="4-4-布尔类型"><a href="#4-4-布尔类型" class="headerlink" title="4.4 布尔类型"></a>4.4 布尔类型</h3><p>C语言标准（C89）没有为布尔值单独设置一个类型，所以在判断真假时，使用整数 0 表示假，所有非0表示真。比如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> handsome = <span class="hljs-number">1</span>;<br>    <br>    <span class="hljs-keyword">if</span> (handsome) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;我好帅!\n&quot;</span>);<br>    &#125;<br>    <br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上述做法不直观，可以借助于C语言的宏定义处理。比如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 定义布尔类型的宏</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> BOOL int   <span class="hljs-comment">//可以使用 typedef int BOOL; 替换</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> TRUE 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> FALSE 0</span><br><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    BOOL handsome = TRUE;<br>    <br>    <span class="hljs-keyword">if</span>(handsome)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;好帅~&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>此外，C99 标准添加了类型 <code>_Bool</code>，表示布尔值，即逻辑值true和false。但是，这个类型的值其实只是整数类型的别名，还是使用 0 表示false， 1 表示true，其它非0的值都会被存储为1。所以_Bool类型实际上也是一种整数类型。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">_Bool</span> isFlag = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (isFlag)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你好毒~~\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>与此同时，C99还提供了一个头文件 stdbool.h，文件中定义了<code>bool</code>代表<code>_Bool</code>，并且定义了 true 代表 1 、 false 代表 0 。只要加载这个头文件，就可以使用 bool 定义布尔值类型，以及 false 和 true 表示真假。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdbool.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">bool</span> isFlag = <span class="hljs-literal">true</span>;<br>    <span class="hljs-keyword">if</span> (isFlag)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你好毒~~\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>【武汉科技大学2019研】</p>
+<p>以下选项中不属于C语言类型的是（　　）。<br>A．short int<br>B．unsigned long int<br>C．char<br>D．bool</p>
+<p>【答案】D</p>
+<p>【解析】C语言中没有bool型，只有C++才有boolean型，也称bool。C语言中一般用“0”表示“假”，用“1”表示“真”。</p>
+</blockquote>
+<blockquote>
+<p>【四川大学2017研】有4个圆塔，圆心分别为（2，2）、（－2，2）、（－2，－2）、（2，－2），圆半径为1。这4个塔的高度为10m，塔以外无建筑物。今输入任一点的坐标，求该点的建筑高度（塔外的高度为零）。</p>
+<p>【答案】<br>N-S图如图1所示。</p>
+<p><img src="/images/1691981968969-1692326077435.png" srcset="/img/loading.gif" lazyload alt="1691981968969"></p>
+<p>​										图1　计算某点建筑高度的N-S流程图<br>程序如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br> <span class="hljs-type">int</span> h = <span class="hljs-number">10</span>;<br> <span class="hljs-type">float</span> x1 = <span class="hljs-number">2</span>, y1 = <span class="hljs-number">2</span>, x2 = <span class="hljs-number">-2</span>, y2 = <span class="hljs-number">-2</span>, x3 = <span class="hljs-number">-2</span>, y3 = <span class="hljs-number">-2</span>, x4 = <span class="hljs-number">2</span>, y4 = <span class="hljs-number">-2</span>;<br> <span class="hljs-type">float</span> x, y; <span class="hljs-comment">//表示随意选中的一个点的坐标</span><br> <span class="hljs-type">float</span> d1, d2, d3, d4; <span class="hljs-comment">//(x,y)这个点的坐标到各个圆心的距离</span><br> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入一个点(x,y)：&quot;</span>);<br> <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%f,%f&quot;</span>, &amp;x, &amp;y);<br> d1 = (x - x1) * (x - x1) + (y - y1) * (y - y1); <span class="hljs-comment">//求该点到各中心点距离</span><br> d2 = (x - x2) * (x - x2) + (y - y2) * (y - y2);<br> d3 = (x - x3) * (x - x3) + (y - y3) * (y - y3);<br> d4 = (x - x4) * (x - x4) + (y - y4) * (y - y4); <br> <span class="hljs-keyword">if</span> (d1 &gt; <span class="hljs-number">1</span> &amp;&amp; d2 &gt; <span class="hljs-number">1</span> &amp;&amp; d3 &gt; <span class="hljs-number">1</span> &amp;&amp; d4 &gt; <span class="hljs-number">1</span>) <span class="hljs-comment">//判断该点是否在塔外  </span><br>     h = <span class="hljs-number">0</span>;<br> <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;该点高度为%d\n&quot;</span>, h);<br> <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="5、变量间的运算规则"><a href="#5、变量间的运算规则" class="headerlink" title="5、变量间的运算规则"></a>5、变量间的运算规则</h2><p>在C语言编程中，经常需要对不同类型的数据进行运算，运算前需要先转换为同一类型，再运算。为了解决数据类型不一致的问题，需要对数据的类型进行转换。</p>
+<h3 id="5-1-隐式类型转换"><a href="#5-1-隐式类型转换" class="headerlink" title="5.1 隐式类型转换"></a>5.1 隐式类型转换</h3><p><strong>情况1：窄类型自动转为宽类型</strong></p>
+<p>即，系统自动将<code>字节宽度较小</code>的类型转换为<code>字节宽度较大</code>的数据类型，它是由系统自动转换完成的。</p>
+<img src="images/image-20220523162200891.png" srcset="/img/loading.gif" lazyload alt="image-20220523162200891" style="zoom:67%;">
+
+<p>基本数据类型的转换规则如图所示：</p>
+<img src="images/1688632254232.png" srcset="/img/loading.gif" lazyload alt="image-20230824194145734">
+
+<blockquote>
+<p>注意：最好避免无符号整数与有符号整数的混合运算。因为这时 C 语言会自动将 signed int 转为unsigned int ，可能不会得到预期的结果。</p>
+</blockquote>
+<p>举例1：</p>
+<ul>
+<li>不同的整数类型混合运算时，宽度较小的类型会提升为宽度较大的类型。比如 short 转为 int ，int 转为 long 等。</li>
+<li>不同的浮点数类型混合运算时，宽度较小的类型转为宽度较大的类型，比如 float 转为double ， double 转为 long double 。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> y = <span class="hljs-number">12</span> * <span class="hljs-number">2</span>; <span class="hljs-comment">//整数赋值给浮点数变量时，会自动转为浮点数。结果24.0</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//char类型 与 int类型运算，会自动提升为 int 。</span><br><span class="hljs-type">char</span> c = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> i = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> j = c + i;  <span class="hljs-comment">//ok</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">short</span> s1 = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> num1 = s1;    <span class="hljs-comment">//ok</span><br><span class="hljs-type">double</span> num2 = s1; <span class="hljs-comment">//ok</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i = <span class="hljs-number">10</span>;<br><span class="hljs-type">double</span> d1 = <span class="hljs-number">12.3</span>;<br><span class="hljs-type">double</span> d2 = i + d1; <span class="hljs-comment">//系统自动将i的类型由int转换为double类型，故i+d1结果为double类型</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">double</span> d;<br>d = <span class="hljs-number">2</span> + <span class="hljs-string">&#x27;A&#x27;</span> + <span class="hljs-number">1.5F</span>;<br></code></pre></td></tr></table></figure>
+
+<p>举例2：</p>
+<p>两个相同类型的整数运算时，或者单个整数的运算，一般来说，运算结果也属于同一类型。但是有例外，宽度小于 int 的类型，运算结果会自动提升为 int 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> c1 = <span class="hljs-number">10</span>;<br><span class="hljs-type">short</span> s1 = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> i1 = c1 + s1;  <span class="hljs-comment">//char类型和short类型的变量运算的结果默认为int类型</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> a = <span class="hljs-number">1</span>;<br><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> b = <span class="hljs-number">255</span>;<br><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> c = <span class="hljs-number">255</span>;<br><br><span class="hljs-keyword">if</span> ((a - <span class="hljs-number">5</span>) &lt; <span class="hljs-number">0</span>) <br>    do_something();<br><br><span class="hljs-keyword">if</span> ((b + c) &gt; <span class="hljs-number">300</span>) <br>    do_something();<br></code></pre></td></tr></table></figure>
+
+<p>说明：表达式 a - 5 和 b + c 都会自动转为 int 类型，所以函数 do_something() 会执行两次。</p>
+<p><strong>情况2：宽类型赋值给窄类型</strong></p>
+<p><code>字节宽度较大</code>的类型，赋值给<code>字节宽度较小</code>的变量时，会发生类型降级，自动转为后者的类型。这时可能会发生截值（truncation），系统会自动截去多余的数据位，导致精度损失。</p>
+<blockquote>
+<p>这反映了C语言在检查类型匹配方面不太严格。最好不要养成这样的习惯。</p>
+</blockquote>
+<p>举例1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">double</span> pi = <span class="hljs-number">3.14159</span>;<br><span class="hljs-type">int</span> i = pi; <span class="hljs-comment">// i 的值为 3</span><br></code></pre></td></tr></table></figure>
+
+<p>C编译器把浮点数转换成整数时，会直接丢弃（截断）小数部分，而不进行四舍五入。</p>
+<p>举例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x = <span class="hljs-number">3.14</span>; <span class="hljs-comment">//浮点数赋予整数变量时，C 语言直接丢弃小数部分。结果 3</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> cost = <span class="hljs-number">12.99</span>;         	 <span class="hljs-comment">// double类型的值转为int类型,结果为：12</span><br><span class="hljs-type">float</span> pi = <span class="hljs-number">3.1415926536</span>;     <span class="hljs-comment">// double类型的值转为float类型,结果为：3.141593</span><br></code></pre></td></tr></table></figure>
+
+<p>举例3：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i = <span class="hljs-number">322</span>;<br><span class="hljs-type">char</span> ch = i; <span class="hljs-comment">// ch 的值是 66</span><br></code></pre></td></tr></table></figure>
+
+<p>图示：</p>
+<img src="images/image-20230626213244132.png" srcset="/img/loading.gif" lazyload alt="image-20230626213244132" style="zoom: 80%;">
+
+<img src="images/image-20230626213317271.png" srcset="/img/loading.gif" lazyload alt="image-20230626213317271" style="zoom:80%;">
+
+<p>举例4：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> f1 = <span class="hljs-number">1.1f</span>; <span class="hljs-comment">//ok</span><br><span class="hljs-type">double</span> d2 = <span class="hljs-number">4.58667435</span>;<br>f1 = d2; <span class="hljs-comment">// 出现精度损失 (double -&gt; float )</span><br><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;f1=%.8f&quot;</span>, f1); <span class="hljs-comment">// 期望： 4.58667435</span><br><br></code></pre></td></tr></table></figure>
+
+<p>由于存在精度限制，浮点数只是一个近似值，它的计算是不精确的。</p>
+<p>举例5：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> a = <span class="hljs-number">3.14159</span>; <span class="hljs-comment">//3.14159为双精度浮点常量，分配8个字节；a为float变量，分配4个字节</span><br></code></pre></td></tr></table></figure>
+
+<p>编译时系统会发出警告(warning: truncation from ′const double′ to′float′)，提醒用户注意这种转换可能损失精度。</p>
+<h3 id="5-2-强制类型转换"><a href="#5-2-强制类型转换" class="headerlink" title="5.2 强制类型转换"></a>5.2 强制类型转换</h3><p>隐式类型转换中的宽类型赋值给窄类型，编译器是会产生警告的，提示程序存在潜在的隐患。如果非常明确地希望转换数据类型，就需要用到<code>强制(或显式)类型转换</code>。</p>
+<p>形式： <strong>(类型名称)(变量、常量或表达式)</strong></p>
+<p>功能：将“变量、常量或表达式”的运算结果强制转换为“类型名称”所表示的数据类型。</p>
+<p>注意：强制类型转换会导致精度损失。</p>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">double</span> x = <span class="hljs-number">12.3</span>;<br><span class="hljs-type">int</span> y = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> z = (<span class="hljs-type">int</span>)x + y; <span class="hljs-comment">//将变量x的值转换成int后,再与y相加</span><br></code></pre></td></tr></table></figure>
+
+<p>将浮点数转换为整数时，将舍弃浮点数的小数部分，只保留整数部分。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">float</span> f1,f2;<br>f1 = (<span class="hljs-type">int</span>)<span class="hljs-number">1.2</span> + <span class="hljs-number">3.4</span>;<br>f2 = (<span class="hljs-type">int</span>)(<span class="hljs-number">1.2</span> + <span class="hljs-number">3.4</span>);<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;f1=%f,f2=%f&quot;</span>,f1,f2);<br></code></pre></td></tr></table></figure>
+
+<p>输出结果：f1&#x3D;4.4，f2&#x3D;4.0。</p>
+<p>举例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i = <span class="hljs-number">40000</span>;<br><span class="hljs-type">short</span> s = (<span class="hljs-type">short</span>)i;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,s); <span class="hljs-comment">//-25536</span><br></code></pre></td></tr></table></figure>
+
+<p>举例3：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">long</span> y = (<span class="hljs-type">long</span>) <span class="hljs-number">10</span> + <span class="hljs-number">12</span>; <span class="hljs-comment">// (long) 将 10 显式转为 long 类型。这里的显示转换其实是不必要的,因为可以自动转换</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="5-3-运算的溢出问题"><a href="#5-3-运算的溢出问题" class="headerlink" title="5.3 运算的溢出问题"></a>5.3 运算的溢出问题</h3><p>每一种数据类型都有数值范围，如果存放的数值超出了这个范围（小于最小值或大于最大值），需要更多的二进制位存储，就会发生溢出。大于最大值，叫做<code>向上溢出（overflow）</code>；小于最小值，叫做<code>向下溢出（underflow）</code>。</p>
+<p>一般来说，编译器不会对溢出报错，会正常执行代码，但是会忽略多出来的二进制位，只保留剩下的位，这样往往会得到意想不到的结果。所以，应该避免溢出。</p>
+<p>举例1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> x = <span class="hljs-number">255</span>;<br>x = x + <span class="hljs-number">1</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, x); <span class="hljs-comment">// 0</span><br></code></pre></td></tr></table></figure>
+
+<p> x 是 unsign char 类型，最大值是255 （二进制 11111111 ），加 1 后就发生了溢出， 256 （二进制 100000000 ）的最高位 1 被丢弃，剩下的值就是 0 。</p>
+<p>举例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> ui = UINT_MAX;  <span class="hljs-comment">// 4,294,967,295</span><br>ui++;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ui = %u\n&quot;</span>, ui); <span class="hljs-comment">// 0</span><br>ui--;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ui = %u\n&quot;</span>, ui); <span class="hljs-comment">// 4,294,967,295</span><br></code></pre></td></tr></table></figure>
+
+<p>常量 UINT_MAX 是 unsigned int 类型的最大值。如果加 1 ，对于该类型就会溢出，从而得到 0 ；而 0 是该类型的最小值，再减 1 ，又会得到 UINT_MAX 。</p>
+<blockquote>
+<p>溢出很容易被忽视，编译器又不会报错，所以必须非常小心。</p>
+</blockquote>
+<h2 id="6、常量"><a href="#6、常量" class="headerlink" title="6、常量"></a>6、常量</h2><h3 id="6-1-常量分类"><a href="#6-1-常量分类" class="headerlink" title="6.1 常量分类"></a>6.1 常量分类</h3><p>程序运行时，其值不能改变的量，即为<code>常量</code>。</p>
+<p>C语言中的常量分为以下以下几种：</p>
+<ul>
+<li>字面常量</li>
+<li>#define 定义的标识符常量</li>
+<li>const 修饰的常变量</li>
+<li>枚举常量</li>
+</ul>
+<p>举例：字面常量</p>
+<p>1、2、12是整型常量，2.1、12.5、3.14是实型常量，’a’、 ‘b’、’c’是字符型常量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-comment">//字面常量</span><br>	<span class="hljs-number">3.14</span>;<span class="hljs-comment">//字面常量</span><br>	<span class="hljs-number">1000</span>;<span class="hljs-comment">//字面常量</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="6-2-多种方式定义常量"><a href="#6-2-多种方式定义常量" class="headerlink" title="6.2 多种方式定义常量"></a>6.2 多种方式定义常量</h3><h4 id="6-2-1-使用-define"><a href="#6-2-1-使用-define" class="headerlink" title="6.2.1 使用#define"></a>6.2.1 使用#define</h4><p>这种方式是在文件开头用 #define 来定义常量，也叫作“宏定义”。所谓宏定义，<strong>就是用一个标识符来表示一个常量值</strong>，如果在后面的代码中出现了该标识符，那么编译时就全部替换成指定的常量值。即用宏体替换所有宏名，简称<code>宏替换</code>。</p>
+<p>定义格式：<code>#define 符号常量名 常量值</code></p>
+<ul>
+<li>符号常量名，称为<code>宏体</code>，属于标识符，一般定义时用大写字母表示。</li>
+<li>常量值，称为<code>宏名</code>，可以是数值常量，也可以是字符常量。</li>
+</ul>
+<p>习惯上，<strong>宏名用大写字母表示</strong>，以便于与变量区别。但也允许用小写字母。</p>
+<p>举例1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ZERO 0   <span class="hljs-comment">//#define的标识符常量</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;zero = %d\n&quot;</span>, ZERO);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>跟#include一样，“#”开头的语句都是“预处理语句”，在编译之前，预处理器会查找程序中所有的“ZERO”，并把它替换成0，这个过程称为预编译处理。</p>
+<p>然后将预处理的结果和源程序一起再进行通常的编译处理，以得到目标代码 (OBJ文件)。</p>
+</blockquote>
+<p>举例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> PI = 3.14  <span class="hljs-comment">// 定义常量 PI，常量值 3.14。因为宏定义不是 C 语句，后面不能有分号</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>   <span class="hljs-comment">//PI = 3.1415  可以吗? =&gt; 不可以</span><br>  <span class="hljs-type">double</span> area;<br>  <span class="hljs-type">double</span> r = <span class="hljs-number">1.2</span>;<br>  area = PI * r * r;<br>  <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;面积 : %.2f&quot;</span>, area);<br>  getchar();<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>举例3：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//函数结果状态代码</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> OK 1</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> ERROR 0</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> OVERFLOW -2</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>#define 对于考研数据结构来说没有什么贡献，我们只要认得它就行。</p>
+<p>例如1，<code>#define MAX_Size 50</code>这句，即定义了常量<code>MAX_Size</code>(此时x &#x3D; 50;等价于x &#x3D; MAX_Size;)。</p>
+<p>例如2，你要定义一个数组，如<code>int A[MAX_Size];</code>，加上一句注释“<code>/*MAX_Size为已经定义的常量，其值为50*/</code>”即可。</p>
+</blockquote>
+<h4 id="6-2-2-使用const限定符"><a href="#6-2-2-使用const限定符" class="headerlink" title="6.2.2 使用const限定符"></a>6.2.2 使用const限定符</h4><p>C99中新的声明方式，这种方式跟定义一个变量是一样的，只需要在变量的数据类型前再加上一个const关键字，这被称为“限定符”。</p>
+<p>格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">const</span> 数据类型 常量名 = 常量值;<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-comment">//const 修饰的常变量</span><br>	<span class="hljs-type">const</span> <span class="hljs-type">float</span> PI = <span class="hljs-number">3.14f</span>;<br>	<span class="hljs-comment">//PI = 5.14;//是不能直接修改的！</span><br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>const修饰的对象一旦创建就不能改变，所以必须初始化。</p>
+<p>跟使用 #define定义宏常量相比，const定义的常量有详细的数据类型，而且会在编译阶段进行安全检查，在运行时才完成替换，所以会更加安全和方便。</p>
+<h4 id="6-3-3-定义枚举常量"><a href="#6-3-3-定义枚举常量" class="headerlink" title="6.3.3 定义枚举常量"></a>6.3.3 定义枚举常量</h4><p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-comment">//使用enum定义枚举类</span><br><span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Sex</span>&#123;</span><br>    <span class="hljs-comment">//括号中的MALE,FEMALE,SECRET是枚举常量</span><br>	MALE,<br>	FEMALE,<br>	SECRET<br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>	<span class="hljs-comment">//枚举常量</span><br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, MALE);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, FEMALE);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, SECRET);<br>	<span class="hljs-comment">//注：枚举常量默认是从0开始，依次向下递增1的</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>【北京航空航天大学2018研】若已知有如下宏定义</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span>  CANBERRA(x,y)  ((x－y)/(x＋y))</span><br></code></pre></td></tr></table></figure>
+
+<p>则以下表达式中，返回结果值最大的是（　　）。<br>A．CANBERRA（3.0，2.0）；<br>B．CANBERRA（4.0，1.0）；<br>C．CANBERRA（1.0＋2.0，0.0＋2.0）；<br>D．CANBERRA（1.0＋2.0，1.0＋1.0）；</p>
+<p>【答案】C</p>
+<p>【解析】A项中为1.0&#x2F;5.0，结果为0.2；B项中为3.0&#x2F;5.0，结果为0.6；C项中的宏替换后为（1.0＋2.0－0.0＋2.0）&#x2F;（1.0＋2.0＋0＋2.0）＝1.0；D项中宏替换后为（1.0＋2.0－1.0＋1.0）&#x2F;（1.0＋2.0＋1.0＋1.0）＝0.6，因此最后答案为C。</p>
+</blockquote>
+<blockquote>
+<p>【中央财经大学2018研】若有如下宏定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span>  N  2</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span>  y(n)  ((N＋1)*n)</span><br></code></pre></td></tr></table></figure>
+
+<p>则执行下列语句：z＝4*(N＋y(5))；后的结果是（　　）。<br>A．语句有错误<br>B．z值为68<br>C．z值为60<br>D．z值为180</p>
+<p>【答案】B</p>
+<p>【解析】y(5)＝15，z＝4*(N＋y(5))＝4*17＝68，答案选B。</p>
+</blockquote>
+<h2 id="7、输入-输出函数"><a href="#7、输入-输出函数" class="headerlink" title="7、输入&#x2F;输出函数"></a>7、输入&#x2F;输出函数</h2><p>所谓输入输出是以计算机主机为主体而言的。</p>
+<ul>
+<li>输出：从计算机向外部输出设备(显示器、打印机)输出数据。</li>
+<li>输入：从输入设备(键盘、鼠标、扫描仪)向计算机输入数据。</li>
+</ul>
+<img src="images/image-20230824232336985.png" srcset="/img/loading.gif" lazyload alt="image-20230824232336985" style="zoom:50%;">
+
+<p>c语言本身没有提供专门的输入输出语句，所有的输入输出都是由调用标准库函数中的输入输出函数来实现的。</p>
+<p><strong>输入函数：scanf() 、 getchar()、gets()：</strong> </p>
+<ul>
+<li>scanf()，是格式输入函数，可接收<code>任意类型</code>的数据。 </li>
+<li>getchar()，是<code>字符</code>输入函数， 只能接收<code>单个字符</code>。</li>
+<li>gets()，是<code>字符串</code>输入函数。</li>
+</ul>
+<p><strong>输出函数：printf() 、 putchar()、puts()：</strong></p>
+<ul>
+<li>printf()，是格式输出函数，可按指定的格式显示任意类型的数据。</li>
+<li>putchar()，<code>字符</code>显示函数，只能显示<code>单个字符</code>。</li>
+<li>puts()，是<code>字符串</code>输出函数。</li>
+</ul>
+<h3 id="7-1-scanf-的使用"><a href="#7-1-scanf-的使用" class="headerlink" title="7.1 scanf()的使用"></a>7.1 scanf()的使用</h3><p>scanf()函数的作用：把从键盘上输入的数据根据找到的地址存入内存中，即给变量赋值。</p>
+<p>格式： <code>scanf(&quot;格式控制字符串&quot;,参数地址列表); </code></p>
+<ul>
+<li>“格式控制字符串”：约定输入数据的类型和格式，参数的个数必须与变量地址的个数一致。</li>
+<li>“参数地址列表”：以逗号 “, ”分隔的、<code>输入数据变量地址</code>序列。</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;c)<br></code></pre></td></tr></table></figure>
+
+<p>其中，&amp;a,&amp;b,&amp;c中的<code>&amp;</code>是寻址操作符，&amp;a表示对象a在内存中的地址。</p>
+<p>注意，</p>
+<ul>
+<li>如果scanf中%d是连着写的，如“<code>%d%d%d</code>”，在输入数据时，数据之间不可以用逗号分隔，只能用空白字符（空格或tab键或者回车键）分隔。即“<code>2(空格)3(tab)4</code>” 或 “<code>2(tab)3(回车)4</code>”等。</li>
+<li>如果是“<code>%d,%d,%d</code>”，则在输入数据时需要加“,”，如“<code>2,3,4</code>”。</li>
+</ul>
+<p>举例1：计算圆的面积，其半径由用户指定</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">float</span> radius, area;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入半径值：  &quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%f&quot;</span>, &amp;radius);      <span class="hljs-comment">//输入半径</span><br>    area = <span class="hljs-number">3.14</span> * radius * radius;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;area=%f\n&quot;</span>, area); <span class="hljs-comment">//输出圆的面积</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：变量名之前要加上&amp;运算符，表示取变量的地址，如“&amp;a，&amp;b”。否则将会出现错误。</p>
+</blockquote>
+<p>举例2：输入一个整数，求其绝对值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">int</span> num;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;输入一个整数:&quot;</span>);<br><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;num);<br>    <span class="hljs-type">int</span> absNum = num;<br>    <span class="hljs-keyword">if</span>(absNum &lt; <span class="hljs-number">0</span>)<br>        absNum = -absNum;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n 整数:%d---&gt;绝对值为:%d\n&quot;</span>, num, absNum);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>举例3：输入多个变量的值，求乘积</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> a,b,c;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入整数a,b:&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);<br>    c=a*b;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d*%d=%d\n&quot;</span>,a,b,c);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>【武汉科技大学2019研】若有声明语句：int x； char y[20]； double z；则正确的输入语句是（　）。<br>A．scanf（”%d%c%le\n”，&amp;x，&amp;y，&amp;z）；<br>B．scanf（”%2d%s%lf”，&amp;x，&amp;y，&amp;z）；<br>C．scanf（”%d%s%lf”，&amp;x，y，&amp;z）；<br>D．scanf（”%x%s%3.2f”，&amp;x，y，&amp;z）；</p>
+<p>【答案】C</p>
+<p>【解析】y为一维数组名，指向数组首元素的地址，因此不需要再使用取地址运算符&amp;，AB错误；D中%3.2f表示长度为3，小数为2位，但是小数点也占一位，因此D错误，答案选C。</p>
+</blockquote>
+<h3 id="7-2-getchar-与putchar-的使用"><a href="#7-2-getchar-与putchar-的使用" class="headerlink" title="7.2 getchar()与putchar()的使用"></a>7.2 getchar()与putchar()的使用</h3><ul>
+<li><p>getchar()：输入字符数据</p>
+<ul>
+<li>格式：getchar()</li>
+<li>功能：从键盘缓冲区读入一个字符</li>
+</ul>
+</li>
+<li><p>putchar()：输出字符</p>
+<ul>
+<li>格式： putchar(ch)，其中ch是一个字符变量</li>
+<li>功能：从标准输出设备输出一个字符</li>
+</ul>
+</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">char</span> c = <span class="hljs-number">0</span>;<br>	<span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;A&#x27;</span>); <span class="hljs-comment">//输出单个字符A</span><br>	<span class="hljs-built_in">putchar</span>(c);   <span class="hljs-comment">//输出变量c的ASCII对应字符</span><br>	<span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;\n&#x27;</span>); <span class="hljs-comment">//执行换行效果，屏幕不显示</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">char</span> ch;<br>    ch = getchar();<br>    <span class="hljs-built_in">putchar</span>(ch);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="7-3-gets-与puts-的使用-超纲"><a href="#7-3-gets-与puts-的使用-超纲" class="headerlink" title="7.3 gets()与puts()的使用(超纲)"></a>7.3 gets()与puts()的使用(超纲)</h3><p><strong>puts()：</strong></p>
+<p>在C语言中，puts() 是一个用于输出字符串的标准库函数，其原型定义在 <code>&lt;stdio.h&gt;</code> 头文件中。<code>puts()</code> 函数的作用是将一个以 null 字符（<code>\0</code>）结尾的字符串打印到标准输出（通常是控制台）上，并自动添加一个换行符。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">char</span> str1[]=&#123;<span class="hljs-string">&quot;China\nBeijing&quot;</span>&#125;;<br>    <span class="hljs-type">char</span> str2[] = <span class="hljs-string">&quot;helloworld&quot;</span>;<br><br>    <span class="hljs-built_in">puts</span>(str1);<br><br>    <span class="hljs-built_in">puts</span>(str2);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>注意，puts()函数只能用于输出字符串，而不能输出其他类型的数据。如果需要输出其他类型的数据，应使用 <code>printf()</code> 函数。</p>
+<p><strong>gets()：</strong></p>
+<p>读取标准输入设备输入的字符串，直到遇到【Enter】键才结束。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> str[<span class="hljs-number">20</span>];   <span class="hljs-comment">//定义一个数组</span><br>gets(str);      <span class="hljs-comment">//获取输入的字符串,存放到字符数组中</span><br></code></pre></td></tr></table></figure>
+
+<p>举例：字符串的读写</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">char</span> str[<span class="hljs-number">15</span>];<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;enter your name:&quot;</span>);<br>    gets(str);        <span class="hljs-comment">//输入字符串至数组变量str</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;your name is &quot;</span>);<br>    <span class="hljs-built_in">puts</span>(str);        <span class="hljs-comment">//输出字符串</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="8、变量按声明位置的分类-后面讲"><a href="#8、变量按声明位置的分类-后面讲" class="headerlink" title="8、变量按声明位置的分类(后面讲)"></a>8、变量按声明位置的分类(后面讲)</h2><p>变量按照声明的位置，可以分为：局部变量 和 全局变量。</p>
+<ul>
+<li><p><strong>局部变量</strong></p>
+<ul>
+<li>在<code>函数体内定义</code>的变量，也称内部变量。局部变量只能在定义它的函数中使用。</li>
+</ul>
+</li>
+<li><p><strong>全局变量</strong></p>
+<ul>
+<li><p>在<code>函数之外</code>定义的变量称为外部变量，外部变量是<code>全局变量</code>（也称全程变量）。</p>
+</li>
+<li><p>一个程序中，凡是在全局变量之后定义的函数，都可以使用在其之前定义的全局变量。</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> global = <span class="hljs-number">2023</span>;<span class="hljs-comment">//全局变量</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> local = <span class="hljs-number">2022</span>;<span class="hljs-comment">//局部变量</span><br>    <br>    <span class="hljs-comment">//下面定义的global会不会报错？</span><br>    <span class="hljs-type">int</span> global = <span class="hljs-number">2024</span>;<span class="hljs-comment">//局部变量</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;global = %d\n&quot;</span>, global);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>当局部变量和全局变量同名的时候，局部变量优先使用。</p>
+</blockquote>
+<h2 id="9、常见的进制"><a href="#9、常见的进制" class="headerlink" title="9、常见的进制"></a>9、常见的进制</h2><h3 id="9-1-二进制概述"><a href="#9-1-二进制概述" class="headerlink" title="9.1 二进制概述"></a>9.1 二进制概述</h3><p><strong>计算机底层如何存储数据呢？</strong></p>
+<blockquote>
+<p>计算机世界中只有二进制，所以计算机中存储和运算的<code>所有数据</code>都要转为<code>二进制</code>。包括数字、字符、图片、声音、视频等。</p>
+</blockquote>
+<img src="images/010101.jpg" srcset="/img/loading.gif" lazyload alt="010101" style="zoom: 33%;">
+
+<blockquote>
+<p><strong>世界上有10种人 ，认识和不认识二进制的。</strong></p>
+</blockquote>
+<p><strong>二进制的由来</strong></p>
+<p>二进制，是计算技术中广泛采用的一种数制，由德国数理哲学大师<code>莱布尼茨</code>于1679年发明。</p>
+<p>二进制数据是用0和1两个数码来表示的数。它的基数为2，进位规则是“<code>逢二进一</code>”。</p>
+<p><strong>二进制的应用</strong></p>
+<p>二进制广泛应用于我们生活的方方面面。比如，广泛使用的摩尔斯电码（Morse Code），它由两种基本信号组成：短促的点信号“<code>·</code>”，读“<code>滴</code>”；保持一定时间的长信号“<code>—</code>”，读“<code>嗒</code>”。然后，组成了26个字母，从而拼写出相应的单词。</p>
+<img src="images/image-20220520105721126.png" srcset="/img/loading.gif" lazyload alt="image-20220520105721126" style="zoom:67%;">
+
+<p>我们偶尔会看到的：SOS，即为：</p>
+<p><img src="/images/image-20220520110206899.png" srcset="/img/loading.gif" lazyload alt="image-20220520110206899"></p>
+<h3 id="9-2-进制的分类"><a href="#9-2-进制的分类" class="headerlink" title="9.2 进制的分类"></a>9.2 进制的分类</h3><ul>
+<li><p><strong>十进制（decimal）</strong></p>
+<ul>
+<li>数字组成：0-9</li>
+<li>进位规则：满十进一</li>
+<li>C 语言的整数默认都是十进制数</li>
+</ul>
+</li>
+<li><p><strong>二进制（binary）</strong></p>
+<ul>
+<li>数字组成：0-1</li>
+<li>进位规则：满二进一，以<code>0b</code>或<code>0B</code>开头</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x = <span class="hljs-number">0b101010</span>;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>八进制（octal）：很少使用</strong></p>
+<ul>
+<li>数字组成：0-7</li>
+<li>进位规则：满八进一，以数字<code>0</code>开头表示</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a = <span class="hljs-number">012</span>; <span class="hljs-comment">// 八进制，相当于十进制的10</span><br><span class="hljs-type">int</span> b = <span class="hljs-number">017</span>; <span class="hljs-comment">// 八进制，相当于十进制的15</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><strong>十六进制</strong></p>
+<ul>
+<li>数字组成：0-9，a-f</li>
+<li>进位规则：满十六进一，以<code>0x</code>或<code>0X</code>开头表示。此处的 a-f 不区分大小写</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a = <span class="hljs-number">0x1A2B</span>; <span class="hljs-comment">// 十六进制，相当于十进制的6699</span><br><span class="hljs-type">int</span> b = <span class="hljs-number">0X10</span>;   <span class="hljs-comment">// 十六进制，相当于十进制的16</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="9-3-进制的换算举例"><a href="#9-3-进制的换算举例" class="headerlink" title="9.3 进制的换算举例"></a>9.3 进制的换算举例</h3><table>
+<thead>
+<tr>
+<th>十进制</th>
+<th>二进制</th>
+<th>八进制</th>
+<th>十六进制</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td>100</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td>5</td>
+<td>101</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>6</td>
+<td>110</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>7</td>
+<td>111</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr>
+<td>8</td>
+<td>1000</td>
+<td>10</td>
+<td>8</td>
+</tr>
+<tr>
+<td>9</td>
+<td>1001</td>
+<td>11</td>
+<td>9</td>
+</tr>
+<tr>
+<td>10</td>
+<td>1010</td>
+<td>12</td>
+<td>a或A</td>
+</tr>
+<tr>
+<td>11</td>
+<td>1011</td>
+<td>13</td>
+<td>b或B</td>
+</tr>
+<tr>
+<td>12</td>
+<td>1100</td>
+<td>14</td>
+<td>c或C</td>
+</tr>
+<tr>
+<td>13</td>
+<td>1101</td>
+<td>15</td>
+<td>d或D</td>
+</tr>
+<tr>
+<td>14</td>
+<td>1110</td>
+<td>16</td>
+<td>e或E</td>
+</tr>
+<tr>
+<td>15</td>
+<td>1111</td>
+<td>17</td>
+<td>f或F</td>
+</tr>
+<tr>
+<td>16</td>
+<td>10000</td>
+<td>20</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<h3 id="9-4-输出格式"><a href="#9-4-输出格式" class="headerlink" title="9.4 输出格式"></a>9.4 输出格式</h3><p>不同的进制只是整数的书写方法不同，不会对整数的实际存储方式产生影响。不同进制可以混合使用，比如 10 + 015 + 0x20 是一个合法的表达式。</p>
+<p>printf() 的进制相关占位符如下：</p>
+<ul>
+<li><p>%d ：十进制整数。</p>
+</li>
+<li><p>%o ：八进制整数。</p>
+</li>
+<li><p>%x ：十六进制整数。</p>
+</li>
+<li><p>%#o ：显示前缀 0 的八进制整数。</p>
+</li>
+<li><p>%#x ：显示前缀 0x 的十六进制整数。</p>
+</li>
+<li><p>%#X ：显示前缀 0X 的十六进制整数。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x = <span class="hljs-number">100</span>;<br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;dec = %d\n&quot;</span>, x); <span class="hljs-comment">// 100</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;octal = %o\n&quot;</span>, x); <span class="hljs-comment">// 144</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hex = %x\n&quot;</span>, x); <span class="hljs-comment">// 64</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;octal = %#o\n&quot;</span>, x); <span class="hljs-comment">// 0144</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hex = %#x\n&quot;</span>, x); <span class="hljs-comment">// 0x64</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hex = %#X\n&quot;</span>, x); <span class="hljs-comment">// 0X64</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="9-5-进制间的转换-了解"><a href="#9-5-进制间的转换-了解" class="headerlink" title="9.5 进制间的转换(了解)"></a>9.5 进制间的转换(了解)</h3><h4 id="9-5-1-二进制如何表示整数？"><a href="#9-5-1-二进制如何表示整数？" class="headerlink" title="9.5.1 二进制如何表示整数？"></a>9.5.1 二进制如何表示整数？</h4><ul>
+<li><p>计算机数据的存储使用二进制<code>补码</code>形式存储，并且<code>最高位是符号位</code>。</p>
+<ul>
+<li>正数：<code>最高位是0</code></li>
+<li>负数：<code>最高位是1</code></li>
+</ul>
+</li>
+<li><p>规定1：正数的补码与反码、原码一样，称为<code>三码合一</code></p>
+</li>
+<li><p>规定2：负数的补码与反码、原码不一样：</p>
+<ul>
+<li>负数的<code>原码</code>：把十进制转为二进制，然后最高位设置为1</li>
+<li>负数的<code>反码</code>：在原码的基础上，最高位不变，其余位取反（0变1,1变0）</li>
+<li>负数的<code>补码</code>：反码+1</li>
+</ul>
+</li>
+</ul>
+<h4 id="9-5-2-二进制与十进制间的转换"><a href="#9-5-2-二进制与十进制间的转换" class="headerlink" title="9.5.2 二进制与十进制间的转换"></a>9.5.2 二进制与十进制间的转换</h4><p><img src="/images/1689209516368.png" srcset="/img/loading.gif" lazyload alt="1689209516368"></p>
+<p><strong>二进制转十进制：权相加法</strong></p>
+<p>针对于一个字节的数据举例来说：</p>
+<p><img src="/images/1689212021511.png" srcset="/img/loading.gif" lazyload alt="1689212021511"></p>
+<ul>
+<li><p>例如：1个字节（8位）</p>
+<p>25 &#x3D;&#x3D;&gt; 原码  0001 1001 &#x3D;&#x3D;&gt; 反码  0001 1001 –&gt;补码  0001 1001</p>
+<p>-25 &#x3D;&#x3D;&gt;原码  1001 1001 &#x3D;&#x3D;&gt; 反码1110 0110 &#x3D;&#x3D;&gt;补码 1110 0111</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">整数：<br>正数：<span class="hljs-number">25</span>   <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">000000000</span> <span class="hljs-number">00011001</span>（原码）<br>正数：<span class="hljs-number">25</span>   <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">000000000</span> <span class="hljs-number">00011001</span>（反码）<br>正数：<span class="hljs-number">25</span>   <span class="hljs-number">00000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">000000000</span> <span class="hljs-number">00011001</span>（补码）<br><br>负数：-<span class="hljs-number">25</span>  <span class="hljs-number">10000000</span> <span class="hljs-number">00000000</span> <span class="hljs-number">000000000</span> <span class="hljs-number">00011001</span>（原码）<br>负数：-<span class="hljs-number">25</span>  <span class="hljs-number">11111111</span> <span class="hljs-number">11111111</span> <span class="hljs-number">111111111</span> <span class="hljs-number">11100110</span>（反码）<br>负数：-<span class="hljs-number">25</span>  <span class="hljs-number">11111111</span> <span class="hljs-number">11111111</span> <span class="hljs-number">111111111</span> <span class="hljs-number">11100111</span>（补码）<br></code></pre></td></tr></table></figure>
+
+<p><strong>一个字节可以存储的整数范围是多少？</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//1个字节：8位</span><br><br><span class="hljs-number">0000</span> <span class="hljs-number">0001</span>  ~  <span class="hljs-number">0111</span> <span class="hljs-number">111</span> ==&gt; <span class="hljs-number">1</span>~<span class="hljs-number">127</span><br><br><span class="hljs-number">1000</span> <span class="hljs-number">0001</span> ~ <span class="hljs-number">1111</span> <span class="hljs-number">1111</span> ==&gt; -<span class="hljs-number">127</span> ~ -<span class="hljs-number">1</span><br><br><span class="hljs-number">0000</span> <span class="hljs-number">0000</span> ==&gt;<span class="hljs-number">0</span><br><br><span class="hljs-number">1000</span> <span class="hljs-number">0000</span> ==&gt; -<span class="hljs-number">128</span>（特殊规定）=-<span class="hljs-number">127</span>-<span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>十进制转二进制</strong></p>
+<p>十进制转二进制：<code>除2取余的逆</code></p>
+<p><img src="/images/1689214597038.png" srcset="/img/loading.gif" lazyload alt="1689214597038"></p>
+<h4 id="9-5-3-二进制与八进制、十六进制间的转换"><a href="#9-5-3-二进制与八进制、十六进制间的转换" class="headerlink" title="9.5.3 二进制与八进制、十六进制间的转换"></a>9.5.3 二进制与八进制、十六进制间的转换</h4><p><strong>二进制转八进制</strong></p>
+<p><img src="/images/image-20230808151057231.png" srcset="/img/loading.gif" lazyload alt="image-20230808151057231"></p>
+<p><strong>二进制转十六进制</strong></p>
+<p><img src="/images/image-20230808151152468.png" srcset="/img/loading.gif" lazyload alt="image-20230808151152468"></p>
+<p><strong>八进制、十六进制转二进制</strong></p>
+<p><img src="/images/1689216401546.png" srcset="/img/loading.gif" lazyload alt="1689216401546"></p>
+<p><img src="/images/1689216597551.png" srcset="/img/loading.gif" lazyload alt="1689216597551"></p>
+<blockquote>
+<p>练习：以下叙述中错误的是（　　）。<br>A．C程序在运行过程中所有计算都以十进制方式进行<br>B．C程序在运行过程中所有计算都以二进制方式进行<br>C．所有C程序都需要编译链接无误后才能运行<br>D．C程序中字符变量存放的是字符的ASCII值</p>
+<p>【答案】A</p>
+<p>【解析】C程序在运行过程中所有计算都以二进制方式进行。答案选择A选项。</p>
+</blockquote>
+<blockquote>
+<p> 【华南理工大学2018研】与十进制1100等值的十六进制数是（　　）。<br> A．44A<br> B．44C<br> C．54A<br> D．54C</p>
+<p> 【答案】B</p>
+<p> 【解析】1100转换成二进制为0100 0100 1100，因此转换为十六进制为44C。</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/C/" class="category-chain-item">C</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MySQL高级一</div>
+      <div>http://example.com/2024/04/28/技术栈/C/第02章_变量与进制/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AC%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%EF%BC%9ACLion%E7%9A%84%E4%BD%BF%E7%94%A8/" title="MySQL高级一">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MySQL高级一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC04%E7%AB%A0_%E6%95%B0%E7%BB%84(%E9%87%8D%E7%82%B9)/" title="4、数组">
+                        <span class="hidden-mobile">4、数组</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

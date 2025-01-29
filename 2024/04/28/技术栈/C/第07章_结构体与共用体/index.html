@@ -1,0 +1,1310 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第07章_结构体与共用体本章专题脉络  1、结构体(struct)类型的基本使用1.1 为什么需要结构体？C 语言内置的数据类型，除了几种原始的基本数据类型，只有数组属于复合类型，可以同时包含多个值，但是只能包含相同类型的数据，实际使用场景受限。 举例1： 现有一个需求，编写学生档案管理系统，这里需要描述一个学生的信息。该学生的信息包括学号、姓名、性别、年龄、家庭住址等，这些数据共同说明一个学生的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL高级一">
+<meta property="og:url" content="http://example.com/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC07%E7%AB%A0_%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%85%B1%E7%94%A8%E4%BD%93/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="第07章_结构体与共用体本章专题脉络  1、结构体(struct)类型的基本使用1.1 为什么需要结构体？C 语言内置的数据类型，除了几种原始的基本数据类型，只有数组属于复合类型，可以同时包含多个值，但是只能包含相同类型的数据，实际使用场景受限。 举例1： 现有一个需求，编写学生档案管理系统，这里需要描述一个学生的信息。该学生的信息包括学号、姓名、性别、年龄、家庭住址等，这些数据共同说明一个学生的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/c.png">
+<meta property="article:published_time" content="2024-04-28T08:35:21.000Z">
+<meta property="article:modified_time" content="2025-01-29T12:03:12.539Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/c.png">
+  
+  
+  
+  <title>MySQL高级一 - PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MySQL高级一"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-04-28 16:35" pubdate>
+          2024年4月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          107 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">MySQL高级一</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第07章-结构体与共用体"><a href="#第07章-结构体与共用体" class="headerlink" title="第07章_结构体与共用体"></a>第07章_结构体与共用体</h1><h2 id="本章专题脉络"><a href="#本章专题脉络" class="headerlink" title="本章专题脉络"></a>本章专题脉络</h2><img src="images/第7章_结构体与共用体.png" srcset="/img/loading.gif" lazyload alt="第7章_结构体与共用体" style="zoom: 67%;">
+
+<h2 id="1、结构体-struct-类型的基本使用"><a href="#1、结构体-struct-类型的基本使用" class="headerlink" title="1、结构体(struct)类型的基本使用"></a>1、结构体(struct)类型的基本使用</h2><h3 id="1-1-为什么需要结构体？"><a href="#1-1-为什么需要结构体？" class="headerlink" title="1.1 为什么需要结构体？"></a>1.1 为什么需要结构体？</h3><p>C 语言内置的数据类型，除了几种原始的基本数据类型，只有数组属于复合类型，可以同时包含多个值，但是只能包含<code>相同类型</code>的数据，实际使用场景受限。</p>
+<p><strong>举例1：</strong></p>
+<p>现有一个需求，编写学生档案管理系统，这里需要描述一个学生的信息。该学生的信息包括学号、姓名、性别、年龄、家庭住址等，这些数据共同说明一个学生的总体情况。</p>
+<p><img src="/images/image-20230926153344062.png" srcset="/img/loading.gif" lazyload alt="image-20230926153344062"></p>
+<p>显然，这些数据类型各不相同，无法使用数组进行统一管理。</p>
+<p><strong>举例2：</strong></p>
+<p>隔壁老王养了两只猫咪。一只名字叫小黄，今年2岁，橘色；另一只叫小黑，今年3岁，黑色。请编写一个程序，当用户输入小猫的名字时，就显示该猫的名字，年龄，颜色。如果用户输入的小猫名错误，则显示老王没有这只猫。</p>
+<img src="images/image-20230926154542306.png" srcset="/img/loading.gif" lazyload alt="image-20230926154542306" style="zoom:80%;">
+
+<p>传统的解决方法</p>
+<p><code>尝试1</code>：单独定义多个变量存储，实现需求。但是，多个变量，不便于数据的管理。</p>
+<p><code>尝试2</code>：使用数组，它是一组具有相同类型的数据的集合。但在编程中，往往还需要一组类型不同的数据，例如猫的名字使用字符串、年龄是int，颜色是字符串，因为数据类型不同，不能用一个数组来存放。</p>
+<p><code>尝试3</code>：C语言提供了结构体。使用结构体，内部可以定义多个不同类型的变量作为其成员。</p>
+<blockquote>
+<p>考研中见的最多的就是指针和结构体结合起来构造结点（如链表的结点、二叉树的结点等）。</p>
+</blockquote>
+<h3 id="1-2-结构体的理解"><a href="#1-2-结构体的理解" class="headerlink" title="1.2 结构体的理解"></a>1.2 结构体的理解</h3><p>C 语言提供了 <code>struct</code>关键字，允许自定义复合数据类型，将不同类型的值组合在一起，这种类型称为结构体（structure）类型。</p>
+<p>C 语言没有其他语言的对象(object)和类(class)的概念，struct 结构很大程度上提供了对象和类的功能。</p>
+<p>比如：</p>
+<img src="images/image-20230811182323712.png" srcset="/img/loading.gif" lazyload alt="image-20230811182323712" style="zoom: 80%;">
+
+<h3 id="1-3-声明结构体"><a href="#1-3-声明结构体" class="headerlink" title="1.3 声明结构体"></a>1.3 声明结构体</h3><p>构建一个结构体类型的一般格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span> <br>    数据类型<span class="hljs-number">1</span> 成员名<span class="hljs-number">1</span>;   <span class="hljs-comment">//分号结尾</span><br>    数据类型<span class="hljs-number">2</span> 成员名<span class="hljs-number">2</span>; <br>    ……<br>    数据类型n 成员名n;<br>&#125;; <span class="hljs-comment">//注意最后有一个分号</span><br></code></pre></td></tr></table></figure>
+
+<p>举例：学生</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span>&#123;</span>       <span class="hljs-comment">// 定义结构体：学生</span><br>    <span class="hljs-type">int</span> id;           <span class="hljs-comment">//学号</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];    <span class="hljs-comment">//姓名</span><br>    <span class="hljs-type">char</span> gender;      <span class="hljs-comment">//性别</span><br>    <span class="hljs-type">char</span> address[<span class="hljs-number">50</span>]; <span class="hljs-comment">//家庭住址</span><br>&#125;;  <br></code></pre></td></tr></table></figure>
+
+<p>举例：猫</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Cat</span>&#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];   <span class="hljs-comment">//名字</span><br>    <span class="hljs-type">int</span> age;         <span class="hljs-comment">//年龄</span><br>    <span class="hljs-type">char</span> color[<span class="hljs-number">20</span>];  <span class="hljs-comment">//颜色</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>举例：人类</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span>&#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];    <span class="hljs-comment">//姓名</span><br>    <span class="hljs-type">char</span> gender;      <span class="hljs-comment">//性别</span><br>    <span class="hljs-type">int</span> age;          <span class="hljs-comment">//年龄</span><br>    <span class="hljs-type">double</span> weight;    <span class="hljs-comment">//体重</span><br>&#125;; <br></code></pre></td></tr></table></figure>
+
+<p>举例：通讯录</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Contacts</span>&#123;</span>            <br>    <span class="hljs-type">char</span> name[<span class="hljs-number">50</span>];          <span class="hljs-comment">//姓名</span><br>    <span class="hljs-type">int</span> year;               <span class="hljs-comment">//年</span><br>    <span class="hljs-type">int</span> month;              <span class="hljs-comment">//月</span><br>    <span class="hljs-type">int</span> day;                <span class="hljs-comment">//日</span><br>    <span class="hljs-type">char</span> email[<span class="hljs-number">100</span>];        <span class="hljs-comment">//电子邮箱</span><br>    <span class="hljs-type">char</span> phone_number[<span class="hljs-number">15</span>]; <span class="hljs-comment">//手机号</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>举例：员工</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> &#123;</span>  <br>    <span class="hljs-type">int</span> id;               <span class="hljs-comment">//员工编号 </span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];		  <span class="hljs-comment">//员工姓名</span><br>    <span class="hljs-type">char</span> gender;		  <span class="hljs-comment">//员工性别</span><br>    <span class="hljs-type">int</span> age;			  <span class="hljs-comment">//员工年龄</span><br>    <span class="hljs-type">char</span> address[<span class="hljs-number">30</span>];	  <span class="hljs-comment">//员工住址</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<h3 id="1-4-声明结构体变量并调用成员"><a href="#1-4-声明结构体变量并调用成员" class="headerlink" title="1.4 声明结构体变量并调用成员"></a>1.4 声明结构体变量并调用成员</h3><p>定义了新的数据类型以后，就可以声明该类型的变量，这与声明其他类型变量的写法是一样的。</p>
+<p><strong>声明结构体变量格式1：</strong> </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体类型名称 结构体变量名;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，声明自定义类型的变量时，类型名前面，不要忘记加上 struct 关键字。</p>
+</blockquote>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">stu1</span>;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>调用结构体变量的成员：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">结构体变量名.成员名 [= 常量或变量值]<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">stu1</span>;</span> <span class="hljs-comment">//声明结构体变量</span><br>	<br>    <span class="hljs-comment">//调用结构体成员</span><br>    stu1.id = <span class="hljs-number">1001</span>;<br>    <span class="hljs-comment">//stu1.name = &quot;Tom&quot;; //报错，不能直接通过赋值运算符来给字符数组赋值</span><br>    <span class="hljs-built_in">strcpy</span>(stu1.name, <span class="hljs-string">&quot;Tony&quot;</span>);<br>    stu1.gender = <span class="hljs-string">&#x27;M&#x27;</span>;<br>    <span class="hljs-built_in">strcpy</span>(stu1.address, <span class="hljs-string">&quot;北京市海淀区五道口&quot;</span>);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;id = %d,name = %s,gender = %c,address = %s\n&quot;</span>, <br>           stu1.id, stu1.name, stu1.gender, stu1.address);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>说明：</p>
+<p>1）先声明了一个 struct Student类型的变量 stu1，这时编译器就会为 stu1 分配内存，接着就可以为 stu1 的不同属性赋值。可以看到，struct 结构的属性通过点（ . ）来表示，比如 id 属性要写成 stu1.id。</p>
+<p>2）字符数组是一种特殊的数组，直接改掉字符数组名的地址会报错，因此不能直接通过赋值运算符来对它进行赋值。你可以使用字符串库函数 <code>strcpy()</code> 来进行字符串的复制操作。</p>
+</blockquote>
+<p><strong>声明结构体变量格式2：</strong> </p>
+<p>除了逐一对属性赋值，也可以使用大括号，一次性对 struct 结构的所有属性赋值。此时，初始化的属性个数最好与结构体中成员个数相同，且成员的先后顺序一一对应。格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名 结构体变量=</span>&#123;初始化数据&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//声明结构体</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> &#123;</span><br>  <span class="hljs-type">char</span>* name;<br>  <span class="hljs-type">double</span> price;<br>  <span class="hljs-type">int</span> speed;<br>&#125;;<br><br><span class="hljs-comment">//声明结构体变量</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> <span class="hljs-title">audi</span> =</span> &#123;<span class="hljs-string">&quot;audi A6L&quot;</span>, <span class="hljs-number">460000.99</span>, <span class="hljs-number">175</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：如果大括号里面的值的数量少于属性的数量，那么缺失的属性自动初始化为 0 。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> &#123;</span><br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">char</span> gender;<br>    <span class="hljs-type">int</span> score;  <span class="hljs-comment">//学生成绩</span><br><br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">stu</span> =</span> &#123;<span class="hljs-number">1001</span>, <span class="hljs-string">&quot;songhk&quot;</span>, <span class="hljs-string">&#x27;M&#x27;</span>&#125;;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Name: %s\n&quot;</span>, stu.name);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Score: %d\n&quot;</span>, stu.score);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>声明结构体变量格式3：</strong> </p>
+<p>方式2中大括号里面的值的顺序，必须与 struct 类型声明时属性的顺序一致。此时，可以为每个值指定属性名。</p>
+<p>格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名 结构体变量=</span>&#123;.成员<span class="hljs-number">1</span>=xxx,.成员<span class="hljs-number">2</span>=yyy,...&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> <span class="hljs-title">audi</span> =</span> &#123;.speed=<span class="hljs-number">175</span>, .name=<span class="hljs-string">&quot;audi A6L&quot;</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同样，初始化的属性少于声明时的属性，剩下的那些属性都会初始化为 0 。</p>
+</blockquote>
+<p>声明变量以后，可以修改某个属性的值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> <span class="hljs-title">audi</span> =</span> &#123;.speed=<span class="hljs-number">175</span>, .name=<span class="hljs-string">&quot;audi A6L&quot;</span>&#125;;<br>audi.speed = <span class="hljs-number">185</span>;  <span class="hljs-comment">//将 speed 属性的值改成 185</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>声明结构体变量格式4：</strong> 声明类型的同时定义变量</p>
+<p>struct 的数据类型声明语句与变量的声明语句，可以合并为一个语句。格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名 &#123;</span><br>    成员列表<br>&#125; 变量名列表;<br></code></pre></td></tr></table></figure>
+
+<p>举例：同时声明了数据类型 Circle 和该类型的变量 c1</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Circle</span> &#123;</span><br>	<span class="hljs-type">int</span> id;<br>    <span class="hljs-type">double</span> radius;<br>&#125; c1;<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> gender;<br>    <span class="hljs-type">char</span> phone[<span class="hljs-number">11</span>];<br>&#125; emp1, emp2;<br></code></pre></td></tr></table></figure>
+
+
+
+<p><strong>声明结构体变量格式5：</strong> 不指定类型名而直接定义结构体类型变量</p>
+<p>如果类型标识符（比如Student、Circle、Employee等）只用在声明时这一个地方，后面不再用到，那就可以将类型名省略。 该结构体称为<code>匿名结构体</code>。</p>
+<p>格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    成员列表;<br>&#125; 变量名列表;<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> gender;<br>    <span class="hljs-type">char</span> phone[<span class="hljs-number">11</span>];<br>&#125; emp1, emp2;<br></code></pre></td></tr></table></figure>
+
+<p>struct 声明了一个匿名数据类型，然后又声明了这个类型的两个变量emp1、emp2 。与其他变量声明语句一样，可以在声明变量的同时，对变量赋值。</p>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> gender;<br>    <span class="hljs-type">char</span> phone[<span class="hljs-number">11</span>];<br>&#125; emp1 = &#123;<span class="hljs-string">&quot;Lucy&quot;</span>, <span class="hljs-number">23</span>, <span class="hljs-string">&#x27;F&#x27;</span>, <span class="hljs-string">&quot;13012341234&quot;</span>&#125;,<br>  emp2 = &#123;<span class="hljs-string">&quot;Tony&quot;</span>, <span class="hljs-number">25</span>, <span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-string">&quot;13367896789&quot;</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>上例在声明变量 emp1 和 emp2 的同时，为它们赋值。</p>
+<p><strong>声明结构体变量格式6：</strong>使用 typedef 命令</p>
+<p>使用 typedef 可以为 struct 结构指定一个别名，这样使用起来更简洁。</p>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//声明结构体</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">cell_phone</span> &#123;</span><br>    <span class="hljs-type">int</span> phone_no;              <span class="hljs-comment">//电话号码</span><br>    <span class="hljs-type">double</span> minutes_of_charge;  <span class="hljs-comment">//每分钟费用</span><br>&#125; Phone;<br><br><span class="hljs-comment">//声明结构体变量</span><br>Phone p = &#123;<span class="hljs-number">13012341234</span>, <span class="hljs-number">5</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>上例中， Phone 就是 struct cell_phone 的别名。声明结构体变量时，可以省略struct关键字。</p>
+<p>这种情况下，C 语言允许省略 struct 命令后面的类型名。进一步改为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//声明匿名结构体</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">int</span> phone_no;<br>    <span class="hljs-type">double</span> minutes_of_charge;<br>&#125; Phone;<br><br><span class="hljs-comment">//声明结构体变量</span><br>Phone p = &#123;<span class="hljs-number">13012341234</span>, <span class="hljs-number">5</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>进一步，在考研中，还会出现如下的声明方式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>    <span class="hljs-type">int</span> phone_no;<br>    <span class="hljs-type">double</span> minutes_of_charge;<br>&#125; Phone,*pPhone;<br></code></pre></td></tr></table></figure>
+
+<p>这里多了个*pPhone，其实在定义一个结点指针p时，<code>Phone *p;</code> 等价于 <code>pPhone p; </code>，前者的写法类似于int *a、char *b等更方便记忆，不必再加个pPhone p来增加记忆负担。所以在考研中我们不采用这种方法，统一删掉 *pPhone的写法。</p>
+<blockquote>
+<p>说明：</p>
+<p>1、在创建一个结构体变量后，需要给成员赋值。在没有给成员赋值的情况下调用，打印的值是垃圾数据，可能导致程序异常终止。</p>
+<p>2、不同结构体变量的成员是独立的，互不影响，一个结构体变量的成员更改，不影响另外一个。</p>
+</blockquote>
+<h3 id="1-5-举例"><a href="#1-5-举例" class="headerlink" title="1.5 举例"></a>1.5 举例</h3><p><strong>练习：盒子案例</strong></p>
+<p>（1）编程创建一个Box结构体，在其中定义三个成员表示一个立方体的长、宽和高，长宽高可以通过控制台输入。</p>
+<p>（2）定义一个函数获取立方体的体积（volume）。</p>
+<p>（3）创建一个结构体，打印给定尺寸的立方体的体积。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-comment">// 1. 定义Box结构体</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Box</span> &#123;</span><br>    <span class="hljs-type">double</span> length;<br>    <span class="hljs-type">double</span> width;<br>    <span class="hljs-type">double</span> height;<br>&#125;;<br><br><span class="hljs-comment">// 2. 获取立方体体积的函数</span><br><span class="hljs-type">double</span> <span class="hljs-title function_">getVolume</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Box box)</span> &#123;<br>    <span class="hljs-keyword">return</span> box.length * box.width * box.height;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-comment">// 3. 创建结构体实例</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Box</span> <span class="hljs-title">box</span>;</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;输入长度：&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf&quot;</span>, &amp;box.length);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;输入宽度：&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf&quot;</span>, &amp;box.width);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;输入高度：&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%lf&quot;</span>, &amp;box.height);<br><br>    <span class="hljs-comment">// 调用函数获取体积并打印</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;体积为: %.2lf\n&quot;</span>, getVolume(box));<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-6-小-结"><a href="#1-6-小-结" class="headerlink" title="1.6 小 结"></a>1.6 小 结</h3><p>区分三个概念：结构体、结构体变量、结构体变量的成员。</p>
+<ul>
+<li><p>结构体是<strong>自定义的数据类型</strong>，表示的是一种数据类型。</p>
+</li>
+<li><p>结构体变量代表一个具体变量。类比：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num1 ; <span class="hljs-comment">// int 是数据类型, 而num1是一个具体的int变量</span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> <span class="hljs-title">car1</span>;</span> <span class="hljs-comment">// Car 是结构体数据类型，而car1是一个Car变量</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Car 就像一个“汽车图纸”，生成出来的具体的一辆辆汽车，就类似于一个个的结构体变量。这些结构体变量都含有相同的成员，将结构体变量的成员比作“零件”，同一张图纸生产出来的零件的作用都是一样的。</p>
+</li>
+</ul>
+<p><img src="/images/image-20230812142946911.png" srcset="/img/loading.gif" lazyload alt="image-20230812142946911"></p>
+<h2 id="2、进一步认识结构体"><a href="#2、进一步认识结构体" class="headerlink" title="2、进一步认识结构体"></a>2、进一步认识结构体</h2><h3 id="2-1-结构体嵌套"><a href="#2-1-结构体嵌套" class="headerlink" title="2.1 结构体嵌套"></a>2.1 结构体嵌套</h3><p>结构体的成员也是变量，那么成员可以是<code>基本数据类型</code>，也可以是<code>数组</code>、<code>指针</code>、<code>结构体</code>等类型 。如果结构体的成员是另一个结构体，这就构成了结构体嵌套。</p>
+<p>举例1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Name</span> &#123;</span><br>    <span class="hljs-type">char</span> firstName[<span class="hljs-number">50</span>];<br>    <span class="hljs-type">char</span> lastName[<span class="hljs-number">50</span>];<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> &#123;</span><br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Name</span> <span class="hljs-title">name</span>;</span><br>    <span class="hljs-type">char</span> gender;<br>&#125; stu1;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-built_in">strcpy</span>(stu1.name.firstName, <span class="hljs-string">&quot;美美&quot;</span>);<br>    <span class="hljs-built_in">strcpy</span>(stu1.name.lastName, <span class="hljs-string">&quot;韩&quot;</span>);<br>    <span class="hljs-comment">//stu1.age = 18;</span><br>    <span class="hljs-comment">//stu1.gender = &#x27;F&#x27;;</span><br><br>    <span class="hljs-comment">//或者</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Name</span> <span class="hljs-title">myname</span> =</span> &#123;<span class="hljs-string">&quot;美美&quot;</span>,<span class="hljs-string">&quot;韩&quot;</span>&#125;;<br>    stu1.name = myname;<br>    <span class="hljs-comment">//stu1.age = 18;</span><br>    <span class="hljs-comment">//stu1.gender = &#x27;F&#x27;;</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>举例2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Date</span> &#123;</span>    <span class="hljs-comment">//声明一个结构体类型 struct Date </span><br>    <span class="hljs-type">int</span> year;    <span class="hljs-comment">//年</span><br>    <span class="hljs-type">int</span> month;   <span class="hljs-comment">//月</span><br>    <span class="hljs-type">int</span> day;     <span class="hljs-comment">//日</span><br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> &#123;</span> <span class="hljs-comment">//声明一个结构体类型 struct Employee</span><br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Date</span> <span class="hljs-title">birthday</span>;</span> <span class="hljs-comment">//成员birthday属于struct Date类型</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>声明结构体变量并调用成员：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> <span class="hljs-title">emp1</span>;</span><br><br>    emp1.id = <span class="hljs-number">1001</span>;<br>    <span class="hljs-built_in">strcpy</span>(emp1.name,<span class="hljs-string">&quot;Tony&quot;</span>);<br>    emp1.age = <span class="hljs-number">24</span>;<br><br>    emp1.birthday.year = <span class="hljs-number">2001</span>;<br>    emp1.birthday.month = <span class="hljs-number">3</span>;<br>    emp1.birthday.day = <span class="hljs-number">12</span>;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>说明：如果成员本身又属一个结构体类型，则要用若干个点（ . ），一级一级地找到最低的一级的成员。比如，<code>emp1.birthday.year</code>。</p>
+<p>赋值的时候还有多种写法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//方式1：</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> <span class="hljs-title">emp1</span> =</span> &#123;<span class="hljs-number">1001</span>, <span class="hljs-string">&quot;Tony&quot;</span>, <span class="hljs-number">24</span>, &#123;<span class="hljs-number">1999</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>&#125;&#125;;<br><br>    <span class="hljs-comment">//方式2：</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Date</span> <span class="hljs-title">birthday</span> =</span> &#123;<span class="hljs-number">2001</span>, <span class="hljs-number">5</span>, <span class="hljs-number">6</span>&#125;;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> <span class="hljs-title">emp2</span> =</span> &#123;<span class="hljs-number">1002</span>, <span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-number">22</span>, birthday&#125;;<br><br>    <span class="hljs-comment">//方式3：</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> <span class="hljs-title">emp3</span> =</span> &#123;<br>            .id = <span class="hljs-number">1003</span>,<br>            .age = <span class="hljs-number">24</span>,<br>            .name = <span class="hljs-string">&quot;Jerry&quot;</span>,<br>            .birthday = &#123;<span class="hljs-number">2001</span>, <span class="hljs-number">3</span>, <span class="hljs-number">16</span>&#125;&#125;;<br><br>    <span class="hljs-comment">//方式4：</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Employee</span> <span class="hljs-title">emp4</span> =</span> &#123;<br>            .id = <span class="hljs-number">1003</span>,<br>            .age = <span class="hljs-number">27</span>,<br>            .name = <span class="hljs-string">&quot;Jerry&quot;</span>,<br>            .birthday.year = <span class="hljs-number">1998</span>,<br>            .birthday.month = <span class="hljs-number">8</span>,<br>            .birthday.day = <span class="hljs-number">12</span>&#125;;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>举例3：自我嵌套</p>
+<p>单链表结构的结点定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    <span class="hljs-type">int</span> data;            <span class="hljs-comment">//这里默认的是int型，如需其他类型可修改</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span>* <span class="hljs-title">next</span>;</span>   <span class="hljs-comment">//指向Node型变量的指针</span><br>&#125;;<br><span class="hljs-comment">//等同于</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    <span class="hljs-type">int</span> data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> *<span class="hljs-title">next</span>;</span><br>&#125; LNode;<br></code></pre></td></tr></table></figure>
+
+<p>二叉树结构的结点定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> &#123;</span><br>    <span class="hljs-type">int</span> data;              <span class="hljs-comment">//这里默认的是int型，如需其他类型可修改</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">lchild</span>;</span>        <span class="hljs-comment">//指向左孩子结点指针,在后续的二叉树章节中讲解</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">rchild</span>;</span>        <span class="hljs-comment">//指向右孩子结点指针,在后续的二叉树章节中讲解</span><br>&#125; BTNode;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2-结构体占用空间"><a href="#2-2-结构体占用空间" class="headerlink" title="2.2 结构体占用空间"></a>2.2 结构体占用空间</h3><p>结构体占用的存储空间，不是各个属性存储空间的总和。为了计算效率，C 语言的内存占用空间一般来说，都必须是 int 类型存储空间的整数倍。如果 int 类型的存储是4字节，那么 struct 类型的存储空间就总是4的倍数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">A</span>&#123;</span><br>    <span class="hljs-type">char</span> a;<br>    <span class="hljs-type">int</span> b;<br>&#125; s;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, <span class="hljs-keyword">sizeof</span>(s)); <span class="hljs-comment">// 8</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>变量 s 的存储空间不是5个字节，而是占据8个字节。a 属性与 b 属性之间有3个字节的“空洞”。</p>
+<h3 id="2-3-结构体变量的赋值操作"><a href="#2-3-结构体变量的赋值操作" class="headerlink" title="2.3 结构体变量的赋值操作"></a>2.3 结构体变量的赋值操作</h3><p>同类型的结构体变量可以使用赋值运算符（ &#x3D; ），赋值给另一个变量，比如</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">student1 = student2; <span class="hljs-comment">//假设student1和student2已定义为同类型的结构体变量</span><br></code></pre></td></tr></table></figure>
+
+<p>这时会生成一个<code>全新的副本</code>。系统会分配一块新的内存空间，大小与原来的变量相同，把每个属性都复制过去，即原样生成了一份数据。</p>
+<p>也就是说，结构体变量的传递机制是值传递，而非地址传递。这一点跟数组的赋值不同，使用赋值运算符复制数组，不会复制数据，只是传递地址。</p>
+<p><strong>举例1：</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> &#123;</span><br>    <span class="hljs-type">double</span> price;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">30</span>];<br>&#125; a = &#123;.name = <span class="hljs-string">&quot;Audi A6L&quot;</span>, .price = <span class="hljs-number">390000.99</span>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> <span class="hljs-title">b</span> =</span> a;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, &amp;a); <span class="hljs-comment">//结构体a变量的地址 00007ff75a019020</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, &amp;b); <span class="hljs-comment">//结构体b变量的地址 000000a6201ffcd0</span><br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, a.name);  <span class="hljs-comment">//结构体a变量的成员name的地址  00007ff719199028</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, b.name);  <span class="hljs-comment">//结构体b变量的成员name的地址  000000c2565ffd88</span><br><br>    a.name[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;B&#x27;</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, a.name); <span class="hljs-comment">// Budi A6L</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, b.name); <span class="hljs-comment">// Audi A6L</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上例中，变量 b 是变量 a 的副本，两个变量的值是各自独立的，修改掉 b.name 不影响 a.name 。</p>
+<p><strong>举例2：</strong>将结构体内的字符数组改为字符指针</p>
+<p>上个例子有个前提，就是 struct 结构的属性必须定义成字符数组，才可以复制数据。如果属性定义成字符指针，结果就不一样了。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> &#123;</span><br>    <span class="hljs-type">char</span> *name;<br>    <span class="hljs-type">double</span> price;<br>&#125; a = &#123;<span class="hljs-string">&quot;Audi A6L&quot;</span>, <span class="hljs-number">390000.99</span>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Car</span> <span class="hljs-title">b</span> =</span> a;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, &amp;a); <span class="hljs-comment">//结构体a变量的地址 00007ff75a019020</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, &amp;b); <span class="hljs-comment">//结构体b变量的地址 000000a6201ffcd0</span><br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, a.name); <span class="hljs-comment">//结构体a变量的成员name的地址  00007ff7d778a000</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, b.name); <span class="hljs-comment">//结构体b变量的成员name的地址  00007ff7d778a000</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上例中， name 属性变成了一个字符指针，这时 a 赋值给 b ，此时的b变量仍然是新开辟的内存空间。但是，a 和 b的 name 成员保存的指针相同，也就是说两个属性共享同一个”Audi A6L”。</p>
+<p>在C语言中，相同的字符串常量通常只会保存一份，即这些字符串常量共享相同的内存。当你声明多个指针变量并让它们指向相同的字符串常量时，它们实际上都指向相同的内存地址。字符串常量的共享，有助于减小程序的内存占用。</p>
+<blockquote>
+<p>注意：C 语言没有提供比较两个自定义数据结构是否相等的方法，无法用比较运算符（比如 &#x3D;&#x3D; 和 !&#x3D; ）比较两个数据结构是否相等或不等。</p>
+</blockquote>
+<blockquote>
+<p> 【武汉科技大学2019研】已知书籍结构体定义如下，则对结构体变量bk的正确赋值是（　）。</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BOOK</span> &#123;</span><br>  <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>      <span class="hljs-type">int</span> year, month, day;<br>  &#125; publish;<br>&#125; bk; <br></code></pre></td></tr></table></figure>
+
+<p> A．bk.year＝1998；  bk.month＝11；  bk.day＝11；<br> B．publish.year＝1998；  publish.month＝11；  publish.day＝11；<br> C．year＝1998；  month＝11；  day＝11；<br> D．bk.publish.year＝1998；  bk.publish.month＝11；  bk.publish.day＝11；</p>
+<p> 【答案】D</p>
+<p> 【解析】变量bk是结构体BOOK的一个结构体变量，该变量含有一个成员变量publish，publish也是一个结构体变量，该结构变量含三个成员变量，分别是year、month、day，结构体变量中的成员变量不可直接访问，必须以结构体变量名.成员变量名形式访问，所以只能通过bk.publish.year形式访问到最内层的变量并为其赋值，答案选D。</p>
+</blockquote>
+<h2 id="3、结构体数组"><a href="#3、结构体数组" class="headerlink" title="3、结构体数组"></a>3、结构体数组</h2><h3 id="3-1-对比结构体与数组"><a href="#3-1-对比结构体与数组" class="headerlink" title="3.1 对比结构体与数组"></a>3.1 对比结构体与数组</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//定义一个结构体A</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span>&#123;</span><br>    <span class="hljs-type">int</span> a ;<br>    <span class="hljs-type">char</span> b;<br>    <span class="hljs-type">float</span> c;<br>&#125; A;<br><span class="hljs-comment">//定义一个结构体变量</span><br>A a;<br><br><span class="hljs-comment">//定义一个数组类型的变量</span><br><span class="hljs-type">int</span> b[<span class="hljs-number">3</span>];<br><br></code></pre></td></tr></table></figure>
+
+<p>语句int b[3]；定义了一个数组，名字为b，由3个整型分量组成。而语句A a；可以类似认为定义了一个数组，名字为a，只不过组成a数组的3个分量是不同类型的。对于数组b，b[0]、b[1]、b[2]分别代表数组中第1、第2、第3个同为int类型的元素的值。而结构体a中，a. a、a. b、a. c分别对应于结构体变量a 中第1、第2、第3个元素的值，两者十分相似。</p>
+<p><img src="/images/image-20230809143639920.png" srcset="/img/loading.gif" lazyload alt="image-20230809143639920"></p>
+<p>如果有3个结构体A类型的元素，如何存储呢？使用结构体数组，即：<code>A a[3]</code></p>
+<p>对比：<code>A a[3]</code>和<code>int b[3][3]</code>：</p>
+<p>a数组中的每个元素都是结构型且每个元素都有3个分量，可以把它类比成一个二维数组。例如， <code>int b[3][3]</code>。</p>
+<p><img src="/images/image-20230809143915726.png" srcset="/img/loading.gif" lazyload alt="image-20230809143915726"></p>
+<h3 id="3-2-结构体数组的声明"><a href="#3-2-结构体数组的声明" class="headerlink" title="3.2 结构体数组的声明"></a>3.2 结构体数组的声明</h3><p><strong>结构体数组：数组元素是结构体变量而构成的数组。</strong>先定义结构体类型，然后用结构体类型定义数组变量。</p>
+<p><strong>方式1：</strong>先声明一个结构体类型，再用此类型定义结构体数组</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">结构体类型 数组名[数组长度];<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span>&#123;</span> <br>	<span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>	<span class="hljs-type">int</span> age;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> <span class="hljs-title">pers</span>[3];</span> <span class="hljs-comment">//pers是结构体数组名</span><br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span>&#123;</span>       <span class="hljs-comment">// 定义结构体：学生</span><br>    <span class="hljs-type">int</span> id;           <span class="hljs-comment">//学号</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];    <span class="hljs-comment">//姓名</span><br>    <span class="hljs-type">char</span> gender;      <span class="hljs-comment">//性别</span><br>    <span class="hljs-type">int</span> age;          <span class="hljs-comment">//年龄</span><br>&#125;; <br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">stus</span>[10];</span> <span class="hljs-comment">//stus是结构体数组名</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>方式2：</strong>定义结构体类型的同时，定义数组变量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名&#123;</span><br>	成员列表;<br>&#125; 数组名[数组长度];<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span>&#123;</span> <br>	<span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>	<span class="hljs-type">int</span> age;<br>&#125; pers[<span class="hljs-number">3</span>];<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Date</span>&#123;</span><br>	<span class="hljs-type">int</span> year;<br>	<span class="hljs-type">int</span> month;<br>	<span class="hljs-type">int</span> day;<br>&#125;dates1[<span class="hljs-number">10</span>],dates2[<span class="hljs-number">10</span>];<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-3-初始化数组元素"><a href="#3-3-初始化数组元素" class="headerlink" title="3.3 初始化数组元素"></a>3.3 初始化数组元素</h3><p><strong>对应前面的声明方式1：</strong></p>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">stus</span>[3] =</span> &#123; &#123;<span class="hljs-number">1001</span>,<span class="hljs-string">&quot;Tom&quot;</span>,<span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">14</span>&#125;,<br>                           &#123;<span class="hljs-number">1002</span>, <span class="hljs-string">&quot;Jerry&quot;</span>, <span class="hljs-string">&#x27;M&#x27;</span>, <span class="hljs-number">13</span>&#125;,<br>                           &#123;<span class="hljs-number">1003</span>, <span class="hljs-string">&quot;Lily&quot;</span>,<span class="hljs-string">&#x27;F&#x27;</span>,<span class="hljs-number">12</span>&#125;&#125;;<br></code></pre></td></tr></table></figure>
+
+<img src="images/1689149257847.png" srcset="/img/loading.gif" lazyload alt="1689149257847" style="zoom:120%;">
+
+<p><strong>对应前面的声明方式2：</strong></p>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>&#125; pers[<span class="hljs-number">3</span>] = &#123;&#123;<span class="hljs-string">&quot;Tom&quot;</span>,   <span class="hljs-number">12</span>&#125;,<br>             &#123;<span class="hljs-string">&quot;Jerry&quot;</span>, <span class="hljs-number">11</span>&#125;,<br>             &#123;<span class="hljs-string">&quot;Lily&quot;</span>,  <span class="hljs-number">10</span>&#125;&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>&#125; pers[] = &#123;&#123;<span class="hljs-string">&quot;Tom&quot;</span>,   <span class="hljs-number">12</span>&#125;,<br>             &#123;<span class="hljs-string">&quot;Jerry&quot;</span>, <span class="hljs-number">11</span>&#125;,<br>             &#123;<span class="hljs-string">&quot;Lily&quot;</span>,  <span class="hljs-number">10</span>&#125;&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>说明：初始化结构体数组元素时，也可以不指定结构体数组的长度。系统在编译时，会自动根据初始化的值决定结构体数组的长度。</p>
+</blockquote>
+<h3 id="3-4-结构体数组元素的成员的调用"><a href="#3-4-结构体数组元素的成员的调用" class="headerlink" title="3.4 结构体数组元素的成员的调用"></a>3.4 结构体数组元素的成员的调用</h3><p><strong>方式1：使用数组角标方式</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">结构体数组名[下标].成员名<br></code></pre></td></tr></table></figure>
+
+<p>如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">stus[<span class="hljs-number">1</span>].age = <span class="hljs-number">23</span>;<br></code></pre></td></tr></table></figure>
+
+<p><strong>方式2：使用指向数组或数组元素的指针(下节讲)</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">指针-&gt;成员名<br></code></pre></td></tr></table></figure>
+
+<p>如：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">p-&gt;age=<span class="hljs-number">24</span>;  <span class="hljs-comment">//p为指向某个数组元素的指针</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>举例1：输入一个班级的学生信息(包含id、name、gender、score)，并把学习成绩超过全班平均成绩的学生找出来，输出这部分学生的姓名和成绩。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 4</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MAX_NAME_LENGTH 20</span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> &#123;</span><br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> name[MAX_NAME_LENGTH];<br>    <span class="hljs-type">char</span> gender;<br>    <span class="hljs-type">int</span> score;<br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">stu</span>[<span class="hljs-title">N</span>];</span><br>    <span class="hljs-type">int</span> sum = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入学生信息 (ID, 姓名, 性别, 成绩): \n&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d %19s %c %d&quot;</span>, &amp;stu[i].id, stu[i].name, &amp;stu[i].gender, &amp;stu[i].score);<br>        sum += stu[i].score;<br>    &#125;<br><br>    <span class="hljs-type">double</span> avg = (<span class="hljs-type">double</span>)sum / N; <span class="hljs-comment">//计算平均成绩</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;平均成绩为: %.2lf\n&quot;</span>, avg);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;高于平均分的学生:\n&quot;</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++) &#123;<br>        <span class="hljs-keyword">if</span> (stu[i].score &gt; avg) &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%-20s:%d\n&quot;</span>, stu[i].name, stu[i].score);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>测试如下：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs awk">请输入学生信息 (ID, 姓名, 性别, 成绩):<br><span class="hljs-number">1</span> Tom M <span class="hljs-number">89</span><br>请输入学生信息 (ID, 姓名, 性别, 成绩):<br><span class="hljs-number">2</span> Jerry F <span class="hljs-number">99</span><br>请输入学生信息 (ID, 姓名, 性别, 成绩):<br><span class="hljs-number">3</span> Lucy F <span class="hljs-number">56</span><br>请输入学生信息 (ID, 姓名, 性别, 成绩):<br><span class="hljs-number">4</span> Tony M <span class="hljs-number">66</span><br>平均成绩为: <span class="hljs-number">77.50</span><br>高于平均分的学生:<br>Tom                 :<span class="hljs-number">89</span><br>Jerry               :<span class="hljs-number">99</span><br><br>Process finished with <span class="hljs-keyword">exit</span> code <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+
+<p>举例2：编写一个统计选票的系统，根据先后输入的候选人姓名，统计各人的得票数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 3</span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span> <span class="hljs-comment">//声明结构体类型struct Person</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>]; <span class="hljs-comment">//候选人姓名</span><br>    <span class="hljs-type">int</span> count; <span class="hljs-comment">//候选人得票数</span><br>&#125; leader[N] = &#123;&#123;<span class="hljs-string">&quot;zhang3&quot;</span>, <span class="hljs-number">0</span>&#125;,<br>               &#123;<span class="hljs-string">&quot;li4&quot;</span>,    <span class="hljs-number">0</span>&#125;,<br>               &#123;<span class="hljs-string">&quot;wang5&quot;</span>,  <span class="hljs-number">0</span>&#125;&#125;; <span class="hljs-comment">//定义结构体数组并初始化</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">char</span> leader_name[<span class="hljs-number">20</span>]; <span class="hljs-comment">//定义字符数组</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;你要投票给谁？(zhang3、li4、wang5)：&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, leader_name); <span class="hljs-comment">//输入所选的候选人姓名</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; N; j++) &#123;<br>            <span class="hljs-keyword">if</span> (<span class="hljs-built_in">strcmp</span>(leader_name, leader[j].name) == <span class="hljs-number">0</span>)&#123;<br>                leader[j].count++;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n统计结果:\n&quot;</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%-10s:%d\n&quot;</span>, leader[i].name, leader[i].count);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p> 【武汉科技大学2019研】对于以下定义，能打印出字母h的语句是（　）。</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">person</span>&#123;</span> <br>	<span class="hljs-type">char</span> title[<span class="hljs-number">20</span>];  <br>	<span class="hljs-type">int</span> code;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">person</span> <span class="hljs-title">book</span>[5]＝&#123;</span><span class="hljs-string">&quot;Physics&quot;</span>,<span class="hljs-number">17</span>,<span class="hljs-string">&quot;Math&quot;</span>,<span class="hljs-number">18</span>,<span class="hljs-string">&quot;English&quot;</span>,<span class="hljs-number">20</span>,<span class="hljs-string">&quot;History&quot;</span>,<span class="hljs-number">18</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p> A．printf（”%c”，book[0].title[1]）；<br> B．printf（”%c”，book[1].title[4]）；<br> C．printf（”%c”，book[2].title[7]）；<br> D．printf（”%c”，book[3].title[6]）；</p>
+<p> 【答案】A</p>
+<p> 【解析】person是一个自定义结构体类型，该结构体含有两个成员变量，分别是一个字符数组和一个int数据，BC选项打印出来的是’\0’；D选项打印出来的是y，只有A打印出来的是h，答案选A。</p>
+</blockquote>
+<h2 id="4、结构体指针"><a href="#4、结构体指针" class="headerlink" title="4、结构体指针"></a>4、结构体指针</h2><h3 id="4-1-结构体指针格式"><a href="#4-1-结构体指针格式" class="headerlink" title="4.1 结构体指针格式"></a>4.1 结构体指针格式</h3><p>结构体指针：<strong>指向结构体变量的指针</strong> （将结构体变量的起始地址存放在指针变量中）</p>
+<p>具体应用场景：①可以指向单一的结构体变量  ②可以用作函数的参数 ③可以指向结构体数组</p>
+<p>定义结构体指针变量格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> 结构体名 *结构体指针变量名;</span><br><br><span class="hljs-comment">//int num;</span><br><span class="hljs-comment">//int *num;</span><br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Book</span> &#123;</span><br>    <span class="hljs-type">char</span> title[<span class="hljs-number">50</span>];<br>    <span class="hljs-type">char</span> author[<span class="hljs-number">10</span>];<br>    <span class="hljs-type">double</span> price;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Book</span> *<span class="hljs-title">b1</span>;</span><br></code></pre></td></tr></table></figure>
+
+<p>等价于</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Book</span> &#123;</span><br>    <span class="hljs-type">char</span> title[<span class="hljs-number">50</span>];<br>    <span class="hljs-type">char</span> author[<span class="hljs-number">10</span>];<br>    <span class="hljs-type">double</span> price;<br>&#125; *b1;<br></code></pre></td></tr></table></figure>
+
+<p>说明：变量 b1 是一个指针，指向的数据是 struct Book 类型的实例。</p>
+<h3 id="4-2-结构体传参"><a href="#4-2-结构体传参" class="headerlink" title="4.2 结构体传参"></a>4.2 结构体传参</h3><p>如果将 struct 变量传入函数，函数内部得到的是一个原始值的副本。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span><br>    <span class="hljs-type">char</span> *name;<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> *address;<br>&#125;;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">addAge</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Person per)</span> &#123;<br>    per.age = per.age + <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> <span class="hljs-title">p1</span> =</span> &#123;<span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-string">&quot;北京市海淀区&quot;</span>&#125;;<br>    addAge(p1);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;age = %d\n&quot;</span>, p1.age); <span class="hljs-comment">// 输出 20</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>函数 addAge() 要求传入一个 struct 变量 per，但实际上传递的是 struct 变量p1的<code>副本</code>，改变副本影响不到函数外部的原始数据。</p>
+<p>通常情况下，开发者希望传入函数的是同一份数据，函数内部修改数据以后，会反映在函数外部。而且，传入的是同一份数据，也有利于提高程序性能。这时就需要将 struct 变量的指针传入函数，通过指针来修改 struct 属性。如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span><br>    <span class="hljs-type">char</span> *name;<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> *address;<br>&#125;;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">addAge</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Person *per)</span> &#123;   <span class="hljs-comment">//说明1</span><br>    (*per).age = (*per).age + <span class="hljs-number">1</span>;    <span class="hljs-comment">//说明2</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> <span class="hljs-title">p1</span> =</span> &#123;<span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-string">&quot;北京市海淀区&quot;</span>&#125;;<br>    addAge(&amp;p1);                    <span class="hljs-comment">//说明3</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;age = %d\n&quot;</span>, p1.age);   <span class="hljs-comment">// 说明4：输出 21</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>说明1：per 是 struct 结构的指针，调用函数时传入的是指针。</p>
+</li>
+<li><p>说明2：函数内部必须使用 <code>(*per).age</code> 的写法，从指针拿到 struct 结构本身。因为运算符优先级问题，不能写成<code>*per.age</code>，会将per.age看成是一个指针，然后取其值。</p>
+</li>
+<li><p>说明3：结构体类型跟数组不一样，类型标识符本身并不是指针，所以传入时，指针必须写成 &amp;p1。</p>
+</li>
+<li><p>说明4： addAge() 内部对 struct 结构的操作，就会反映到函数外部。</p>
+</li>
+</ul>
+<p><strong>练习1：</strong></p>
+<p>（1）编写一个Dog结构体，包含name(char[10])、age(int)、weight(double)属性</p>
+<p>（2）编写一个say函数，返回字符串，方法返回信息中包含所有成员值。</p>
+<p>（3）在main方法中，创建Dog结构体变量，调用say函数，将调用结果打印输出。</p>
+<p>写法1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-comment">// 定义Dog结构体</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Dog</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">10</span>];  <span class="hljs-comment">//或者  char * name;</span><br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">double</span> weight;<br>&#125;;<br><br><span class="hljs-comment">// 定义say函数，返回包含所有成员值的字符串</span><br><span class="hljs-type">char</span>* <span class="hljs-title function_">say</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Dog dog)</span> &#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">char</span> info[<span class="hljs-number">100</span>]; <span class="hljs-comment">// 静态数组用于存储结果,此数组生命周期会持续到整个程序运行结束。</span><br>    <span class="hljs-built_in">sprintf</span>(info, <span class="hljs-string">&quot;Name: %s, Age: %d, Weight: %.2lf&quot;</span>, dog.name, dog.age, dog.weight);<br>    <span class="hljs-keyword">return</span> info;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 创建Dog结构体变量</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Dog</span> <span class="hljs-title">myDog</span>;</span><br>    <span class="hljs-built_in">strcpy</span>(myDog.name, <span class="hljs-string">&quot;大黄&quot;</span>);<br>    myDog.age = <span class="hljs-number">3</span>;<br>    myDog.weight = <span class="hljs-number">12.5</span>;<br><br>    <span class="hljs-comment">// 调用say函数，打印结果</span><br>    <span class="hljs-type">char</span>* result = say(myDog);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;info = %s\n&quot;</span>, result);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>其中，sprintf() 函数是C标准库中的一个函数，它用于将格式化的数据写入一个字符数组(字符串)。</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">sprintf</span><span class="hljs-params">(<span class="hljs-type">char</span> *str, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *format, ...)</span></span>;<br>&gt; str：是一个字符数组，用于存储格式化后的字符串。<br>&gt; format：是格式化字符串，包含了要输出的文本以及格式说明符，就像 <span class="hljs-built_in">printf</span>() 函数中的格式字符串一样。<br>&gt; ...：是可变参数，用于提供要格式化的数据。<br></code></pre></td></tr></table></figure>
+
+<p>顺便看一个问题，如果say()函数如下声明，请问main()中打印dog.name会是多少呢？为什么？</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span>* <span class="hljs-title function_">say</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Dog dog)</span> &#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">char</span> info[<span class="hljs-number">100</span>]; <span class="hljs-comment">// 静态数组用于存储结果,此数组生命周期会持续到整个程序运行结束。</span><br>    <span class="hljs-built_in">sprintf</span>(info, <span class="hljs-string">&quot;Name: %s, Age: %d, Weight: %.2lf&quot;</span>, dog.name, dog.age, dog.weight);<br>    <span class="hljs-built_in">strcpy</span>(dog.name, <span class="hljs-string">&quot;小花&quot;</span>);<br>    <span class="hljs-keyword">return</span> info;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 创建Dog结构体变量</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Dog</span> <span class="hljs-title">myDog</span>;</span><br>    <span class="hljs-built_in">strcpy</span>(myDog.name, <span class="hljs-string">&quot;大黄&quot;</span>);<br>    myDog.age = <span class="hljs-number">3</span>;<br>    myDog.weight = <span class="hljs-number">12.5</span>;<br><br>    <span class="hljs-comment">// 调用say函数，打印结果</span><br>    <span class="hljs-type">char</span>* result = say(myDog);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;info = %s\n&quot;</span>, result);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;name = %s&quot;</span>, myDog.name);  <span class="hljs-comment">//大黄</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在C语言中，函数参数是按值传递的，这意味着 say 函数接受的是 dog 结构体的一个副本，而不是原始的 dog 结构体。因此，在 say 函数内部对 dog 结构体的修改不会影响到 main 函数中的原始结构体。</p>
+<p>虽然在 say 函数内部将 dog.name 设置为 “小花”，但这只会影响 say 函数内的副本，而不会影响 main 函数中的 dog 结构体。所以，最后打印 dog.name 时输出的是 “大黄”，而不是 “小花”。</p>
+<p>写法2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-comment">// 定义Dog结构体</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Dog</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">10</span>];  <span class="hljs-comment">//或者  char * name;</span><br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">double</span> weight;<br>&#125;;<br><br><span class="hljs-comment">// 定义say函数，返回包含所有成员值的字符串</span><br><span class="hljs-type">char</span> *<span class="hljs-title function_">say</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Dog *dog)</span> &#123;<br>    <span class="hljs-type">static</span> <span class="hljs-type">char</span> info[<span class="hljs-number">100</span>]; <span class="hljs-comment">// 静态数组用于存储结果,此数组生命周期会持续到整个程序运行结束。</span><br>    <span class="hljs-built_in">sprintf</span>(info, <span class="hljs-string">&quot;Name: %s, Age: %d, Weight: %.2lf&quot;</span>, (*dog).name, (*dog).age, (*dog).weight);<br>    <span class="hljs-keyword">return</span> info;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 创建Dog结构体变量</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Dog</span> <span class="hljs-title">myDog</span>;</span><br>    <span class="hljs-built_in">strcpy</span>(myDog.name, <span class="hljs-string">&quot;大黄&quot;</span>);<br>    myDog.age = <span class="hljs-number">3</span>;<br>    myDog.weight = <span class="hljs-number">12.5</span>;<br><br>    <span class="hljs-comment">// 调用say函数，打印结果</span><br>    <span class="hljs-type">char</span> *result = say(&amp;myDog);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;info = %s\n&quot;</span>, result);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>练习2：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">S</span> &#123;</span><br>    <span class="hljs-type">int</span> data[<span class="hljs-number">100</span>];<br>    <span class="hljs-type">int</span> num;<br>&#125;;<br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">S</span> <span class="hljs-title">s</span> =</span> &#123;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;, <span class="hljs-number">100</span>&#125;;<br><br><span class="hljs-comment">//结构体传参</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">print1</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> S s)</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, s.num);<br>&#125;<br><br><span class="hljs-comment">//结构体地址传参</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">print2</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> S *ps)</span> &#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, (*ps).num);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    print1(s);     <span class="hljs-comment">//传结构体</span><br>    print2(&amp;s);    <span class="hljs-comment">//传地址</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>从性能开销角度考虑，上面的 print1 和 print2 函数哪个好些？</p>
+<p>答案：print2函数。函数传参的时候，参数是需要压栈的。如果传递一个结构体对象的时候，结构体过大，参数压栈的的系统开销比较大，所以会导致性能的下降。（考研中定义的结点作为形参时一定要注意考虑此问题）</p>
+<blockquote>
+<p>结论：结构体传参的时候，建议传结构体的地址。</p>
+</blockquote>
+<p><strong>练习3：景区门票</strong></p>
+<p>一个景区根据游客的年龄收取不同价格的门票。</p>
+<p>（1）请编写游客结构体（Visitor），包含姓名，年龄，应付票价</p>
+<p>（2）编写函数ticket()，根据年龄段决定能够购买的门票价格并输出。</p>
+<p>​          规则：年龄&gt;&#x3D;18，门票为20元，其它情况免费。</p>
+<p>（3）可以循环从控制台输入名字和年龄，打印门票收费情况，如果名字输入n，则退出程序。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><br><span class="hljs-comment">//定义结构体</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Visitor</span> &#123;</span><br>    <span class="hljs-type">char</span> *name;  <span class="hljs-comment">//姓名</span><br>    <span class="hljs-type">int</span> age;     <span class="hljs-comment">//年龄</span><br>    <span class="hljs-type">double</span> pay;  <span class="hljs-comment">//应付票价</span><br>&#125;;<br><br><span class="hljs-comment">//编写函数处理业务</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">ticket</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Visitor *visitor)</span> &#123;<br>    <span class="hljs-comment">//判断</span><br>    <span class="hljs-keyword">if</span> ((*visitor).age &gt;= <span class="hljs-number">18</span>) &#123;<br>        (*visitor).pay = <span class="hljs-number">20</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        (*visitor).pay = <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//创建结构体变量(创建一个游客)</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Visitor</span> <span class="hljs-title">visitor</span>;</span><br>    <span class="hljs-comment">//循环的输入名字和年龄</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入游客名字(输入n退出程序):&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, visitor.name);<br>        <span class="hljs-comment">//判断如果名字输入 n ,则退出程序</span><br>        <span class="hljs-keyword">if</span> (!<span class="hljs-built_in">strcmp</span>(<span class="hljs-string">&quot;n&quot;</span>, visitor.name)) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入游客年龄:&quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;visitor.age);<br>        <span class="hljs-comment">//调用函数 ticket，获取应付的票价</span><br>        ticket(&amp;visitor);<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;该游客应付票价=%.2lf\n&quot;</span>, visitor.pay);<br>    &#125;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;退出程序&quot;</span>);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-3-操作符"><a href="#4-3-操作符" class="headerlink" title="4.3 -&gt; 操作符"></a>4.3 -&gt; 操作符</h3><p>前面例子中，<code>(*per).age</code> 的写法很麻烦，C 语言就引入了一个新的箭头运算符（ <code>-&gt;</code> ），可以从结构体指针上直接获取属性，大大增强了代码的可读性。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">addAge</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> Person * per)</span> &#123;<br>    per-&gt;age = per-&gt;age + <span class="hljs-number">1</span>;  <span class="hljs-comment">//使用结构体指针访问指向对象的成员</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>另例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> age;<br>    <span class="hljs-type">char</span> gender;<br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">//打印结构体信息</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> <span class="hljs-title">s</span> =</span> &#123;<span class="hljs-string">&quot;张三&quot;</span>, <span class="hljs-number">20</span>, <span class="hljs-string">&#x27;M&#x27;</span>&#125;;<br><br>    <span class="hljs-comment">//方式1：.为结构成员访问操作符</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;name = %s,age = %d,gender = %c\n&quot;</span>, s.name, s.age, s.gender);<br><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> *<span class="hljs-title">ps</span> =</span> &amp;s;<br>    <span class="hljs-comment">//方式2：.为结构成员访问操作符</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;name = %s,age = %d,gender = %c\n&quot;</span>, (*ps).name, (*ps).age, (*ps).gender);<br><br>    <span class="hljs-comment">//方式3：-&gt;操作符</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;name = %s,age = %d,gender = %c\n&quot;</span>, ps-&gt;name, ps-&gt;age, ps-&gt;gender);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>总结：如果指针变量p指向一个结构体变量stu，以下3种用法等价：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css">① stu.成员名    stu<span class="hljs-selector-class">.num</span><br>② (*<span class="hljs-selector-tag">p</span>).成员名   (*<span class="hljs-selector-tag">p</span>)<span class="hljs-selector-class">.num</span><br>③ <span class="hljs-selector-tag">p</span>-&gt;成员名     <span class="hljs-selector-tag">p</span>-&gt;num<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-4-指向结构体数组的指针"><a href="#4-4-指向结构体数组的指针" class="headerlink" title="4.4 指向结构体数组的指针"></a>4.4 指向结构体数组的指针</h3><p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span><br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> <span class="hljs-title">per</span>;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> <span class="hljs-title">arr</span>[5];</span><br><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> *<span class="hljs-title">p</span>,*<span class="hljs-title">q</span>;</span><br><br>    p = &amp;per;  <span class="hljs-comment">//指向单个结构体变量</span><br>    q = arr;   <span class="hljs-comment">//指向结构体数组</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> &#123;</span><br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">char</span> gender;<br>&#125; stu[<span class="hljs-number">3</span>] = &#123;&#123;<span class="hljs-number">1001</span>, <span class="hljs-string">&quot;Tom&quot;</span>,   <span class="hljs-string">&#x27;M&#x27;</span>&#125;,<br>            &#123;<span class="hljs-number">1002</span>, <span class="hljs-string">&quot;Jerry&quot;</span>, <span class="hljs-string">&#x27;M&#x27;</span>&#125;,<br>            &#123;<span class="hljs-number">1003</span>, <span class="hljs-string">&quot;Lily&quot;</span>,  <span class="hljs-string">&#x27;F&#x27;</span>&#125;&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-comment">//方式1：</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d%10s%3c\n&quot;</span>, stu[i].id, stu[i].name, stu[i].gender);<br>    &#125;<br><br>    <span class="hljs-comment">//方式2：</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> *<span class="hljs-title">p</span> =</span> stu;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d%10s%3c\n&quot;</span>, p[i].id, p[i].name, p[i].gender);<br>    &#125;<br><br>    <span class="hljs-comment">//方式3：</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Student</span> *<span class="hljs-title">q</span>;</span><br>    <span class="hljs-keyword">for</span> (q = stu; q &lt; stu + <span class="hljs-number">3</span>; q++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d%10s%3c\n&quot;</span>, q-&gt;id, q-&gt;name, q-&gt;gender);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>【中央财经大学2018研】若有以下说明和语句：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">worker</span> &#123;</span><br> <span class="hljs-type">int</span> no;<br> <span class="hljs-type">char</span> *name;<br>&#125; work, *p = &amp;work; <br></code></pre></td></tr></table></figure>
+
+<p>则以下引用方式不正确的是（　）。<br>A．work.no<br>B．(*p).no<br>C．p-&gt;no<br>D．work-&gt;no</p>
+<p>【答案】D</p>
+<p>【解析】结构体变量访问成员变量的引用方式采用“.”，而结构体指针采用“-&gt;”，因此AC是正确的，B项中*p表示结构体变量，因此可以用“.”，所以答案选择D。</p>
+</blockquote>
+<h2 id="5、结构体在数据结构中的应用"><a href="#5、结构体在数据结构中的应用" class="headerlink" title="5、结构体在数据结构中的应用"></a>5、结构体在数据结构中的应用</h2><h3 id="5-1-声明结点的结构体"><a href="#5-1-声明结点的结构体" class="headerlink" title="5.1 声明结点的结构体"></a>5.1 声明结点的结构体</h3><p>链表是一种动态的数据存储结构（非固定长度），链表的基本单位是<code>结点(node)</code>，同一链表的所有结点具有相同的数据类型。而结点使用<code>结构体</code>类型进行定义。</p>
+<p>一个链表结点包括数据域和指针域两部分：数据域存储需要处理的数据、指针域存储下一个结点的位置。</p>
+<p><img src="/images/1689149897740.png" srcset="/img/loading.gif" lazyload alt="1689149897740"></p>
+<p>单链表结构的结点定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    <span class="hljs-type">int</span> data;           <span class="hljs-comment">//这里默认的是int型，如需其他类型可修改</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> *<span class="hljs-title">next</span>;</span>  <span class="hljs-comment">//指向Node型变量的指针</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>或者：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    <span class="hljs-type">int</span> data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> *<span class="hljs-title">next</span>;</span><br>&#125; LNode;<br></code></pre></td></tr></table></figure>
+
+<p>二叉树结构的结点定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> &#123;</span><br>    <span class="hljs-type">int</span> data;                     <span class="hljs-comment">//这里默认的是int型，如需其他类型可修改</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">lchild</span>;</span>        <span class="hljs-comment">//指向左孩子结点指针</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">rchild</span>;</span>        <span class="hljs-comment">//指向右孩子结点指针</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> &#123;</span><br>    <span class="hljs-type">int</span> data;                     <span class="hljs-comment">//这里默认的是int型，如需其他类型可修改</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">lchild</span>;</span>        <span class="hljs-comment">//指向左孩子结点指针</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">rchild</span>;</span>        <span class="hljs-comment">//指向右孩子结点指针</span><br>&#125; BTNode;<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-2-声明结点变量"><a href="#5-2-声明结点变量" class="headerlink" title="5.2 声明结点变量"></a>5.2 声明结点变量</h3><p>这里不需要事先说明链表所包括的结点个数，新数据到达时创建结点变量即可。</p>
+<p>以创建二叉树结点为例，方式①：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNode bt1;<br></code></pre></td></tr></table></figure>
+
+<p>方式②：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">BTNode *bt;<br>bt = (BTNode*) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span> (BTNode));<span class="hljs-comment">//此句要熟练掌握</span><br></code></pre></td></tr></table></figure>
+
+<p>方式①中只用一句就制作了一个结点，而方式②中需要两句，使用了系统已有的函数malloc()申请新结点所需内存空间，比①要烦琐。</p>
+<p>②的执行过程为：先定义一个结点的指针bt，然后用函数malloc()来<code>动态申请</code>一个结点的内存空间，接着让指针 bt 指向这片内存空间，这样就完成了一个结点变量的创建。后续不需要数据时，删除结点，释放空间（使用<code>free(bt)</code>释放）即可。</p>
+<h3 id="5-3-两种方式对比"><a href="#5-3-两种方式对比" class="headerlink" title="5.3 两种方式对比"></a>5.3 两种方式对比</h3><p>对比1：是否可以重新赋值</p>
+<blockquote>
+<p>②中的bt是个指针型变量，用来存储刚创建好的结点的地址。因bt是变量，虽然现在bt指向了刚生成的结点，但是在以后必要的时候bt可以离开这个结点转而指向其他结点。而①则不行，①中的bt1就是某个结点的名字，一旦定义好，它就不能脱离这个结点了。</p>
+<p>结论：②比①更灵活，因此②用得多。</p>
+</blockquote>
+<p>对比2：①和②中的BT取分量的操作也是不同的。比如，想取其data 域的值赋给x。</p>
+<p>对于①，用结构体变量直接取分量，其操作用<code>“.”</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x = bt1.data;<br></code></pre></td></tr></table></figure>
+
+<p>对于②，用指向结构体变量的指针来取分量，其操作用<code>“-&gt;”</code></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> x = bt-&gt;data;<br><span class="hljs-comment">//等同于</span><br><span class="hljs-type">int</span> x = (*bt).data; <span class="hljs-comment">//这里的()不要省略</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>考研数据结构中所有类型结点的内存分配中使用最多的就是方式② ，即使用函数malloc()来完成，模式固定，务必记忆。</p>
+</blockquote>
+<p><strong>注意点</strong></p>
+<p>可能会有人认可如下的两种简便写法。虽然这种写法简单，但是在一些纯C编译器中是不通过的，如果你所报考的目标学校严格要求用纯C语言来写程序，则不能这样写结构体定义。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//链表结点：</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Node</span> &#123;</span><br>    <span class="hljs-type">int</span> data;<br>    Node *next;<br>&#125;;<br><br><span class="hljs-comment">//二叉树结点：</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> &#123;</span><br>    <span class="hljs-type">int</span> data;<br>    BTNode *lchild;<br>    BTNode *rchild;<br>&#125;;<br><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-4-malloc-模板"><a href="#5-4-malloc-模板" class="headerlink" title="5.4 malloc()模板"></a>5.4 malloc()模板</h3><p>模板：（当需要制作一个新结点时，只要把结点结构型的名称填入括号中的“类型”处即可）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">类型 *p;<br>p = (类型 *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(类型));  <span class="hljs-comment">//将=右边创建的结点的地址赋给p</span><br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> &#123;</span><br>    <span class="hljs-type">int</span> data;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">lchild</span>;</span><br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">BTNode</span> *<span class="hljs-title">rchild</span>;</span><br>&#125;BTNode;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    BTNode *newNode;<br>    newNode = (BTNode *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(BTNode));<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>此外，还可以一次申请一组结点，可以看做是动态申请数组空间的方法。如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *p;<br>p = (<span class="hljs-type">int</span> *) <span class="hljs-built_in">malloc</span>(n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>));<br></code></pre></td></tr></table></figure>
+
+<p>这样就申请了一个由指针p所指的( p指向数组中第一个元素的地址)元素为int 型的、长度为n 的动态数组。取元素时和一般的数组(静态数组)一样，如取第二个元素，则可写成p[1]。</p>
+<h3 id="5-5-举-例"><a href="#5-5-举-例" class="headerlink" title="5.5 举 例"></a>5.5 举 例</h3><p>在考研的数据结构中，只需要熟练掌握以上两种结点(链表、二叉树)的定义方法，其他结点都是由这两种衍生而来的。</p>
+<p>举例：定义结构体，表示学生结点</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">StudentNode</span> &#123;</span><br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">StudentNode</span> *<span class="hljs-title">next</span>;</span><br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>创建多个结点，彼此构成链表</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;malloc.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">StudentNode</span> &#123;</span><br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">StudentNode</span> *<span class="hljs-title">next</span>;</span><br>&#125; StuNode;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    StuNode *head;<br><br>    <span class="hljs-comment">// 生成一个三个节点的列表 &#123;1001,&quot;Tom&quot;&#125; -&gt; &#123;1002,&quot;Jerry&quot;&#125; -&gt; &#123;1003,&quot;Lily&quot;&#125;</span><br>    head = (StuNode *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(StuNode));<br>    head-&gt;id = <span class="hljs-number">1001</span>;<br>    <span class="hljs-built_in">strcpy</span>(head-&gt;name, <span class="hljs-string">&quot;Tom&quot;</span>);<br><br>    StuNode *p = (StuNode *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(StuNode));<br>    p-&gt;id = <span class="hljs-number">1002</span>;<br>    <span class="hljs-built_in">strcpy</span>(p-&gt;name, <span class="hljs-string">&quot;Jerry&quot;</span>);<br>    head-&gt;next = p;<br><br>    p = (StuNode *)<span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(StuNode));<br>    p-&gt;id = <span class="hljs-number">1003</span>;<br>    <span class="hljs-built_in">strcpy</span>(p-&gt;name, <span class="hljs-string">&quot;Lily&quot;</span>);<br>    head-&gt;next-&gt;next = p;<br><br>    <span class="hljs-comment">//遍历链表</span><br>    StuNode *cur;<br>    <span class="hljs-keyword">for</span> (cur = head; cur != <span class="hljs-literal">NULL</span>; cur = cur-&gt;next) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;id = %d,name = %s\n&quot;</span>, cur-&gt;id, cur-&gt;name);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>构成如下图的链表：</p>
+<img src="images/image-20230809144927740.png" srcset="/img/loading.gif" lazyload alt="image-20230809144927740" style="zoom:80%;">
+
+<p>为了准确定位第一个结点，每个链表要有一个表头指针，从第一个结点开始，沿指针链遍历链表中的所有结点。</p>
+<h2 id="6、共用体类型-union"><a href="#6、共用体类型-union" class="headerlink" title="6、共用体类型(union)"></a>6、共用体类型(union)</h2><h3 id="6-1-共用体概述"><a href="#6-1-共用体概述" class="headerlink" title="6.1 共用体概述"></a>6.1 共用体概述</h3><p>有时需要一种数据结构，不同的场合表示不同的数据类型。比如，如果只用一种数据结构表示学生的“成绩”，这种结构就需要有时是整数（80、90），有时是字符（’A’、’B’），又有时是浮点数（80.5、60.5）。</p>
+<p><strong>C 语言提供了共用体类型(Union 结构)，用来自定义可以灵活变更的数据结构。</strong>它内部可以包含各种属性，但同一时间只能有一个属性，因为所有属性都保存在同一个内存地址，后面写入的属性会覆盖前面的属性。这样做的最大好处是<code>节省内存空间</code>。</p>
+<p>“共用体”与“结构体”的定义形式相似，但它们的含义是不同的。</p>
+<ul>
+<li>结构体变量所占内存长度是各成员占的内存长度之和；每个成员分别占有其自己的内存单元。</li>
+<li>共用体变量所占的内存长度等于最长的成员的长度；几个成员共用一个内存区。</li>
+</ul>
+<h3 id="6-2-声明共用体"><a href="#6-2-声明共用体" class="headerlink" title="6.2 声明共用体"></a>6.2 声明共用体</h3><p>格式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> 共用体类型名称&#123;</span><br>    数据类型 成员名<span class="hljs-number">1</span>;<br>    数据类型 成员名<span class="hljs-number">2</span>;<br>    …<br>    数据类型 成员名n;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> &#123;</span><br>    <span class="hljs-type">short</span> m;<br>    <span class="hljs-type">float</span> x;<br>    <span class="hljs-type">char</span> c;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>上例中， union 命令定义了一个包含三个属性的数据类型 Data。虽然包含三个属性，但是同一时间只能取到一个属性。最后赋值的属性，就是可以取到值的那个属性。</p>
+<h3 id="6-3-声明共用体变量"><a href="#6-3-声明共用体变量" class="headerlink" title="6.3 声明共用体变量"></a>6.3 声明共用体变量</h3><p>方式1：先定义共用体类型，再定义共用体变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> &#123;</span><br>    <span class="hljs-type">short</span> m;<br>    <span class="hljs-type">float</span> x;<br>    <span class="hljs-type">char</span> c;<br>&#125;;<br><br><span class="hljs-comment">//声明共用体变量</span><br><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> <span class="hljs-title">a</span>, <span class="hljs-title">b</span>;</span><br></code></pre></td></tr></table></figure>
+
+<p>方式2：定义共用体类型的同时定义共用体变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> &#123;</span><br>    <span class="hljs-type">short</span> m;<br>    <span class="hljs-type">float</span> x;<br>    <span class="hljs-type">char</span> c;<br>&#125; a, b;<br></code></pre></td></tr></table></figure>
+
+<p>方式3：直接定义共用体类型变量</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> &#123;</span><br>    <span class="hljs-type">short</span> m;<br>    <span class="hljs-type">float</span> x;<br>    <span class="hljs-type">char</span> c;<br>&#125; a, b;<br></code></pre></td></tr></table></figure>
+
+<p>以共用体变量a为例，它由3个成员组成，分别是m、x和c，编译时，系统会按照最长的成员为它分配内存，由于成员x的长度最长，它占4个字节，所以共用体变量a的内存空间也为4个字节。</p>
+<img src="images/image-20230809144244532.png" srcset="/img/loading.gif" lazyload alt="image-20230809144244532" style="zoom:67%;">
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> &#123;</span><br>    <span class="hljs-type">short</span> m;<br>    <span class="hljs-type">float</span> x;<br>    <span class="hljs-type">char</span> c;<br>&#125; a, b;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,<span class="hljs-keyword">sizeof</span>(a));  <span class="hljs-comment">//4</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="6-4-调用共同体变量的成员"><a href="#6-4-调用共同体变量的成员" class="headerlink" title="6.4 调用共同体变量的成员"></a>6.4 调用共同体变量的成员</h3><p><strong>正确的方式</strong></p>
+<p>方式1：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> <span class="hljs-title">a</span>;</span><br>a.c = <span class="hljs-number">4</span>;<br></code></pre></td></tr></table></figure>
+
+<p>方式2：声明共同体变量的同时，给任一成员赋值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> <span class="hljs-title">a</span> =</span> &#123;.c = <span class="hljs-number">4</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>方式3：声明共同体变量的同时，给首成员赋值</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> <span class="hljs-title">a</span> =</span> &#123;<span class="hljs-number">8</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意，方式3不指定成员名，所以只能为第一个成员进行赋值。</p>
+</blockquote>
+<p><strong>错误的方式</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> <span class="hljs-title">a</span> =</span> &#123;<span class="hljs-number">1</span>,<span class="hljs-number">1.5</span>,<span class="hljs-string">&#x27;a&#x27;</span>&#125;;  <span class="hljs-comment">//错误的</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>后续操作</strong></p>
+<p>执行完上面的代码以后， 另外取其它属性取不到值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> <span class="hljs-title">a</span> =</span> &#123;.c = <span class="hljs-number">4</span>&#125;;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;c is %i\n&quot;</span>, a.c); <span class="hljs-comment">// c is 4</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x is %f\n&quot;</span>, a.x); <span class="hljs-comment">// 未定义，x is 0.000000</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果要让 a.x属性可以取到值，就要先为它赋值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">Data</span> <span class="hljs-title">a</span> =</span> &#123;.c = <span class="hljs-number">4</span>&#125;;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;c is %i\n&quot;</span>, a.c); <span class="hljs-comment">// c is 4</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x is %f\n&quot;</span>, a.x); <span class="hljs-comment">// 未定义，x is 0.000000</span><br><br>    a.x = <span class="hljs-number">0.5</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x is %f\n&quot;</span>, a.x); <span class="hljs-comment">// x is 0.500000</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;c is %i\n&quot;</span>, a.c); <span class="hljs-comment">// c is 0</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>一旦为其他属性赋值，原先可以取到值的 a.c 属性就不再有效了。除了这一点，Union 结构的其他用法与 Struct 结构，基本上是一致的。</p>
+<h3 id="6-5-操作符"><a href="#6-5-操作符" class="headerlink" title="6.5 -&gt;操作符"></a>6.5 -&gt;操作符</h3><p>Union 结构也支持指针运算符 -&gt; 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">evaluation</span> &#123;</span> <span class="hljs-comment">//评价</span><br>    <span class="hljs-type">int</span> score;<br>    <span class="hljs-type">float</span> grade;<br>    <span class="hljs-type">char</span> level;<br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">evaluation</span> <span class="hljs-title">e</span>;</span><br>    e.score = <span class="hljs-number">85</span>;<br><br>    <span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">evaluation</span> *<span class="hljs-title">p</span>;</span><br>    p = &amp;e;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, p-&gt;score); <span class="hljs-comment">// 85</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上例中， p 是 e 的指针，那么 p-&gt;score等同于 e.score。</p>
+<p>了解：Union指针与它的属性有关，当前哪个属性能够取到值，它的指针就是对应的数据类型。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">union</span> <span class="hljs-title">foo</span> &#123;</span><br>    <span class="hljs-type">int</span> a;<br>    <span class="hljs-type">float</span> b;<br>&#125; x;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    x.a = <span class="hljs-number">12</span>;<br>    <span class="hljs-type">int</span> *p1 = (<span class="hljs-type">int</span> *) &amp;x;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, x.a);  <span class="hljs-comment">// 12</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *p1); <span class="hljs-comment">// 12</span><br><br>    x.b = <span class="hljs-number">3.141592</span>;<br>    <span class="hljs-type">float</span> *p2 = (<span class="hljs-type">float</span> *) &amp;x;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%f\n&quot;</span>, x.b);  <span class="hljs-comment">// 3.141592</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%f\n&quot;</span>, *p2); <span class="hljs-comment">// 3.141592</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>上例中， &amp;x 是 foo 结构的指针，它的数据类型完全由当前赋值的属性决定。</p>
+<h3 id="6-6-补充说明"><a href="#6-6-补充说明" class="headerlink" title="6.6 补充说明"></a>6.6 补充说明</h3><ul>
+<li><p>不能对共用体变量名赋值，也不能企图引用变量名来得到一个值。只能引用共用体变量中的成员。</p>
+</li>
+<li><p>C99允许同类型的共用体变量互相赋值。</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c">a.i <span class="hljs-comment">//引用共用体变量中的整型变量i</span><br>a.ch <span class="hljs-comment">//引用共用体变量中的字符变量ch</span><br>a.f <span class="hljs-comment">//引用共用体变量中的实型变量f</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,a);   <span class="hljs-comment">//错误的</span><br><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>,a.i); <span class="hljs-comment">//正确的</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>C99允许用共用体变量作为函数参数。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">b = a; <span class="hljs-comment">//a和b是同类型的共用体变量，合法</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>共用体类型可以出现在结构体类型定义中，也可以定义共用体数组。反之，结构体也可以出现在共用体类型定义中，数组也可以作为共用体的成员。</li>
+</ul>
+<h3 id="6-7-练习"><a href="#6-7-练习" class="headerlink" title="6.7 练习"></a>6.7 练习</h3><p>现有一张关于学生信息和教师信息的表格。</p>
+<p>学生信息包括姓名、编号、性别、职业、分数；</p>
+<p>教师的信息包括姓名、编号、性别、职业、教学科目。</p>
+<p>请看下面的表格，请使用共用体编程完成。</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>id</th>
+<th>gender</th>
+<th>profession</th>
+<th>score&#x2F;course</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>孙悟空</td>
+<td>12345</td>
+<td>男(m)</td>
+<td>学生(s)</td>
+<td>89.5</td>
+</tr>
+<tr>
+<td>菩提祖师</td>
+<td>1001</td>
+<td>男(m)</td>
+<td>老师(t)</td>
+<td>math</td>
+</tr>
+<tr>
+<td>孙尚香</td>
+<td>54321</td>
+<td>女(f)</td>
+<td>学生(s)</td>
+<td>92.0</td>
+</tr>
+<tr>
+<td>诸葛亮</td>
+<td>34567</td>
+<td>男(m)</td>
+<td>老师(t)</td>
+<td>english</td>
+</tr>
+</tbody></table>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">define</span> TOTAL 2 <span class="hljs-comment">//人员总数</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> &#123;</span><br>    <span class="hljs-type">char</span> name[<span class="hljs-number">20</span>];<br>    <span class="hljs-type">int</span> id;<br>    <span class="hljs-type">char</span> gender; <span class="hljs-comment">//性别  m-&gt;男  f-&gt;女</span><br>    <span class="hljs-type">char</span> profession;<span class="hljs-comment">//职业 s-&gt;学生  t-&gt;老师</span><br>    <span class="hljs-class"><span class="hljs-keyword">union</span> &#123;</span><br>        <span class="hljs-type">float</span> score;<br>        <span class="hljs-type">char</span> course[<span class="hljs-number">20</span>];<br>    &#125; sc; <span class="hljs-comment">//sc 是一个共用体变量</span><br>&#125;;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Person</span> <span class="hljs-title">persons</span>[<span class="hljs-title">TOTAL</span>];</span>  <span class="hljs-comment">//定义一个结构体数组</span><br><br>    <span class="hljs-comment">//输入人员信息</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; TOTAL; i++) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Input info: &quot;</span>);<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s %d %c %c&quot;</span>, persons[i].name, &amp;(persons[i].id), &amp;(persons[i].gender), &amp;(persons[i].profession));<br>        <span class="hljs-keyword">if</span> (persons[i].profession == <span class="hljs-string">&#x27;s&#x27;</span>) &#123; <span class="hljs-comment">//如果是学生</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入学生成绩：&quot;</span>);<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%f&quot;</span>, &amp;persons[i].sc.score);<br>        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">//如果是老师</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入老师课程：&quot;</span>);<br>            <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%s&quot;</span>, persons[i].sc.course);<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">//输出人员信息</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\nName\tid\tgender\tProfession\tScore/Course\n&quot;</span>);<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; TOTAL; i++) &#123;<br>        <span class="hljs-keyword">if</span> (persons[i].profession == <span class="hljs-string">&#x27;s&#x27;</span>) &#123; <span class="hljs-comment">//如果是学生</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\t%d\t%c\t%c\t\t%f\n&quot;</span>, persons[i].name,<br>                   persons[i].id, persons[i].gender, persons[i].profession, persons[i].sc.score);<br>        &#125; <span class="hljs-keyword">else</span> &#123; <span class="hljs-comment">//如果是老师</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\t%d\t%c\t%c\t\t%s\n&quot;</span>, persons[i].name,<br>                   persons[i].id, persons[i].gender, persons[i].profession, persons[i].sc.course);<br>        &#125;<br><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="7、typedef-的使用-熟悉"><a href="#7、typedef-的使用-熟悉" class="headerlink" title="7、typedef 的使用(熟悉)"></a>7、typedef 的使用(熟悉)</h2><h3 id="7-1-为什么使用typedef"><a href="#7-1-为什么使用typedef" class="headerlink" title="7.1 为什么使用typedef"></a>7.1 为什么使用typedef</h3><p>C语言允许为一个数据类型起一个新的别名，就像给人起“绰号”一样。</p>
+<p>起别名的目的不是为了提高程序运行效率，而是为了<code>编码方便</code>。例如，有一个结构体的名字是 student，定义一个结构体变量stu1，代码如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">student</span> <span class="hljs-title">stu1</span>;</span><br></code></pre></td></tr></table></figure>
+
+<p>struct 看起来就是多余的，但不写又会报错。如果为 struct student起了一个别名 Student，书写起来就简单了：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">Student stu1;<br></code></pre></td></tr></table></figure>
+
+<p>这种写法更加简练，意义也非常明确，不管是在标准头文件中还是以后的编程实践中，都会大量使用这种别名。</p>
+<h3 id="7-2-使用格式"><a href="#7-2-使用格式" class="headerlink" title="7.2 使用格式"></a>7.2 使用格式</h3><p>用typedef声明数组类型、指针类型，结构体类型、共用体类型等，使得编程更加方便。</p>
+<p><strong>1、为某个基本类型起别名</strong></p>
+<p>typedef 命令用来为某个类型起别名</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> 类型名 别名;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>习惯上，常把用typedef声明的类型名的第1个字母用大写表示，以便与系统提供的标准类型标识符相区别。</p>
+</blockquote>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> Integer;  <span class="hljs-comment">//用Integer作为int类型别名，作用与int相同</span><br>Integer a, b;<br>a = <span class="hljs-number">1</span>;<br>b = <span class="hljs-number">2</span>;<br></code></pre></td></tr></table></figure>
+
+<p><code>Integer a, b;</code>等同于<code>int a, b;</code>。</p>
+<p>举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">char</span> Byte;  <span class="hljs-comment">//为类型 unsign char 起别名 Byte</span><br>Byte c = <span class="hljs-string">&#x27;z&#x27;</span>;<br></code></pre></td></tr></table></figure>
+
+<p>注意：使用 typedef 可以为基本类型一次起多个别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> chocolate, doughnut, mushroom; <span class="hljs-comment">//一次性为 int 类型起了三个别名</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>2、为结构体、共用体起别名</strong></p>
+<p>为 struct、union等命令定义的复杂数据结构创建别名，从而便于引用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">treenode</span> &#123;</span><br>  <span class="hljs-comment">// ...</span><br>&#125;;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">treenode</span>* <span class="hljs-title">Tree</span>;</span>  <span class="hljs-comment">//Tree 为 struct treenode* 的别名</span><br></code></pre></td></tr></table></figure>
+
+<p>typedef 也可以与 struct 定义数据类型的命令写在一起。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">animal</span> &#123;</span><br>  <span class="hljs-type">char</span>* name;<br>  <span class="hljs-type">int</span> legs;<br>  <span class="hljs-type">int</span> speed;<br>&#125; Animal;<br></code></pre></td></tr></table></figure>
+
+<p>上例中，自定义数据类型时，同时使用 typedef 命令，为 struct animal 起了一个别名 Animal 。</p>
+<p>这种情况下，C 语言允许省略 struct 命令后面的类型名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> &#123;</span><br>  <span class="hljs-type">char</span>* name;<br>  <span class="hljs-type">int</span> legs;<br>  <span class="hljs-type">int</span> speed;<br>&#125; Animal;<br></code></pre></td></tr></table></figure>
+
+<p>上例相当于为一个匿名的数据类型起了别名 Animal 。进而：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//使用typedef之前</span><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">animal</span> <span class="hljs-title">dog</span>;</span><br><br><span class="hljs-comment">//使用typedef之后</span><br>Animal dog;<br></code></pre></td></tr></table></figure>
+
+<p>再举例：typedef 命令可以为 union 数据类型起别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">union</span> &#123;</span><br>  <span class="hljs-type">short</span> count;<br>  <span class="hljs-type">float</span> weight;<br>  <span class="hljs-type">float</span> volume;<br>&#125; quantity;<br></code></pre></td></tr></table></figure>
+
+<p>上例中， union 命令定义了一个包含三个属性的数据类型， typedef 命令为它起别名为quantity 。</p>
+<p><strong>3、为指针起别名</strong></p>
+<p>typedef 可以为指针起别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span>* intptr;<br><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br>intptr x = &amp;a;<br></code></pre></td></tr></table></figure>
+
+<p>上例中， intptr 是 int* 的别名。不过，使用的时候要小心，这样不容易看出来，变量 x 是一个指针类型。</p>
+<p>再举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">char</span>* String;<br><br><span class="hljs-type">char</span> * str1 = <span class="hljs-string">&quot;hello&quot;</span>; <span class="hljs-comment">//之前的写法</span><br>String str2 = <span class="hljs-string">&quot;hello&quot;</span>; <span class="hljs-comment">//现在的写法</span><br></code></pre></td></tr></table></figure>
+
+<p>为字符指针起别名为 String，以后使用 String声明变量时，就可以轻易辨别该变量是字符串。</p>
+<p><strong>4、为数组类型起别名</strong></p>
+<p>typedef 也可以用来为数组类型起别名。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//举例1</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> five_ints[<span class="hljs-number">5</span>];<br>five_ints x = &#123;<span class="hljs-number">11</span>, <span class="hljs-number">22</span>, <span class="hljs-number">33</span>, <span class="hljs-number">44</span>, <span class="hljs-number">55</span>&#125;;  <br><br><span class="hljs-comment">//举例2</span><br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> Num[<span class="hljs-number">100</span>]; <span class="hljs-comment">//声明Num为整型数组类型名</span><br>Num a; <span class="hljs-comment">//定义a为整型数组名，它有100个元素</span><br></code></pre></td></tr></table></figure>
+
+<p>上例中， five_ints 是一个数组类型。我们把原有的<code>int [5]</code>看做是数组的类型。</p>
+<p>举例：指针数组</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">int</span> <span class="hljs-params">(*PTR_TO_ARR)</span>[4];<br></code></pre></td></tr></table></figure>
+
+<p>表示 PTR_TO_ARR 是类型<code>int * [4]</code>的别名，它是一个二维数组指针类型。接着可以使用 PTR_TO_ARR 定义二维数组指针：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">PTR_TO_ARR p1, p2;<br></code></pre></td></tr></table></figure>
+
+<p><strong>5、为函数起别名</strong></p>
+<p>typedef 为函数起别名的写法如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">signed</span> <span class="hljs-title function_">char</span> <span class="hljs-params">(*fp)</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>;<br></code></pre></td></tr></table></figure>
+
+<p>类型别名 fp 是一个指针，代表函数 signed char (*)(void) 。</p>
+<p>再举例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">int</span> <span class="hljs-params">(*PTR_TO_FUNC)</span><span class="hljs-params">(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>)</span>;<br>PTR_TO_FUNC pfunc;<br></code></pre></td></tr></table></figure>
+
+<h3 id="7-3-举-例"><a href="#7-3-举-例" class="headerlink" title="7.3 举 例"></a>7.3 举 例</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">add</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123;<br>    <span class="hljs-type">int</span> sum = a + b;<br>    <span class="hljs-keyword">return</span> sum;<br>&#125;<br><br><span class="hljs-type">char</span> str[<span class="hljs-number">3</span>][<span class="hljs-number">30</span>] = &#123;<span class="hljs-string">&quot;尚硅谷教育&quot;</span>, <span class="hljs-string">&quot;www.atguigu.com&quot;</span>, <span class="hljs-string">&quot;010-56253825&quot;</span>&#125;;<br><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">int</span><span class="hljs-params">(*PTR_FUNC)</span><span class="hljs-params">(<span class="hljs-type">int</span>,<span class="hljs-type">int</span>)</span>;<br><br><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">char</span> <span class="hljs-params">(*PTR_ARR)</span>[30];<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-comment">//使用函数指针</span><br>    <span class="hljs-type">int</span> (*add_ptr)(<span class="hljs-type">int</span>,<span class="hljs-type">int</span>);<br>    add_ptr = &amp;add;<br>    <span class="hljs-type">int</span> sum = (*add_ptr)(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sum = %d\n&quot;</span>,sum);<br><br>    <span class="hljs-comment">//使用数组指针</span><br>    <span class="hljs-type">char</span> (*arr_ptr)[<span class="hljs-number">30</span>]; <span class="hljs-comment">//arr_ptr是一个指针，指向30个元素构成的char型数组</span><br>    arr_ptr = str; <span class="hljs-comment">//将str[0]的首地址赋给ptr_arr指针</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">3</span>;i++)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;str[%d]=%s\n&quot;</span>,i,*(arr_ptr + i));<br>    &#125;<br><br>    <span class="hljs-comment">//使用typedef之后：</span><br>    <span class="hljs-comment">//调用函数</span><br>    PTR_FUNC ptr_add = &amp;add;<br>    <span class="hljs-type">int</span> sum1 = (*ptr_add)(<span class="hljs-number">10</span>,<span class="hljs-number">20</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;sum1 = %d\n&quot;</span>,sum1);<br><br>    <span class="hljs-comment">//调用数组</span><br>    PTR_ARR ptr_arr = str;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">3</span>;i++)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;str[%d]=%s\n&quot;</span>,i,*(ptr_arr + i));<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="7-4-小-结"><a href="#7-4-小-结" class="headerlink" title="7.4 小 结"></a>7.4 小 结</h3><p>(1) typedef的方法实际上是为特定的类型指定了一个同义字(synonyms)。</p>
+<p>(2) 用typedef只是对已经存在的类型指定一个新的类型名，而没有创造新的类型。</p>
+<p>(3) typedef与#define是不同的。#define是在<code>预编译时处理</code>的，它只能作简单的字符串替换，而typedef是在<code>编译阶段处理</code>的，且并非简单的字符串替换。</p>
+<p>(4) 当不同源文件中用到同一类型数据（尤其是像数组、指针、结构体、共用体等类型数据）时，常用typedef 声明这些同一的数据类型。</p>
+<p>技巧：可以把所有的typedef名称声明单独<code>放在一个头文件</code>中，然后在需要用到它们的文件中用#include指令把它们包含到文件中。这样编程者就不需要在各文件中自己定义typedef名称了。</p>
+<p>(5) 使用typedef名称有利于<code>程序的通用与移植</code>。有时程序会依赖于硬件特性，用typedef类型就便于移植。</p>
+<p>某一个值在不同计算机上的类型，可能是不一样的。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> i = <span class="hljs-number">100000</span>;<br></code></pre></td></tr></table></figure>
+
+<p>上面代码在32位整数的计算机没有问题，但是在16位整数的计算机就会出错。C 语言的解决办法，就是提供了类型别名，在不同计算机上会解释成不同类型，比如 int32_t 。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int32_t</span> i = <span class="hljs-number">100000</span>;<br></code></pre></td></tr></table></figure>
+
+<p>上例将变量 i 声明成 int32_t 类型，保证它在不同计算机上都是32位宽度，移植代码时就不会出错。</p>
+<p>这一类的类型别名都是用 typedef 定义的。下面是类似的例子。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> <span class="hljs-type">ptrdiff_t</span>;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">unsigned</span> <span class="hljs-type">long</span> <span class="hljs-type">int</span> <span class="hljs-type">size_t</span>;<br><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> <span class="hljs-type">wchar_t</span>;<br></code></pre></td></tr></table></figure>
+
+<p>这些整数类型别名都放在头文件 stdint.h ，不同架构的计算机只需修改这个头文件即可，而无需修改代码。</p>
+<h3 id="7-5-应用场景"><a href="#7-5-应用场景" class="headerlink" title="7.5 应用场景"></a>7.5 应用场景</h3><p><strong>场景1：</strong></p>
+<p>在考研中， typedef主要用在结构体的定义过程中，如二叉树结点的结构体定义，其他地方几乎不用。新定义的结构体若没有名字，则用typedef 给它起个名字是有必要的。</p>
+<p><strong>场景2：</strong></p>
+<p>对于已有的数据类型，如int、float等已经有了简洁的名字，还有必要给它起个新名字吗？有必要，但不是在考研数据结构中。举个例子：</p>
+<p>在一个大工程中，对于其中的一个变量，在整个工程中都已经用int 型定义过了，但是工程如果要求修改，将所有int 型换成long型，如果事先给int型起个新名字为ElemType，则在整个工程中凡是类似于int x;的语句都写成ElemType x; ，此时只需将typedef int ElemType这一句中的int 换成long 即可实现全局的数据类型替换，这就是typedef 的意义所在。（上述这些对考研答卷的实际意义并不大。）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> ElemType;<br>ElemType i1, i2, i3;<br></code></pre></td></tr></table></figure>
+
+<p>上例中，变量 i1 、 i2 、 i3 的类型都是 int。如果以后需要为它们改类型，只需要修改typedef 语句即可。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-type">long</span> ElemType;<br></code></pre></td></tr></table></figure>
+
+<p>上面命令将变量 i1 、 i2 、 i3 的类型都改为 long。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/C/" class="category-chain-item">C</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MySQL高级一</div>
+      <div>http://example.com/2024/04/28/技术栈/C/第07章_结构体与共用体/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年4月28日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/" title="MySQL高级一">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">MySQL高级一</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC08%E7%AB%A0_C%E8%AF%AD%E8%A8%80%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="MySQL高级一">
+                        <span class="hidden-mobile">MySQL高级一</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
