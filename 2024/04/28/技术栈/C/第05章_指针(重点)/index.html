@@ -19,23 +19,23 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="第05章_指针指针是 C 语言最重要的概念之一，也是最难理解的概念之一。 指针是C语言的精髓，要想掌握C语言就需要深入地了解指针。 指针类型在考研中用得最多的地方，就是和结构体结合起来构造结点(如链表的结点、二叉树的结点等)。 本章专题脉络  1、指针的理解与定义1.1 变量的访问方式计算机中程序的运行都是在内存中进行的，变量也是在内存中分配的空间，且不同类型的变量占用不同大小的空间。那如何访问内">
+    <meta name="description" content="第05章_指针指针是 C 语言最重要的概念之一，也是最难理解的概念之一。 指针是C语言的精髓，要想掌握C语言就需要深入地了解指针。 指针类型在考研中用得最多的地方，就是和结构体结合起来构造结点(如链表的结点、二叉树的结点等)。 本章专题脉络   1int num &#x3D; 5;  )   通过地址能找到所需的变量单元，可以说，地址指向该变量单元，将地址形象化地称为“指针”。即：  变量：命名的内存空间，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MySQL高级一">
+<meta property="og:title" content="5、指针">
 <meta property="og:url" content="http://example.com/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="第05章_指针指针是 C 语言最重要的概念之一，也是最难理解的概念之一。 指针是C语言的精髓，要想掌握C语言就需要深入地了解指针。 指针类型在考研中用得最多的地方，就是和结构体结合起来构造结点(如链表的结点、二叉树的结点等)。 本章专题脉络  1、指针的理解与定义1.1 变量的访问方式计算机中程序的运行都是在内存中进行的，变量也是在内存中分配的空间，且不同类型的变量占用不同大小的空间。那如何访问内">
+<meta property="og:description" content="第05章_指针指针是 C 语言最重要的概念之一，也是最难理解的概念之一。 指针是C语言的精髓，要想掌握C语言就需要深入地了解指针。 指针类型在考研中用得最多的地方，就是和结构体结合起来构造结点(如链表的结点、二叉树的结点等)。 本章专题脉络   1int num &#x3D; 5;  )   通过地址能找到所需的变量单元，可以说，地址指向该变量单元，将地址形象化地称为“指针”。即：  变量：命名的内存空间，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/c.png">
 <meta property="article:published_time" content="2024-04-28T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-01-29T12:03:00.608Z">
+<meta property="article:modified_time" content="2025-01-29T16:18:57.112Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/c.png">
   
   
   
-  <title>MySQL高级一 - PZ</title>
+  <title>5、指针 - PZ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="MySQL高级一"></span>
+            <span id="subtitle" data-typed-text="5、指针"></span>
           
         </div>
 
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k 字
+          5k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          92 分钟
+          42 分钟
         
       </span>
     
@@ -272,7 +272,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">MySQL高级一</h1>
+            <h1 id="seo-header">5、指针</h1>
             
             
               <div class="markdown-body">
@@ -280,17 +280,32 @@
                 <h1 id="第05章-指针"><a href="#第05章-指针" class="headerlink" title="第05章_指针"></a>第05章_指针</h1><p>指针是 C 语言<code>最重要</code>的概念之一，也是最<code>难理解</code>的概念之一。</p>
 <p>指针是C语言的<code>精髓</code>，要想掌握C语言就需要深入地了解指针。</p>
 <p>指针类型在考研中用得最多的地方，就是和结构体结合起来<code>构造结点</code>(如链表的结点、二叉树的结点等)。</p>
-<h2 id="本章专题脉络"><a href="#本章专题脉络" class="headerlink" title="本章专题脉络"></a>本章专题脉络</h2><img src="images/第5章_指针.png" srcset="/img/loading.gif" lazyload alt="第5章_指针" style="zoom: 50%;">
+<h2 id="本章专题脉络"><a href="#本章专题脉络" class="headerlink" title="本章专题脉络"></a>本章专题脉络</h2><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/第5章_指针.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;">
+<!--
 
+<img src="第05章_指针(重点)\第5章_指针.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
+
+<p>–&gt;</p>
 <h2 id="1、指针的理解与定义"><a href="#1、指针的理解与定义" class="headerlink" title="1、指针的理解与定义"></a>1、指针的理解与定义</h2><h3 id="1-1-变量的访问方式"><a href="#1-1-变量的访问方式" class="headerlink" title="1.1 变量的访问方式"></a>1.1 变量的访问方式</h3><p>计算机中程序的运行都是在内存中进行的，变量也是在内存中分配的空间，且不同类型的变量占用不同大小的空间。那如何访问内存中变量存储的数据呢？有两种方式：<code>直接访问</code>和<code>间接访问</code>。直接访问，直接使用变量名进行的访问，以前的程序中都是采用这种方式。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num1 = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> num2 = <span class="hljs-number">20</span>;<br><span class="hljs-type">int</span> num3 = num1 + num2;<br></code></pre></td></tr></table></figure>
 
 <p>间接访问，通过指针来实现。下面看如何理解指针。</p>
 <h3 id="1-2-内存地址与指针"><a href="#1-2-内存地址与指针" class="headerlink" title="1.2 内存地址与指针"></a>1.2 内存地址与指针</h3><p>为了能够有效的访问到内存的每个单元(即一个字节)，就给内存单元进行了编号，这些编号被称为该<strong>内存单元的地址</strong>。因为每个内存单元都有地址，所以变量存储的数据也是有地址的。</p>
-<p><img src="/images/image-20230809113257075.png" srcset="/img/loading.gif" lazyload alt="image-20230809113257075"></p>
+<p><img src="/image-20230809113257075.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230809113257075.png](第05章_指针(重点)\image-20230809113257075.png)
+
+-->
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num = <span class="hljs-number">5</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/images/image-20230808160923041.png" srcset="/img/loading.gif" lazyload alt="image-20230808160923041"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808160923041.png" srcset="/img/loading.gif" lazyload>)</p>
+<!--
+
+![image-20230808160923041](第05章_指针(重点)\image-20230808160923041.png)
+-->
+
 <p>通过地址能找到所需的变量单元，可以说，<strong>地址指向该变量单元</strong>，将<strong>地址形象化地称为“指针”</strong>。即：</p>
 <ul>
 <li><p><code>变量</code>：命名的内存空间，用于存放各种类型的数据。</p>
@@ -302,11 +317,23 @@
 <li><p><code>变量的地址</code>：变量所使用的内存空间的地址，即<code>指针</code>。</p>
 </li>
 </ul>
-<p><img src="/images/image-20230808155204785.png" srcset="/img/loading.gif" lazyload alt="image-20230808155204785"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808155204785.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230808155204785.png](第05章_指针(重点)\image-20230808155204785.png)
+
+-->
+
 <ul>
 <li><code>指针变量</code>：一个变量专门用来存放另一变量在内存中数据的地址 (即指针)，则它称为“指针变量”。我们可以通过访问指针变量达到访问内存中另一个变量数据的目的。(有时为了阐述方便，将指针变量直接说成指针。)</li>
 </ul>
-<p><img src="/images/image-20230808160942652.png" srcset="/img/loading.gif" lazyload alt="image-20230808160942652"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808160942652.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230808160942652.png](第05章_指针(重点)\image-20230808160942652.png)
+
+-->
+
 <p>上图中，地址0x00000001是变量 i 的指针，i_pointer就是一个指针变量。</p>
 <blockquote>
 <p>体会：指针就是内存地址，使用指针访问变量，就是直接对内存地址中的数据进行操作。</p>
@@ -340,7 +367,13 @@
 
 <h3 id="1-4-指针的应用场景"><a href="#1-4-指针的应用场景" class="headerlink" title="1.4 指针的应用场景"></a>1.4 指针的应用场景</h3><p>场景1：使用指针访问变量或数组的元素。</p>
 <p>场景2：应用在数据结构中。比如：</p>
-<p><img src="/images/image-20230809115315139.png" srcset="/img/loading.gif" lazyload alt="image-20230809115315139"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230809115315139.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230809115315139.png](第05章_指针(重点)\image-20230809115315139.png)
+
+-->
+
 <h2 id="2、指针的运算"><a href="#2、指针的运算" class="headerlink" title="2、指针的运算"></a>2、指针的运算</h2><p>指针作为一种特殊的数据类型可以参与运算，但与其他数据类型不同的是，指针的运算都是针对内存中的地址来实现的。</p>
 <h3 id="2-1-取址运算符："><a href="#2-1-取址运算符：" class="headerlink" title="2.1 取址运算符：&amp;"></a>2.1 取址运算符：&amp;</h3><p>取址运算符，使用“<code>&amp;</code>”符号来表示。作用：<code>取出指定变量在内存中的地址</code>，其语法格式如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">&amp;变量<br></code></pre></td></tr></table></figure>
@@ -356,7 +389,13 @@
 <p>举例2：将变量的地址赋值给指针变量</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> *p; <span class="hljs-comment">//p为一个整型指针变量</span><br>p = &amp;num; <br></code></pre></td></tr></table></figure>
 
-<p><img src="/images/image-20230808161218566.png" srcset="/img/loading.gif" lazyload alt="image-20230808161218566"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808161218566.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230808161218566.png](第05章_指针(重点)\image-20230808161218566.png)
+
+-->
+
 <p>举例3：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> d = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> *e, *f;<br>e = &amp;d;<br>f = e;<br></code></pre></td></tr></table></figure>
 
@@ -372,8 +411,12 @@
 <p>举例4：通过指针变量修改指向的内存中的数据</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">int</span> num = <span class="hljs-number">10</span>, *ptr;<br>    ptr = &amp;num;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,num);<br><br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, ptr); <span class="hljs-comment">//等价于scanf(&quot;%d&quot;, &amp;num);</span><br>    <br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,num);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<img src="images/image-20230809114210755.png" srcset="/img/loading.gif" lazyload alt="image-20230809114210755" style="zoom: 67%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230809114210755.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;">
+<!--
 
+<img src="第05章_指针(重点)\image-20230809114210755.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;" />
+
+<p>–&gt;</p>
 <h3 id="2-2-取值运算符："><a href="#2-2-取值运算符：" class="headerlink" title="2.2 取值运算符：*"></a>2.2 取值运算符：*</h3><p>在C语言中针对指针运算还提供了一个取值运算符，使用“<code>*</code>”符号表示。其<code>作用与&amp;相反</code>，根据一个给定的内存地址取出该地址对应变量的值。也称为<code>解引用符号</code>。其格式如下：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">*指针表达式<br></code></pre></td></tr></table></figure>
 
@@ -391,10 +434,22 @@
 <p>举例3：通过指针变量修改指向内存地址位置上的值</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">int</span> num = <span class="hljs-number">10</span>;<br>    <span class="hljs-type">int</span> *p = &amp;num;<br>    *p = <span class="hljs-number">20</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num = %d\n&quot;</span>,num);  <span class="hljs-comment">//num = 20</span><br><br>    <span class="hljs-type">char</span> ch = <span class="hljs-string">&#x27;w&#x27;</span>;<br>    <span class="hljs-type">char</span>* pc = &amp;ch;<br>    *pc = <span class="hljs-string">&#x27;s&#x27;</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;ch = %c\n&quot;</span>, ch); <span class="hljs-comment">//ch = &#x27;s&#x27;</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/images/image-20230808181707841.png" srcset="/img/loading.gif" lazyload alt="image-20230808181707841"></p>
+<p><img src="/image-20230808181707841.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230808181707841.png](第05章_指针(重点)\image-20230808181707841.png)
+
+-->
+
 <p>举例4：</p>
 <p>定义指针变量 p1、p2，默认各自指向整数a、b，a、b从键盘输入。设计程序，使得 p1 指向其中的较大值，p2 指向其中的较小值 。</p>
-<p><img src="/images/image-20230831093326127.png" srcset="/img/loading.gif" lazyload alt="image-20230831093326127"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230831093326127.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230831093326127.png](第05章_指针(重点)\image-20230831093326127.png)
+
+-->
+
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">int</span> *p1, *p2, *p, a, b;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入两个整数: &quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d,%d&quot;</span>, &amp;a, &amp;b);<br>    p1 = &amp;a;<br>    p2 = &amp;b;<br>    <span class="hljs-keyword">if</span> (a &lt; b) &#123;<br>        p = p1;<br>        p1 = p2;<br>        p2 = p;<br>    &#125;<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;输出p1、p2: &quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d,%d\n&quot;</span>, *p1, *p2);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>举例5：已有代码如下：</p>
@@ -418,7 +473,13 @@
 
 <p>说明：s + 1 表示指针向内存地址的高位移动一个单位，而一个单位的 short 类型占据两个字节的宽度，所以相当于向高位移动两个字节。</p>
 <p>再比如：变量a、b、c、d和e都是整型数据int类型，它们在内存中占据一块连续的存储区域。指针变量p指向变量a，也就是p的值是0xFF12，则：</p>
-<p><img src="/images/image-20230808164019404.png" srcset="/img/loading.gif" lazyload alt="image-20230808164019404"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808164019404.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230808164019404.png](第05章_指针(重点)\image-20230808164019404.png)
+
+-->
+
 <p>说明：指针p+1并不是地址+1，而是指针p指向数组中的下一个数据。比如，int *p，p+1表示当前地址+4，指向下一个整型数据。</p>
 <p>举例1：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br><br>    <span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-type">int</span> *p = &amp;arr[<span class="hljs-number">1</span>];<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p的地址为：%p,对应的值为%d\n&quot;</span>, p, *p); <span class="hljs-comment">//p1的地址为：000000df21bff6e4,对应的值为2</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p+1=的地址为：%p,对应的值为%d\n&quot;</span>, p + <span class="hljs-number">1</span>, *(p + <span class="hljs-number">1</span>)); <span class="hljs-comment">//p1+1=的地址为：000000df21bff6e8,对应的值为3</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p-1=的地址为：%p,对应的值为%d\n&quot;</span>, p - <span class="hljs-number">1</span>, *(p - <span class="hljs-number">1</span>)); <span class="hljs-comment">//p1-1=的地址为：000000df21bff6e0,对应的值为1</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -428,8 +489,12 @@
 </blockquote>
 <p>举例2：</p>
 <p>对于长度是 N 的一维数组 a，当使用指针 p 指向其首元素后，即可通过指针 p 访问数组的各个元素。</p>
-<img src="images/image-20230808180239442.png" srcset="/img/loading.gif" lazyload alt="image-20230808180239442" style="zoom:80%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808180239442.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<!--
 
+<img src="第05章_指针(重点)\image-20230808180239442.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
+
+<p>–&gt;</p>
 <p>其中：</p>
 <ul>
 <li><p><code>a[0]</code>用 <code>*p</code> 表示</p>
@@ -485,8 +550,12 @@
 <p>举例2：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-type">int</span> *p1 = &amp;arr[<span class="hljs-number">0</span>];<br>    <span class="hljs-type">int</span> *p2 = &amp;arr[<span class="hljs-number">3</span>];<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p1的地址为：%d\n&quot;</span>, p1); <span class="hljs-comment">//497022544</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p2的地址为：%d\n&quot;</span>, p2); <span class="hljs-comment">//497022556</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;p2-p1=%d\n&quot;</span>, p2 - p1); <span class="hljs-comment">//3 等同于 (497022556 - 497022544)/4 ==&gt; 3</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<img src="images/image-20230808200939114.png" srcset="/img/loading.gif" lazyload alt="image-20230808200939114" style="zoom:80%;">
+<img src="image-20230808200939114.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
+<!--
 
+<img src="第05章_指针(重点)\image-20230808200939114.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
+
+<p>–&gt;</p>
 <blockquote>
 <p>体会：两个指针相减，通常两个指针都是指向同一数组中的元素才有意义。结果是两个地址之差除以数组元素的长度。不相干的两个变量的地址，通常没有做减法的必要。</p>
 </blockquote>
@@ -547,7 +616,13 @@
 
 <h4 id="②-指针越界访问"><a href="#②-指针越界访问" class="headerlink" title="② 指针越界访问"></a>② 指针越界访问</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> arr[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-type">int</span> *p = arr;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">10</span>; i++,p++) &#123;<br>        *p = i;                   <span class="hljs-comment">//i=10时越界</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/images/image-20230808182041120.png" srcset="/img/loading.gif" lazyload alt="image-20230808182041120"></p>
+<p><img src="/image-20230808182041120.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230808182041120.png](第05章_指针(重点)\image-20230808182041120.png)
+
+-->
+
 <p>当i&#x3D;10时，此时<code>*p</code>访问的内存空间不在数组有效范围内，此时<code>*p</code>就属于非法访问内存空间，p为野指针。</p>
 <h4 id="③-指针指向已释放的空间"><a href="#③-指针指向已释放的空间" class="headerlink" title="③ 指针指向已释放的空间"></a>③ 指针指向已释放的空间</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> *<span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br>    <span class="hljs-keyword">return</span> &amp;a;          <span class="hljs-comment">//&amp;a=0x0012ff40</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> *p = test();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d&quot;</span>, *p);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -584,8 +659,12 @@
 <p>举例1：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a = <span class="hljs-number">10</span>;<br><span class="hljs-type">int</span> *pa = &amp;a;  <span class="hljs-comment">//pa是一级指针</span><br><span class="hljs-type">int</span> **ppa = &amp;pa; <span class="hljs-comment">//ppa是二级指针，类型为int **</span><br></code></pre></td></tr></table></figure>
 
-<img src="images/image-20230808183554248.png" srcset="/img/loading.gif" lazyload alt="image-20230808183554248" style="zoom:80%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808183554248.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<!--
 
+<img src="第05章_指针(重点)\image-20230808183554248.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
+
+<p>–&gt;</p>
 <blockquote>
 <p>进而推理，会有int ***pppa &#x3D; &ppa; 等情况，但这些情况一般不会遇到。</p>
 </blockquote>
@@ -599,8 +678,12 @@
 <p>举例2：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> var = <span class="hljs-number">3000</span>;<br>    <span class="hljs-type">int</span> *ptr = &amp;var;        <span class="hljs-comment">// 一级指针指向 var</span><br>    <span class="hljs-type">int</span> **pptr = &amp;ptr;      <span class="hljs-comment">// 二级指针指向 ptr</span><br>    <span class="hljs-type">int</span> ***ppptr = &amp;pptr;   <span class="hljs-comment">// 三级指针指向 pptr</span><br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Value of var: %d\n&quot;</span>, var);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Value of ptr: %d\n&quot;</span>, *ptr);         <span class="hljs-comment">// 解引用一次</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Value of pptr: %d\n&quot;</span>, **pptr);      <span class="hljs-comment">// 解引用两次</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Value of ppptr: %d\n&quot;</span>, ***ppptr);   <span class="hljs-comment">// 解引用三次</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<img src="images/image-20230831185356677.png" srcset="/img/loading.gif" lazyload alt="image-20230831185356677" style="zoom: 50%;">
+<img src="image-20230831185356677.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
+<!--
 
+<img src="第05章_指针(重点)\image-20230831185356677.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
+
+<p>–&gt;</p>
 <p>举例3：使用malloc()函数创建二维数组</p>
 <p>malloc()函数用于动态分配堆内存，free()函数用于释放堆内存。这两个函数通常都是配合一起使用的。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span><br><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> rows, cols;<span class="hljs-comment">// 定义二维数组的行和列</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;第一维为：&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;rows);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;第二维为：&quot;</span>);<br>    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;cols);<br><br>    <span class="hljs-type">int</span> **<span class="hljs-built_in">array</span> = (<span class="hljs-type">int</span> **) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span> *) * rows);<span class="hljs-comment">//先创建第一维</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; rows; i++) &#123;<br>        <span class="hljs-comment">//在内层循环中动态创建第二维</span><br>        <span class="hljs-built_in">array</span>[i] = (<span class="hljs-type">int</span> *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>) * cols);<br>        <span class="hljs-comment">//</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; cols; j++) &#123;<br>            <span class="hljs-built_in">array</span>[i][j] = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d　&quot;</span>, <span class="hljs-built_in">array</span>[i][j]);<br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    &#125;<br><br>    <span class="hljs-built_in">free</span>(<span class="hljs-built_in">array</span>);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -608,10 +691,18 @@
 
 
 <h2 id="5、专题：指针与数组"><a href="#5、专题：指针与数组" class="headerlink" title="5、专题：指针与数组"></a>5、专题：指针与数组</h2><p>复习：</p>
-<img src="images/image-20230809114210755.png" srcset="/img/loading.gif" lazyload alt="image-20230809114210755" style="zoom: 67%;">
+<img src="image-20230809114210755-173816720711844.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;" />
+<!--
 
-<img src="images/image-20230901173513831.png" srcset="/img/loading.gif" lazyload alt="image-20230901173513831" style="zoom:67%;">
+<img src="第05章_指针(重点)\image-20230809114210755-173816720711844.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;" />
 
+<p>–&gt;</p>
+<img src="image-20230901173513831.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+<!--
+
+<img src="第05章_指针(重点)\image-20230901173513831.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p>–&gt;</p>
 <ul>
 <li>“<code>*</code>“，也称为解引用符号，其<code>作用与&amp;相反</code>。</li>
 <li>“<code>*</code>“，后面只能跟指针(即地址)或指针变量，”<code>&amp;</code>“后面跟的是普通变量(包括指针变量)。</li>
@@ -619,7 +710,13 @@
 <h3 id="5-1-一维数组与指针"><a href="#5-1-一维数组与指针" class="headerlink" title="5.1 一维数组与指针"></a>5.1 一维数组与指针</h3><h4 id="5-1-1-指向一维数组的指针变量"><a href="#5-1-1-指向一维数组的指针变量" class="headerlink" title="5.1.1 指向一维数组的指针变量"></a>5.1.1 指向一维数组的指针变量</h4><p>所谓<code>数组元素的指针就是数组元素的地址</code>。可以用一个指针变量指向一个数组元素。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> a[<span class="hljs-number">10</span>]=&#123;<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">6</span>,<span class="hljs-number">8</span>,<span class="hljs-number">10</span>,<span class="hljs-number">12</span>,<span class="hljs-number">14</span>,<span class="hljs-number">16</span>,<span class="hljs-number">18</span>,<span class="hljs-number">20</span>&#125;; <br><span class="hljs-type">int</span> *p; <span class="hljs-comment">//定义p为指向整型变量的指针变量</span><br>p = &amp;a[<span class="hljs-number">0</span>]; <span class="hljs-comment">//把a[0]元素的地址赋给指针变量p</span><br></code></pre></td></tr></table></figure>
 
-<p><img src="/images/image-20230808164241559.png" srcset="/img/loading.gif" lazyload alt="image-20230808164241559"></p>
+<p><img src="/image-20230808164241559.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230808164241559.png](第05章_指针(重点)\image-20230808164241559.png)
+
+-->
+
 <p>如下几个写法是等价的：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *p;<br>p = &amp;a[<span class="hljs-number">0</span>];  <span class="hljs-comment">//千万不要写成*p = &amp;a[0];，那就错了</span><br></code></pre></td></tr></table></figure>
 
@@ -638,8 +735,12 @@
 <li><p><code>*(p+i)</code>或<code>*(a+i)</code>是<code>p+i</code>或<code>a+i</code>所指向的数组元素的值，即a[i]的值。</p>
 </li>
 </ul>
-<img src="images/image-20230808165619039.png" srcset="/img/loading.gif" lazyload alt="image-20230808165619039" style="zoom:80%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230808165619039.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<!--
 
+<img src="第05章_指针(重点)\image-20230808165619039.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
+
+<p>–&gt;</p>
 <p>举例1：数组元素赋值、遍历</p>
 <p>方式1：下标法</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> N 5</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> a[N];<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;请输入%d个整数：\n&quot;</span>,N);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>        <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;a[i]); <span class="hljs-comment">//数组元素用数组名和下标表示</span><br><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; N; i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, a[i]);<br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -672,7 +773,13 @@
 <h4 id="5-1-4-数组名"><a href="#5-1-4-数组名" class="headerlink" title="5.1.4 &amp;数组名"></a>5.1.4 &amp;数组名</h4><p>举例1：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">//复习</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> arr[<span class="hljs-number">5</span>] = &#123;<span class="hljs-number">0</span>&#125;;<br>    <span class="hljs-type">int</span> *p = arr;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>,p);  <span class="hljs-comment">//000000000034fa50</span><br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>,&amp;p); <span class="hljs-comment">//000000000037fbd8</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/images/image-20230831171558898.png" srcset="/img/loading.gif" lazyload alt="image-20230831171558898"></p>
+<p><img src="/image-20230831171558898.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230831171558898.png](第05章_指针(重点)\image-20230831171558898.png)
+
+-->
+
 <p>进一步思考：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, arr);  <span class="hljs-comment">//000000000034fa50</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>, &amp;arr); <span class="hljs-comment">//000000000034fa50</span><br></code></pre></td></tr></table></figure>
 
@@ -697,7 +804,13 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]);  <span class="hljs-comment">//二维数组中元素a[0][0]的值</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>,&amp;a[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]); <span class="hljs-comment">//二维数组中元素a[0][0]的值对应的地址</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>,a[<span class="hljs-number">0</span>]);     <span class="hljs-comment">//二维数组中a[0][0]的地址</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>,a);        <span class="hljs-comment">//二维数组中a[0]的地址</span><br><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%p\n&quot;</span>,&amp;a);       <span class="hljs-comment">//二维数组a的地址</span><br></code></pre></td></tr></table></figure>
 
 <p>对应图示</p>
-<p><img src="/images/1689128732557.png" srcset="/img/loading.gif" lazyload alt="1689128732557"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/1689128732557.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1689128732557.png](第05章_指针(重点)\1689128732557.png)
+
+-->
+
 <p>举例：</p>
 <table>
 <thead>
@@ -807,8 +920,12 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> *arr[<span class="hljs-number">5</span>];<br></code></pre></td></tr></table></figure>
 
 <p>arr是一个数组，有5个元素，每个元素是一个整型指针，需要使用下标来区分。</p>
-<img src="images/UWYO$CLL]RR@E0K@GJYYE0.png" srcset="/img/loading.gif" lazyload alt="img" style="zoom:80%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/UWYO$CLL]RR@E0K@GJYYE0.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<!--
 
+<img src="第05章_指针(重点)\UWYO$CLL]RR@E0K@GJYYE0.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
+
+<p>–&gt;</p>
 <p>举例2：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> a, b, c, d, e;<br>    a = <span class="hljs-number">1</span>;<br>    b = <span class="hljs-number">2</span>;<br>    c = <span class="hljs-number">3</span>;<br>    d = <span class="hljs-number">4</span>;<br>    e = <span class="hljs-number">5</span>;<br>    <span class="hljs-type">int</span> *arr[] = &#123;&amp;a, &amp;b, &amp;c, &amp;d, &amp;e&#125;;<span class="hljs-comment">//定义一个int类型的指针数组</span><br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-number">5</span>;i++)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,*arr[i]);<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -816,7 +933,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> line1[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;         <span class="hljs-comment">//声明数组，矩阵的第一行</span><br>    <span class="hljs-type">int</span> line2[] = &#123;<span class="hljs-number">5</span>, <span class="hljs-number">6</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>&#125;;         <span class="hljs-comment">//声明数组，矩阵的第二行</span><br>    <span class="hljs-type">int</span> line3[] = &#123;<span class="hljs-number">9</span>, <span class="hljs-number">10</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>&#125;;         <span class="hljs-comment">//声明数组，矩阵的第三行</span><br>    <span class="hljs-type">int</span> *p_line[<span class="hljs-number">3</span>];              <span class="hljs-comment">//声明整型指针数组</span><br>    p_line[<span class="hljs-number">0</span>] = line1;           <span class="hljs-comment">//初始化指针数组元素</span><br>    p_line[<span class="hljs-number">1</span>] = line2;<br>    p_line[<span class="hljs-number">2</span>] = line3;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;矩阵:\n&quot;</span>);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;      <span class="hljs-comment">//对指针数组元素循环</span><br><br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; j++) &#123;    <span class="hljs-comment">//对矩阵每一列循环</span><br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\t&quot;</span>, p_line[i][j]); <span class="hljs-comment">//或改为printf(&quot;%d\t&quot;, *(p_line[i] + j));</span><br>        &#125;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
- <img src="images/image-20230704214810197.png" srcset="/img/loading.gif" lazyload alt="image-20230704214810197" style="zoom:80%;">
+ <img src="images/image-20230704214810197.png" srcset="/img/loading.gif" lazyload alt="image-20230704214810197" style="zoom:80%;" />
 
 <h3 id="5-4-字符数组-vs-字符指针变量"><a href="#5-4-字符数组-vs-字符指针变量" class="headerlink" title="5.4 字符数组 vs 字符指针变量"></a>5.4 字符数组 vs 字符指针变量</h3><p>一个字符串，可以使用<code>一维字符数组</code>表示，也可以使用<code>字符指针</code>来表示。</p>
 <ul>
@@ -827,7 +944,13 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> str[] = <span class="hljs-string">&quot;hello tom&quot;</span>;  <span class="hljs-comment">//使用字符数组</span><br><br><span class="hljs-type">char</span> * pStr = <span class="hljs-string">&quot;hello tom&quot;</span>;  <span class="hljs-comment">//使用字符指针</span><br></code></pre></td></tr></table></figure>
 
 <p>图示：</p>
-<p><img src="/images/image-20230822114353417.png" srcset="/img/loading.gif" lazyload alt="image-20230822114353417"></p>
+<p><img src="/image-20230822114353417.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230822114353417.png](第05章_指针(重点)\image-20230822114353417.png)
+
+-->
+
 <p><strong>两种方式的对比：</strong></p>
 <p>对已声明好的字符数组，只能一一对各个元素赋值，不能用以下错误方法对字符数组赋值</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> str[<span class="hljs-number">14</span>];<br><br>str[<span class="hljs-number">0</span>] = <span class="hljs-string">&#x27;i&#x27;</span>; <span class="hljs-comment">//正确</span><br><br>str = <span class="hljs-string">&quot;hello Tom&quot;</span>; <span class="hljs-comment">//错误</span><br></code></pre></td></tr></table></figure>
@@ -836,10 +959,18 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">char</span> * pStr = <span class="hljs-string">&quot;hel&quot;</span>;<br><br>pStr = <span class="hljs-string">&quot;hello tom&quot;</span>; <span class="hljs-comment">//正确</span><br></code></pre></td></tr></table></figure>
 
 <p>图示：</p>
-<img src="images/image-20230902112911828.png" srcset="/img/loading.gif" lazyload alt="image-20230902112911828" style="zoom: 67%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/image-20230902112911828.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;">
+<!--
 
-<img src="images/image-20230902112925356.png" srcset="/img/loading.gif" lazyload alt="image-20230902112925356" style="zoom:67%;">
+<img src="第05章_指针(重点)\image-20230902112911828.png" srcset="/img/loading.gif" lazyload style="zoom: 67%;" />
 
+<p>–&gt;</p>
+<img src="image-20230902112925356.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+<!--
+
+<img src="第05章_指针(重点)\image-20230902112925356.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p>–&gt;</p>
 <blockquote>
 <p>一个字符数组，因为它有确定的内存地址，所以字符数组名是一个<code>常量</code>。而定义一个字符指针变量时，它在指向某个确定的字符串数据的情况下，也可以多次<code>重新赋值</code>。</p>
 </blockquote>
@@ -919,7 +1050,7 @@
 <p>【答案】D</p>
 <p>【解析】A中*w[1]表示的是数值2，则表达式的值为3，错误；B中p++表示指向二维数组第二行w[1]的地址，而*(p＋1)代表的是第三行w[2][0]元素的地址，B错误；C中表示的是数值0，答案选D。</p>
 </blockquote>
-
+-->
                 
               </div>
             
@@ -964,7 +1095,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>MySQL高级一</div>
+      <div>5、指针</div>
       <div>http://example.com/2024/04/28/技术栈/C/第05章_指针(重点)/</div>
     </div>
     <div class="license-meta">
@@ -1009,9 +1140,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC04%E7%AB%A0_%E6%95%B0%E7%BB%84(%E9%87%8D%E7%82%B9)/" title="4、数组">
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC02%E7%AB%A0_%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%9B%E5%88%B6/" title="MySQL高级一">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">4、数组</span>
+                        <span class="hidden-mobile">MySQL高级一</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1019,7 +1150,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC07%E7%AB%A0_%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%85%B1%E7%94%A8%E4%BD%93/" title="MySQL高级一">
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC03%E7%AB%A0_%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" title="MySQL高级一">
                         <span class="hidden-mobile">MySQL高级一</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
