@@ -1,0 +1,853 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="https://p0.itc.cn/q_70/images03/20230516/bab1646e504942d4a9d964cde5d8b15d.jpeg">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="pz">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Canal1.项目问题分析-数据同步问题1.1问题分析问题一：专辑数据修改同步缓存的问题 1234567891011121314151617181920&#x2F;**   * 根据专辑ID查询专辑信息（包含专辑标签及值）-从数据库获取   * 存入redis中业务数据key&#x3D;album:info:1 锁key&#x3D;album:info:1:lock   * @param id   * @return   *&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6-1、Canal">
+<meta property="og:url" content="http://example.com/2024/11/16/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC6%E7%AB%A0%20Canal%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="PZ">
+<meta property="og:description" content="Canal1.项目问题分析-数据同步问题1.1问题分析问题一：专辑数据修改同步缓存的问题 1234567891011121314151617181920&#x2F;**   * 根据专辑ID查询专辑信息（包含专辑标签及值）-从数据库获取   * 存入redis中业务数据key&#x3D;album:info:1 锁key&#x3D;album:info:1:lock   * @param id   * @return   *&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/yunyueting.png">
+<meta property="article:published_time" content="2024-11-16T12:23:13.000Z">
+<meta property="article:modified_time" content="2024-12-04T10:47:20.000Z">
+<meta property="article:author" content="pz">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/yunyueting.png">
+  
+  
+  
+  <title>6-1、Canal - PZ</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":false},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>PZ</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="6-1、Canal"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-16 20:23" pubdate>
+          2024年11月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          41 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">6-1、Canal</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h1><h1 id="1-项目问题分析-数据同步问题"><a href="#1-项目问题分析-数据同步问题" class="headerlink" title="1.项目问题分析-数据同步问题"></a>1.项目问题分析-数据同步问题</h1><h2 id="1-1问题分析"><a href="#1-1问题分析" class="headerlink" title="1.1问题分析"></a>1.1问题分析</h2><p>问题一：专辑数据修改同步缓存的问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">   * 根据专辑ID查询专辑信息（包含专辑标签及值）-从数据库获取</span><br><span class="hljs-comment">   * 存入redis中业务数据key=album:info:1 锁key=album:info:1:lock</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@param</span> id</span><br><span class="hljs-comment">   * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">   */</span><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-meta">@GuiGuCache(prefix=&quot;album:info:&quot;)</span> <br>  <span class="hljs-keyword">public</span> AlbumInfo <span class="hljs-title function_">getAlbumInfoFromDB</span><span class="hljs-params">(Long id)</span> &#123;<br>      <span class="hljs-comment">//1.根据专辑ID主键查询专辑信息</span><br>      <span class="hljs-type">AlbumInfo</span> <span class="hljs-variable">albumInfo</span> <span class="hljs-operator">=</span> albumInfoMapper.selectById(id);<br>      <span class="hljs-comment">//2.根据专辑ID查询标签列表</span><br>      <span class="hljs-keyword">if</span> (albumInfo != <span class="hljs-literal">null</span>) &#123;<br>          LambdaQueryWrapper&lt;AlbumAttributeValue&gt; queryWrapper = <span class="hljs-keyword">new</span> <span class="hljs-title class_">LambdaQueryWrapper</span>&lt;&gt;();<br>          queryWrapper.eq(AlbumAttributeValue::getAlbumId, id);<br>          List&lt;AlbumAttributeValue&gt; attributeValueList = albumAttributeValueMapper.selectList(queryWrapper);<br>          albumInfo.setAlbumAttributeValueVoList(attributeValueList);<br>      &#125;<br>      <span class="hljs-keyword">return</span> albumInfo;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p>问题说明：</p>
+<blockquote>
+<p>在查询专辑详情数据时，为避免频繁io，提高查询效率，在详情数据获取的同时，利用缓存机制，将详情数据存储到redis实现的缓存机制中，但带来效率提升的同时也带来了问题，就是如果在专辑录入之后，因为业务数据更新等原因，对于mysql中专辑原数据进行了修改，将导致redis中缓存数据和mysql中原始数据不一致的问题</p>
+</blockquote>
+<p>问题二：用户信息缓存问题</p>
+<p>UserInfoServiceImpl用户登录成功后</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment">  * 查询用户基本信息</span><br><span class="hljs-comment">  *</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@param</span> userId</span><br><span class="hljs-comment">  * <span class="hljs-doctag">@return</span></span><br><span class="hljs-comment">  */</span><br> <span class="hljs-meta">@Override</span><br> <span class="hljs-meta">@GuiGuCache(prefix = &quot;userInfoVo:&quot;)</span><br> <span class="hljs-keyword">public</span> UserInfoVo <span class="hljs-title function_">getUserInfo</span><span class="hljs-params">(Long userId)</span> &#123;<br>     <span class="hljs-comment">//1.根据主键ID查询用户对象</span><br>     <span class="hljs-type">UserInfo</span> <span class="hljs-variable">userInfo</span> <span class="hljs-operator">=</span> userInfoMapper.selectById(userId);<br>     <span class="hljs-comment">//2.将用户PO对象转为VO对象</span><br>     <span class="hljs-keyword">return</span> BeanUtil.copyProperties(userInfo, UserInfoVo.class);<br> &#125;<br></code></pre></td></tr></table></figure>
+
+<p>问题说明：</p>
+<blockquote>
+<p>用户认证登录实现成功后，再查询用户信息回显，第一次从mysql的user_info表中查询数据后，对数据进行了缓存，若用户在之后对个人信息进行了更新或者补充，将导致数据不一致，不能及时更新的问题。</p>
+</blockquote>
+<h2 id="1-2方案说明"><a href="#1-2方案说明" class="headerlink" title="1.2方案说明"></a>1.2方案说明</h2><p>常用方案：</p>
+<p>1.redis的延时双删策略</p>
+<p>2.消息队列同步</p>
+<p>3.canal同步</p>
+<p>第一、redis的延时双删策略</p>
+<blockquote>
+<p>延时双删策略是一种常见的保证MySQL和Redis数据一致性的方法。其主要流程包括：先删除缓存，然后更新数据库。这个过程完成后，大约在数据库从库更新后再次删除缓存。具体的步骤如下：</p>
+<ol>
+<li>先执行redis.del(key)操作删除缓存；</li>
+<li>然后执行写数据库的操作；</li>
+<li>休眠一段时间（例如500毫秒），根据具体的业务时间来定；</li>
+<li>再次执行redis.del(key)操作删除缓存。</li>
+</ol>
+<p>延时双删策略通过这种方式尝试达到最终的数据一致性，但是这并不是强一致性，因为MySQL和Redis主从节点数据的同步并不是实时的，所以需要等待一段时间以增强它们的数据一致性。同时，由于读写是并发的，可能出现缓存和数据库数据不一致的问题</p>
+</blockquote>
+<p>第二、消息队列同步方案</p>
+<blockquote>
+<p>消息队列同步方案是一种常见的MySQL和Redis数据同步方法，其主要流程包括：将MySQL的数据变化消息队列同步方案是一种常见的MySQL和Redis数据同步方法，其主要流程包括：将MySQL的数据变化作为消息发布到消息队列（如Kafka、RabbitMQ等），然后由另一个消费者程序从消息队列中读取数据并写入Redis。这种方式可以实现数据的异步同步，降低系统压力。</p>
+<p>具体步骤如下：</p>
+<ol>
+<li>在MySQL数据库中进行增删改操作时，同时将相应的数据变化作为消息发布到消息队列中；</li>
+<li>启动一个消费者程序，监听消息队列中的消息，并将消息中的MySQL数据变化写入Redis缓存中；</li>
+<li>当消费者程序处理完一条消息后，需要确认该消息已被处理，可以使用消息队列的确认机制或者手动确认；</li>
+<li>如果消费者程序出现异常或宕机等情况，需要保证消息队列中的消息不会丢失，可以选择持久化消息队列或将消息备份到其他存储介质中。</li>
+</ol>
+<p>使用消息队列同步方案可以有效地解决MySQL和Redis数据同步的问题，并且能够实现数据的异步处理和削峰填谷的效果。但是由于消息队列本身也存在一定的延迟和可靠性问题。</p>
+</blockquote>
+<p>第三、canal同步方案</p>
+<blockquote>
+<p>Canal是阿里巴巴开源的一款基于MySQL数据库增量日志解析的数据同步工具，可以实现MySQL数据库的增量数据订阅和消费。Canal方案可以用于实现MySQL和Redis之间的数据同步，具体流程如下：</p>
+<ol>
+<li>在MySQL数据库中开启binlog日志功能，并配置Canal客户端连接到MySQL主库；</li>
+<li>启动Canal客户端，监听MySQL主库的binlog日志变化，并将变化的数据实时推送到指定的队列中；</li>
+<li>启动一个消费者程序，监听Canal客户端推送过来的数据，并将数据写入Redis缓存中；</li>
+<li>当消费者程序处理完一条消息后，需要确认该消息已被处理，可以使用消息队列的确认机制或者手动确认；</li>
+<li>如果消费者程序出现异常或宕机等情况，需要保证消息队列中的消息不会丢失，可以选择持久化消息队列或将消息备份到其他存储介质中。</li>
+</ol>
+<p>使用Canal方案可以实现MySQL和Redis之间的实时数据同步，并且支持多种数据源和数据格式。但是需要注意的是，由于Canal方案依赖于MySQL的binlog日志，所以需要确保MySQL主库的binlog日志功能已经开启，并且Canal客户端能够正确地连接到MySQL主库</p>
+</blockquote>
+<p><strong>本项目中选择第三个方案：canal同步方案</strong></p>
+<h1 id="2-数据同步方案-Canal"><a href="#2-数据同步方案-Canal" class="headerlink" title="2.数据同步方案- Canal"></a>2.数据同步方案- Canal</h1><h2 id="2-1-Canal-概念"><a href="#2-1-Canal-概念" class="headerlink" title="2.1 Canal 概念"></a>2.1 Canal 概念</h2><h3 id="2-1-1-什么是Canal"><a href="#2-1-1-什么是Canal" class="headerlink" title="2.1.1 什么是Canal"></a>2.1.1 什么是Canal</h3><p>**canal [kə’næl]**，译意为水道&#x2F;管道&#x2F;沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费</p>
+<p>早期阿里巴巴因为杭州和美国双机房部署，存在跨机房同步的业务需求，实现方式主要是基于业务 trigger 获取增量变更。从 2010 年开始，业务逐步尝试数据库日志解析获取增量变更进行同步，由此衍生出了大量的数据库增量订阅和消费业务。</p>
+<p>官网：<a target="_blank" rel="noopener" href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a></p>
+<p><img src="/2024/11/16/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC6%E7%AB%A0%20Canal%E4%BD%BF%E7%94%A8/image-20240109163042990.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20240109163042990](第6章 Canal使用/image-20240109163042990.png)
+
+-->
+
+<h3 id="2-1-2Canal的特征"><a href="#2-1-2Canal的特征" class="headerlink" title="2.1.2Canal的特征"></a>2.1.2Canal的特征</h3><p>Canal具有以下特征：</p>
+<ol>
+<li>高性能：Canal 采用了基于网络协议的方式来解析和同步 MySQL 的增量日志，相较于数据库级别的触发器或轮询方式，可以提供更高的同步性能。</li>
+<li>支持多种数据格式：Canal 可以将 MySQL 的增量日志解析为多种数据格式，包括 JSON、XML 等，方便用户进行二次开发和数据处理。</li>
+<li>多种同步方式：Canal 支持多种同步方式，包括基于缓存、MQ、HTTP 接口等多种方式，可以根据业务需求选择不同的同步方式。</li>
+<li>灵活的订阅机制：Canal 支持灵活的订阅机制，可以根据表、库、列等维度进行精确的订阅，同时也支持动态增加和删除订阅。</li>
+<li>多种部署方式：Canal 可以在单机、集群等多种环境下进行部署，同时也支持 Docker 容器化部署。</li>
+<li>易于扩展：Canal 采用了插件化的设计，支持用户自定义插件，可以方便地扩展新的功能。</li>
+</ol>
+<p>总的来说，Canal 是一款功能强大、性能高效、易于使用、可扩展的数据同步工具，被广泛应用于阿里巴巴和其他企业的数据同步场景中</p>
+<h3 id="2-1-3业务场景"><a href="#2-1-3业务场景" class="headerlink" title="2.1.3业务场景"></a>2.1.3业务场景</h3><p>基于日志增量订阅和消费的业务包括</p>
+<ul>
+<li>数据库镜像</li>
+<li>数据库实时备份</li>
+<li>索引构建和实时维护(拆分异构索引、倒排索引等)</li>
+<li>业务 cache 刷新</li>
+<li>带业务逻辑的增量数据处理</li>
+</ul>
+<p>当前的 canal 支持源端 MySQL 版本包括 5.1.x , 5.5.x , 5.6.x , 5.7.x , 8.0.x</p>
+<h2 id="2-2-工作原理"><a href="#2-2-工作原理" class="headerlink" title="2.2 工作原理"></a>2.2 工作原理</h2><p>工作原理</p>
+<p>canal的工作原理是将自己伪装成mysql的slave节点，来订阅mysql binlog的变更，所以在配置启动canal前，需要先配置mysql。</p>
+<blockquote>
+<h4 id="MySQL主备复制原理"><a href="#MySQL主备复制原理" class="headerlink" title="MySQL主备复制原理"></a>MySQL主备复制原理</h4><ul>
+<li>MySQL master 将数据变更写入二进制日志( binary log, 其中记录叫做二进制日志事件binary log events，可以通过 show binlog events 进行查看)</li>
+<li>MySQL slave 将 master 的 binary log events 拷贝到它的中继日志(relay log)</li>
+<li>MySQL slave 重放 relay log 中事件，将数据变更反映它自己的数据</li>
+</ul>
+<h4 id="canal-工作原理"><a href="#canal-工作原理" class="headerlink" title="canal 工作原理"></a>canal 工作原理</h4><ul>
+<li>canal 模拟 MySQL slave 的交互协议，伪装自己为 MySQL slave ，向 MySQL master 发送dump 协议</li>
+<li>MySQL master 收到 dump 请求，开始推送 binary log 给 slave (即 canal )</li>
+<li>canal 解析 binary log 对象(原始为 byte 流)</li>
+</ul>
+</blockquote>
+<h3 id="2-2-1-canal的架构"><a href="#2-2-1-canal的架构" class="headerlink" title="2.2.1 canal的架构"></a>2.2.1 canal的架构</h3><p>Canal是C&#x2F;S架构，由canal client与canal server组成，客户端和服务端之间是C&#x2F;S模式的通信，客户端采用NIO，服务端采用Netty{netty.io}。canal server启动后，如果没有canal client，那么canal server不会去mysql拉取binlog。即Canal客户端主动发起拉取请求，服务端才会模拟一个MySQL Slave节点去主节点拉取binlog。通常Canal客户端是一个死循环，这样客户端一直调用get方法，服务端也就会一直拉取binlog.</p>
+<p><img src="/2024/11/16/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC6%E7%AB%A0%20Canal%E4%BD%BF%E7%94%A8/image-20240109164825545.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20240109164825545](第6章 Canal使用/image-20240109164825545.png)
+
+-->
+
+<p>组成说明：</p>
+<ul>
+<li>server 代表一个 canal 运行实例，对应于一个jvm进程</li>
+<li>instance 对应于一个数据队列 （1个 canal server 对应1个或者多个 instance )</li>
+<li>instance 下的子模块</li>
+<li>eventParser: 数据源接入，模拟 slave 协议和 master 进行交互，协议解析</li>
+<li>eventSink: Parser 和 Store 链接器，进行数据过滤，加工，分发的工作</li>
+<li>eventStore: 数据存储</li>
+<li>metaManager: 增量订阅 &amp; 消费信息管理器</li>
+</ul>
+<h3 id="2-2-2-canal的工作原理"><a href="#2-2-2-canal的工作原理" class="headerlink" title="2.2.2 canal的工作原理"></a>2.2.2 canal的工作原理</h3><p>EventParser在向MySQL发送dump命令之前会先从Log Position中获取上次解析成功的位置(如果是第一次启动，则<strong>获取初始指定位置</strong>或者当前数据段binlog位点)。mysql接受到dump命令后，由EventParser从mysql上pull binlog数据进行解析并传递给EventSink(<em>传递给EventSink模块进行数据存储，是一个阻塞操作，直到存储成功</em> )，传送成功之后更新Log Position。</p>
+<p>Canal流程图：</p>
+<p><img src="/2024/11/16/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC6%E7%AB%A0%20Canal%E4%BD%BF%E7%94%A8/image-20240110182139474.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+![image-20240110182139474](第6章 Canal使用/image-20240110182139474.png)
+
+-->
+
+<p>具体流程:</p>
+<ul>
+<li>EventSink起到一个类似channel的功能，可以对数据进行<em>过滤、分发&#x2F;路由(1:n)、归并(n:1)和加工</em>。EventSink是连接EventParser和EventStore的桥梁。</li>
+<li>EventStore实现模式是内存模式，内存结构为环形队列，由三个指针(Put、Get和Ack)标识数据存储和读取的位置。</li>
+<li>MetaManager是增量订阅&amp;消费信息管理器，增量订阅和消费之间的协议包括get&#x2F;ack&#x2F;rollback，分别为：</li>
+<li>Message getWithoutAck(int batchSize)，允许指定batchSize，一次可以获取多条，每次返回的对象为Message，包含的内容为：batch id[唯一标识]和entries[具体的数据对象]</li>
+<li>void rollback(long batchId)，顾名思义，回滚上次的get请求，重新获取数据。基于get获取的batchId进行提交，避免误操作</li>
+<li>void ack(long batchId)，顾名思议，确认已经消费成功，通知server删除数据。基于get获取的batchId进行提交，避免误操作</li>
+</ul>
+<h1 id="3-Canal安装"><a href="#3-Canal安装" class="headerlink" title="3 Canal安装"></a>3 Canal安装</h1><p>安装使用canal前要提前安装好mysql，本章mysql版本选择mysq8.0.29版本，canal选择1.1.5版本</p>
+<h2 id="3-1安装前要求"><a href="#3-1安装前要求" class="headerlink" title="3.1安装前要求"></a>3.1安装前要求</h2><h3 id="3-1-1-mysql开启binlog模式"><a href="#3-1-1-mysql开启binlog模式" class="headerlink" title="3.1.1 mysql开启binlog模式"></a>3.1.1 mysql开启binlog模式</h3><p>canal-admin: 图形化界面</p>
+<p>(1)查看当前mysql是否开启binlog模式。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">进入mysql容器</span><br>mysql -uroot -proot<br><span class="hljs-meta prompt_">#</span><span class="language-bash">开启binlog模式</span><br>SHOW VARIABLES LIKE &#x27;%log_bin%&#x27;;<br></code></pre></td></tr></table></figure>
+
+<p>结果：mysql的log_bin默认是开启，如果log_bin的值为OFF是未开启，为ON是已开启。</p>
+<p>(2) 进入mysql</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mysql -h localhost -u root -p<br></code></pre></td></tr></table></figure>
+
+<p>(3)创建账号 用于测试使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">创建用户</span><br>create user canal@&#x27;%&#x27; IDENTIFIED by &#x27;canal&#x27;;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">给用户授权</span><br>GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT,SUPER ON *.* TO &#x27;canal&#x27;@&#x27;%&#x27;;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果是MySQL8.X以上需要对加密方式进行设置</span><br>ALTER USER &#x27;canal&#x27;@&#x27;%&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;canal&#x27;;<br><span class="hljs-meta prompt_">#</span><span class="language-bash">刷新生效</span><br>FLUSH PRIVILEGES;<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-2-安装Canal"><a href="#3-2-安装Canal" class="headerlink" title="3.2 安装Canal"></a>3.2 安装Canal</h2><p>(1)下载canal镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker pull canal/canal-server:v1.1.5<br></code></pre></td></tr></table></figure>
+
+<p>(2)创建容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker run -p 11111:11111 --name canal \<br>-e canal.destinations=tingshuTopic \<br>-e canal.instance.master.address=192.168.200.130:3306  \<br>-e canal.instance.dbUsername=canal  \<br>-e canal.instance.dbPassword=canal  \<br>-e canal.instance.connectionCharset=UTF-8 \<br>-e canal.instance.tsdb.enable=true \<br>-e canal.instance.gtidon=false  \<br>-e canal.instance.filter.regex=.*\\..* \<br>-d canal/canal-server:v1.1.5<br></code></pre></td></tr></table></figure>
+
+<p>(3)查看启动日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs shell">docker logs -f canal<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">日志详情</span><br>DOCKER_DEPLOY_TYPE=VM<br>==&gt; INIT /alidata/init/02init-sshd.sh<br>==&gt; EXIT CODE: 0<br>==&gt; INIT /alidata/init/fix-hosts.py<br>==&gt; EXIT CODE: 0<br>==&gt; INIT DEFAULT<br>Starting sshd: [  OK  ]<br>Starting crond: [  OK  ]<br>==&gt; INIT DONE<br>==&gt; RUN /home/admin/app.sh<br>==&gt; START ...<br>start canal ...<br>start canal successful<br>==&gt; START SUCCESSFUL ..<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="4-项目问题处理"><a href="#4-项目问题处理" class="headerlink" title="4.项目问题处理"></a>4.项目问题处理</h1><p><strong>canal-spring-boot-starter启动器</strong></p>
+<p>经过整合Canal官方提供的SimpleCanalClient方案已经可以实现，在数据库中数据发生改变时，通过binlog日志文件及时获取数据，但是在canal提供的api过于繁琐，因此可使用<strong>canal-spring-boot-starter</strong></p>
+<blockquote>
+<p>Canal-spring-boot-starter是一个基于Spring Boot框架的插件，用于实现Canal和Spring Boot框架的整合。Canal是阿里巴巴开源的一款基于MySQL数据库增量日志解析工具，通过监听数据库中的binlog（二进制日志），实现对数据库的变更事件进行监听和捕捉，从而能够实现实时同步和分析数据库的变化。</p>
+<p>Canal-spring-boot-starter将Canal和Spring Boot框架整合在一起，可以让开发者通过简单的配置，轻松地实现对数据库变更事件的监听和处理，可以方便地实现数据同步、消息推送、数据分析等功能。同时，Canal-spring-boot-starter还提供了一些默认的配置，包括数据源、表名、过滤规则等，可以让开发者快速上手并开始使用。</p>
+</blockquote>
+<p><strong>主要特征：</strong></p>
+<ul>
+<li>便捷性：Canal-spring-boot-starter基于Spring Boot框架，可以方便地整合到Spring Boot应用中，并提供了默认配置，让开发者可以快速上手使用。</li>
+<li>功能强大：Canal-spring-boot-starter使用了Canal增量日志解析工具，可以实现对数据库变更事件的监听和捕捉，并支持多种操作类型的处理。</li>
+<li>高可用性：Canal-spring-boot-starter支持多节点的部署，可以实现数据同步的高可用性。</li>
+<li>易于扩展：Canal-spring-boot-starter提供了丰富的API和插件，可以方便地扩展和定制，满足不同场景下的需求。</li>
+</ul>
+<h2 id="4-1-service-cdc工程搭建"><a href="#4-1-service-cdc工程搭建" class="headerlink" title="4.1 service-cdc工程搭建"></a>4.1 service-cdc工程搭建</h2><p>CDC（Change Data Capture，变更数据捕获）</p>
+<p>service创建canal同步子工程</p>
+<p>pom添加依赖 </p>
+<p>注意：此处不依赖父工程，作为独立工程存在</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">         <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.atguigu.tingshu<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>service-cdc<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0-SNAPSHOT<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">parent</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.3.6.RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">relativePath</span>/&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">parent</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.source</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.source</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">maven.compiler.target</span>&gt;</span>8<span class="hljs-tag">&lt;/<span class="hljs-name">maven.compiler.target</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span>UTF-8<span class="hljs-tag">&lt;/<span class="hljs-name">project.build.sourceEncoding</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-comment">&lt;!--web 需要启动项目--&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>top.javatool<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>canal-spring-boot-starter<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.2.1-RELEASE<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>javax.persistence<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>persistence-api<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>application.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">profiles:</span><br>    <span class="hljs-attr">active:</span> <span class="hljs-string">dev</span><br></code></pre></td></tr></table></figure>
+
+<p>application-dev.yaml</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">7080</span><br><span class="hljs-comment">#canal配置</span><br><span class="hljs-attr">canal:</span><br>  <span class="hljs-attr">destination:</span> <span class="hljs-string">tingshuTopic</span> <span class="hljs-comment">#Canal服务端发送数据的话题名称跟上面容器里参数destinations的一样</span><br>  <span class="hljs-attr">server:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.200</span><span class="hljs-number">.130</span><span class="hljs-string">:11111</span><br><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">redis:</span><br>    <span class="hljs-attr">host:</span> <span class="hljs-number">192.168</span><span class="hljs-number">.200</span><span class="hljs-number">.130</span><br>    <span class="hljs-attr">port:</span> <span class="hljs-number">6379</span><br></code></pre></td></tr></table></figure>
+
+<p>启动类CDCApplicaiton</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu;<br><br><span class="hljs-keyword">import</span> org.springframework.boot.SpringApplication;<br><span class="hljs-keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2024-1-9 10:53</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CDCApplicaiton</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(CDCApplicaiton.class, args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>添加redis配置类</p>
+<p>com.atguigu.tingshu.config;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.config;<br><br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Bean;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Configuration;<br><span class="hljs-keyword">import</span> org.springframework.context.annotation.Primary;<br><span class="hljs-keyword">import</span> org.springframework.data.redis.connection.RedisConnectionFactory;<br><span class="hljs-keyword">import</span> org.springframework.data.redis.core.RedisTemplate;<br><span class="hljs-keyword">import</span> org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;<br><span class="hljs-keyword">import</span> org.springframework.data.redis.serializer.StringRedisSerializer;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2024-1-9 10:53</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Configuration</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RedisConfig</span> &#123;<br>    <span class="hljs-meta">@Bean</span><br>    <span class="hljs-meta">@Primary</span><br>    <span class="hljs-keyword">public</span> RedisTemplate&lt;Object, Object&gt; <span class="hljs-title function_">redisTemplate</span><span class="hljs-params">(RedisConnectionFactory redisConnectionFactory)</span> &#123;<br>        RedisTemplate&lt;Object, Object&gt; redisTemplate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RedisTemplate</span>&lt;&gt;();<br>        redisTemplate.setConnectionFactory(redisConnectionFactory);<br>        <span class="hljs-comment">//String的序列化方式</span><br>        <span class="hljs-type">StringRedisSerializer</span> <span class="hljs-variable">stringRedisSerializer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringRedisSerializer</span>();<br>        <span class="hljs-comment">// 使用GenericJackson2JsonRedisSerializer 替换默认序列化(默认采用的是JDK序列化)</span><br>        <span class="hljs-type">GenericJackson2JsonRedisSerializer</span> <span class="hljs-variable">genericJackson2JsonRedisSerializer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">GenericJackson2JsonRedisSerializer</span>();<br><br>        <span class="hljs-comment">//序列号key value</span><br>        redisTemplate.setKeySerializer(stringRedisSerializer);<br>        redisTemplate.setValueSerializer(genericJackson2JsonRedisSerializer);<br>        redisTemplate.setHashKeySerializer(stringRedisSerializer);<br>        redisTemplate.setHashValueSerializer(genericJackson2JsonRedisSerializer);<br><br>        redisTemplate.afterPropertiesSet();<br>        <span class="hljs-keyword">return</span> redisTemplate;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>entity</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.model;<br><br><span class="hljs-keyword">import</span> lombok.Data;<br><br><span class="hljs-keyword">import</span> javax.persistence.Column;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2024-1-9 10:53</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Data</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CDCEntity</span> &#123;<br>    <span class="hljs-comment">// 注意Column 注解必须是persistence包下的</span><br>    <span class="hljs-meta">@Column(name = &quot;id&quot;)</span><br>    <span class="hljs-keyword">private</span> Long id;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-2-专辑数据更新同步"><a href="#4-2-专辑数据更新同步" class="headerlink" title="4.2 专辑数据更新同步"></a>4.2 专辑数据更新同步</h2><p>编写处理器自定义实现EntryHandler接口</p>
+<blockquote>
+<p><code>EntryHandler</code> 类的作用是处理 Canal 数据变更事件。在阿里巴巴的开源项目 Canal 中，该类用于监听数据库表的数据变更，并将变更的数据进行处理和存储。</p>
+<p>具体来说，当 Canal 客户端连接到 Canal 服务器并订阅了相应的数据库表后，每当表中的数据发生变更时，Canal 服务器会将变更的数据封装成一个 <code>Entry</code> 对象，然后通过 Canal 协议将这个对象发送给 Canal 客户端。Canal 客户端接收到这个 <code>Entry</code> 对象后，会调用 <code>EntryHandler</code> 类的相应方法来处理这个对象。</p>
+</blockquote>
+<p><code>EntryHandler</code> 类通常需要实现以下三个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">EntryHandler</span>&lt;T&gt; &#123;<br>    <span class="hljs-comment">//监听到数据添加</span><br>    <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">insert</span><span class="hljs-params">(T t)</span> &#123;<br>    &#125;<br>	<span class="hljs-comment">//监听到数据修改</span><br>    <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(T before, T after)</span> &#123;<br>    &#125;<br>	<span class="hljs-comment">//监听数据删除</span><br>    <span class="hljs-keyword">default</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(T t)</span> &#123;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>注解@CanalTable</p>
+<blockquote>
+<p><code>@CanalTable(&quot;album_info&quot;)</code>的作用是指定一个表名，用于在MyBatis Plus中与Canal进行数据同步。当MyBatis Plus执行数据库操作时，它会将操作记录到Canal中，然后通过监听器将Canal中的数据同步到目标数据库。通过使用<code>@CanalTable</code>注解，可以指定要同步的表名，以便只同步特定的表。</p>
+</blockquote>
+<p>专辑同步处理器-AlbumInfoCdcHandler</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.handler;<br><br><span class="hljs-keyword">import</span> com.atguigu.tingshu.model.CDCEntity;<br><span class="hljs-keyword">import</span> lombok.extern.slf4j.Slf4j;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.data.redis.core.RedisTemplate;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><span class="hljs-keyword">import</span> top.javatool.canal.client.annotation.CanalTable;<br><span class="hljs-keyword">import</span> top.javatool.canal.client.handler.EntryHandler;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2024-1-9 10:53</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@CanalTable(&quot;album_info&quot;)</span> <span class="hljs-comment">////监听变更表</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AlbumInfoCdcHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">EntryHandler</span>&lt;CDCEntity&gt; &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RedisTemplate redisTemplate;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 监听到数据修改</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> before 变更前数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> after  变更后数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(CDCEntity before, CDCEntity after)</span> &#123;<br>        log.info(<span class="hljs-string">&quot;监听到数据修改,ID:&#123;&#125;&quot;</span>, after.getId());<br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;album:info:&quot;</span> + after.getId();<br>        redisTemplate.delete(key);<br><br>    &#125;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 监听到删除操作</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> cdcEntity 删除前数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(CDCEntity cdcEntity)</span> &#123;<br>        log.info(<span class="hljs-string">&quot;监听到数据删除,ID:&#123;&#125;&quot;</span>, cdcEntity.getId());<br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;album:info:&quot;</span> + cdcEntity.getId();<br>        redisTemplate.delete(key);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-3-用户信息更新同步"><a href="#4-3-用户信息更新同步" class="headerlink" title="4.3 用户信息更新同步"></a>4.3 用户信息更新同步</h2><p>用户信息同步处理器-UserCdcHandler</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> com.atguigu.tingshu.handler;<br><br><span class="hljs-keyword">import</span> com.atguigu.tingshu.model.CDCEntity;<br><span class="hljs-keyword">import</span> lombok.extern.slf4j.Slf4j;<br><span class="hljs-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;<br><span class="hljs-keyword">import</span> org.springframework.data.redis.core.RedisTemplate;<br><span class="hljs-keyword">import</span> org.springframework.stereotype.Component;<br><span class="hljs-keyword">import</span> top.javatool.canal.client.annotation.CanalTable;<br><span class="hljs-keyword">import</span> top.javatool.canal.client.handler.EntryHandler;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"></span><br><span class="hljs-comment"> * <span class="hljs-doctag">@create</span>: 2024-1-9 10:53</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Slf4j</span><br><span class="hljs-meta">@Component</span><br><span class="hljs-meta">@CanalTable(&quot;user_info&quot;)</span> <span class="hljs-comment">////监听变更表</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">UserCdcHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">EntryHandler</span>&lt;CDCEntity&gt; &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> RedisTemplate redisTemplate;<br><br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 监听到数据修改</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> before 变更前数据</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> after  变更后数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(CDCEntity before, CDCEntity after)</span> &#123;<br>        log.info(<span class="hljs-string">&quot;监听到数据修改,ID:&#123;&#125;&quot;</span>, after.getId());<br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;userInfoVo:&quot;</span> + after.getId();<br>        redisTemplate.delete(key);<br><br>    &#125;<br>    <span class="hljs-comment">/**</span><br><span class="hljs-comment">     * 监听到删除操作</span><br><span class="hljs-comment">     *</span><br><span class="hljs-comment">     * <span class="hljs-doctag">@param</span> cdcEntity 删除前数据</span><br><span class="hljs-comment">     */</span><br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">delete</span><span class="hljs-params">(CDCEntity cdcEntity)</span> &#123;<br>        log.info(<span class="hljs-string">&quot;监听到数据删除,ID:&#123;&#125;&quot;</span>, cdcEntity.getId());<br>        <span class="hljs-type">String</span> <span class="hljs-variable">key</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;userInfoVo:&quot;</span> + cdcEntity.getId();<br>        redisTemplate.delete(key);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/" class="category-chain-item">项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/" class="category-chain-item">云悦听</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>6-1、Canal</div>
+      <div>http://example.com/2024/11/16/项目/云悦听/第6章 Canal使用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>pz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年11月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/19/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC6%E7%AB%A0%20%E8%AF%A6%E6%83%85%E4%BC%98%E5%8C%96/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/11/15/%E9%A1%B9%E7%9B%AE/%E4%BA%91%E6%82%A6%E5%90%AC/%E7%AC%AC5%E7%AB%A0%20MongoDB%E5%85%A5%E9%97%A8/" title="5-1、MongoDB">
+                        <span class="hidden-mobile">5-1、MongoDB</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
