@@ -19,15 +19,15 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="互动趣味页面        body {       background-color: #222;       color: #fff;       font-family: &#39;微软雅黑&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 0;       transition: back">
+    <meta name="description" content="互动趣味页面        body {       background-color: #111;       color: #fff;       font-family: &#39;微软雅黑&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 20px;     }     button {">
 <meta property="og:type" content="article">
 <meta property="og:title" content="好玩的">
-<meta property="og:url" content="http://example.com/2025/02/03/%E5%A8%B1%E4%B9%90%E4%B8%80%E4%B8%8B/test1/test1/index.html">
+<meta property="og:url" content="http://example.com/2025/02/03/%E5%A8%B1%E4%B9%90%E4%B8%80%E4%B8%8B/test1/test2/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="互动趣味页面        body {       background-color: #222;       color: #fff;       font-family: &#39;微软雅黑&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 0;       transition: back">
+<meta property="og:description" content="互动趣味页面        body {       background-color: #111;       color: #fff;       font-family: &#39;微软雅黑&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 20px;     }     button {">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-03T01:50:27.000Z">
-<meta property="article:modified_time" content="2025-02-03T11:37:09.685Z">
+<meta property="article:published_time" content="2025-02-03T11:50:27.000Z">
+<meta property="article:modified_time" content="2025-02-03T12:06:34.176Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-03 09:50" pubdate>
-          2025年2月3日 上午
+        <time datetime="2025-02-03 19:50" pubdate>
+          2025年2月3日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          254 字
+          380 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -282,79 +282,122 @@
   <title>互动趣味页面</title>
   <style>
     body {
-      background-color: #222;
+      background-color: #111;
       color: #fff;
       font-family: '微软雅黑', sans-serif;
       text-align: center;
       margin: 0;
-      padding: 0;
-      transition: background-color 0.5s;
-    }
-    .container {
-      margin-top: 100px;
-    }
-    h1 {
-      font-size: 2.5em;
-    }
-    p {
-      font-size: 1.2em;
+      padding: 20px;
     }
     button {
       background-color: #ff4081;
       border: none;
-      padding: 12px 24px;
+      padding: 10px 20px;
       color: #fff;
-      font-size: 1.1em;
+      font-size: 1em;
       cursor: pointer;
+      margin: 10px;
       border-radius: 5px;
       transition: transform 0.2s;
     }
     button:hover {
       transform: scale(1.05);
     }
-    #message {
-      margin-top: 30px;
+    #barrage-container {
+      position: fixed;
+      top: 10%;
+      left: 0;
+      width: 100%;
+      height: 80%;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .barrage {
+      position: absolute;
+      white-space: nowrap;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ff4081;
+      animation: moveBarrage 5s linear infinite;
+    }
+    @keyframes moveBarrage {
+      from { transform: translateX(100vw); }
+      to { transform: translateX(-100%); }
+    }
+    #hacker-terminal {
+      background: black;
+      color: limegreen;
+      height: 150px;
+      overflow-y: scroll;
+      padding: 10px;
+      border: 2px solid limegreen;
+      margin-top: 20px;
+      font-family: "Courier New", monospace;
+    }
+    #quote {
       font-size: 1.5em;
-      min-height: 40px;
+      font-style: italic;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>欢迎来到互动趣味页面！</h1>
-    <p>点下面的按钮试试神奇的效果吧！</p>
-    <button onclick="showRandomMessage()">点击我！</button>
-    <div id="message"></div>
-  </div>
+  <h1>欢迎来到互动趣味页面！</h1>
+  <p>选择一种互动方式，放松一下！</p>
+
+<p>  <button onclick="addBarrage()">发送弹幕</button><br>  <button onclick="generateQuote()">生成哲学金句</button></p>
+  <div id="barrage-container"></div>
+  <div id="hacker-terminal"></div>
+  <p id="quote"></p>
 
   <script>
-    // 趣味消息数组
-    const messages = [
-      "恭喜你！发现了宇宙的小秘密！",
-      "每次点击都是一次新冒险！",
-      "你就是最闪亮的星，继续闪耀！",
-      "哇哦，这可能是今天听到的最搞笑的一句话！",
-      "生活就像这按钮，每按一次都有惊喜！"
+    // 弹幕功能
+    const barrageMessages = [
+      "✨ 你好，世界！",
+      "💬 这是一条弹幕！",
+      "😂 哈哈哈哈哈哈哈！",
+      "🌟 代码也是艺术！",
+      "🚀 Hexo 也能玩弹幕！"
     ];
+    function addBarrage() {
+      const barrageContainer = document.getElementById("barrage-container");
+      const barrage = document.createElement("div");
+      barrage.className = "barrage";
+      barrage.innerText = barrageMessages[Math.floor(Math.random() * barrageMessages.length)];
+      barrage.style.top = Math.random() * 80 + "%";
+      barrageContainer.appendChild(barrage);
+      setTimeout(() => barrage.remove(), 5000);
+    }
 
-    // 显示随机消息并更换背景颜色
-    function showRandomMessage() {
-      const msgDiv = document.getElementById('message');
-      const randomIndex = Math.floor(Math.random() * messages.length);
-      msgDiv.textContent = messages[randomIndex];
-      // 动态更换背景颜色
-      document.body.style.backgroundColor = getRandomColor();
+    // 哲学金句生成器
+    const quotes = [
+      "人生没有意义，除非你去赋予它。",
+      "你无法两次踏入同一条河流。",
+      "所有的开始都是结束的开始。",
+      "思考即存在。",
+      "世界是由观察者创造的。"
+    ];
+    function generateQuote() {
+      const quoteElement = document.getElementById('quote');
+      quoteElement.textContent = quotes[Math.floor(Math.random() * quotes.length)];
     }
     
-    // 生成随机颜色函数
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-      }
-      return color;
+    // 黑客终端模拟
+    const terminal = document.getElementById("hacker-terminal");
+    const hackerTexts = [
+      "正在破解 NASA 服务器...",
+      "正在连接暗网...",
+      "正在解密核弹密码...",
+      "正在植入 AI 病毒...",
+      "访问拒绝，权限不足！"
+    ];
+    function addHackerText() {
+      const newLine = document.createElement("p");
+      newLine.textContent = "> " + hackerTexts[Math.floor(Math.random() * hackerTexts.length)];
+      terminal.appendChild(newLine);
+      terminal.scrollTop = terminal.scrollHeight;
     }
+    setInterval(addHackerText, 2000);
   </script>
 </body>
 </html>
@@ -404,7 +447,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>好玩的</div>
-      <div>http://example.com/2025/02/03/娱乐一下/test1/test1/</div>
+      <div>http://example.com/2025/02/03/娱乐一下/test1/test2/</div>
     </div>
     <div class="license-meta">
       
@@ -448,18 +491,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/03/%E5%A8%B1%E4%B9%90%E4%B8%80%E4%B8%8B/test1/test2/" title="好玩的">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">好玩的</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/29/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC01%E7%AB%A0_C%E8%AF%AD%E8%A8%80%E5%85%A5%E9%97%A8/" title="C语言入门">
-                        <span class="hidden-mobile">C语言入门</span>
+                      <a href="/2025/02/03/%E5%A8%B1%E4%B9%90%E4%B8%80%E4%B8%8B/test1/test1/" title="好玩的">
+                        <span class="hidden-mobile">好玩的</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
