@@ -27,7 +27,7 @@
 <meta property="og:description" content="互动趣味页面        body {       background-color: #111;       color: #fff;       font-family: &#39;微软雅黑&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 20px;     }     button {">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-03T11:50:27.000Z">
-<meta property="article:modified_time" content="2025-02-03T12:06:34.176Z">
+<meta property="article:modified_time" content="2025-02-04T00:28:54.579Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          380 字
+          758 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -344,8 +344,9 @@
 <body>
   <h1>欢迎来到互动趣味页面！</h1>
   <p>选择一种互动方式，放松一下！</p>
+  <button onclick="addBarrage()">发送弹幕</button>
+  <button onclick="generateQuote()">生成哲学金句</button>
 
-<p>  <button onclick="addBarrage()">发送弹幕</button><br>  <button onclick="generateQuote()">生成哲学金句</button></p>
   <div id="barrage-container"></div>
   <div id="hacker-terminal"></div>
   <p id="quote"></p>
@@ -353,12 +354,58 @@
   <script>
     // 弹幕功能
     const barrageMessages = [
-      "✨ 你好，世界！",
+    "✨ 你好，世界！",
       "💬 这是一条弹幕！",
       "😂 哈哈哈哈哈哈哈！",
       "🌟 代码也是艺术！",
-      "🚀 Hexo 也能玩弹幕！"
-    ];
+      "🚀 我也能玩弹幕！",
+      "😘 作者棒棒哒！",
+      "🎉 今天也是元气满满的一天！",
+      "😎 这个博客太酷了吧！",
+      "🎨 生活需要一点色彩！",
+      "🤖 代码是最美的诗！",
+      "🚀 速度与激情9.9级！",
+  "🐱 猫猫才是世界的统治者！",
+  "💡 你的灵感从哪里来的？",
+  "🎵 听歌会让代码更顺畅！",
+  "🔍 Debug 中，别催！",
+  "🥺 这个 Bug 怎么又来了？！",
+  "📝 记得多写注释，未来的你会感谢自己！",
+  "🍕 披萨和代码，绝配！",
+  "👀 在吗？一起摸鱼！",
+  "🚨 这个网站太好玩了！",
+  "🎭 现实是 bug 最多的游戏。",
+  "🤔 你有freestyle吗？",
+  "🌈 今日运势：写代码不出 bug！",
+  "🔥 燃烧吧，小宇宙！",
+  "🤯 为什么 printf 不能 debug？",
+  "💀 代码写不动了，在线求助！",
+  "🛠 代码敲烂也得上线！",
+  "🥶 Bug 的出现总是那么突然！",
+  "🍉 先吃口西瓜冷静一下！",
+  "🌚 我是谁？我在哪？",
+  "🌟 这是一条高质量弹幕！",
+  "💖 你的博客超好看！",
+  "🧠 灵感＋100%",
+  "📖 读代码使我快乐！",
+  "🏃 Bug 不改完就不能下班！",
+  "🎯 有时候，删掉代码比写代码更重要！",
+  "🛸 程序员是地球最后的希望！",
+  "🎃 Halloween Debugging 体验！",
+  "🕵️ 代码需要耐心和爱！",
+  "🖥 编程即信仰！",
+  "🎢 代码如人生，起起落落！",
+  "📡 正在连接代码宇宙...",
+  "🎇 突然有个大胆的想法...",
+  "🎶 写代码要配音乐！",
+  "💡 “想清楚需求”是个伪命题！",
+  "🧩 代码拼图，完成100%！",
+  "🤡 这个 Bug 让我怀疑人生...",
+  "💾 你有 5 秒的时间保存文件！",
+  "🚧 代码正在施工中...",
+  "🔄 运行一次就好的代码，不配叫程序！",
+  "🦄 你就是最特别的程序员！"
+];
     function addBarrage() {
       const barrageContainer = document.getElementById("barrage-container");
       const barrage = document.createElement("div");
