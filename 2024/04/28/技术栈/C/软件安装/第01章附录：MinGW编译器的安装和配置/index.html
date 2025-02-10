@@ -22,13 +22,13 @@
     <meta name="description" content="第01章附录：MinGW编译器的安装和配置1、MinGW介绍MinGW（Minimalist GNU on Windows）实际上是GCC在Windows平台上的移植版本，因此可以将源代码编译为可在 Windows 中运行的可执行程序。MinGW是，主要用于在Windows上本地编译C和C++代码。  目前适用于 Windows 平台、受欢迎的 GCC 移植版主要有 2 种，分别为 MinGW 和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1-3、MinGW编译器的安装和配置">
-<meta property="og:url" content="http://example.com/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:url" content="http://example.com/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="PZ">
 <meta property="og:description" content="第01章附录：MinGW编译器的安装和配置1、MinGW介绍MinGW（Minimalist GNU on Windows）实际上是GCC在Windows平台上的移植版本，因此可以将源代码编译为可在 Windows 中运行的可执行程序。MinGW是，主要用于在Windows上本地编译C和C++代码。  目前适用于 Windows 平台、受欢迎的 GCC 移植版主要有 2 种，分别为 MinGW 和">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/c.png">
 <meta property="article:published_time" content="2024-04-28T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-02-08T02:17:30.820Z">
+<meta property="article:modified_time" content="2025-02-10T07:56:05.420Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/c.png">
@@ -286,17 +286,53 @@
 </blockquote>
 <h2 id="2、下载与安装"><a href="#2、下载与安装" class="headerlink" title="2、下载与安装"></a>2、下载与安装</h2><h3 id="2-1-下载"><a href="#2-1-下载" class="headerlink" title="2.1 下载"></a>2.1 下载</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw/files/">https://sourceforge.net/projects/mingw/files/</a></p>
 <p>点击“Download Latest Version”即可</p>
-<p><img src="/images/1692674344122.png" srcset="/img/loading.gif" lazyload alt="1692674344122"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674344122.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674344122.png](第01章附录：MinGW编译器的安装和配置\1692674344122.png)
+
+-->
+
 <h3 id="2-2-安装"><a href="#2-2-安装" class="headerlink" title="2.2 安装"></a>2.2 安装</h3><p>下载完成后，会得到一个名为 mingw-get-setup.exe 的安装包，双击打开它，可以看到如下的对话框：</p>
-<p><img src="/images/1692674777924.png" srcset="/img/loading.gif" lazyload alt="1692674777924"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674777924.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674777924.png](第01章附录：MinGW编译器的安装和配置\1692674777924.png)
+
+-->
+
 <p>直接点击“Install”，进入下面的对话框：</p>
-<p><img src="/images/1692674793945.png" srcset="/img/loading.gif" lazyload alt="1692674793945"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674793945.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674793945.png](第01章附录：MinGW编译器的安装和配置\1692674793945.png)
+
+-->
+
 <p>读者可根据自己操作系统的实际情况，自定义 MinGW 的安装位置（<code>建议安装到非C盘的指定目录下</code>），然后点击“continue”，进入下面的对话框：</p>
-<p><img src="/images/1692674846199.png" srcset="/img/loading.gif" lazyload alt="1692674846199"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674846199.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674846199.png](第01章附录：MinGW编译器的安装和配置\1692674846199.png)
+
+-->
+
 <p>​	进入安装 MinGW 配置器的界面，耐心等待安装完成（显示 100%）即可。</p>
-<p><img src="/images/1692675129933.png" srcset="/img/loading.gif" lazyload alt="1692675129933"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675129933.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675129933.png](第01章附录：MinGW编译器的安装和配置\1692675129933.png)
+
+-->
+
 <p>安装完成之后，继续点击“continue”，进入下面的对话框，这是一个名为 “<code>MinGW Installer Manager</code>” 的软件，借助它，我们可以随时根据需要修改 GCC 编译器的配置。</p>
-<p><img src="/images/1692675199055.png" srcset="/img/loading.gif" lazyload alt="1692675199055"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675199055.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675199055.png](第01章附录：MinGW编译器的安装和配置\1692675199055.png)
+
+-->
+
 <p>常见的安装包介绍如下。</p>
 <table>
 <thead>
@@ -335,27 +371,81 @@
 </tr>
 </tbody></table>
 <p>其中minw32-gcc-g++支持C++编译和minw32-gcc支持C编译。</p>
-<p><img src="/images/1692693959356.png" srcset="/img/loading.gif" lazyload alt="1692693959356"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692693959356.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692693959356.png](第01章附录：MinGW编译器的安装和配置\1692693959356.png)
+
+-->
+
 <p>为使 GCC 同时支持编译 <code>C</code> 语言和 <code>C++</code>，需勾选上图中标注的 2 项。选中其中一项，鼠标右键点击，选择“Mark for Installation”，如图所示。</p>
-<p><img src="/images/1692675410414.png" srcset="/img/loading.gif" lazyload alt="1692675410414"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675410414.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675410414.png](第01章附录：MinGW编译器的安装和配置\1692675410414.png)
+
+-->
+
 <p>标记完以后如图所示。</p>
-<p><img src="/images/1692698300912.png" srcset="/img/loading.gif" lazyload alt="1692698300912"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692698300912.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692698300912.png](第01章附录：MinGW编译器的安装和配置\1692698300912.png)
+
+-->
+
 <blockquote>
 <p>GCC 还支持其它编程语言，读者可借助此配置器，随时根据需要安装自己需要的编译环境。</p>
 </blockquote>
 <p>勾选完成后，在菜单栏中选择 <code>Installation -&gt; Apply Changes</code>，</p>
-<p><img src="/images/1692675512853.png" srcset="/img/loading.gif" lazyload alt="1692675512853"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675512853.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675512853.png](第01章附录：MinGW编译器的安装和配置\1692675512853.png)
+
+-->
+
 <p>弹出如下对话框：</p>
-<p><img src="/images/1692675528090.png" srcset="/img/loading.gif" lazyload alt="1692675528090"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675528090.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675528090.png](第01章附录：MinGW编译器的安装和配置\1692675528090.png)
+
+-->
+
 <p>选择“Apply”。然后耐心等待，直至安装成功，即可关闭此界面。</p>
-<p><img src="/images/1692675556189.png" srcset="/img/loading.gif" lazyload alt="1692675556189"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675556189.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675556189.png](第01章附录：MinGW编译器的安装和配置\1692675556189.png)
+
+-->
+
 <h2 id="3、配置：path环境变量"><a href="#3、配置：path环境变量" class="headerlink" title="3、配置：path环境变量"></a>3、配置：path环境变量</h2><p>在安装完成的基础上，我们需要手动配置 PATH 环境变量。</p>
 <p>1）依次 <code>右击计算机（我的电脑） -&gt; 属性 -&gt; 高级系统设置 -&gt; 环境变量</code>，例如我将其安装到了C:\MinGW文件夹中，因此 PATH 环境变量的设置如下：</p>
-<img src="images/image-20230822181721360.png" srcset="/img/loading.gif" lazyload alt="image-20230822181721360" style="zoom:67%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/image-20230822181721360.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+<!--
 
-<p><img src="/images/image-20230822181849566.png" srcset="/img/loading.gif" lazyload alt="image-20230822181849566"></p>
+<img src="第01章附录：MinGW编译器的安装和配置\image-20230822181721360.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p>–&gt;</p>
+<p><img src="/image-20230822181849566.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230822181849566.png](第01章附录：MinGW编译器的安装和配置\image-20230822181849566.png)
+
+-->
+
+
+
 <p>2）打开命令行窗口（通过在搜索栏中执行 cmd 指令即可），输入<code>gcc -v</code>指令，如果输出 GCC 编译器的具体信息，则表示安装成功，例如：</p>
-<p><img src="/images/image-20230822182303099.png" srcset="/img/loading.gif" lazyload alt="image-20230822182303099"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/image-20230822182303099.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230822182303099.png](第01章附录：MinGW编译器的安装和配置\image-20230822182303099.png)
+
+-->
+
 <p>通过上面的安装，我们就可以在当前 Windows 平台上编译、运行 C 或者 C++ 程序了。</p>
 <p>因为 MinGW-w64 本来就是将 GCC 移植到 Windows 上的产物，所以操作方式和 GCC 一样，只是在 Linux 下命令是被键入到“终端”中，而 Windows 下则是被键入到“命令提示符”里。</p>
 <h1 id="第01章附录：MinGW编译器的安装和配置-1"><a href="#第01章附录：MinGW编译器的安装和配置-1" class="headerlink" title="第01章附录：MinGW编译器的安装和配置"></a>第01章附录：MinGW编译器的安装和配置</h1><h2 id="1、MinGW介绍-1"><a href="#1、MinGW介绍-1" class="headerlink" title="1、MinGW介绍"></a>1、MinGW介绍</h2><p>MinGW（Minimalist GNU on Windows）实际上是GCC在Windows平台上的移植版本，因此可以将源代码编译为可在 Windows 中运行的可执行程序。MinGW是，主要用于在Windows上本地编译C和C++代码。</p>
@@ -367,17 +457,53 @@
 </blockquote>
 <h2 id="2、下载与安装-1"><a href="#2、下载与安装-1" class="headerlink" title="2、下载与安装"></a>2、下载与安装</h2><h3 id="2-1-下载-1"><a href="#2-1-下载-1" class="headerlink" title="2.1 下载"></a>2.1 下载</h3><p>下载地址：<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw/files/">https://sourceforge.net/projects/mingw/files/</a></p>
 <p>点击“Download Latest Version”即可</p>
-<p><img src="/images/1692674344122.png" srcset="/img/loading.gif" lazyload alt="1692674344122"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674344122-173917210214716.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674344122-173917210214716.png](第01章附录：MinGW编译器的安装和配置\1692674344122-173917210214716.png)
+
+-->
+
 <h3 id="2-2-安装-1"><a href="#2-2-安装-1" class="headerlink" title="2.2 安装"></a>2.2 安装</h3><p>下载完成后，会得到一个名为 mingw-get-setup.exe 的安装包，双击打开它，可以看到如下的对话框：</p>
-<p><img src="/images/1692674777924.png" srcset="/img/loading.gif" lazyload alt="1692674777924"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674777924-173917210472518.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674777924-173917210472518.png](第01章附录：MinGW编译器的安装和配置\1692674777924-173917210472518.png)
+
+-->
+
 <p>直接点击“Install”，进入下面的对话框：</p>
-<p><img src="/images/1692674793945.png" srcset="/img/loading.gif" lazyload alt="1692674793945"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674793945-173917210836120.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674793945-173917210836120.png](第01章附录：MinGW编译器的安装和配置\1692674793945-173917210836120.png)
+
+-->
+
 <p>读者可根据自己操作系统的实际情况，自定义 MinGW 的安装位置（<code>建议安装到非C盘的指定目录下</code>），然后点击“continue”，进入下面的对话框：</p>
-<p><img src="/images/1692674846199.png" srcset="/img/loading.gif" lazyload alt="1692674846199"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692674846199-173917211097222.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692674846199-173917211097222.png](第01章附录：MinGW编译器的安装和配置\1692674846199-173917211097222.png)
+
+-->
+
 <p>​	进入安装 MinGW 配置器的界面，耐心等待安装完成（显示 100%）即可。</p>
-<p><img src="/images/1692675129933.png" srcset="/img/loading.gif" lazyload alt="1692675129933"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675129933-173917211328924.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675129933-173917211328924.png](第01章附录：MinGW编译器的安装和配置\1692675129933-173917211328924.png)
+
+-->
+
 <p>安装完成之后，继续点击“continue”，进入下面的对话框，这是一个名为 “<code>MinGW Installer Manager</code>” 的软件，借助它，我们可以随时根据需要修改 GCC 编译器的配置。</p>
-<p><img src="/images/1692675199055.png" srcset="/img/loading.gif" lazyload alt="1692675199055"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675199055-173917211687726.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675199055-173917211687726.png](第01章附录：MinGW编译器的安装和配置\1692675199055-173917211687726.png)
+
+-->
+
 <p>常见的安装包介绍如下。</p>
 <table>
 <thead>
@@ -416,27 +542,74 @@
 </tr>
 </tbody></table>
 <p>其中minw32-gcc-g++支持C++编译和minw32-gcc支持C编译。</p>
-<p><img src="/images/1692693959356.png" srcset="/img/loading.gif" lazyload alt="1692693959356"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692693959356-173917212067128.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692693959356-173917212067128.png](第01章附录：MinGW编译器的安装和配置\1692693959356-173917212067128.png)
+
+-->
+
 <p>为使 GCC 同时支持编译 <code>C</code> 语言和 <code>C++</code>，需勾选上图中标注的 2 项。选中其中一项，鼠标右键点击，选择“Mark for Installation”，如图所示。</p>
-<p><img src="/images/1692675410414.png" srcset="/img/loading.gif" lazyload alt="1692675410414"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675410414-173917212307030.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675410414-173917212307030.png](第01章附录：MinGW编译器的安装和配置\1692675410414-173917212307030.png)
+
+-->
+
 <p>标记完以后如图所示。</p>
-<p><img src="/images/1692698300912.png" srcset="/img/loading.gif" lazyload alt="1692698300912"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692698300912-173917212519432.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692698300912-173917212519432.png](第01章附录：MinGW编译器的安装和配置\1692698300912-173917212519432.png)
+
+-->
+
 <blockquote>
 <p>GCC 还支持其它编程语言，读者可借助此配置器，随时根据需要安装自己需要的编译环境。</p>
 </blockquote>
 <p>勾选完成后，在菜单栏中选择 <code>Installation -&gt; Apply Changes</code>，</p>
-<p><img src="/images/1692675512853.png" srcset="/img/loading.gif" lazyload alt="1692675512853"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675512853-173917212825734.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675512853-173917212825734.png](第01章附录：MinGW编译器的安装和配置\1692675512853-173917212825734.png)
+
+-->
+
 <p>弹出如下对话框：</p>
-<p><img src="/images/1692675528090.png" srcset="/img/loading.gif" lazyload alt="1692675528090"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/1692675528090-173917213055536.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![1692675528090-173917213055536.png](第01章附录：MinGW编译器的安装和配置\1692675528090-173917213055536.png)
+
+-->
+
 <p>选择“Apply”。然后耐心等待，直至安装成功，即可关闭此界面。</p>
-<p><img src="/images/1692675556189.png" srcset="/img/loading.gif" lazyload alt="1692675556189"></p>
 <h2 id="3、配置：path环境变量-1"><a href="#3、配置：path环境变量-1" class="headerlink" title="3、配置：path环境变量"></a>3、配置：path环境变量</h2><p>在安装完成的基础上，我们需要手动配置 PATH 环境变量。</p>
 <p>1）依次 <code>右击计算机（我的电脑） -&gt; 属性 -&gt; 高级系统设置 -&gt; 环境变量</code>，例如我将其安装到了C:\MinGW文件夹中，因此 PATH 环境变量的设置如下：</p>
-<img src="images/image-20230822181721360.png" srcset="/img/loading.gif" lazyload alt="image-20230822181721360" style="zoom:67%;">
+<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/image-20230822181721360-173917213515740.png" srcset="/img/loading.gif" lazyload style="zoom:67%;">
+<!--
 
-<p><img src="/images/image-20230822181849566.png" srcset="/img/loading.gif" lazyload alt="image-20230822181849566"></p>
+<img src="第01章附录：MinGW编译器的安装和配置\image-20230822181721360-173917213515740.png" srcset="/img/loading.gif" lazyload style="zoom:67%;" />
+
+<p>–&gt;</p>
+<p><img src="/image-20230822181849566-173917213845242.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230822181849566-173917213845242.png](第01章附录：MinGW编译器的安装和配置\image-20230822181849566-173917213845242.png)
+
+-->
+
+
+
 <p>2）打开命令行窗口（通过在搜索栏中执行 cmd 指令即可），输入<code>gcc -v</code>指令，如果输出 GCC 编译器的具体信息，则表示安装成功，例如：</p>
-<p><img src="/images/image-20230822182303099.png" srcset="/img/loading.gif" lazyload alt="image-20230822182303099"></p>
+<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AMinGW%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/image-20230822182303099-173917214390244.png" srcset="/img/loading.gif" lazyload></p>
+<!--
+
+![image-20230822182303099-173917214390244.png](第01章附录：MinGW编译器的安装和配置\image-20230822182303099-173917214390244.png)
+
+-->
+
 <p>通过上面的安装，我们就可以在当前 Windows 平台上编译、运行 C 或者 C++ 程序了。</p>
 <p>因为 MinGW-w64 本来就是将 GCC 移植到 Windows 上的产物，所以操作方式和 GCC 一样，只是在 Linux 下命令是被键入到“终端”中，而 Windows 下则是被键入到“命令提示符”里。</p>
 
@@ -465,6 +638,13 @@
   <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/C/" class="category-chain-item">C</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" class="category-chain-item">软件安装</a>
+  
+  
+
+  
 
   
 
@@ -485,7 +665,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>1-3、MinGW编译器的安装和配置</div>
-      <div>http://example.com/2024/04/28/技术栈/C/第01章附录：MinGW编译器的安装和配置/</div>
+      <div>http://example.com/2024/04/28/技术栈/C/软件安装/第01章附录：MinGW编译器的安装和配置/</div>
     </div>
     <div class="license-meta">
       
@@ -529,7 +709,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AC%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%EF%BC%9ACLion%E7%9A%84%E4%BD%BF%E7%94%A8/" title="1-2、CLion的使用">
+                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/%E7%AC%AC01%E7%AB%A0%E9%99%84%E5%BD%95%EF%BC%9AC%E5%BC%80%E5%8F%91%E5%88%A9%E5%99%A8%EF%BC%9ACLion%E7%9A%84%E4%BD%BF%E7%94%A8/" title="1-2、CLion的使用">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">1-2、CLion的使用</span>
                         <span class="visible-mobile">上一篇</span>
@@ -539,8 +719,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC02%E7%AB%A0_%E5%8F%98%E9%87%8F%E4%B8%8E%E8%BF%9B%E5%88%B6/" title="2、变量与进制">
-                        <span class="hidden-mobile">2、变量与进制</span>
+                      <a href="/2024/04/21/%E6%8A%80%E6%9C%AF%E6%A0%88/MySQL/mysql%E8%AF%AD%E5%8F%A5/" title="MySQL语句">
+                        <span class="hidden-mobile">MySQL语句</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
