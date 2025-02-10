@@ -22,13 +22,13 @@
     <meta name="description" content="第06章_函数本章专题脉络    将特定功能的代码封装为函数的好处：实现代码重用，减少冗余，简化代码。  一个C源程序可以由一个或多个源文件构成（C文件扩展名是“.c”），一个源文件是一个编译单位。一个源文件可以由若干个函数构成，函数之间可以相互调用。也就是说，函数是C程序基本的组成单位。     练习： C语言主要是借助以下（　　）功能来实现程序模块化的。A．定义函数B．定义常量和外部变量C．三">
 <meta property="og:type" content="article">
 <meta property="og:title" content="6、函数">
-<meta property="og:url" content="http://example.com/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:url" content="http://example.com/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/index.html">
 <meta property="og:site_name" content="PZ">
 <meta property="og:description" content="第06章_函数本章专题脉络    将特定功能的代码封装为函数的好处：实现代码重用，减少冗余，简化代码。  一个C源程序可以由一个或多个源文件构成（C文件扩展名是“.c”），一个源文件是一个编译单位。一个源文件可以由若干个函数构成，函数之间可以相互调用。也就是说，函数是C程序基本的组成单位。     练习： C语言主要是借助以下（　　）功能来实现程序模块化的。A．定义函数B．定义常量和外部变量C．三">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/c.png">
-<meta property="article:published_time" content="2024-04-28T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-01-29T16:35:36.453Z">
+<meta property="article:published_time" content="2025-01-31T15:56:21.000Z">
+<meta property="article:modified_time" content="2025-02-10T08:09:58.337Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/c.png">
@@ -212,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-04-28 16:35" pubdate>
-          2024年4月28日 下午
+        <time datetime="2025-01-31 23:56" pubdate>
+          2025年1月31日 晚上
         </time>
       </span>
     
@@ -277,7 +277,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="第06章-函数"><a href="#第06章-函数" class="headerlink" title="第06章_函数"></a>第06章_函数</h1><h2 id="本章专题脉络"><a href="#本章专题脉络" class="headerlink" title="本章专题脉络"></a>本章专题脉络</h2><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/第6章_函数.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;">
+                <h1 id="第06章-函数"><a href="#第06章-函数" class="headerlink" title="第06章_函数"></a>第06章_函数</h1><h2 id="本章专题脉络"><a href="#本章专题脉络" class="headerlink" title="本章专题脉络"></a>本章专题脉络</h2><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/第6章_函数.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;">
 <!--
 
 <img src="第06章_函数\第6章_函数.png" srcset="/img/loading.gif" lazyload style="zoom: 50%;" />
@@ -304,7 +304,7 @@
 <li><p>将特定功能的代码封装为函数的好处：<code>实现代码重用，减少冗余，简化代码</code>。</p>
 </li>
 <li><p>一个C源程序可以由一个或多个源文件构成（C文件扩展名是“.c”），一个源文件是一个编译单位。一个源文件可以由若干个函数构成，函数之间可以相互调用。也就是说，<code>函数是C程序基本的组成单位</code>。</p>
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230808193420746.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230808193420746.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20230808193420746.png](第06章_函数\image-20230808193420746.png)
@@ -378,7 +378,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello&quot;</span>);<br>    <span class="hljs-comment">//return 12;</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">int</span> i = test();<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>,i);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
-<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230903233042036.png" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
+<img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230903233042036.png" srcset="/img/loading.gif" lazyload style="zoom: 80%;">
 <!--
 
 <img src="第06章_函数\image-20230903233042036.png" srcset="/img/loading.gif" lazyload style="zoom: 80%;" />
@@ -486,7 +486,7 @@
 <p>函数的调用</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    func();<br>    <br>    <span class="hljs-comment">//func(10);     // 报错</span><br>	<span class="hljs-comment">//func(10,20);  // 报错</span><br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>; <span class="hljs-comment">//程序正常结束，默认返回0</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230808193457541.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230808193457541.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20230808193457541.png](第06章_函数\image-20230808193457541.png)
@@ -496,7 +496,7 @@
 <p>举例2：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">func</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>    <span class="hljs-type">int</span> sum = x + y;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x+y=%d\n&quot;</span>, sum);<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    func(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230808193552194.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230808193552194.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20230808193552194.png](第06章_函数\image-20230808193552194.png)
@@ -506,7 +506,7 @@
 <p>举例3：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">func</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>    <span class="hljs-keyword">return</span> x + y;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> sum = func(<span class="hljs-number">3</span>, <span class="hljs-number">5</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x+y=%d\n&quot;</span>, sum);<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809104417557.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809104417557.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
 <!--
 
 <img src="第06章_函数\image-20230809104417557.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
@@ -595,7 +595,7 @@
 -->
 
 <p>或者</p>
-<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230927200617380.png" srcset="/img/loading.gif" lazyload style="zoom:86%;">
+<img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230927200617380.png" srcset="/img/loading.gif" lazyload style="zoom:86%;">
 <!--
 
 <img src="第06章_函数\image-20230927200617380.png" srcset="/img/loading.gif" lazyload style="zoom:86%;" />
@@ -707,7 +707,7 @@
 <p>举例1：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> num = <span class="hljs-number">100</span>;<br><span class="hljs-type">int</span> *p1 = &amp;num;<br><span class="hljs-type">int</span> *p2 = p1;<br>*p2 = <span class="hljs-number">50</span>;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230810202628093.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230810202628093.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20230810202628093.png](第06章_函数\image-20230810202628093.png)
@@ -722,7 +722,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> *a, <span class="hljs-type">int</span> *b)</span> &#123; <span class="hljs-comment">//函数参数为指针类型</span><br>    <span class="hljs-type">int</span> temp = *a;<br>    *a = *b;<br>    *b = temp;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;*a = %d,*b = %d\n&quot;</span>, *a, *b);  <span class="hljs-comment">//输出交换后的结果</span><br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> x = <span class="hljs-number">6</span>, y = <span class="hljs-number">8</span>;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;调用函数之前：\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x = %d,y = %d\n&quot;</span>, x, y); <span class="hljs-comment">//输出调用swap()函数之前x,y的值</span><br><br>    swap(&amp;x, &amp;y);               <span class="hljs-comment">//调用swap()函数</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;调用函数之后:\n&quot;</span>);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x = %d,y = %d\n&quot;</span>, x, y); <span class="hljs-comment">//输出调用swap()函数之后x,y的值</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>通过传入变量 x 和 y 的地址，函数内部就可以直接操作该地址，从而实现交换两个变量的值。</p>
-<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809164238776.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809164238776.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
 <!--
 
 <img src="第06章_函数\image-20230809164238776.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
@@ -847,7 +847,7 @@
 <p>上述写法在树、图的算法中应用广泛。</p>
 </blockquote>
 <h2 id="4、函数的高级应用"><a href="#4、函数的高级应用" class="headerlink" title="4、函数的高级应用"></a>4、函数的高级应用</h2><h3 id="4-1-递归-recursion-函数"><a href="#4-1-递归-recursion-函数" class="headerlink" title="4.1 递归(recursion)函数"></a>4.1 递归(recursion)函数</h3><p>举例1：</p>
-<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230921183904470.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230921183904470.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
 <!--
 
 <img src="第06章_函数\image-20230921183904470.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
@@ -887,7 +887,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 递归函数，计算n的阶乘</span><br><span class="hljs-type">int</span> <span class="hljs-title function_">factorial</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> &#123;<br>    <span class="hljs-comment">// 基本情况：当n为0或1时，阶乘为1</span><br>    <span class="hljs-keyword">if</span> (n == <span class="hljs-number">0</span> || n == <span class="hljs-number">1</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// 递归情况：n! = n * (n-1)!</span><br>        <span class="hljs-keyword">return</span> n * factorial(n - <span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> n = <span class="hljs-number">5</span>;<br><br>    <span class="hljs-comment">// 调用递归函数计算n的阶乘</span><br>    <span class="hljs-type">int</span> result = factorial(n);<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d! = %d\n&quot;</span>, n, result);<br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>图示：</p>
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20220520150018655.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20220520150018655.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20220520150018655.png](第06章_函数\image-20220520150018655.png)
@@ -913,14 +913,14 @@
 </blockquote>
 <p>练习1：</p>
 <p>有5个学生坐在一起，问第5个学生多少岁，他说比第4个学生大2岁。问第4个学生岁数，他说比第3个学生大2岁。问第3个学生，又说比第2个学生大2岁。问第2个学生，说比第1个学生大2岁。最后问第1个学生，他说是10岁。请问第5个学生多大。即：</p>
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230527143843122.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230527143843122.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20230527143843122.png](第06章_函数\image-20230527143843122.png)
 
 -->
 
-<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230527144005946.png" srcset="/img/loading.gif" lazyload style="zoom:120%;">
+<img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230527144005946.png" srcset="/img/loading.gif" lazyload style="zoom:120%;">
 <!--
 
 <img src="第06章_函数\image-20230527144005946.png" srcset="/img/loading.gif" lazyload style="zoom:120%;" />
@@ -1061,7 +1061,7 @@
 
 <p>整个程序是由3个文件组成的，file3.c文件的主函数中使用了4个函数的调用语句。其中，printf()、scanf()是库函数，另外两个是用户自定义的函数，它们都被定义为外部函数。</p>
 <p>在当前file3.c文件里面，main()函数使用前需要给出外部函数的原型，并用 extern 说明该函数的定义来自其它文件。</p>
-<h2 id="5、再谈变量"><a href="#5、再谈变量" class="headerlink" title="5、再谈变量"></a>5、再谈变量</h2><p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="5、再谈变量"><a href="#5、再谈变量" class="headerlink" title="5、再谈变量"></a>5、再谈变量</h2><p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/%E5%8F%98%E9%87%8F%E7%9A%84%E5%88%86%E7%B1%BB.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![变量的分类.png](第06章_函数\变量的分类.png)
@@ -1073,7 +1073,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">printStar</span><span class="hljs-params">()</span>;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">5</span>; i++) &#123;<br>        printStar();<br>        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;\n&#x27;</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">printStar</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++)<br>        <span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;*&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>举例2：</p>
-<img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20231009113026410.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
+<img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20231009113026410.png" srcset="/img/loading.gif" lazyload style="zoom:80%;">
 <!--
 
 <img src="第06章_函数\image-20231009113026410.png" srcset="/img/loading.gif" lazyload style="zoom:80%;" />
@@ -1214,7 +1214,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">f</span><span class="hljs-params">(<span class="hljs-type">int</span>)</span>; <span class="hljs-comment">//函数原型</span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-type">int</span> a = <span class="hljs-number">2</span>, i; <span class="hljs-comment">//(自动)局部变量</span><br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++)<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, f(a)); <span class="hljs-comment">//输出f(a)的值</span><br><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">f</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span> &#123;<br>    <span class="hljs-keyword">auto</span> <span class="hljs-type">int</span> b = <span class="hljs-number">0</span>; <span class="hljs-comment">//(自动)局部变量</span><br>    <span class="hljs-type">static</span> <span class="hljs-type">int</span> c = <span class="hljs-number">3</span>; <span class="hljs-comment">//静态局部变量</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;c = %d\n&quot;</span>,c);<br>    b++;<br>    c++;<br>    <span class="hljs-keyword">return</span> (a + b + c);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>图示：</p>
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809143454717.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809143454717.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20230809143454717.png](第06章_函数\image-20230809143454717.png)
@@ -1294,7 +1294,7 @@
 </ul>
 <p><strong>将外部变量的作用域限制在本文件中</strong></p>
 <p>有时在程序设计中希望某些外部变量<code>只限于被本文件引用</code>，而不能被其它文件引用。这时可以在定义外部变量时加一个static声明。</p>
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809143539166.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20230809143539166.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20230809143539166.png](第06章_函数\image-20230809143539166.png)
@@ -1345,7 +1345,7 @@
 <p>【解析】形参是局部变量，缺省类型为auto型。</p>
 </blockquote>
 <p>小结：</p>
-<p><img src="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20231011205858506.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC06%E7%AB%A0_%E5%87%BD%E6%95%B0/image-20231011205858506.png" srcset="/img/loading.gif" lazyload></p>
 <!--
 
 ![image-20231011205858506.png](第06章_函数\image-20231011205858506.png)
@@ -1396,7 +1396,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>6、函数</div>
-      <div>http://example.com/2024/04/28/技术栈/C/第06章_函数/</div>
+      <div>http://example.com/2025/01/31/技术栈/C/第06章_函数/</div>
     </div>
     <div class="license-meta">
       
@@ -1408,7 +1408,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年4月28日</div>
+          <div>2025年1月31日</div>
         </div>
       
       
@@ -1440,9 +1440,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC08%E7%AB%A0_C%E8%AF%AD%E8%A8%80%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0/" title="8、C语言常用函数">
+                      <a href="/2025/02/01/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC07%E7%AB%A0_%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E5%85%B1%E7%94%A8%E4%BD%93/" title="7、结构体与共用体">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">8、C语言常用函数</span>
+                        <span class="hidden-mobile">7、结构体与共用体</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -1450,8 +1450,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/04/28/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC09%E7%AB%A0_%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" title="9、文件操作">
-                        <span class="hidden-mobile">9、文件操作</span>
+                      <a href="/2025/01/31/%E6%8A%80%E6%9C%AF%E6%A0%88/C/%E7%AC%AC05%E7%AB%A0_%E6%8C%87%E9%92%88(%E9%87%8D%E7%82%B9)/" title="5、指针">
+                        <span class="hidden-mobile">5、指针</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
