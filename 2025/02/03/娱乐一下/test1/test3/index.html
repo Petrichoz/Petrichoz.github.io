@@ -19,21 +19,21 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="互动趣味页面        body {       background-color: #222;       color: #fff;       font-family: &#39;微软雅黑&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 0;       transition: back">
+    <meta name="description" content="奇妙互动页面        body {       background-color: #222;       color: #fff;       font-family: &#39;Arial&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 20px;       overflow: hi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="好玩的">
-<meta property="og:url" content="http://example.com/2025/02/03/%E5%A8%B1%E4%B9%90%E4%B8%80%E4%B8%8B/test1/test1/index.html">
+<meta property="og:title" content="好玩的2">
+<meta property="og:url" content="http://example.com/2025/02/03/%E5%A8%B1%E4%B9%90%E4%B8%80%E4%B8%8B/test1/test3/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="互动趣味页面        body {       background-color: #222;       color: #fff;       font-family: &#39;微软雅黑&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 0;       transition: back">
+<meta property="og:description" content="奇妙互动页面        body {       background-color: #222;       color: #fff;       font-family: &#39;Arial&#39;, sans-serif;       text-align: center;       margin: 0;       padding: 20px;       overflow: hi">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-02-03T01:50:27.000Z">
-<meta property="article:modified_time" content="2025-02-03T11:37:09.685Z">
+<meta property="article:published_time" content="2025-02-03T11:50:27.000Z">
+<meta property="article:modified_time" content="2025-02-12T09:26:43.729Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>好玩的 - PZ</title>
+  <title>好玩的2 - PZ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="好玩的"></span>
+            <span id="subtitle" data-typed-text="好玩的2"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-03 09:50" pubdate>
-          2025年2月3日 上午
+        <time datetime="2025-02-03 19:50" pubdate>
+          2025年2月3日 晚上
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          254 字
+          324 字
         
       </span>
     
@@ -270,7 +270,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">好玩的</h1>
+            <h1 id="seo-header">好玩的2</h1>
             
             
               <div class="markdown-body">
@@ -279,86 +279,116 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>互动趣味页面</title>
+  <title>奇妙互动页面</title>
   <style>
     body {
       background-color: #222;
       color: #fff;
-      font-family: '微软雅黑', sans-serif;
+      font-family: 'Arial', sans-serif;
       text-align: center;
       margin: 0;
-      padding: 0;
-      transition: background-color 0.5s;
-    }
-    .container {
-      margin-top: 100px;
-    }
-    h1 {
-      font-size: 2.5em;
-    }
-    p {
-      font-size: 1.2em;
+      padding: 20px;
+      overflow: hidden;
     }
     button {
-      background-color: #ff4081;
+      background-color: #00bcd4;
       border: none;
-      padding: 12px 24px;
+      padding: 12px 25px;
       color: #fff;
-      font-size: 1.1em;
+      font-size: 1.2em;
       cursor: pointer;
+      margin: 15px;
       border-radius: 5px;
-      transition: transform 0.2s;
+      transition: transform 0.3s;
     }
     button:hover {
-      transform: scale(1.05);
+      transform: scale(1.1) rotate(10deg);
     }
-    #message {
-      margin-top: 30px;
-      font-size: 1.5em;
-      min-height: 40px;
+    #emoji-rain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .emoji {
+      position: absolute;
+      font-size: 3em;
+      animation: rainEffect 4s linear infinite;
+    }
+    @keyframes rainEffect {
+      0% { transform: translateY(-100vh); }
+      100% { transform: translateY(100vh); }
+    }
+    #mystery-box {
+      background: linear-gradient(135deg, #ff4081, #ff79c6);
+      color: #fff;
+      padding: 15px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #mystery-box:hover {
+      background-color: #f50057;
+    }
+    #reaction {
+      font-size: 2em;
+      font-style: italic;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>欢迎来到互动趣味页面！</h1>
-    <p>点下面的按钮试试神奇的效果吧！</p>
-    <button onclick="showRandomMessage()">点击我！</button>
-    <div id="message"></div>
-  </div>
+  <h1>欢迎来到奇妙互动页面！</h1>
+  <p>点击按钮，开启你的神奇体验！</p>
+  <button onclick="createRain()">开始emoji雨</button>
+  <button onclick="showMystery()">点击开启神秘宝箱</button>
+
+  <div id="emoji-rain"></div>
+  <div id="reaction"></div>
+
+  <div id="mystery-box">点击我，我就是个神秘盒子！</div>
 
   <script>
-    // 趣味消息数组
-    const messages = [
-      "恭喜你！发现了宇宙的小秘密！",
-      "每次点击都是一次新冒险！",
-      "你就是最闪亮的星，继续闪耀！",
-      "哇哦，这可能是今天听到的最搞笑的一句话！",
-      "生活就像这按钮，每按一次都有惊喜！"
-    ];
+    // Emoji雨
+    const emojis = ["😀", "😎", "🔥", "💥", "✨", "😇", "😜", "💃", "🎉", "🚀"];
+    function createRain() {
+      const emojiRainContainer = document.getElementById("emoji-rain");
+      const emoji = document.createElement("div");
+      emoji.className = "emoji";
+      emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.animationDuration = Math.random() * 2 + 3 + "s";
+      emojiRainContainer.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 5000);
+    }
 
-    // 显示随机消息并更换背景颜色
-    function showRandomMessage() {
-      const msgDiv = document.getElementById('message');
-      const randomIndex = Math.floor(Math.random() * messages.length);
-      msgDiv.textContent = messages[randomIndex];
-      // 动态更换背景颜色
-      document.body.style.backgroundColor = getRandomColor();
+    // 神秘盒子
+    function showMystery() {
+      const reactions = [
+        "💥 哇！你打开了一个无敌的神秘宝箱！",
+        "🎁 里面是一个超级英雄披风！",
+        "✨ 啊！你得到了闪电速度！",
+        "💫 你获得了一瓶无敌增强药水！",
+        "🎉 恭喜！你打开了一个无限能量源！"
+      ];
+      const reaction = document.getElementById("reaction");
+      reaction.textContent = reactions[Math.floor(Math.random() * reactions.length)];
     }
     
-    // 生成随机颜色函数
-    function getRandomColor() {
-      const letters = '0123456789ABCDEF';
-      let color = '#';
-      for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+    // 自动显示神秘盒子反应
+    setInterval(() => {
+      if (Math.random() > 0.95) {
+        showMystery();
       }
-      return color;
-    }
+    }, 3000);
   </script>
 <!-- hexo injector body_end start --><script src="/js/headerPic.js"></script><!-- hexo injector body_end end --></body>
 </html>
-
                 
               </div>
             
@@ -403,8 +433,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>好玩的</div>
-      <div>http://example.com/2025/02/03/娱乐一下/test1/test1/</div>
+      <div>好玩的2</div>
+      <div>http://example.com/2025/02/03/娱乐一下/test1/test3/</div>
     </div>
     <div class="license-meta">
       
