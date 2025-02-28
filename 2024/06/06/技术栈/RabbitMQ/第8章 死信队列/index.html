@@ -90,7 +90,20 @@
 
 
 <body>
-  
+  <div>
+	<div class='real_mask' style="
+		background-color: rgba(0,0,0,0.3);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		z-index: -777;
+	"></div>
+	<div id="banner_video_insert">
+	</div>	
+	<div id='vvd_banner_img'>
+	</div>
+</div>
+<div id="banner"></div>
 
   <header>
     
@@ -254,7 +267,77 @@
 </div>
 
 </div>
+<%
+var banner_video = theme.index.banner_video
+var banner_img = page.banner_img || theme.index.banner_img
+var banner_img_height = page.banner_img_height || theme.index.banner_img_height
+var banner_mask_alpha = page.banner_mask_alpha || theme.index.banner_mask_alpha
+%>
+	<script type="text/javascript" src="/vvd_js/jquery.js"></script>
 
+	<div class="banner" id='banner' >
+
+		<div class="full-bg-img" >
+
+			<% if(banner_video){ %>
+				<script>
+					var ua = navigator.userAgent;
+					var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
+						isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
+						isAndroid = ua.match(/(Android)\s+([\d.]+)/),
+						isMobile = isIphone || isAndroid;
+
+					function set_video_attr(id){
+
+						var height = document.body.clientHeight
+						var width = document.body.clientWidth
+						var video_item = document.getElementById(id);
+
+						if (height / width < 0.56){
+							video_item.setAttribute('width', '100%');
+							video_item.setAttribute('height', 'auto');
+						} else {
+							video_item.setAttribute('height', '100%');
+							video_item.setAttribute('width', 'auto');
+						}
+					}
+
+					$.getJSON('/vvd_js/video_url.json', function(data){
+						if (true){
+							var video_list_length = data.length
+							var seed = Math.random()
+							index = Math.floor(seed * video_list_length)
+							
+							video_url = data[index][0]
+							pre_show_image_url = data[index][1]
+							
+							banner_obj = document.getElementById("banner")
+							banner_obj.style.cssText = "background: url('" + pre_show_image_url + "') no-repeat; background-size: cover;"
+
+							vvd_banner_obj = document.getElementById("vvd_banner_img")
+
+							vvd_banner_content = "<img id='banner_img_item' src='" + pre_show_image_url + "' style='height: 100%; position: fixed; z-index: -999'>"
+							vvd_banner_obj.innerHTML = vvd_banner_content
+							set_video_attr('banner_img_item')
+
+							if (!isMobile) {
+								video_html_res = "<video id='video_item' style='position: fixed; z-index: -888;'  muted='muted' src=" + video_url + " autoplay='autoplay' loop='loop'></video>"
+								document.getElementById("banner_video_insert").innerHTML = video_html_res;
+								set_video_attr('video_item')
+							}
+						}
+					});
+
+					if (!isMobile){
+						window.onresize = function(){
+							set_video_attr('video_item')
+							}
+						}
+				</script>
+			<% } %>
+			</div>
+		</div>
+    </div>
   </header>
 
   <main>
@@ -433,9 +516,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/07/04/%E9%A1%B9%E7%9B%AE/%E5%B0%8F%E5%9E%8B%E7%94%B5%E5%95%86%E6%A8%A1%E6%8B%9F/%E7%AC%AC0%E7%AB%A0_%E5%87%86%E5%A4%87%E8%BD%AF%E4%BB%B6%E7%8E%AF%E5%A2%83/" title="0、准备相关软件环境">
+                      <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC9%E7%AB%A0%20%E5%BB%B6%E8%BF%9F%E9%98%9F%E5%88%97/" title="9、延迟队列">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">0、准备相关软件环境</span>
+                        <span class="hidden-mobile">9、延迟队列</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -443,8 +526,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/06/06/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC7%E7%AB%A0%20%E6%B6%88%E6%81%AF%E8%B6%85%E6%97%B6/" title="7、消息超时">
-                        <span class="hidden-mobile">7、消息超时</span>
+                      <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" title="6、消费端限流">
+                        <span class="hidden-mobile">6、消费端限流</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
