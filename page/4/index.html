@@ -78,20 +78,7 @@
 
 
 <body>
-  <div>
-	<div class='real_mask' style="
-		background-color: rgba(0,0,0,0.3);
-		width: 100%;
-		height: 100%;
-		position: fixed;
-		z-index: -777;
-	"></div>
-	<div id="banner_video_insert">
-	</div>	
-	<div id='vvd_banner_img'>
-	</div>
-</div>
-<div id="banner"></div>
+  
 
   <header>
     
@@ -219,77 +206,7 @@
 </div>
 
 </div>
-<%
-var banner_video = theme.index.banner_video
-var banner_img = page.banner_img || theme.index.banner_img
-var banner_img_height = page.banner_img_height || theme.index.banner_img_height
-var banner_mask_alpha = page.banner_mask_alpha || theme.index.banner_mask_alpha
-%>
-	<script type="text/javascript" src="/vvd_js/jquery.js"></script>
 
-	<div class="banner" id='banner' >
-
-		<div class="full-bg-img" >
-
-			<% if(banner_video){ %>
-				<script>
-					var ua = navigator.userAgent;
-					var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
-						isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
-						isAndroid = ua.match(/(Android)\s+([\d.]+)/),
-						isMobile = isIphone || isAndroid;
-
-					function set_video_attr(id){
-
-						var height = document.body.clientHeight
-						var width = document.body.clientWidth
-						var video_item = document.getElementById(id);
-
-						if (height / width < 0.56){
-							video_item.setAttribute('width', '100%');
-							video_item.setAttribute('height', 'auto');
-						} else {
-							video_item.setAttribute('height', '100%');
-							video_item.setAttribute('width', 'auto');
-						}
-					}
-
-					$.getJSON('/vvd_js/video_url.json', function(data){
-						if (true){
-							var video_list_length = data.length
-							var seed = Math.random()
-							index = Math.floor(seed * video_list_length)
-							
-							video_url = data[index][0]
-							pre_show_image_url = data[index][1]
-							
-							banner_obj = document.getElementById("banner")
-							banner_obj.style.cssText = "background: url('" + pre_show_image_url + "') no-repeat; background-size: cover;"
-
-							vvd_banner_obj = document.getElementById("vvd_banner_img")
-
-							vvd_banner_content = "<img id='banner_img_item' src='" + pre_show_image_url + "' style='height: 100%; position: fixed; z-index: -999'>"
-							vvd_banner_obj.innerHTML = vvd_banner_content
-							set_video_attr('banner_img_item')
-
-							if (!isMobile) {
-								video_html_res = "<video id='video_item' style='position: fixed; z-index: -888;'  muted='muted' src=" + video_url + " autoplay='autoplay' loop='loop'></video>"
-								document.getElementById("banner_video_insert").innerHTML = video_html_res;
-								set_video_attr('video_item')
-							}
-						}
-					});
-
-					if (!isMobile){
-						window.onresize = function(){
-							set_video_attr('video_item')
-							}
-						}
-				</script>
-			<% } %>
-			</div>
-		</div>
-    </div>
   </header>
 
   <main>
@@ -576,73 +493,6 @@ var banner_mask_alpha = page.banner_mask_alpha || theme.index.banner_mask_alpha
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" target="_self">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="6、消费端限流">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" target="_self">
-          6、消费端限流
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt " href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" target="_self">
-        <div>
-          消费端限流一、概述  生产者发送10000个消息 消费端并发能力上限：同时处理1000个请求 设定：  ​		每次最多从队列取回1000个请求 二、生产者端代码123456789@Test  public void testSendMessage() &#123;    for (int i = 0; i &lt; 100; i++) &#123;        rabbitTemplate.co
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-05 00:00" pubdate>
-              2024-06-05
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
         <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC5%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%99%BE%E5%88%86%E7%99%BE%E6%88%90%E5%8A%9F%E6%8A%95%E9%80%92/" target="_self">
           <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="5、消息百分百成功投递">
         </a>
@@ -710,23 +560,23 @@ var banner_mask_alpha = page.banner_mask_alpha || theme.index.banner_mask_alpha
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="2、RabbitMQ入门案例">
+        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="6、消费端限流">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
-          2、RabbitMQ入门案例
+        <a href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" target="_self">
+          6、消费端限流
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
+      <a class="index-excerpt " href="/2024/06/05/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC6%E7%AB%A0%20%E6%B6%88%E8%B4%B9%E7%AB%AF%E9%99%90%E6%B5%81/" target="_self">
         <div>
-          RabbitMQ入门案例一、目标生产者发送消息，消费者接收消息，用最简单的方式实现      二、创建队列     队列名称：atguigu.queue.simple        三、Java 客户端：整合 SpringBoot1、生产者端工程①创建module     ②配置POM12345678910111213141516&lt;parent&gt;    &lt;groupId&gt;o
+          消费端限流一、概述  生产者发送10000个消息 消费端并发能力上限：同时处理1000个请求 设定：  ​		每次最多从队列取回1000个请求 二、生产者端代码123456789@Test  public void testSendMessage() &#123;    for (int i = 0; i &lt; 100; i++) &#123;        rabbitTemplate.co
         </div>
       </a>
 
@@ -734,8 +584,8 @@ var banner_mask_alpha = page.banner_mask_alpha || theme.index.banner_mask_alpha
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-06-04 00:00" pubdate>
-              2024-06-04
+            <time datetime="2024-06-05 00:00" pubdate>
+              2024-06-05
             </time>
           </div>
         
@@ -844,23 +694,23 @@ var banner_mask_alpha = page.banner_mask_alpha || theme.index.banner_mask_alpha
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/" target="_self">
-          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="4、消息的可靠性投递">
+        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="2、RabbitMQ入门案例">
         </a>
       </div>
     
     <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/" target="_self">
-          4、消息的可靠性投递
+        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
+          2、RabbitMQ入门案例
         </a>
       </h2>
 
       
-      <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/" target="_self">
+      <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC2%E7%AB%A0%20RabbitMQ%E5%85%A5%E9%97%A8%E6%A1%88%E4%BE%8B/" target="_self">
         <div>
-          消息的可靠性投递1 概述1.1 问题引入 正常的下单流程    故障情况1：   消息没有发送到消息队列上，后果：消费者拿不到消息，业务功能缺失，数据错误  故障情况2：   消息成功存入消息队列，但是消息队列服务器宕机了，原本保存在内存中的消息也丢失了，即使服务器重新启动，消息也找不回来了。后果：消费者拿不到消息，业务功能缺失，数据错误  故障情况3：   消息成功存入消息队列，但是消费端出现问
+          RabbitMQ入门案例一、目标生产者发送消息，消费者接收消息，用最简单的方式实现      二、创建队列     队列名称：atguigu.queue.simple        三、Java 客户端：整合 SpringBoot1、生产者端工程①创建module     ②配置POM12345678910111213141516&lt;parent&gt;    &lt;groupId&gt;o
         </div>
       </a>
 
@@ -928,6 +778,73 @@ var banner_mask_alpha = page.banner_mask_alpha || theme.index.banner_mask_alpha
       <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC3%E7%AB%A0%20RabbitMQ%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F/" target="_self">
         <div>
           RabbitMQ工作模式 RabbitMQ提供了多种工作模式：简单模式，work模式 ，Publish&#x2F;Subscribe发布与订阅模式，Routing路由模式，Topics主题模式等   官网对应模式介绍：https://www.rabbitmq.com/getstarted.html  1 Work queues工作队列模式1.1 模式说明  Work Queues与入门程序的简单模
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-06-04 00:00" pubdate>
+              2024-06-04
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/" class="category-chain-item">技术栈</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/" class="category-chain-item">RabbitMQ</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/" target="_self">
+          <img src="/img/rabbitmq.png" srcset="/img/loading.gif" lazyload alt="4、消息的可靠性投递">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/" target="_self">
+          4、消息的可靠性投递
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt " href="/2024/06/04/%E6%8A%80%E6%9C%AF%E6%A0%88/RabbitMQ/%E7%AC%AC4%E7%AB%A0%20%E6%B6%88%E6%81%AF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7%E6%8A%95%E9%80%92/" target="_self">
+        <div>
+          消息的可靠性投递1 概述1.1 问题引入 正常的下单流程    故障情况1：   消息没有发送到消息队列上，后果：消费者拿不到消息，业务功能缺失，数据错误  故障情况2：   消息成功存入消息队列，但是消息队列服务器宕机了，原本保存在内存中的消息也丢失了，即使服务器重新启动，消息也找不回来了。后果：消费者拿不到消息，业务功能缺失，数据错误  故障情况3：   消息成功存入消息队列，但是消费端出现问
         </div>
       </a>
 
