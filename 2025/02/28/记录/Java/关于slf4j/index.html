@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/essay.jpg">
 <meta property="article:published_time" content="2025-02-28T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-02-28T09:12:52.333Z">
+<meta property="article:modified_time" content="2025-02-28T11:31:06.753Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/essay.jpg">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.3k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          10 分钟
+          12 分钟
         
       </span>
     
@@ -312,6 +312,21 @@
 <p>pps暂时工作没遇到过</p>
 <p>ppps我哭会(╥﹏╥)</p>
 <p>pppps这可不算我不会使用slf4j，不接受反驳 (눈_눈)</p>
+<p>很久很久以后，我删除了module-info.java文件以后且沉浸在导入了 slf4j的喜悦心情中时，一运行又报错了(°Д°)?，这次知道了方向很快就解决了</p>
+<p><img src="/2025/02/28/%E8%AE%B0%E5%BD%95/Java/%E5%85%B3%E4%BA%8Eslf4j/image-20250228192857251.png" srcset="/img/loading.gif" lazyload alt="image-20250228192857251"></p>
+<p>前提，垃圾module-info.java文件，打死我也不要你，就是不要你</p>
+<p>解决方案</p>
+<p>原文出处</p>
+<p>在JavaFX中的module-info.java的大坑，实现怎么删除这个后不会报错“需要JavaFX运行组件”</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_74455082/article/details/135494376">https://blog.csdn.net/qq_74455082/article/details/135494376</a></p>
+<p>1.首先删除你的module-info.java</p>
+<p><img src="/2025/02/28/%E8%AE%B0%E5%BD%95/Java/%E5%85%B3%E4%BA%8Eslf4j/f0fda6c6f9f54244c1116969d32fcab3.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>2.然后找到你原本运行的main函数，在同级目录下构建一个新的运行类RunApp.java</p>
+<p><img src="/2025/02/28/%E8%AE%B0%E5%BD%95/Java/%E5%85%B3%E4%BA%8Eslf4j/4b67f6d0f97442bca5aed5f11a2cf570.png" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>代码：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">RunApp</span> &#123;<br><br><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">void</span>  <span class="hljs-title function_">main</span>(<span class="hljs-params"><span class="hljs-title class_">String</span>[] arg</span>)&#123;<br><br><br><br>        你原来的主线程.<span class="hljs-title function_">main</span>(arg);<br><br><br><br>    &#125;<br><br><br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>3.运行RunApp就可以啦，你之前写的其他功能依旧能实现</p>
 
                 
               </div>
