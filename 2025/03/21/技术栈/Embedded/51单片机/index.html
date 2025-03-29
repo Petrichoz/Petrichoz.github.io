@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/embedded.jpg">
 <meta property="article:published_time" content="2025-03-21T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-03-27T08:33:39.389Z">
+<meta property="article:modified_time" content="2025-03-29T01:28:33.064Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/embedded.jpg">
@@ -224,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          2k 字
         
       </span>
     
@@ -235,7 +235,7 @@
         
         
         
-          12 分钟
+          17 分钟
         
       </span>
     
@@ -355,6 +355,33 @@
 
 
 
+<h1 id="IIC通信协议"><a href="#IIC通信协议" class="headerlink" title="IIC通信协议"></a>IIC通信协议</h1><p>I<sup>2</sup>C为<strong>同步串行</strong>通信，使用两根线路进行通信，分别是数据线（SDA）和时钟线（SCL），SCL的每个时钟周期，SDA传输一位数据</p>
+<p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250329091914342.png" srcset="/img/loading.gif" lazyload alt="image-20250329091914342"></p>
+<p>SDA必须在SCL低电平期准备好要发送的下一位数据，然后在SCL高电平期间保持稳定。</p>
+<p><strong>空闲状态</strong></p>
+<p>I<sup>2</sup>C协议规定，当SDA和SCL均为高电平时，总线为空闲状态。</p>
+<p><strong>起始和结束信号</strong></p>
+<p>主设备和从设备间的每次通信，都需要以一个<strong>起始信号</strong>开始，以一个<strong>结束信号</strong>终止。起始信号和结束信号的定义如下：</p>
+<p><strong>起始信号</strong>：当SCL处于高电平时，SDA由高变低。</p>
+<p><strong>停止信号</strong>：当SCL处于高电平时，SDA由低变高。</p>
+<p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250329092153889.png" srcset="/img/loading.gif" lazyload alt="image-20250329092153889"></p>
+<p><strong>确认信号</strong></p>
+<p>I2C协议规定，发送方每发送一个字节（8位）的数据，接收方都要向发送方回复一个1位的确认信号</p>
+<p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250329092241311.png" srcset="/img/loading.gif" lazyload alt="image-20250329092241311"></p>
+<p>如果该确认信号为0表示接收方已成功接收到该字节，发送方可继续发送下一字节，这个信号在I2C协议中称为ACK（Acknowledge）；如果该信号为1，则表示接收方未能成功接收到该字节，或者不希望接收更多数据，该信号在I2C协议中称为NACK（Not Acknowledge）</p>
+<p>由于一个I2C总线上可能有多个从设备，所以开始通信前，主设备需要先与目标设备取得联系，然后再进行数据传输，除此之外，主机还需要向目标设备明确本次通信的操作是写数据还是读数据</p>
+<p>当主设备发送起始信号之后，会向所有设备发送一个字节的数据，这一个字节中，前7位为目标设备地址，第8位为读&#x2F;写标识（1表示读，0表示写）</p>
+<p>当各从设备收到这个字节的数据后，会将7位地址与自身进行对比，相同则会向主设备回复确认信号，不相同则不做任何回应。</p>
+<p>当主设备收到目标设备的确认信号后，便会开始与该设备进行通信</p>
+<p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250329092449360.png" srcset="/img/loading.gif" lazyload alt="image-20250329092449360"></p>
+<p><strong>流程总结</strong></p>
+<ol>
+<li>发送起始信号</li>
+<li>发送目标从设备地址+读写标识位</li>
+<li>接收从设备回复的确认信号</li>
+<li>与从设备进行数据传输（发送&#x2F;接收）</li>
+<li>发送终止信号</li>
+</ol>
 
                 
               </div>
