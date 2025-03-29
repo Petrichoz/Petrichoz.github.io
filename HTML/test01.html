@@ -19,17 +19,23 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="分类 - test">
-<meta property="og:url" content="http://example.com/categories/%EF%BF%BD%EF%BF%BD%EF%BF%BD%EF%BF%BD%D2%BB%EF%BF%BD%EF%BF%BD/test/index.html">
+    <meta name="description" content="Enhanced Energy Ripple Grid              body {             margin: 0;             padding: 0;             overflow: hidden;             background: #000;         }         canvas {">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="http://example.com/HTML/test01.html">
 <meta property="og:site_name" content="PZ">
+<meta property="og:description" content="Enhanced Energy Ripple Grid              body {             margin: 0;             padding: 0;             overflow: hidden;             background: #000;         }         canvas {">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-03-25T11:14:39.733Z">
+<meta property="article:modified_time" content="2025-03-25T11:13:47.310Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
-  <title>分类 - test - PZ</title>
+  
+  <title>page.title - PZ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -189,7 +195,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="分类 - test"></span>
+            <span id="subtitle" data-typed-text="page.title"></span>
           
         </div>
 
@@ -216,23 +222,239 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="list-group">
-  <p class="h4">共计 2 篇文章</p>
-  <hr>
-  
-  
-    
-      
-      <p class="h5">2025</p>
-    
-    <a href="/2025/03/29/%E5%A8%B1%E4%B9%90%E4%B8%80%E4%B8%8B/test1/test4/" class="list-group-item list-group-item-action">
-      <time>03-29</time>
-      <div class="list-group-item-title">�����</div>
-    </a>
-  
-</div>
+<article class="page-content">
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Energy Ripple Grid</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+        }
+        canvas {
+            display: block;
+            filter: blur(1px) contrast(1.3);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initGrid();
+            initBackgroundParticles();
+        });
 
+        // ����
+        const gridSize = 40;
+        const particles = [];
+        const backgroundParticles = [];
+        const numParticles = Math.floor(canvas.width * canvas.height / (gridSize * gridSize) * 2);
+        const numBackgroundParticles = 300;
+        let mouse = { x: -1000, y: -1000 };
+        let time = 0;
 
+        // ��������
+        class Particle {
+            constructor(x, y) {
+                this.baseX = x;
+                this.baseY = y;
+                this.x = x;
+                this.y = y;
+                this.hue = Math.random() * 360;
+                this.size = Math.random() * 4 + 2;
+                this.speedX = (Math.random() - 0.5) * 0.05;
+                this.speedY = (Math.random() - 0.5) * 0.05;
+                this.wave = Math.random() * Math.PI * 2;
+            }
+
+            update() {
+                const dx = this.x - mouse.x;
+                const dy = this.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const maxDist = 200;
+                if (dist < maxDist) {
+                    const force = (1 - dist / maxDist) * 12;
+                    const angle = Math.atan2(dy, dx);
+                    this.x += Math.cos(angle) * force;
+                    this.y += Math.sin(angle) * force;
+                }
+
+                this.x += (this.baseX - this.x) * 0.05 + Math.sin(time * 0.02 + this.wave) * 0.8;
+                this.y += (this.baseY - this.y) * 0.05 + Math.cos(time * 0.03 + this.wave) * 0.8;
+                this.hue = (this.hue + Math.abs(Math.sin(time * 0.01 + dist * 0.005)) * 2) % 360;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 100%, 70%, 0.9)`;
+                ctx.fill();
+            }
+        }
+
+        // ����������
+        class BackgroundParticle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedY = Math.random() * 0.5 + 0.2;
+                this.hue = Math.random() * 360;
+            }
+
+            update() {
+                this.y += this.speedY;
+                if (this.y > canvas.height) {
+                    this.y = -this.size;
+                    this.x = Math.random() * canvas.width;
+                }
+                this.hue = (this.hue + 0.5) % 360;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${this.hue}, 80%, 60%, 0.4)`;
+                ctx.fill();
+            }
+        }
+
+        // ��ʼ��
+        function initGrid() {
+            particles.length = 0;
+            for (let x = 0; x < canvas.width; x += gridSize) {
+                for (let y = 0; y < canvas.height; y += gridSize) {
+                    particles.push(new Particle(x + Math.random() * 20 - 10, y + Math.random() * 20 - 10));
+                }
+            }
+        }
+
+        function initBackgroundParticles() {
+            backgroundParticles.length = 0;
+            for (let i = 0; i < numBackgroundParticles; i++) {
+                backgroundParticles.push(new BackgroundParticle());
+            }
+        }
+        initGrid();
+        initBackgroundParticles();
+
+        // ��������������
+        function drawEnergyFlow() {
+            ctx.globalCompositeOperation = 'source-over'; // �������
+            for (let i = 0; i < 8; i++) {
+                const x = canvas.width * (Math.sin(time * 0.015 + i * 0.5) * 0.4 + 0.5);
+                const y = canvas.height * (Math.cos(time * 0.02 + i * 0.5) * 0.4 + 0.5);
+                const gradient = ctx.createLinearGradient(x - 150, y, x + 150, y);
+                gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+                gradient.addColorStop(0.5, `hsla(${(time + i * 30) % 360}, 80%, 40%, 0.15)`);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                
+                ctx.beginPath();
+                ctx.moveTo(x - 150, y);
+                ctx.lineTo(x + 150, y);
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = 15 + Math.sin(time * 0.03 + i) * 5;
+                ctx.stroke();
+            }
+        }
+
+        // ����������
+        function drawConnections() {
+            ctx.globalCompositeOperation = 'source-over'; // ��ͨ����
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p1 = particles[i];
+                    const p2 = particles[j];
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < gridSize * 1.5) {
+                        ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `hsla(${(p1.hue + p2.hue) / 2}, 100%, 50%, ${0.5 - dist / (gridSize * 1.5) * 0.4})`;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        // ����ѭ��
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.25)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            time += 1;
+
+            // ���Ʊ�������
+            backgroundParticles.forEach(bp => {
+                bp.update();
+                bp.draw();
+            });
+
+            drawEnergyFlow();
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            drawConnections();
+            requestAnimationFrame(animate);
+        }
+
+        // �����¼�
+        canvas.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        canvas.addEventListener('touchmove', e => {
+            e.preventDefault();
+            mouse.x = e.touches[0].clientX;
+            mouse.y = e.touches[0].clientY;
+        });
+
+        canvas.addEventListener('click', () => {
+            particles.forEach(p => {
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 300) {
+                    p.x += (dx / dist) * 60;
+                    p.y += (dy / dist) * 60;
+                }
+            });
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            mouse.x = -1000;
+            mouse.y = -1000;
+        });
+
+        // ��ʼ����
+        animate();
+    </script>
+<!-- hexo injector body_end start --><script src="/js/headerPic.js"></script><!-- hexo injector body_end end --></body>
+</html>
+
+  
+
+</article>
 
 
 
@@ -350,5 +572,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<!-- hexo injector body_end start --><script src="/js/headerPic.js"></script><!-- hexo injector body_end end --></body>
+</body>
 </html>
