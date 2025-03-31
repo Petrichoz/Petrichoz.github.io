@@ -19,16 +19,16 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="闲来无事，生活太枯燥，学点新技术吧，随机来一个，于是来到了这 51单片机关于串口通信1、UART通信协议  UART通信，发送数据和接收数据都有流程， 但是绝大多数的操作都已经被底层封装好了，需要开发人员做的比较少。 发送数据未使用串口中断做法main.c 123456789101112void testUART()&#123;    Int_MCU_Init();        Dri_UART">
+    <meta name="description" content="闲来无事，生活太枯燥，学点新技术吧，随机来一个，于是来到了这 51单片机1、UART通信协议  UART通信，发送数据和接收数据都有流程， 但是绝大多数的操作都已经被底层封装好了，需要开发人员做的比较少。 发送数据未使用串口中断做法main.c 123456789101112void testUART()&#123;    Int_MCU_Init();        Dri_UART_SendB">
 <meta property="og:type" content="article">
 <meta property="og:title" content="51单片机">
 <meta property="og:url" content="http://example.com/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="闲来无事，生活太枯燥，学点新技术吧，随机来一个，于是来到了这 51单片机关于串口通信1、UART通信协议  UART通信，发送数据和接收数据都有流程， 但是绝大多数的操作都已经被底层封装好了，需要开发人员做的比较少。 发送数据未使用串口中断做法main.c 123456789101112void testUART()&#123;    Int_MCU_Init();        Dri_UART">
+<meta property="og:description" content="闲来无事，生活太枯燥，学点新技术吧，随机来一个，于是来到了这 51单片机1、UART通信协议  UART通信，发送数据和接收数据都有流程， 但是绝大多数的操作都已经被底层封装好了，需要开发人员做的比较少。 发送数据未使用串口中断做法main.c 123456789101112void testUART()&#123;    Int_MCU_Init();        Dri_UART_SendB">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/embedded.jpg">
 <meta property="article:published_time" content="2025-03-21T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-03-29T01:28:33.064Z">
+<meta property="article:modified_time" content="2025-03-29T03:54:33.379Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/embedded.jpg">
@@ -226,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          2.3k 字
         
       </span>
     
@@ -237,7 +237,7 @@
         
         
         
-          17 分钟
+          19 分钟
         
       </span>
     
@@ -289,7 +289,7 @@
               <div class="markdown-body">
                 
                 <p>闲来无事，生活太枯燥，学点新技术吧，随机来一个，于是来到了这</p>
-<h1 id="51单片机"><a href="#51单片机" class="headerlink" title="51单片机"></a>51单片机</h1><h1 id="关于串口通信"><a href="#关于串口通信" class="headerlink" title="关于串口通信"></a>关于串口通信</h1><h2 id="1、UART通信协议"><a href="#1、UART通信协议" class="headerlink" title="1、UART通信协议"></a>1、UART通信协议</h2><p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250326203122842.png" srcset="/img/loading.gif" lazyload alt="image-20250326203122842"></p>
+<h1 id="51单片机"><a href="#51单片机" class="headerlink" title="51单片机"></a>51单片机</h1><h1 id="1、UART通信协议"><a href="#1、UART通信协议" class="headerlink" title="1、UART通信协议"></a>1、UART通信协议</h1><p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250326203122842.png" srcset="/img/loading.gif" lazyload alt="image-20250326203122842"></p>
 <p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250326195748152.png" srcset="/img/loading.gif" lazyload alt="image-20250326195748152"></p>
 <p>UART通信，发送数据和接收数据都有流程，</p>
 <p>但是绝大多数的操作都已经被底层封装好了，需要开发人员做的比较少。</p>
@@ -366,7 +366,7 @@
 
 
 
-<h1 id="IIC通信协议"><a href="#IIC通信协议" class="headerlink" title="IIC通信协议"></a>IIC通信协议</h1><p>I<sup>2</sup>C为<strong>同步串行</strong>通信，使用两根线路进行通信，分别是数据线（SDA）和时钟线（SCL），SCL的每个时钟周期，SDA传输一位数据</p>
+<h1 id="2、IIC通信协议"><a href="#2、IIC通信协议" class="headerlink" title="2、IIC通信协议"></a>2、IIC通信协议</h1><h2 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h2><p>I<sup>2</sup>C为<strong>同步串行</strong>通信，使用两根线路进行通信，分别是数据线（SDA）和时钟线（SCL），SCL的每个时钟周期，SDA传输一位数据</p>
 <p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250329091914342.png" srcset="/img/loading.gif" lazyload alt="image-20250329091914342"></p>
 <p>SDA必须在SCL低电平期准备好要发送的下一位数据，然后在SCL高电平期间保持稳定。</p>
 <p><strong>空闲状态</strong></p>
@@ -393,6 +393,10 @@
 <li>与从设备进行数据传输（发送&#x2F;接收）</li>
 <li>发送终止信号</li>
 </ol>
+<p><img src="/2025/03/21/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/51%E5%8D%95%E7%89%87%E6%9C%BA/image-20250329114425859.png" srcset="/img/loading.gif" lazyload alt="image-20250329114425859"></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>Dri_IIC.c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * IIC通信协议 - 初始化</span><br><span class="hljs-comment"> * 都拉高电平</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Dri_IIC_Init</span><span class="hljs-params">()</span>&#123;<br>    IIC_SCL = <span class="hljs-number">1</span>;<br>    IIC_SDA = <span class="hljs-number">1</span>;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * IIC通信协议 - 通信开始</span><br><span class="hljs-comment"> * 起始信号 当SCL处于高电平时，SDA由高变低</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Dri_IIC_Start</span><span class="hljs-params">()</span>&#123;<br>    IIC_SCL = <span class="hljs-number">1</span>;<br>    IIC_SDA = <span class="hljs-number">1</span>;<br>    IIC_SDA = <span class="hljs-number">0</span>;<br>    IIC_SCL = <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * IIC通信协议 - 发送数据</span><br><span class="hljs-comment"> * 由于一次只能传递一个值，比如这次传递11011101，那要通过运算依次传递1 1 0 1 1 1 0 1，按顺序传递</span><br><span class="hljs-comment"> * 所以可以先与将其他位清零，然后判断是否为0再选择传递的值</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Dri_IIC_SendByte</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> byte)</span>&#123;<br>    <span class="hljs-type">uint8_t</span> i;<br>    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; i++)<br>    &#123;<br>        IIC_SDA = (byte &amp; (<span class="hljs-number">1</span> &lt;&lt; (<span class="hljs-number">7</span> - i))) == <span class="hljs-number">0</span> ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>;<br>        IIC_SCL = <span class="hljs-number">1</span>;<br>        IIC_SCL = <span class="hljs-number">0</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * IIC通信协议 - 接收应答</span><br><span class="hljs-comment"> */</span><br>bit <span class="hljs-title function_">Dri_IIC_ReceiveACK</span><span class="hljs-params">()</span>&#123;<br>    bit ack;<br>    IIC_SDA = <span class="hljs-number">1</span>;<br>    IIC_SCL = <span class="hljs-number">1</span>;<br>    ack = IIC_SDA;<br>    IIC_SCL = <span class="hljs-number">0</span>;<br><br>    <span class="hljs-keyword">return</span> ack;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * IIC通信协议 - 接收数据</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">uint8_t</span> <span class="hljs-title function_">Dri_IIC_ReceiveByte</span><span class="hljs-params">()</span>&#123;<br>    <span class="hljs-type">uint8_t</span> byte;<br>    <span class="hljs-type">uint8_t</span> i;<br>    IIC_SDA = <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">for</span> ( i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">8</span>; i++)<br>    &#123;<br>        IIC_SCL = <span class="hljs-number">1</span>;<br>        <br>        byte &lt;&lt;= <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (IIC_SDA)<br>        &#123;<br>            byte |= IIC_SDA;<br>        &#125;<br>        <br>        IIC_SCL = <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> byte;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * IIC通信协议 - 发送应答</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Dri_IIC_SendAck</span><span class="hljs-params">(bit ack)</span>&#123;<br>    IIC_SDA = ack;<br>    IIC_SCL = <span class="hljs-number">1</span>;<br>    IIC_SCL = <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * IIC通信协议 - 通信结束</span><br><span class="hljs-comment"> */</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">Dri_IIC_Stop</span><span class="hljs-params">()</span>&#123;<br>    IIC_SDA = <span class="hljs-number">0</span>;<br>    IIC_SCL = <span class="hljs-number">1</span>;<br>    IIC_SDA = <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
