@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://static.031130.xyz/uploads/2024/08/12/62f374ea7b242.webp",
         "https://static.031130.xyz/uploads/2024/08/12/62f374ec8c14d.webp",
         "https://static.031130.xyz/uploads/2024/08/12/6609df9b83ecd.webp",
+        "https://tothefor.com/img/default.jpg",
     ];
 
     const luck_img = imgs[Math.floor(Math.random() * imgs.length)];
