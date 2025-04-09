@@ -45,23 +45,18 @@ const safeGoFun = {
   // 校验白名单，自己博客，local测试
   NzcheckLocalSite: async (url) => {
     try {
-      // 白名单地址则不修改href
-      const safeUrls = [
+      const safeHosts = [
         "localhost:4000",
-        "https://petrichoz.github.io",
+        "petrichoz.github.io",
         "ganxb2.com",
         "blog.ganxb2.com"
       ];
-      let isOthers = false;
-      for (let i = 0; i < safeUrls.length; i++) {
-        const ele = safeUrls[i];
-        if (url.startsWith(ele)) {
-          isOthers = true;
-          break;
-        }
-      }
-      return isOthers;
+
+      const linkHost = new URL(url).host;
+
+      return safeHosts.includes(linkHost);
     } catch (err) {
+      // 出错就默认安全（防止误拦）
       return true;
     }
   },
