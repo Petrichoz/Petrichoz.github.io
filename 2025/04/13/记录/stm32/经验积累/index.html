@@ -19,16 +19,16 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。">
+    <meta name="description" content="知识点记录推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。 一、LED 显示面板驱动ICIC：TC5020EJ 引脚说明及功能方块图  开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，  如图，PA12是正常引脚，但是1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第一次接触触摸模块的操作">
 <meta property="og:url" content="http://example.com/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。">
+<meta property="og:description" content="知识点记录推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。 一、LED 显示面板驱动ICIC：TC5020EJ 引脚说明及功能方块图  开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，  如图，PA12是正常引脚，但是1">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/embedded.jpg">
 <meta property="article:published_time" content="2025-04-13T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-04-15T13:07:01.245Z">
+<meta property="article:modified_time" content="2025-04-21T01:12:09.332Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/embedded.jpg">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          37 字
+          419 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -290,8 +290,18 @@
             
               <div class="markdown-body">
                 
-                <p>推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。</p>
-<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250415210656042.png" srcset="/img/loading.gif" lazyload alt="image-20250415210656042"></p>
+                <h1 id="知识点记录"><a href="#知识点记录" class="headerlink" title="知识点记录"></a>知识点记录</h1><p>推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。</p>
+<h1 id="一、LED-显示面板驱动IC"><a href="#一、LED-显示面板驱动IC" class="headerlink" title="一、LED 显示面板驱动IC"></a>一、LED 显示面板驱动IC</h1><p>IC：TC5020EJ</p>
+<p>引脚说明及功能方块图</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250421085420134.png" srcset="/img/loading.gif" lazyload></p>
+<p>开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250421085945386.png" srcset="/img/loading.gif" lazyload alt="image-20250421085945386"></p>
+<p>如图，PA12是正常引脚，但是13，14的默认功能就是烧录作用了，13，14后面有普通引脚的功能，但是因为默认功能不是普通引脚，所以为了使用这个普通引脚功能的话，就要开启引脚的复用功能，但是由于引脚一次只能实现一个功能，所以烧录和普通引脚不能同时实现，除非你想先烧录，然后用其他方式供电，所以最后我切换为了普通引脚，也算是成功实现我要的功能了</p>
+<p>但是后来大佬一看，他说我这只看引脚说明肯定没用，一没头绪，二不准确，写代码主要看时序图呀，时序图才是最重要的，你要让代码实现时序图的样子，这才是最标准的</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250421085825966.png" srcset="/img/loading.gif" lazyload></p>
+<p>听取了大佬的话，我最后实现的结果如下，时序图默认低电平，我这默认高电平，不过没影响，总体来说满足效果</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250415210656042.png" srcset="/img/loading.gif" lazyload></p>
+<p>至此，TC5020EJ这个IC搞定，感谢大佬</p>
 
                 
               </div>
