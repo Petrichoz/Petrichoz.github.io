@@ -19,16 +19,16 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="知识点记录推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。 一、LED 显示面板驱动ICIC：TC5020EJ 引脚说明及功能方块图  开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，  如图，PA12是正常引脚，但是1">
+    <meta name="description" content="知识点记录推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。 一、关于读时序图 - LED 显示面板驱动ICIC：TC5020EJ 引脚说明及功能方块图  开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，  如图，PA12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="第一次接触触摸模块的操作">
+<meta property="og:title" content="大佬帮助下的我的进化之路">
 <meta property="og:url" content="http://example.com/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="知识点记录推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。 一、LED 显示面板驱动ICIC：TC5020EJ 引脚说明及功能方块图  开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，  如图，PA12是正常引脚，但是1">
+<meta property="og:description" content="知识点记录推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。 一、关于读时序图 - LED 显示面板驱动ICIC：TC5020EJ 引脚说明及功能方块图  开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，  如图，PA12">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/embedded.jpg">
 <meta property="article:published_time" content="2025-04-13T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-04-21T01:12:09.332Z">
+<meta property="article:modified_time" content="2025-04-25T19:08:28.222Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/embedded.jpg">
@@ -37,7 +37,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>第一次接触触摸模块的操作 - PZ</title>
+  <title>大佬帮助下的我的进化之路 - PZ</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +205,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="第一次接触触摸模块的操作"></span>
+            <span id="subtitle" data-typed-text="大佬帮助下的我的进化之路"></span>
           
         </div>
 
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          419 字
+          2.1k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          4 分钟
+          18 分钟
         
       </span>
     
@@ -285,13 +285,13 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">第一次接触触摸模块的操作</h1>
+            <h1 id="seo-header">大佬帮助下的我的进化之路</h1>
             
             
               <div class="markdown-body">
                 
                 <h1 id="知识点记录"><a href="#知识点记录" class="headerlink" title="知识点记录"></a>知识点记录</h1><p>推挽输出能输出高电平和低电平，开漏输出只能下拉输出低电平，高电平需外接上拉电阻。</p>
-<h1 id="一、LED-显示面板驱动IC"><a href="#一、LED-显示面板驱动IC" class="headerlink" title="一、LED 显示面板驱动IC"></a>一、LED 显示面板驱动IC</h1><p>IC：TC5020EJ</p>
+<h1 id="一、关于读时序图-LED-显示面板驱动IC"><a href="#一、关于读时序图-LED-显示面板驱动IC" class="headerlink" title="一、关于读时序图 - LED 显示面板驱动IC"></a>一、关于读时序图 - LED 显示面板驱动IC</h1><p>IC：TC5020EJ</p>
 <p>引脚说明及功能方块图</p>
 <p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250421085420134.png" srcset="/img/loading.gif" lazyload></p>
 <p>开始我是死盯着引脚说明写的，运气比较好，点亮了led灯，不过死活只点亮了8个灯，无论代码怎么进行修改还是只能点亮8个，后来通过大佬的帮助，发现犯了一个低级的错误，我占用了stlink的烧录引脚了，</p>
@@ -302,6 +302,35 @@
 <p>听取了大佬的话，我最后实现的结果如下，时序图默认低电平，我这默认高电平，不过没影响，总体来说满足效果</p>
 <p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250415210656042.png" srcset="/img/loading.gif" lazyload></p>
 <p>至此，TC5020EJ这个IC搞定，感谢大佬</p>
+<h1 id="二、关于要完整读取读数据手册必要性-SPI通信与交互芯片W25Q32JV"><a href="#二、关于要完整读取读数据手册必要性-SPI通信与交互芯片W25Q32JV" class="headerlink" title="二、关于要完整读取读数据手册必要性 - SPI通信与交互芯片W25Q32JV"></a>二、关于要完整读取读数据手册必要性 - SPI通信与交互芯片W25Q32JV</h1><p>前提其实还有一点就是，我学的比较死板，给什么资料看什么，我跟着学习的资料大佬后来对我说其实这个stm32的手册是2009年的，已经非常的老旧了，里面的错误也有不少，但下面所有我依旧使用这个版本，爱咋咋地，我学习的就是这个版本，等学会了再使用新的</p>
+<h2 id="经验积累一：数据手册要尽量看完全"><a href="#经验积累一：数据手册要尽量看完全" class="headerlink" title="经验积累一：数据手册要尽量看完全"></a>经验积累一：数据手册要尽量看完全</h2><p>当初在看手册的时候偷懒没有好好的看，在学习的时候老师写代码在一个配置流程处写的，我偷懒写的就是红色框出的位置</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426004205001.png" srcset="/img/loading.gif" lazyload></p>
+<p>在最初的时候盯着的是下方圈出的步骤，当我配置完圈出的步骤以后就不知道写什么了，知道的是发送数据和接收数据，但是如何发送和接收不知道，这是就完全不知道要干嘛了，但是一旦把手册读全了，就会发现</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426004541436.png" srcset="/img/loading.gif" lazyload></p>
+<p>刚才画蓝框的地方其实向下看就可以直接看到所有应该有的配置了，包括它的时序图；看配置过程以及时序图其实可以看出来，在开始需要等待TXE&#x3D;1，才能写入第二个数据，然后查看复位值TXE默认为1，其实可以从写入第一个数字就开始看，直接加入循环判断，直到TXE&#x3D;1就放行，这样可以直接向DR写入数据，写入的时候TXE自动置为0了，写入完毕以后TXE又被复位了，因为spi是一发一收模式，所以接下来看RXNE位，由时序图可知RXNE为1时通知开始读取数据，而读取接收数据的过程中RXNE就被置为0了，这个RXNE就是起到了一个通知的作用，当缓冲区有一个完整的帧数据，那就为1，而当缓冲区为空或者数据正在被接收，没有完整的接收数据，那就为1</p>
+<p>注：</p>
+<p>ai说：RXNE为1时，说明接收缓冲区已经有一个完整的数据</p>
+<p>全双工是指通信双方可以在同一时间<strong>同时发送和接收数据</strong>，数据传输是双向且独立的</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426011810123.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426012523311.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="经验积累二：关于从设备的芯片手册"><a href="#经验积累二：关于从设备的芯片手册" class="headerlink" title="经验积累二：关于从设备的芯片手册"></a>经验积累二：关于从设备的芯片手册</h2><p>W25Q32JV，这个开始看的时候真的一脸懵，不知道怎么写，经过大佬的详细讲解以后开始有了点思路了</p>
+<p>开始就是看目录标题呀</p>
+<p>首先想到的肯定是要进行写数据，标题中有一个指令描述（Instruction Descriptions），这里有一个写使能，</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426015835429.png" srcset="/img/loading.gif" lazyload></p>
+<p>如图，可以看出，我们后续因为使用的是页写入，这里描述到我们每次都要进行开启使能的操作，也就是将WEL置1，这里就可以进行一个封装，通过时序图还能看到该芯片是在CS拉低才开始工作，当CS拉高停止交互，且支持模式0和模式3的，还有展示了写入一个0x06的操作，DI也就是对应的SPI的MOSI，和最后读取第一个数据没意义，DO是一个高阻态，数据没意义</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426020253497.png" srcset="/img/loading.gif" lazyload></p>
+<p>继续回到目录，因为我们采用的是页写入，所以看目录，发现一个页写入的程序</p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426021319491.png" srcset="/img/loading.gif" lazyload></p>
+<p>从下面这张图可以获取很多信息，现在来逐个分析</p>
+<ol>
+<li>第一段可以看到一页有256字节，对应的地址位就有8位，但是但是看后面写至少传递24位地址，由于W25Q32JV有4mb左右大小，然后将其按每页256KB进行分割，也就是最后为了能寻址到所有的位数就要至少22位地址，最后芯片采取了24位地址，在接收指令前需要开启使能，这样就可以直接调用上面说的方法了，最后CS引脚要始终保存低电平才能保证整个数据能够写入</li>
+<li>第二段的话文字读起来比较绕，其实简单翻译就是要对整个页进行编程的话，最后8位地址肯定是0开始设置，0到256呀，其次如果你超出了页面的长度，他就会从这页的开头重新写入，也就是从头开始覆盖数据</li>
+<li>第三段再次强调要将CS拉低才能进行写入操作，然后只有当CS被拉高才是真正被写入到芯片里面，也就是说，其实之前的写入数据就是把数据写到一个缓冲区里面，当CS被拉高以后这个缓冲区的数据就会被写入到芯片内部，但是如果CS始终没有被拉高，那整个写入操作就会被卡死，然后这个数据最终也不会被写入，后面说在tpp时间段内真正执行写入到芯片的操作，在一顿寻找以后找到了需要的数据，也就是这个写入操作一般来说要0.4ms，最坏的情况要3ms，但是后面又说了有个检测的BUSY位，1的时候说明正在发送，0表示可以接受下一次的写操作了，综上考虑采用轮询检测BUSY的方式比直接延迟3ms效率要高得多，比如一次性连接100个芯片，如果都延迟3ms那效率很低，其中最坏的情况可能只有个位数的情况。这句话的最后还有个关键的信息，就是状态写操作结束以后使能位会被清0，也就是下一次的写操作依然要开启使能</li>
+</ol>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426021447682.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426025708963.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/04/13/%E8%AE%B0%E5%BD%95/stm32/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/image-20250426025747512.png" srcset="/img/loading.gif" lazyload></p>
+<p>目前大概就这么多了，主要还恍然大悟一个思想，这是硬件，所有的芯片我能操作的就是stm32这个可编程的芯片，所有代码在符合从设备规定的前提下要始终以stm的视角进行考虑，而不是软件角度的，以当前对象进行考虑，之前就是在这个误区导致始终想不懂，怎么站在从设备的W25Q32JV能怎么为他编写代码，现在想来就不应该这样想，自始至终我们可以操作的只有stm32，我们只要操作stm32满足从设备的要求，然后就可以直接使用从设备了，从设备没有主动权，只要你满足它的要求，它就应该做出相应的操作，目前就这样</p>
 
                 
               </div>
@@ -347,7 +376,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>第一次接触触摸模块的操作</div>
+      <div>大佬帮助下的我的进化之路</div>
       <div>http://example.com/2025/04/13/记录/stm32/经验积累/</div>
     </div>
     <div class="license-meta">

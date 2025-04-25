@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/fluid.png">
 <meta property="article:published_time" content="2025-03-31T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-04-09T08:11:34.641Z">
+<meta property="article:modified_time" content="2025-04-24T02:26:17.408Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/fluid.png">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          471 字
+          502 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -338,10 +338,11 @@
 </tbody></table>
 <p>以后别偷懒写 <code>hexo c</code>，真的不是 <code>clean</code>，而是 <code>config</code>；你的图片之前上传失败就是因为部署目录没清干净，Hexo 没重新处理。</p>
 <p>我很生气 (￣^￣) ，又被这破玩意浪费时间了 (╯￣Д￣)╯╘═╛ (ノ&#x3D;Д&#x3D;)ノ┻━┻ （╯#-皿-)╯~~╧═╧ (╯’ – ‘)╯︵ ┻━┻，一气之下我写了个python脚本给我自动上传，哼！ &lt;(｀^′)&gt;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> subprocess<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># 设定 Hexo 目录（_config.yml 所在目录）</span><br>hexo_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), <span class="hljs-string">&quot;myblog&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">run_command</span>(<span class="hljs-params">command, work_dir</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正在执行: <span class="hljs-subst">&#123;command&#125;</span>&quot;</span>)<br>    result = subprocess.run(command, shell=<span class="hljs-literal">True</span>, cwd=work_dir)<br>    <span class="hljs-keyword">if</span> result.returncode == <span class="hljs-number">0</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;✅ 成功: <span class="hljs-subst">&#123;command&#125;</span>\n&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;❌ 失败: <span class="hljs-subst">&#123;command&#125;</span>\n&quot;</span>)<br>        exit(result.returncode)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;📂 Hexo目录: <span class="hljs-subst">&#123;hexo_dir&#125;</span>\n&quot;</span>)<br><br>    commands = [<br>        <span class="hljs-string">&quot;hexo clean&quot;</span>,<br>        <span class="hljs-string">&quot;hexo generate&quot;</span>,<br>        <span class="hljs-string">&quot;hexo deploy&quot;</span><br>    ]<br><br>    <span class="hljs-keyword">for</span> cmd <span class="hljs-keyword">in</span> commands:<br>        run_command(cmd, hexo_dir)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> subprocess<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># 设定source所在文件夹</span><br>hexo_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), <span class="hljs-string">&quot;myblog&quot;</span>)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">run_command</span>(<span class="hljs-params">command, work_dir</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;正在执行: <span class="hljs-subst">&#123;command&#125;</span>&quot;</span>)<br>    result = subprocess.run(command, shell=<span class="hljs-literal">True</span>, cwd=work_dir)<br>    <span class="hljs-keyword">if</span> result.returncode == <span class="hljs-number">0</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;✅ 成功: <span class="hljs-subst">&#123;command&#125;</span>\n&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;❌ 失败: <span class="hljs-subst">&#123;command&#125;</span>\n&quot;</span>)<br>        exit(result.returncode)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;📂 Hexo目录: <span class="hljs-subst">&#123;hexo_dir&#125;</span>\n&quot;</span>)<br><br>    commands = [<br>        <span class="hljs-string">&quot;hexo clean&quot;</span>,<br>        <span class="hljs-string">&quot;hexo generate&quot;</span>,<br>        <span class="hljs-string">&quot;hexo deploy&quot;</span><br>    ]<br><br>    <span class="hljs-keyword">for</span> cmd <span class="hljs-keyword">in</span> commands:<br>        run_command(cmd, hexo_dir)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&quot;__main__&quot;</span>:<br>    main()<br><br></code></pre></td></tr></table></figure>
 
 <p>用法很简单，将这个py文件放到你的source文件夹上一层，比如source文件夹在文件夹A下面，而A在B文件夹下面，然后你只要将这个</p>
 <p>py文件放在B文件夹下和A同级即可，然后python py文件即可（´◔౪◔）</p>
+<p>注意要修改hexo_dir &#x3D; os.path.join(os.path.dirname(os.path.abspath(<strong>file</strong>)), “myblog”)，这个文件夹是hexo博客也就是A的实际名称</p>
 
                 
               </div>
