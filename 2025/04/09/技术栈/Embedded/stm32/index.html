@@ -19,16 +19,16 @@
   <meta name="author" content="pz">
   <meta name="keywords" content="">
   
-    <meta name="description" content="USART 和 UART1. UART 是什么 全称：Universal Asynchronous Receiver&#x2F;Transmitter（通用异步收发器）。 定义：一种串行通信接口，用于异步数据传输。 特点： 异步：无时钟信号，依赖双方约定波特率（如 9600、115200）。 数据格式：起始位 + 数据位（通常 8 位） + 校验位（可选） + 停止位。 全双工：可同时发送和接">
+    <meta name="description" content="关于推挽和开漏1. 复用模式 (Alternate Function, AF) 定义：GPIO引脚配置为复用功能模式，由微控制器的外设模块（如UART、SPI、I2C等）控制引脚的输入输出行为，而非直接由GPIO寄存器控制。 特点： 引脚功能由外设模块（如TIM、USART、I2C）决定。 可配置为推挽（AF Push-Pull）或开漏（AF Open-Drain）输出。 常用于外设通信或特定">
 <meta property="og:type" content="article">
 <meta property="og:title" content="stm32">
 <meta property="og:url" content="http://example.com/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/index.html">
 <meta property="og:site_name" content="PZ">
-<meta property="og:description" content="USART 和 UART1. UART 是什么 全称：Universal Asynchronous Receiver&#x2F;Transmitter（通用异步收发器）。 定义：一种串行通信接口，用于异步数据传输。 特点： 异步：无时钟信号，依赖双方约定波特率（如 9600、115200）。 数据格式：起始位 + 数据位（通常 8 位） + 校验位（可选） + 停止位。 全双工：可同时发送和接">
+<meta property="og:description" content="关于推挽和开漏1. 复用模式 (Alternate Function, AF) 定义：GPIO引脚配置为复用功能模式，由微控制器的外设模块（如UART、SPI、I2C等）控制引脚的输入输出行为，而非直接由GPIO寄存器控制。 特点： 引脚功能由外设模块（如TIM、USART、I2C）决定。 可配置为推挽（AF Push-Pull）或开漏（AF Open-Drain）输出。 常用于外设通信或特定">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/embedded.jpg">
 <meta property="article:published_time" content="2025-04-09T08:35:21.000Z">
-<meta property="article:modified_time" content="2025-04-25T19:19:42.756Z">
+<meta property="article:modified_time" content="2025-04-26T03:49:43.619Z">
 <meta property="article:author" content="pz">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/img/embedded.jpg">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18k 字
+          15k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          147 分钟
+          129 分钟
         
       </span>
     
@@ -292,6 +292,92 @@
                 
                 <!-- 基础操作图片唯一![](stm32/base01.png)，![](stm32/base02.png)![](stm32/base03.png)![](stm32/base09.png) -->
 
+<h1 id="关于推挽和开漏"><a href="#关于推挽和开漏" class="headerlink" title="关于推挽和开漏"></a>关于推挽和开漏</h1><h3 id="1-复用模式-Alternate-Function-AF"><a href="#1-复用模式-Alternate-Function-AF" class="headerlink" title="1. 复用模式 (Alternate Function, AF)"></a>1. 复用模式 (Alternate Function, AF)</h3><ul>
+<li><strong>定义</strong>：GPIO引脚配置为复用功能模式，由微控制器的外设模块（如UART、SPI、I2C等）控制引脚的输入输出行为，而非直接由GPIO寄存器控制。</li>
+<li><strong>特点</strong>：<ul>
+<li>引脚功能由外设模块（如TIM、USART、I2C）决定。</li>
+<li>可配置为推挽（AF Push-Pull）或开漏（AF Open-Drain）输出。</li>
+<li>常用于外设通信或特定硬件功能。</li>
+</ul>
+</li>
+<li><strong>示例</strong>：STM32的引脚配置为SPI的MOSI（复用推挽）或I2C的SDA（复用开漏）。</li>
+</ul>
+<h3 id="2-普通模式-General-Purpose-GPIO"><a href="#2-普通模式-General-Purpose-GPIO" class="headerlink" title="2. 普通模式 (General Purpose, GPIO)"></a>2. 普通模式 (General Purpose, GPIO)</h3><ul>
+<li><strong>定义</strong>：GPIO引脚直接由软件通过GPIO寄存器控制，可配置为输入、输出（推挽或开漏）或模拟模式。</li>
+<li><strong>特点</strong>：<ul>
+<li>引脚功能由程序直接控制，灵活性高。</li>
+<li>推挽输出可直接输出高&#x2F;低电平；开漏输出只能输出低电平或高阻态（需上拉电阻）。</li>
+<li>适合通用控制场景，非特定外设功能。</li>
+</ul>
+</li>
+<li><strong>示例</strong>：控制LED（普通推挽）、读取按键状态（普通输入）、中断触发（普通开漏）。</li>
+</ul>
+<h2 id="二、推挽与开漏的输出类型"><a href="#二、推挽与开漏的输出类型" class="headerlink" title="二、推挽与开漏的输出类型"></a>二、推挽与开漏的输出类型</h2><h3 id="1-推挽输出-Push-Pull"><a href="#1-推挽输出-Push-Pull" class="headerlink" title="1. 推挽输出 (Push-Pull)"></a>1. 推挽输出 (Push-Pull)</h3><ul>
+<li><strong>特点</strong>：引脚可输出高电平（VCC）或低电平（GND），驱动能力强，切换速度快。</li>
+<li><strong>适用场景</strong>：单设备控制、高速信号、点对点通信。</li>
+<li><strong>复用推挽</strong>：由外设控制，如SPI的MOSI&#x2F;MISO、UART的TX。</li>
+<li><strong>普通推挽</strong>：由软件控制，如驱动LED或继电器。</li>
+</ul>
+<h3 id="2-开漏输出-Open-Drain"><a href="#2-开漏输出-Open-Drain" class="headerlink" title="2. 开漏输出 (Open-Drain)"></a>2. 开漏输出 (Open-Drain)</h3><ul>
+<li><strong>特点</strong>：引脚只能输出低电平或高阻态，高电平需外部上拉电阻，适合多设备共享信号线。</li>
+<li><strong>适用场景</strong>：总线通信、多设备共享、跨电压域。</li>
+<li><strong>复用开漏</strong>：由外设控制，如I2C的SDA&#x2F;SCL。</li>
+<li><strong>普通开漏</strong>：由软件控制，如共享中断线或简单总线。</li>
+</ul>
+<h2 id="三、如何确定使用复用还是普通模式（推挽-开漏）"><a href="#三、如何确定使用复用还是普通模式（推挽-开漏）" class="headerlink" title="三、如何确定使用复用还是普通模式（推挽&#x2F;开漏）"></a>三、如何确定使用复用还是普通模式（推挽&#x2F;开漏）</h2><h3 id="1-判断引脚功能需求"><a href="#1-判断引脚功能需求" class="headerlink" title="1. 判断引脚功能需求"></a>1. 判断引脚功能需求</h3><ul>
+<li><strong>是否用于外设功能？</strong><ul>
+<li><strong>是</strong>：选择<strong>复用模式</strong>（AF），由外设模块（如SPI、I2C、UART、TIM）控制引脚。<ul>
+<li>例如：I2C通信（SDA&#x2F;SCL）、SPI传输（MOSI&#x2F;MISO）、PWM输出（TIM通道）。</li>
+</ul>
+</li>
+<li><strong>否</strong>：选择<strong>普通模式</strong>（GPIO），由软件直接控制引脚。<ul>
+<li>例如：控制LED、读取按键、触发外部中断。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-考虑协议或硬件要求"><a href="#2-考虑协议或硬件要求" class="headerlink" title="2. 考虑协议或硬件要求"></a>2. 考虑协议或硬件要求</h3><ul>
+<li><strong>通信协议要求</strong>：<ul>
+<li><strong>I2C、SMBus</strong>：必须使用<strong>复用开漏</strong>（协议要求SDA&#x2F;SCL为开漏，需上拉电阻）。</li>
+<li><strong>SPI、UART</strong>：通常使用<strong>复用推挽</strong>（点对点通信，推挽提供更快速度和稳定电平）。</li>
+<li><strong>CAN</strong>：部分信号可能需要开漏（视具体实现），通常由外设决定。</li>
+<li><strong>PWM&#x2F;Timer</strong>：通常使用<strong>复用推挽</strong>（高频信号需强驱动）。</li>
+</ul>
+</li>
+<li><strong>硬件拓扑</strong>：<ul>
+<li>单设备控制：优先<strong>推挽</strong>（复用或普通），无需上拉电阻，效率高。</li>
+<li>多设备共享：优先<strong>开漏</strong>（复用或普通），支持“线与”逻辑。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-功耗与成本"><a href="#3-功耗与成本" class="headerlink" title="3. 功耗与成本"></a>3. 功耗与成本</h3><ul>
+<li><strong>推挽输出</strong>：无需上拉电阻，功耗低，成本低，适合大多数场景。</li>
+<li><strong>开漏输出</strong>：需外部上拉电阻，增加功耗和成本，但必要时（如I2C、多设备）不可替代。</li>
+</ul>
+<h2 id="四、选择"><a href="#四、选择" class="headerlink" title="四、选择"></a>四、选择</h2><ol>
+<li><strong>确定引脚用途</strong>：<ul>
+<li>外设功能（如SPI、I2C）→ 复用模式。</li>
+<li>通用控制（如LED、按键）→ 普通模式。</li>
+</ul>
+</li>
+<li><strong>确定通信类型</strong>：<ul>
+<li>总线&#x2F;多设备 → 开漏（复用：I2C；普通：共享中断）。</li>
+<li>点对点&#x2F;单设备 → 推挽（复用：SPI；普通：LED）。</li>
+</ul>
+</li>
+<li><strong>检查协议&#x2F;硬件要求</strong>：<ul>
+<li>协议指定开漏（如I2C）→ 复用开漏。</li>
+<li>高速或强驱动（如SPI、PWM）→ 复用推挽。</li>
+<li>软件控制灵活场景 → 普通推挽&#x2F;开漏。</li>
+</ul>
+</li>
+<li><strong>验证电平与频率</strong>：<ul>
+<li>跨电压或低频 → 开漏。</li>
+<li>同电压或高频 → 推挽。</li>
+</ul>
+</li>
+</ol>
 <h1 id="USART-和-UART"><a href="#USART-和-UART" class="headerlink" title="USART 和 UART"></a>USART 和 UART</h1><h2 id="1-UART-是什么"><a href="#1-UART-是什么" class="headerlink" title="1. UART 是什么"></a>1. UART 是什么</h2><ul>
 <li><strong>全称</strong>：Universal Asynchronous Receiver&#x2F;Transmitter（通用异步收发器）。</li>
 <li><strong>定义</strong>：一种串行通信接口，用于异步数据传输。</li>
@@ -796,7 +882,7 @@
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><ul>
 <li>SPI接口主要应用于EEPROM，FLASH，各种传感器，AD转换器等。</li>
 </ul>
-<h2 id="极性和相位"><a href="#极性和相位" class="headerlink" title="极性和相位"></a>极性和相位</h2><p><strong>极性（CPOL）</strong>：定义时钟空闲状态的电平</p>
+<h3 id="极性和相位"><a href="#极性和相位" class="headerlink" title="极性和相位"></a>极性和相位</h3><p><strong>极性（CPOL）</strong>：定义时钟空闲状态的电平</p>
 <p><strong>相位（CPHA）</strong>：定义数据采样的边沿</p>
 <table>
 <thead>
@@ -832,7 +918,7 @@
 <td align="left">- 空闲时 SCLK&#x3D;高电平 - 数据在 <strong>上升沿（第二个边沿）采样</strong> - 数据在 <strong>下降沿输出</strong></td>
 </tr>
 </tbody></table>
-<h2 id="SPI通信流程"><a href="#SPI通信流程" class="headerlink" title="SPI通信流程"></a>SPI通信流程</h2><ol>
+<h3 id="SPI通信流程"><a href="#SPI通信流程" class="headerlink" title="SPI通信流程"></a>SPI通信流程</h3><ol>
 <li><strong>初始化主设备</strong>：<ul>
 <li>配置时钟频率、数据位宽、时钟极性（CPOL）和相位（CPHA）。</li>
 <li>确定从设备的片选引脚（SS）。</li>
@@ -870,7 +956,8 @@
 
 
 
-<h3 id="基于硬件寄存器"><a href="#基于硬件寄存器" class="headerlink" title="基于硬件寄存器"></a>基于硬件寄存器</h3><p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250426031854606.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="基于硬件寄存器"><a href="#基于硬件寄存器" class="headerlink" title="基于硬件寄存器"></a>基于硬件寄存器</h3><p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250426032501061.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250426031854606.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250426031938533.png" srcset="/img/loading.gif" lazyload></p>
 <p>spi.c</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;spi.h&quot;</span></span><br><br><span class="hljs-comment">/* 宏定义SCK(PA5)/CS(PC13)/MOSI(P7) */</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> SCK_HIGH (GPIOA-&gt;ODR |= GPIO_ODR_ODR5)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> SCK_LOW (GPIOA-&gt;ODR &amp;= ~GPIO_ODR_ODR5)</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MOSI_HIGH (GPIOA-&gt;ODR |= GPIO_ODR_ODR7)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MOSI_LOW (GPIOA-&gt;ODR &amp;= ~GPIO_ODR_ODR7)</span><br><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> CS_HIGH (GPIOC-&gt;ODR |= GPIO_ODR_ODR13)</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> CS_LOW (GPIOC-&gt;ODR &amp;= ~GPIO_ODR_ODR13)</span><br><br><span class="hljs-comment">/* 宏定义读取MISO数据 */</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> MISO_READ (GPIOA-&gt;IDR &amp; GPIO_IDR_IDR6)</span><br><br><span class="hljs-comment">/* 模拟100KHz传输速率 */</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> SPI_DELAY Com_Delay_us(5)</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">SPI_Init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>  <span class="hljs-comment">// 1. 时钟配置</span><br>  RCC-&gt;APB2ENR |= (RCC_APB2ENR_IOPAEN | RCC_APB2ENR_IOPCEN | RCC_APB2ENR_SPI1EN);<br><br>  <span class="hljs-comment">// 2. GPIO工作模式配置</span><br>  <span class="hljs-comment">// 2.1 SCK(PA5)/MOSI(P7) 复用推挽输出，MODE: 11 CNF: 10</span><br>  GPIOA-&gt;CRL |= (GPIO_CRL_MODE5 | GPIO_CRL_MODE7);<br>  GPIOA-&gt;CRL &amp;= ~(GPIO_CRL_CNF5_0 | GPIO_CRL_CNF7_0);<br>  GPIOA-&gt;CRL |= (GPIO_CRL_CNF5_1 | GPIO_CRL_CNF7_1);<br><br>  <span class="hljs-comment">// 片选： 通用推挽输出，MODE: 11 CNF: 00</span><br>  GPIOC-&gt;CRH |= GPIO_CRH_MODE13;<br>  GPIOC-&gt;CRH &amp;= ~GPIO_CRH_CNF13;<br>  <span class="hljs-comment">// 2.2 MISO(PA6), 浮空输入， MODE: 00 CNF: 01</span><br>  GPIOA-&gt;CRL &amp;= ~GPIO_CRL_MODE6;<br>  GPIOA-&gt;CRL &amp;= ~GPIO_CRL_CNF6_1;<br>  GPIOA-&gt;CRL |= GPIO_CRL_CNF6_0;<br> <br>  <span class="hljs-comment">// 3. SPI相关配置</span><br>  <span class="hljs-comment">// 3.1 设置波特率时钟频率， BR[2:0]：001   18MHz</span><br>  SPI1-&gt;CR1 &amp;= ~SPI_CR1_BR_2;<br>  SPI1-&gt;CR1 &amp;= ~SPI_CR1_BR_1;<br>  SPI1-&gt;CR1 |= SPI_CR1_BR_0;<br>  <span class="hljs-comment">// 3.2 设置极性和相位， MODE0(空闲状态是低电平，在第一个上升沿开始进行采样)  CPOL = 0 CPHA = 0</span><br>  SPI1-&gt;CR1 &amp;= ~SPI_CR1_CPOL;<br>  SPI1-&gt;CR1 &amp;= ~SPI_CR1_CPHA;<br>  <span class="hljs-comment">// 3.3 设置数据帧格式， 8位</span><br>  SPI1-&gt;CR1 &amp;= ~SPI_CR1_DFF;<br>  <span class="hljs-comment">// 3.4 配置高位先行</span><br>  SPI1-&gt;CR1 &amp;= ~SPI_CR1_LSBFIRST;<br>  <span class="hljs-comment">// 3.5 禁用 NSS引脚的片选功能</span><br>  SPI1-&gt;CR1 |= SPI_CR1_SSM;<br>  SPI1-&gt;CR1 |= SPI_CR1_SSI;<br>  SPI1-&gt;CR2 &amp;= ~SPI_CR2_SSOE;<br>  <span class="hljs-comment">// 3.6 配置位主设备</span><br>  SPI1-&gt;CR1 |= SPI_CR1_MSTR;<br>  <span class="hljs-comment">// 3.7 使能SPI</span><br>  SPI1-&gt;CR1 |= SPI_CR1_SPE;<br>&#125;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">SPI_Start</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>  CS_LOW;<br>&#125;<br><span class="hljs-type">void</span> <span class="hljs-title function_">SPI_Stop</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>  CS_HIGH;<br>&#125;<br><br><span class="hljs-type">uint8_t</span> <span class="hljs-title function_">SPI_SwapByte</span><span class="hljs-params">(<span class="hljs-type">uint8_t</span> byte)</span><br>&#123;<br>  <span class="hljs-comment">// 1. 等待发送缓冲区为空</span><br>  <span class="hljs-keyword">while</span> ((SPI1-&gt;SR &amp; SPI_SR_TXE) == <span class="hljs-number">0</span>);<br>  <span class="hljs-comment">// 2. 发送数据</span><br>  SPI1-&gt;DR = byte;<br>  <span class="hljs-comment">// 3. 等待接收缓冲区是否为非空</span><br>  <span class="hljs-keyword">while</span> ((SPI1-&gt;SR &amp; SPI_SR_RXNE) == <span class="hljs-number">0</span>);<br>  <span class="hljs-comment">// 2. 读取数据</span><br>  <span class="hljs-keyword">return</span> (<span class="hljs-type">uint8_t</span>)SPI1-&gt;DR;<br>&#125;<br><br></code></pre></td></tr></table></figure>
@@ -1002,375 +1089,14 @@
 </tr>
 </tbody></table>
 <p>stm32，32位指真的有32根线进行寻址</p>
-<p>连接fsmc是所有引脚都连接吗，为啥要连接这么多，看电路图就是要使用这些引脚,DGEF的引脚全都取到了，所以设置喽</p>
+<p>连接fsmc是所有引脚都连接吗，为啥要连接这么多，看电路图就是要使用这些引脚,DGEF的引脚全都取到了，所以设置喽，然后选取的通道选择取决于NE</p>
 <p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250424151128191.png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250424112048182.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="一、复用开漏与复用推挽的定义"><a href="#一、复用开漏与复用推挽的定义" class="headerlink" title="一、复用开漏与复用推挽的定义"></a>一、复用开漏与复用推挽的定义</h2><h3 id="1-复用开漏-Multiplexed-Open-Drain"><a href="#1-复用开漏-Multiplexed-Open-Drain" class="headerlink" title="1. 复用开漏 (Multiplexed Open-Drain)"></a>1. 复用开漏 (Multiplexed Open-Drain)</h3><ul>
-<li><strong>定义</strong>：在复用模式下，GPIO引脚配置为开漏输出，引脚只能输出低电平（0）或高阻态（通过外部上拉电阻实现高电平）。</li>
-<li><strong>工作原理</strong>：<ul>
-<li>输出低电平：引脚通过内部晶体管接地，输出0。</li>
-<li>输出高电平：引脚进入高阻态，需外部上拉电阻拉高电平。</li>
-</ul>
-</li>
-<li><strong>特点</strong>：<ul>
-<li>允许多个设备共享同一信号线（通过外部上拉电阻实现“线与”逻辑）。</li>
-<li>常用于总线通信，防止电平冲突。</li>
-<li>驱动能力依赖外部上拉电阻，切换速度较慢。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-复用推挽-Multiplexed-Push-Pull"><a href="#2-复用推挽-Multiplexed-Push-Pull" class="headerlink" title="2. 复用推挽 (Multiplexed Push-Pull)"></a>2. 复用推挽 (Multiplexed Push-Pull)</h3><ul>
-<li><strong>定义</strong>：在复用模式下，GPIO引脚配置为推挽输出，引脚可直接输出高电平（1）或低电平（0）。</li>
-<li><strong>工作原理</strong>：<ul>
-<li>输出高电平：引脚通过内部上拉晶体管连接到VCC，输出1。</li>
-<li>输出低电平：引脚通过内部下拉晶体管接地，输出0。</li>
-</ul>
-</li>
-<li><strong>特点</strong>：<ul>
-<li>驱动能力强，切换速度快。</li>
-<li>适合点对点通信或单设备控制信号线。</li>
-<li>不适合多设备共享信号线（可能导致电平冲突）。</li>
-</ul>
-</li>
-</ul>
-<h2 id="二、复用开漏与复用推挽的使用场景"><a href="#二、复用开漏与复用推挽的使用场景" class="headerlink" title="二、复用开漏与复用推挽的使用场景"></a>二、复用开漏与复用推挽的使用场景</h2><h3 id="1-复用开漏的使用场景"><a href="#1-复用开漏的使用场景" class="headerlink" title="1. 复用开漏的使用场景"></a>1. 复用开漏的使用场景</h3><ul>
-<li><strong>适用场景</strong>：<ul>
-<li><strong>总线通信协议</strong>：<ul>
-<li>I2C：I2C总线（SDA和SCL）要求开漏输出，允许多个设备共享总线，通过外部上拉电阻实现高电平。</li>
-<li>SMBus：类似I2C的通信协议，也使用开漏输出。</li>
-</ul>
-</li>
-<li><strong>多主设备通信</strong>：<ul>
-<li>在多主设备共享同一信号线的场景（如CAN总线部分信号），开漏输出避免电平冲突。</li>
-</ul>
-</li>
-<li><strong>电平转换</strong>：<ul>
-<li>当不同设备工作在不同电压域时，开漏输出通过外部上拉电阻适配目标电压。</li>
-</ul>
-</li>
-<li><strong>中断信号或状态检测</strong>：<ul>
-<li>多个设备通过开漏输出共享中断线，任何设备拉低信号即可触发中断。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>典型例子</strong>：<ul>
-<li>STM32的I2C外设配置为复用开漏模式，连接外部上拉电阻与I2C设备通信。</li>
-<li>多传感器模块共享同一中断引脚，配置为开漏输出以实现“线与”逻辑。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-复用推挽的使用场景"><a href="#2-复用推挽的使用场景" class="headerlink" title="2. 复用推挽的使用场景"></a>2. 复用推挽的使用场景</h3><ul>
-<li><strong>适用场景</strong>：<ul>
-<li><strong>高速点对点通信</strong>：<ul>
-<li>SPI：SPI信号线（MOSI、MISO、SCLK）通常使用推挽输出，提供快速、稳定的电平切换。</li>
-<li>UART：串口通信（TX、RX）常使用推挽输出，适合单设备通信。</li>
-</ul>
-</li>
-<li><strong>控制信号输出</strong>：<ul>
-<li>驱动LED、继电器或其他需要明确高&#x2F;低电平的设备。</li>
-</ul>
-</li>
-<li><strong>单主控设备场景</strong>：<ul>
-<li>主设备全权控制信号线，无需考虑多设备冲突。</li>
-</ul>
-</li>
-<li><strong>高频信号传输</strong>：<ul>
-<li>推挽输出的强驱动能力和快速切换适合高频信号，如PWM信号或时钟信号。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>典型例子</strong>：<ul>
-<li>STM32的SPI外设配置为复用推挽模式，驱动从设备（如Flash芯片）。</li>
-<li>PWM信号输出到电机驱动模块，配置为推挽以保证信号完整性。</li>
-</ul>
-</li>
-</ul>
-<h2 id="三、复用开漏与复用推挽的对比"><a href="#三、复用开漏与复用推挽的对比" class="headerlink" title="三、复用开漏与复用推挽的对比"></a>三、复用开漏与复用推挽的对比</h2><table>
-<thead>
-<tr>
-<th>特性</th>
-<th>复用开漏 (Open-Drain)</th>
-<th>复用推挽 (Push-Pull)</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>输出电平</strong></td>
-<td>低电平或高阻态（需上拉电阻）</td>
-<td>高电平或低电平</td>
-</tr>
-<tr>
-<td><strong>驱动能力</strong></td>
-<td>依赖外部上拉电阻，较弱</td>
-<td>内部驱动，较强</td>
-</tr>
-<tr>
-<td><strong>切换速度</strong></td>
-<td>较慢（受上拉电阻和寄生电容影响）</td>
-<td>较快</td>
-</tr>
-<tr>
-<td><strong>功耗</strong></td>
-<td>较高（上拉电阻恒定电流）</td>
-<td>较低（仅在切换时消耗）</td>
-</tr>
-<tr>
-<td><strong>多设备共享</strong></td>
-<td>支持（“线与”逻辑）</td>
-<td>不支持（可能导致冲突）</td>
-</tr>
-<tr>
-<td><strong>电平适配</strong></td>
-<td>支持不同电压域（通过上拉电阻）</td>
-<td>仅支持同电压域</td>
-</tr>
-<tr>
-<td><strong>典型协议</strong></td>
-<td>I2C、SMBus、部分中断线</td>
-<td>SPI、UART、PWM、GPIO控制</td>
-</tr>
-</tbody></table>
-<h2 id="四、选择复用开漏或推挽的依据"><a href="#四、选择复用开漏或推挽的依据" class="headerlink" title="四、选择复用开漏或推挽的依据"></a>四、选择复用开漏或推挽的依据</h2><ol>
-<li><strong>协议要求</strong>：<ul>
-<li>如果协议明确要求开漏（如I2C），必须使用复用开漏。</li>
-<li>如果协议需要高速传输或强驱动（如SPI、UART），选择复用推挽。</li>
-</ul>
-</li>
-<li><strong>多设备连接</strong>：<ul>
-<li>多设备共享信号线时，使用复用开漏以避免冲突。</li>
-<li>单设备或主从通信时，使用复用推挽以提高性能。</li>
-</ul>
-</li>
-<li><strong>电平兼容性</strong>：<ul>
-<li>跨电压域通信时，复用开漏配合上拉电阻更灵活。</li>
-<li>同电压域内，复用推挽更高效。</li>
-</ul>
-</li>
-<li><strong>信号频率</strong>：<ul>
-<li>高频信号（如MHz级时钟）推荐推挽输出。</li>
-<li>低频信号（如I2C的100kHz~400kHz）适合开漏输出。</li>
-</ul>
-</li>
-<li><strong>功耗与成本</strong>：<ul>
-<li>推挽输出无需额外上拉电阻，节省成本和功耗。</li>
-<li>开漏输出需外接电阻，增加成本但支持复杂拓扑。</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、注意事项"><a href="#五、注意事项" class="headerlink" title="五、注意事项"></a>五、注意事项</h2><ul>
-<li><strong>复用开漏</strong>：<ul>
-<li>确保外部上拉电阻值适当（常用4.7kΩ~10kΩ），过大导致切换慢，过小增加功耗。</li>
-<li>检查总线寄生电容，避免影响信号完整性。</li>
-</ul>
-</li>
-<li><strong>复用推挽</strong>：<ul>
-<li>避免多设备直接连接推挽输出引脚，可能导致短路或损坏。</li>
-<li>确保电压匹配，防止电平不兼容。</li>
-</ul>
-</li>
-<li><strong>STM32配置</strong>：<ul>
-<li>在CubeMX或寄存器配置中，选择正确的GPIO模式（如AF_OD为复用开漏，AF_PP为复用推挽）。</li>
-<li>根据外设协议（如I2C、SPI）自动设置正确的模式。</li>
-</ul>
-</li>
-</ul>
-<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><ul>
-<li><strong>复用开漏</strong>：适合总线通信、多设备共享、跨电压域场景，如I2C、SMBus、中断线。</li>
-<li><strong>复用推挽</strong>：适合高速点对点通信、单设备控制、高频信号，如SPI、UART、PWM。</li>
-<li><strong>选择原则</strong>：根据协议要求、设备数量、信号频率和电平兼容性选择合适的输出模式。</li>
-</ul>
-<hr>
-<p><strong>参考</strong>：</p>
-<ul>
-<li>STM32 GPIO与外设参考手册</li>
-<li>I2C、SPI等通信协议规范</li>
-</ul>
-<p>怎么确定使用复用还是普通推挽和开漏</p>
-<h1 id="确定使用复用推挽-开漏还是普通推挽-开漏的笔记"><a href="#确定使用复用推挽-开漏还是普通推挽-开漏的笔记" class="headerlink" title="确定使用复用推挽&#x2F;开漏还是普通推挽&#x2F;开漏的笔记"></a>确定使用复用推挽&#x2F;开漏还是普通推挽&#x2F;开漏的笔记</h1><h2 id="一、复用模式与普通模式的定义"><a href="#一、复用模式与普通模式的定义" class="headerlink" title="一、复用模式与普通模式的定义"></a>一、复用模式与普通模式的定义</h2><h3 id="1-复用模式-Alternate-Function-AF"><a href="#1-复用模式-Alternate-Function-AF" class="headerlink" title="1. 复用模式 (Alternate Function, AF)"></a>1. 复用模式 (Alternate Function, AF)</h3><ul>
-<li><strong>定义</strong>：GPIO引脚配置为复用功能模式，由微控制器的外设模块（如UART、SPI、I2C等）控制引脚的输入输出行为，而非直接由GPIO寄存器控制。</li>
-<li><strong>特点</strong>：<ul>
-<li>引脚功能由外设模块（如TIM、USART、I2C）决定。</li>
-<li>可配置为推挽（AF Push-Pull）或开漏（AF Open-Drain）输出。</li>
-<li>常用于外设通信或特定硬件功能。</li>
-</ul>
-</li>
-<li><strong>示例</strong>：STM32的引脚配置为SPI的MOSI（复用推挽）或I2C的SDA（复用开漏）。</li>
-</ul>
-<h3 id="2-普通模式-General-Purpose-GPIO"><a href="#2-普通模式-General-Purpose-GPIO" class="headerlink" title="2. 普通模式 (General Purpose, GPIO)"></a>2. 普通模式 (General Purpose, GPIO)</h3><ul>
-<li><strong>定义</strong>：GPIO引脚直接由软件通过GPIO寄存器控制，可配置为输入、输出（推挽或开漏）或模拟模式。</li>
-<li><strong>特点</strong>：<ul>
-<li>引脚功能由程序直接控制，灵活性高。</li>
-<li>推挽输出可直接输出高&#x2F;低电平；开漏输出只能输出低电平或高阻态（需上拉电阻）。</li>
-<li>适合通用控制场景，非特定外设功能。</li>
-</ul>
-</li>
-<li><strong>示例</strong>：控制LED（普通推挽）、读取按键状态（普通输入）、中断触发（普通开漏）。</li>
-</ul>
-<h2 id="二、推挽与开漏的输出类型"><a href="#二、推挽与开漏的输出类型" class="headerlink" title="二、推挽与开漏的输出类型"></a>二、推挽与开漏的输出类型</h2><h3 id="1-推挽输出-Push-Pull"><a href="#1-推挽输出-Push-Pull" class="headerlink" title="1. 推挽输出 (Push-Pull)"></a>1. 推挽输出 (Push-Pull)</h3><ul>
-<li><strong>特点</strong>：引脚可输出高电平（VCC）或低电平（GND），驱动能力强，切换速度快。</li>
-<li><strong>适用场景</strong>：单设备控制、高速信号、点对点通信。</li>
-<li><strong>复用推挽</strong>：由外设控制，如SPI的MOSI&#x2F;MISO、UART的TX。</li>
-<li><strong>普通推挽</strong>：由软件控制，如驱动LED或继电器。</li>
-</ul>
-<h3 id="2-开漏输出-Open-Drain"><a href="#2-开漏输出-Open-Drain" class="headerlink" title="2. 开漏输出 (Open-Drain)"></a>2. 开漏输出 (Open-Drain)</h3><ul>
-<li><strong>特点</strong>：引脚只能输出低电平或高阻态，高电平需外部上拉电阻，适合多设备共享信号线。</li>
-<li><strong>适用场景</strong>：总线通信、多设备共享、跨电压域。</li>
-<li><strong>复用开漏</strong>：由外设控制，如I2C的SDA&#x2F;SCL。</li>
-<li><strong>普通开漏</strong>：由软件控制，如共享中断线或简单总线。</li>
-</ul>
-<h2 id="三、如何确定使用复用还是普通模式（推挽-开漏）"><a href="#三、如何确定使用复用还是普通模式（推挽-开漏）" class="headerlink" title="三、如何确定使用复用还是普通模式（推挽&#x2F;开漏）"></a>三、如何确定使用复用还是普通模式（推挽&#x2F;开漏）</h2><p>以下是选择复用推挽&#x2F;开漏还是普通推挽&#x2F;开漏的决策流程和依据：</p>
-<h3 id="1-判断引脚功能需求"><a href="#1-判断引脚功能需求" class="headerlink" title="1. 判断引脚功能需求"></a>1. 判断引脚功能需求</h3><ul>
-<li><strong>是否用于外设功能？</strong><ul>
-<li><strong>是</strong>：选择<strong>复用模式</strong>（AF），由外设模块（如SPI、I2C、UART、TIM）控制引脚。<ul>
-<li>例如：I2C通信（SDA&#x2F;SCL）、SPI传输（MOSI&#x2F;MISO）、PWM输出（TIM通道）。</li>
-</ul>
-</li>
-<li><strong>否</strong>：选择<strong>普通模式</strong>（GPIO），由软件直接控制引脚。<ul>
-<li>例如：控制LED、读取按键、触发外部中断。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-判断输出类型需求"><a href="#2-判断输出类型需求" class="headerlink" title="2. 判断输出类型需求"></a>2. 判断输出类型需求</h3><ul>
-<li><strong>是否需要总线通信或多设备共享信号线？</strong><ul>
-<li><strong>是</strong>：选择<strong>开漏输出</strong>（复用或普通）。<ul>
-<li><strong>复用开漏</strong>：用于外设支持的总线协议，如I2C（SDA&#x2F;SCL需开漏）、SMBus。</li>
-<li><strong>普通开漏</strong>：用于软件控制的多设备场景，如多个设备共享中断线（“线与”逻辑）。</li>
-<li><strong>原因</strong>：开漏避免电平冲突，允许多设备拉低信号线。</li>
-</ul>
-</li>
-<li><strong>否</strong>：选择<strong>推挽输出</strong>（复用或普通）。<ul>
-<li><strong>复用推挽</strong>：用于外设点对点通信，如SPI、UART、PWM。</li>
-<li><strong>普通推挽</strong>：用于软件控制的单设备场景，如驱动LED、控制继电器。</li>
-<li><strong>原因</strong>：推挽提供强驱动能力和快速切换，适合单设备或高频信号。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-考虑协议或硬件要求"><a href="#3-考虑协议或硬件要求" class="headerlink" title="3. 考虑协议或硬件要求"></a>3. 考虑协议或硬件要求</h3><ul>
-<li><strong>通信协议要求</strong>：<ul>
-<li><strong>I2C、SMBus</strong>：必须使用<strong>复用开漏</strong>（协议要求SDA&#x2F;SCL为开漏，需上拉电阻）。</li>
-<li><strong>SPI、UART</strong>：通常使用<strong>复用推挽</strong>（点对点通信，推挽提供更快速度和稳定电平）。</li>
-<li><strong>CAN</strong>：部分信号可能需要开漏（视具体实现），通常由外设决定。</li>
-<li><strong>PWM&#x2F;Timer</strong>：通常使用<strong>复用推挽</strong>（高频信号需强驱动）。</li>
-</ul>
-</li>
-<li><strong>硬件拓扑</strong>：<ul>
-<li>单设备控制：优先<strong>推挽</strong>（复用或普通），无需上拉电阻，效率高。</li>
-<li>多设备共享：优先<strong>开漏</strong>（复用或普通），支持“线与”逻辑。</li>
-</ul>
-</li>
-</ul>
-<h3 id="4-考虑电平兼容性与频率"><a href="#4-考虑电平兼容性与频率" class="headerlink" title="4. 考虑电平兼容性与频率"></a>4. 考虑电平兼容性与频率</h3><ul>
-<li><strong>电平兼容性</strong>：<ul>
-<li><strong>跨电压域</strong>：选择<strong>开漏输出</strong>（复用或普通），通过外部上拉电阻适配目标电压。<ul>
-<li>例：3.3V MCU与5V设备通信，使用开漏并上拉到5V。</li>
-</ul>
-</li>
-<li><strong>同电压域</strong>：优先<strong>推挽输出</strong>（复用或普通），更高效。</li>
-</ul>
-</li>
-<li><strong>信号频率</strong>：<ul>
-<li><strong>高频信号</strong>（如MHz级SPI、PWM）：选择<strong>推挽输出</strong>，切换速度快。</li>
-<li><strong>低频信号</strong>（如I2C的100kHz~400kHz）：<strong>开漏输出</strong>足够，且适合总线协议。</li>
-</ul>
-</li>
-</ul>
-<h3 id="5-功耗与成本"><a href="#5-功耗与成本" class="headerlink" title="5. 功耗与成本"></a>5. 功耗与成本</h3><ul>
-<li><strong>推挽输出</strong>：无需上拉电阻，功耗低，成本低，适合大多数场景。</li>
-<li><strong>开漏输出</strong>：需外部上拉电阻，增加功耗和成本，但必要时（如I2C、多设备）不可替代。</li>
-</ul>
-<h2 id="四、决策流程图（简述）"><a href="#四、决策流程图（简述）" class="headerlink" title="四、决策流程图（简述）"></a>四、决策流程图（简述）</h2><ol>
-<li><strong>确定引脚用途</strong>：<ul>
-<li>外设功能（如SPI、I2C）→ 复用模式。</li>
-<li>通用控制（如LED、按键）→ 普通模式。</li>
-</ul>
-</li>
-<li><strong>确定通信类型</strong>：<ul>
-<li>总线&#x2F;多设备 → 开漏（复用：I2C；普通：共享中断）。</li>
-<li>点对点&#x2F;单设备 → 推挽（复用：SPI；普通：LED）。</li>
-</ul>
-</li>
-<li><strong>检查协议&#x2F;硬件要求</strong>：<ul>
-<li>协议指定开漏（如I2C）→ 复用开漏。</li>
-<li>高速或强驱动（如SPI、PWM）→ 复用推挽。</li>
-<li>软件控制灵活场景 → 普通推挽&#x2F;开漏。</li>
-</ul>
-</li>
-<li><strong>验证电平与频率</strong>：<ul>
-<li>跨电压或低频 → 开漏。</li>
-<li>同电压或高频 → 推挽。</li>
-</ul>
-</li>
-</ol>
-<h2 id="五、STM32配置示例（以STM32为例）"><a href="#五、STM32配置示例（以STM32为例）" class="headerlink" title="五、STM32配置示例（以STM32为例）"></a>五、STM32配置示例（以STM32为例）</h2><ul>
-<li><strong>复用推挽</strong>：<ul>
-<li>配置：GPIO模式为<code>AF_PP</code>（Alternate Function Push-Pull）。</li>
-<li>场景：SPI的MOSI&#x2F;MISO&#x2F;SCLK，UART的TX，TIM的PWM输出。</li>
-<li>CubeMX设置：选择外设功能（如SPI1），GPIO模式设为“Alternate Function Push-Pull”。</li>
-</ul>
-</li>
-<li><strong>复用开漏</strong>：<ul>
-<li>配置：GPIO模式为<code>AF_OD</code>（Alternate Function Open-Drain）。</li>
-<li>场景：I2C的SDA&#x2F;SCL。</li>
-<li>CubeMX设置：选择I2C功能，GPIO模式设为“Alternate Function Open-Drain”，并确保外部上拉电阻。</li>
-</ul>
-</li>
-<li><strong>普通推挽</strong>：<ul>
-<li>配置：GPIO模式为<code>GPIO_Output</code>（Push-Pull）。</li>
-<li>场景：驱动LED、控制继电器。</li>
-<li>CubeMX设置：GPIO模式设为“Output Push-Pull”。</li>
-</ul>
-</li>
-<li><strong>普通开漏</strong>：<ul>
-<li>配置：GPIO模式为<code>GPIO_Output</code>（Open-Drain）。</li>
-<li>场景：多设备共享中断线。</li>
-<li>CubeMX设置：GPIO模式设为“Output Open-Drain”，并添加外部上拉电阻。</li>
-</ul>
-</li>
-</ul>
-<h2 id="六、注意事项"><a href="#六、注意事项" class="headerlink" title="六、注意事项"></a>六、注意事项</h2><ul>
-<li><strong>复用模式</strong>：<ul>
-<li>确保引脚支持目标外设功能（参考MCU数据手册的引脚复用表）。</li>
-<li>根据外设协议选择推挽或开漏（I2C必须开漏，SPI推荐推挽）。</li>
-</ul>
-</li>
-<li><strong>普通模式</strong>：<ul>
-<li>软件控制灵活，但无法利用外设硬件加速（如DMA、硬件时序）。</li>
-<li>开漏需外接上拉电阻，电阻值（常用4.7kΩ~10kΩ）需根据总线电容和频率调整。</li>
-</ul>
-</li>
-<li><strong>硬件设计</strong>：<ul>
-<li>推挽输出避免多设备连接，防止短路。</li>
-<li>开漏输出确保上拉电阻存在，否则高电平无效。</li>
-</ul>
-</li>
-<li><strong>调试</strong>：<ul>
-<li>使用示波器检查信号完整性（推挽：电平稳定；开漏：上升沿受电阻&#x2F;电容影响）。</li>
-<li>确认引脚模式与协议&#x2F;硬件匹配。</li>
-</ul>
-</li>
-</ul>
-<h2 id="七、总结"><a href="#七、总结" class="headerlink" title="七、总结"></a>七、总结</h2><ul>
-<li><strong>复用推挽&#x2F;开漏</strong>：用于外设功能（如SPI、I2C），由协议决定输出类型（I2C用开漏，SPI用推挽）。</li>
-<li><strong>普通推挽&#x2F;开漏</strong>：用于通用GPIO控制，推挽适合单设备控制，开漏适合多设备共享。</li>
-<li><strong>选择依据</strong>：<ul>
-<li><strong>功能</strong>：外设用复用，通用用普通。</li>
-<li><strong>通信</strong>：总线&#x2F;多设备用开漏，点对点&#x2F;高频用推挽。</li>
-<li><strong>协议</strong>：严格遵循协议要求（如I2C必须开漏）。</li>
-<li><strong>硬件</strong>：考虑电平、频率、成本。</li>
-</ul>
-</li>
-</ul>
-<hr>
-<p><strong>参考</strong>：</p>
-<ul>
-<li>STM32参考手册（GPIO与外设章节）</li>
-<li>I2C、SPI、UART等协议规范</li>
-</ul>
+<p>实现功能 - LCD</p>
+<p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250426112702251.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2025/04/09/%E6%8A%80%E6%9C%AF%E6%A0%88/Embedded/stm32/image-20250426112954312.png" srcset="/img/loading.gif" lazyload></p>
+<p>因为RS是数据或命令选择引脚RS&#x3D;1写数据，RS&#x3D;0写命令。接FSMC-A10（PG0）。</p>
+<p>fsmc一共有0-25共计26根线，HADDR中的H对应的是高速总，然后这个数据宽度为16位，因为fsmc存储数据会发生错位，所以就会产生10对应11，不过我还是很懵逼的一点就是它不是对应的是11位吗，但是1&lt;&lt;11计算的结果不是12位吗</p>
 <p>代码管理系统，显得没事干写的代码存起来，然后可以直接搜索这个代码出来</p>
 <p>比如今天想到的spring请求地址，可以把写完的代码存起来，然后将数据关键字存起来，利用elasticsearch进行搜索这些代码</p>
 
